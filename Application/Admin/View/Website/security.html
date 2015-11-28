@@ -1,0 +1,94 @@
+<extend name="Public/base" />
+
+<block name="style">
+<style type="text/css">
+	th,td{
+		cursor: default;
+	}
+	
+</style>
+</block>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>密保问题</h2>
+	</div>
+	<div class="cf">
+		<div class="fl">
+            <a class="btn" href="{:U('addProblem')}">新 增</a>
+        </div>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<!-- <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th> -->
+		<th class="tb_th">ID</th>
+		<th class="tb_th">问题</th>
+		<!-- <th class="tb_th">状态</th> -->
+		<th class="tb_th">更新时间</th>
+		<th class="tb_th">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <!-- <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td> -->
+			<td>{$vo.id} </td>
+			<td>{$vo.question}</td>
+			<!-- <td><eq name="vo.status" value="0">	禁用 <else/>启用</eq> </td> -->
+			<!-- <td>{$vo.update_time}</td> -->
+			<td><?php echo date("Y-m-d H:i", $vo['update_time']);?></td>
+			<td><a href="{:U('addProblem?seat='.$vo['id'])}">编辑</a>&emsp;
+			<a href="{:U('changeStatus?type=security&method=deleteUser&id='.$vo['id'])}" class="confirm ajax-get deal">删除</a>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<!-- // <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script> -->
+
+	<script type="text/javascript">
+	$(".deal").click(function(){
+		setTimeout(function(){
+			window.location.reload();
+		},10)
+	})
+
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+    //导航高亮
+    highlight_subnav('{:U('Website/security')}');
+	</script>
+</block>

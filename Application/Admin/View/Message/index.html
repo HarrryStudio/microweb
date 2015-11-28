@@ -1,0 +1,115 @@
+<extend name="Public/base" />
+
+<block name="style">
+<style type="text/css">
+	th,td{
+		cursor: default;
+	}
+	#td_txt{
+		width: 65%;
+	}
+	#assort{
+		height: 30px;
+		float:left; 
+	}
+</style>
+</block>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>留言信息列表</h2>
+	</div>
+	<div class="fl">
+        <button class="btn ajax-post confirm" url="{:U('changeStatus?method=deleteUser')}" target-form="ids">删 除</button>
+    </div>
+	<div class="cf">
+        <!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<select id="assort">
+				<option>分类获取</option><option value="0">所有</option>
+				<option value="1">已回复</option><option value="2">待回复</option>
+			</select>
+			<div class="sleft">
+				<input type="text" name="nickname" class="search-input" value="{:I('nickname')}" placeholder="请输入账号/昵称/ID">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('index',"")}"><i class="btn-search"></i></a>
+
+			</div>
+		</div>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+        <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="tb_th">ID</th>
+		<th class="tb_th">账号</th>
+		<th class="tb_th">昵称</th>
+		<th class="tb_th">状态</th>
+		<th class="tb_th">内容</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="list">
+		<volist name="list" id="vo">
+		<tr>
+			<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+			<td>{$vo.id}</td>
+			<td><a href="{:U('details?seat='.$vo['user_id'])}">{$vo.account}</a></td>
+			<td><a href="{:U('details?seat='.$vo['user_id'])}">{$vo.nickname}</a></td>
+			<td>
+				<eq name="vo['way']" value="0"><label style="color:red">待回复</label><else/><label style="color:green">已回复</label></eq></td>
+			<td id="td_txt"><?php echo mb_strimwidth($vo['content'] , 0, 100, "...", "utf-8");?></td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<!-- // <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script> -->
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:U('Message/index')}');
+
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+
+
+    //状态分类,当鼠标离开select，触发查询事件
+    $("#assort").change(function(){
+		var url = $("#search").attr('url');
+    	var type = $(this).val();
+    	type = "/type/"+type;
+    	window.location.href = url+type;
+    })
+
+
+</script>
+</block>

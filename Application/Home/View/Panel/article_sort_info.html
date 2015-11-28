@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=640,maximum-scale=1.3,user-scalable=no">
+	  <!-- <meta name="viewport" content="width=320,maximum-scale=1.3,user-scalable=no"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="__P_CSS__/article_sort/css/article_sort_info.css">
+	<script type="text/javascript">
+		var APP = '__ROOT__';
+	</script>
+	<title>index</title>
+	<link rel="stylesheet" type="text/css" href="/microWeb/userfile/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/microWeb/userfile/index.css">
+	<link rel="stylesheet" type="text/css" href="/microWeb/userfile/theme_2.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../Public/Controller/nav/Css/first_nav.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../Public/Controller/nav/Css/second_nav.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../Public/Controller/nav/Css/third_nav.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../Public/Controller/nav/Css/forth_nav.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="../Public/Controller/nav/Css/fifth_nav.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="../Public/Controller/nav/Css/sixth_nav.css"> -->
+
+	<script type="text/javascript" src='/microWeb/userfile/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src='/microWeb/userfile/index.js'></script>
+	<script type="text/javascript" src='/microWeb/userfile/drag.js'></script>
+</head>
+<body>
+<!-- <div class="web"> -->
+	<div class="side">
+		<div class="nav-move nav-move-left"></div>
+		<div class="nav-bar">
+			
+			<div class="nav-item">
+				<span class='nav-icon nav-icon-1'></span>
+				<a>首页</a>
+			</div>
+			<div class="nav-item">
+				<span class='nav-icon nav-icon-2'></span>
+				<a>新闻消息</a>
+			</div>
+			<div class="nav-item">
+				<span class='nav-icon nav-icon-3'></span>
+				<a>关于我们</a>
+			</div>
+			<div class="nav-item">
+				<span class='nav-icon nav-icon-4'></span>
+				<a>联系我们</a>
+			</div>
+			<div class="nav-item">
+				<span class='nav-icon nav-icon-5'></span>
+				<a>帮助中心</a>
+			</div>
+		</div>
+		<div class="nav-move nav-move-right"></div>
+	</div>  
+		<div class="header main">
+			<div class="menu-button"></div>
+			<h1>{$name}</h1>
+		</div>
+
+		<div class="top-bar main zi"></div>
+		<div class="clearfix main"></div>
+		<div class="background main"></div>
+
+
+
+	<!-- <div id="show_nav">
+		<div class="nav_all nav_one left" id="nav_first"><div id="one"></div><p>栏目一</p><span>></span></div>
+		<div class="nav_all nav_two" id="nav_second"><div id="two"></div><p>栏目二</p><span>></span></div>
+		<div class="nav_all nav_three" id="nav_third"><div id="three"></div><p>栏目三</p><span>></span></div>
+		<div class="nav_all nav_four left" id="nav_forth"><div id="four"></div><p>栏目四</p><span>></span></div>
+		<div class="nav_all nav_five" id="nav_fifth"><div id="five"></div><p>栏目五</p><span>></span></div>
+		<div class="nav_all nav_six" id="nav_sixth"><div id="six"></div><p>栏目六</p><span>></span></div>
+	</div>
+	 -->
+
+
+		<div class="article_list">			
+			<ul>
+			<volist name="article_list" id="vo">
+				<li>
+					<a href="/microWeb/index.php/Home/Panel/article_info.html?article_id={$vo.id}" title="">{$vo.title}</a></li>
+			</volist>
+			</ul>
+		</div>
+		<div class="footer main">
+			<div class="top">
+				<div class="top-button">Top</div>
+			</div>
+			<div class="foot-text">
+				<p>©2015 {$name} 版权所有</p>
+				<p>技术支持：marchsoft</p>
+			</div>
+		</div>
+	
+<!-- </div> -->
+</body>
+</html>

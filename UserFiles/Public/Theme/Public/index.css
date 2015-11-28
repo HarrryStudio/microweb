@@ -1,0 +1,314 @@
+html,body{
+	margin:0px;
+	padding: 0px;
+	color:#444;
+	height: 100%;
+	width: 100%;
+	/*font-size: 16px;*/
+}
+body{
+	overflow-x:hidden ;
+	-webkit-transition:font-size 0.2s ease-out;
+}
+@media only screen and (max-width: 2000px) { html,body{ font-size: 28px; }}
+@media only screen and (max-width: 1400px) { html,body{ font-size: 26px; }}
+@media only screen and (max-width: 1200px) { html,body{ font-size: 26px; }}
+@media only screen and (max-width: 1100px) { html,body{ font-size: 24px; }}
+@media only screen and (max-width: 1000px) { html,body{ font-size: 24px; }}
+@media only screen and (max-width: 900px) { html,body{ font-size: 22px; }}
+@media only screen and (max-width: 800px) { html,body{ font-size: 22px; }}
+@media only screen and (max-width: 700px) { html,body{ font-size: 20px; }}
+@media only screen and (max-width: 600px) { html,body{ font-size: 20px; }}
+@media only screen and (max-width: 500px) { html,body{ font-size: 18px; }}
+@media only screen and (max-width: 400px) { html,body{ font-size: 18px; }}
+@media only screen and (max-width: 300px) { html,body{ font-size: 16px; }}
+/*.web{
+	width: 100%;
+	height: 100%;
+	overflow-x:hidden;
+}*/
+body::-webkit-scrollbar{
+	width: 5px;
+}
+body::-webkit-scrollbar-button{
+	display: none;
+}
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+
+.side{
+	position: fixed;
+	background: #21232F;
+	min-height: 100%;
+	width: 65%;
+	top: 0;
+	left:0;
+	z-index: -3;
+}
+.user-bar{
+	height: 0;
+	overflow: hidden;
+}
+.head-icon{
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.side.moveRight{
+	z-index: 0;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+.nav-bar{
+	margin-top: 3rem;
+	position: absolute;
+	width: 100%
+}
+
+.nav-item{
+	height: 2rem;
+	line-height: 2rem;
+	font-family: 'Microsoft Yahei';
+	color:#fff;
+	cursor: pointer;
+}
+.nav-item:last-child{
+	border-bottom:none
+}
+.nav-item.forbidden{
+	display: none;
+}
+.nav-item a{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.nav-item a{
+	text-decoration: none;
+}
+.nav-icon{
+	display: inline-block;
+	font-size: 14px;
+	margin:0px 14px ;
+	line-height: 30px;
+	background-size:80%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.nav-item .nav-name{
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+}
+.nav-item .nav-name:hover{
+	color: #fff;
+}
+.nav-move{
+		font-family: 'Glyphicons Halflings';
+		display: none;
+		position: absolute;
+		top: 0;
+		background: rgba(0,0,0,0.5);
+		height: 100%;
+    	line-height: 4rem;
+    	color: #888;
+    	cursor: pointer;
+    	z-index: 1
+	}
+	.nav-move-right{
+		right:0;
+	}
+	.nav-move-left{
+		left:0;
+	}
+	.nav-move-right:before{
+		content: '\e080';
+	}
+	.nav-move-left:before{
+		content: '\e079';
+	}
+
+.main,.menu-button{
+	-webkit-transition: all 350ms;
+	-moz-transition: all 350ms;
+	-ms-transition: all 350ms;
+	-o-transition: all 350ms;
+	transition: all 350ms;
+}
+
+.moveRight{
+	-webkit-transform: translate3d(65%,0,0);
+	-moz-transform: translate3d(65%,0,0);
+	-ms-transform: translate3d(65%,0,0);
+	-o-transform: translate3d(65%,0,0);
+	transform: translate3d(65%,0,0);
+}
+
+.clearfix{
+	height:2.5rem;
+	position: relative;
+}
+.header{
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	left:0px;
+	line-height: 2.5rem;
+	height:2.5rem;
+	font-size: 1.4rem;
+	z-index: 100;
+	background: -webkit-linear-gradient(bottom left,#ff692c,#ff5352);
+	background: -moz-linear-gradient(bottom left,#ff692c,#ff5352);
+	background: -ms-linear-gradient(bottom left,#ff692c,#ff5352);
+	background: -o-linear-gradient(bottom left,#ff692c,#ff5352);
+	background: linear-gradient(bottom left,#ff692c,#ff5352);
+	color:#fff;
+}
+	.header h1{
+		position: absolute;
+		top: 0px;
+		left:0px;
+		margin:0px;
+		width: 100%;
+		height: 100%;
+		font-family: "Microsoft Yahei";
+		font-size: inherit;
+		line-height: 2.5rem;
+		text-align: center;
+		padding-left: 2rem;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.header .menu-button{
+		position: absolute;
+		top: 0px;
+		left:2%;
+		text-align: center;
+		line-height: inherit;
+		height: 100%;
+		z-index: 2;
+		cursor: pointer;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size:85%;
+	}
+
+.center{
+	min-height: 100px;
+	clear: both;
+	background-color:transparent;
+	position: relative;
+}
+.background{
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 0;
+}
+.top-bar{
+	position: fixed;
+	width: 2rem;
+	height: 1.5rem;
+	bottom: 3rem;
+	right: 1rem;
+	z-index: 15;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+.top-bar.zi{
+	background-image: url(./images/top-zi.png);
+}
+.top-bar.tu{
+	background-image: url(./images/top-tu.png);
+}
+
+.footer{
+	text-align: center;
+	height: 3rem;
+	position: relative;
+	margin-top: 1rem;
+	padding-top: 0.7rem; 
+	color: #aaa;
+}
+  .footer-border{
+  	width: 70%;
+  	height: 0;
+  	border-top: 1px solid #aaa;
+  	margin:0 auto 0.5rem auto; 
+  }
+	.footer p {
+		margin: 0px;
+		padding:0px;
+		font-size: 0.6rem;
+		line-height: 1.2rem;
+	}
+
+
+
+
+
+/*拖放的显示*/
+.pro{
+	display: none;
+	box-sizing:border-box;
+	width: 100%;
+	height: 100px;
+	border:dashed 3px green;
+}
+
+
+.operation-border {
+	position: absolute;
+	border: #389AFF 0px dashed;
+	font-size: 0;
+	overflow: hidden;
+}
+.operation-border.operation-top,.operation-border.operation-bottom{
+	height: 2px;
+	border-top-width: 2px;
+}
+.operation-border.operation-left,.operation-border.operation-right{
+	width: 2px;
+	border-left-width:2px;
+}
+.operation-elem.operation-nav-bar{
+	box-sizing:border-box;
+	position: absolute;
+	float: right;
+	/*margin-top: -25px;*/
+	font-size: 12px;
+	color: #fff;
+	background: #389AFF;
+	border: 1px #3178C0 solid;
+	border-left: none;
+	border-bottom: none;
+}
+.oparetion-item{
+	box-sizing:border-box;
+	float: right;
+	height: 25px;
+	line-height: 25px;
+	text-align:center;
+	padding:0px 5px;
+	border-left: 1px #3178C0 solid;
+	cursor: pointer;
+}
+.jjj{
+	width: 100%;
+	height: 10rem;
+	border:1px solid #456;
+}

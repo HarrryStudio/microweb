@@ -1,0 +1,107 @@
+<extend name="Public/base" />
+
+<block name="style">
+<style type="text/css">
+	th,td{
+		cursor: default;
+		text-align: center;
+	}
+	.tb_time{
+		width: 16%;
+		background: red;
+	}
+</style>
+</block>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>团队列表</h2>
+	</div>
+	<div class="cf">
+		<div class="fl">
+            <a class="btn" href="{:U('addUser')}">新 增</a>
+        </div>
+
+        <!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<div class="sleft">
+				<input type="text" name="nickname" class="search-input" value="{:I('nickname')}" placeholder="请输入账号/昵称/ID">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('index')}"><i class="btn-search"></i></a>
+			</div>
+		</div>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<th style="text-align: center;">ID</th>
+		<th style="text-align: center;">姓名</th>
+		<th style="text-align: center;">账户</th>
+		<th style="text-align: center;">电话</th>
+		<th style="text-align: center;">加入时间</th>
+		<th style="text-align: center;">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+			<td>{$vo.id} </td>
+			<td>{$vo.admin_name}</td>
+			<td>{$vo.account}</td>
+			<td>{$vo.phone}</td>
+			<td><?php echo date("Y-m-d H:i", $vo['create_time']);?></td>
+			<td><a href="{:U('changeStatus?type=team&method=deleteUser&id='.$vo['id'])}" class="confirm ajax-get deal">删除</a>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<!-- // <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script> -->
+
+	<script type="text/javascript">
+	
+	$(".deal").click(function(){
+		setTimeout(function(){
+			window.location.reload();
+		},10)
+	})
+
+
+	$(".alert").fadeOut(3000);
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+    //导航高亮
+    highlight_subnav('{:U('User/index')}');
+	</script>
+</block>

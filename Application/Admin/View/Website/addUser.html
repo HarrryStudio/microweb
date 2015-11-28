@@ -1,0 +1,169 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>{$meta_title}</h2>  <?php echo session("flash_error");?> 
+    </div>
+    
+    <form action="{:U()}" name="f1" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">真实姓名<span class="check-tips">（请输入中文）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="realname" value="{$list.admin_name}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">登录账号<span class="check-tips">（请输入数字或字母）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="account" value="{$list.account}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">联系方式<span class="check-tips">（仅限手机号）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="phone" value="{$list.phone}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">密码<span class="check-tips">（用户密码不能少于6位）</span></label>
+            <div class="controls">
+                <input type="password" class="text input-large" name="password" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">确认密码</label>
+            <div class="controls">
+                <input type="password" class="text input-large" name="repassword" value="">
+            </div>
+        </div>
+        <input type="hidden" name="choice" value="{$list.id}">
+        <div class="form-item">
+            <button class="btn submit-btn" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Website/index')}');
+        setTimeout(function(){
+            $(".alert").remove();
+        },2000);
+        document.f1.submit.disabled = true;//禁止form表单提交信息
+        $(".form-item").focusout(function(){
+            var code = "";
+            var index = $(this).index();
+            var content = $(this).find("input").val();
+            content = content.replace(/^\s+/,"").replace(/\s+$/,"");
+            $(this).find("span").remove();
+            if(index == 3 || index == 4){
+                $(".form-item").eq(4).find("span").remove();
+            }
+            //如果为空或有html标签，则显示提示信息
+            if (content=="" || /<\s*(\S+)(\s[^>]*)?>[\s\S]*<\s*\/\1\s*>/.test(content)==true) {
+                $(this).find("input").after(wore(-1));
+                return false;
+            }
+            //匹配真实姓名字符长度不能为零，且不能大于6
+            if (content==0 && content.length>6 && index==0) {
+                $(this).find("input").after(wore(-2));
+                return false;
+            }
+            //真实姓名匹配中文(如果有其他字符则显示提示信息)
+            if (content.replace(/[\u4e00-\u9fa5]/g, "")!=="" && index== 0 ){
+                $(this).find("input").after(wore(-3));
+                return false;
+            }
+            //登录账号匹配字母或数字或数字与字母的组合（如果有除此之外的其他内容则显示提示信息）
+            if (content.replace(/[A-Za-z0-9]/g,"")!=="" && index== 1){
+                $(this).find("input").after(wore(-5));
+                return false;
+            }
+            //匹配index=1的账号长度必须为6-12之间
+            if (content.length>12 && index==1 || content.length<6 && index==1) {
+                $(this).find("input").after(wore(-6));
+                return false;
+            }
+            //贪心匹配index=2的联系方式的格式和长度
+            if (content.replace(/\d.*/,"")!=="" && index==2 || content.length!==11 && index==2) {
+                $(this).find("input").after(wore(-9));
+                return false;
+            }
+            //匹配index=3和4的密码或确认密码长度必须为6-12之间
+            if (content.length>12 && index==3 || content.length<6 && index==3 || content.length>12 && index==4 || content.length<6 && index==4) {
+                $(this).find("input").after(wore(-6));
+                return false;
+            }
+            //当输入确认密码后，与密码进行匹配，如果不一致则显示提示信息
+            if ($(".form-item").eq(3).find("input").val()!==$(".form-item").eq(4).find("input").val() && (index==4 ||　$(".form-item").eq(4).find("input").val() != "")){
+                $(".form-item").eq(4).find("input").after(wore(-11));
+                return false;
+            }
+            $(".form-item").find("input").each(function(i){
+                if($(this).val() == ''){
+                    document.f1.submit.disabled = true;
+                    return false;
+                }
+                document.f1.submit.disabled = false;//允许form表单提交信息
+            });
+        })
+        $(".form-item").find("input").focus(function(){
+            document.f1.submit.disabled = true;
+        })
+//        //当信息不完整时禁止提交
+//        $("#submit").mouseenter(function(){
+//            var data = new Array();
+//            var num = 0;
+//            for (var i = 0; i <= $(".controls").length-1; i++) {
+//                 data = $(".form-item").eq(i).find("input").val();
+//                 if (data==""){
+//                   num ++;
+//                 }
+//            }
+//            document.f1.submit.disabled = true;
+//            if (num==0){
+//                document.f1.submit.disabled = false;
+//                return;
+//            }
+//             var error = "<span id='sp' style='width:80%;height:40px;float:left;position:absolute;margin-left:-80px;background:#ff6666;z-index:10;'><h2 style='color:white;'>信息有误，请再次确认</h2></span>";
+//            $(".main-title").append(error);
+//            setTimeout(function(){
+//                $("#sp").remove();
+//            },2000)
+//        })
+
+        // function form(){
+        //  var data = new Array();
+        //  var name = "";
+        //  for (var i = 0; i <= $(".controls").length-1; i++) {
+        //      name = $(".form-item").eq(i).find("input").attr("name");
+        //      data[name] = $(".form-item").eq(i).find("input").val();
+        //  };
+            
+        //  console.log(data);
+        // }
+
+        function wore(code){
+            var error="";
+            switch (code) {
+                case -1:  error = '此项为必填项！'; break;
+                case -2:  error = '用户名长度必须在6个字符以内！'; break;
+                case -3:  error = '请输入中文！'; break;
+                case -4:  error = '密码长度必须在6-30个字符之间！'; break;
+                case -5:  error = '账号格式不正确！'; break;
+                case -6:  error = '账号长度必须在6-12个字符之间！'; break;
+                case -7:  error = '账号被禁止注册！'; break;
+                case -8:  error = '账号被占用！'; break;
+                case -9:  error = '手机格式不正确！'; break;
+                case -10: error = '信息有误，请再次确认！'; break;
+                case -11: error = '密码与确认密码不一致！'; break;
+                default: error = '未知错误';
+            }
+            var error = "<span style='color:red;margin-left:10px;'>"+error+"</span>";
+             return error;
+        }
+
+    </script>
+</block>

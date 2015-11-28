@@ -1,0 +1,133 @@
+body{
+	background: #abc57c;
+}
+.side{
+	background: #abc57c;
+	width: 96%;
+	top:2rem;
+	height: 4rem;
+	min-height:0rem;
+	left:2%;
+	border-top: 0.1rem solid #BED398
+}
+
+.nav-bar{
+	margin-top: 0rem;
+	white-space: nowrap;
+	width: auto;
+}
+	.nav-item{
+		display: inline-block;
+		width: 4rem;
+		height: 4rem;
+		line-height: 1rem;
+		text-align: center;
+		font-family: 'Microsoft Yahei';
+		color:#fff;
+		cursor: pointer;
+		border-bottom: none;
+	}
+
+	.nav-item.active,.nav-item:hover{
+		background-color: #89A652 
+	}
+	.nav-icon{
+		display: inline-block;
+		height: 2rem;
+		width: 2rem;
+		margin:0px ;
+		line-height: inherit;
+	}
+	.nav-item a,.nav-item a:hover{
+		text-decoration: none;
+	}
+	.nav-item .nav-name{
+		display: block;
+		clear: both;
+		font-size: 0.8rem;
+		line-height: inherit;
+	}
+	.nav-move{
+		/*display: block;*/
+	}
+	.nav-move-right{
+		right:-2%;
+	}
+	.nav-move-left{
+		left:-2%;
+	}
+	.nav-move-right:before{
+		content: '\e080';
+	}
+	.nav-move-left:before{
+		content: '\e079';
+	}
+
+.clearfix{
+	height:2rem;
+}
+.header{
+	line-height: 2rem;
+	height:2rem;
+	font-size: 1.2rem;
+	background: #abc57c;
+}
+	.header h1{
+		font-family: "Microsoft Yahei";
+		font-size: inherit;
+		line-height: inherit;
+		text-align: center;
+	}
+	.header .menu-button{
+		width: 2rem;
+		height: 2rem;
+		background-image:url(./images/menu.png);
+	}
+	.menu-button.extended{
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+	}
+
+.center{
+	/*background: none;*/
+	
+}
+.background{
+	background: #abc57c;
+}
+
+.controller-title{
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	background: #F4F5E5;
+	font-size: 0.8rem
+}
+
+
+.footer{
+
+}
+.moveRight{
+	-webkit-transform: translate3d(0,6em,0);
+	-moz-transform: translate3d(0,6rem,0);
+	-ms-transform: translate3d(0,6rem,0);
+	-o-transform: translate3d(0,6rem,0);
+	transform: translate3d(0,6rem,0);
+}
+.moveLeft{
+	transform: translate3d(0,0,0);
+}
+.header.moveRight{
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+.clearfix.moveRight{
+	height: 0px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="__P_CSS__/article_list/Css/article_list.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript">
+		var APP = '__ROOT__';
+	</script>
+	<script type="text/javascript" src="__JS__/panel/article_list.js"></script>
+</head>
+
+<body>
+	<div id="article_list">
+		<ul class="tab_nav">
+			<li class="active"><!-- <a href="#base_setting"></a> -->常规</li>
+			<!-- <li><a href="#advance_setting">展示设置</a> -->
+			</li>
+		</ul>
+		<ul class="setting">
+
+			<li>
+				<div>
+					<label>模块标题</label><input type="text" name="" value="文章列表">
+				</div>
+			</li>
+			<li>
+				<div>
+					<div id="style_list">
+						<div class="pattern" va="121">
+							<div class="hr"><img src="__P_IMAGES__/image_text/images/1.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__P_IMAGES__/image_text/images/2.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__P_IMAGES__/image_text/images/3.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__P_IMAGES__/image_text/images/4.jpg"></div>
+						</div>
+						<!-- <div class="clear_float"></div> -->
+					</div>
+				</div>
+			</li>
+		</ul>
+<!-- 		<div class="button">
+	<button id="save">保存</button>
+	<button id="cancle">取消</button>
+</div> -->
+	</div>
+	<div class="article_info">
+		<ul>
+			<volist name="article_info" id="vo">
+				<li><a href="<?php $ii = $vo['id']; echo U('Panel/article_info?article_id='.$ii);?>">{$vo.title}</a></li>		
+			</volist>
+		</ul>
+	</div>
+	<input id="target_url" type="hidden" name="" value="{:U('Panel/article_type')}">
+	<input id="article_url" type="hidden" name="" value="{:U('Panel/article_info')}?article_id=">
+	<input id="img_url" type="hidden" name="" value="{:C('PICTURE_UPLOAD_ROOT')}">
+	<script type="text/javascript">
+		var temp = $(".article_info")[0].innerHTML;
+	</script>
+</body>
+</html>

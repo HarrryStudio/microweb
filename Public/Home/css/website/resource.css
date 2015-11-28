@@ -1,0 +1,137 @@
+.album-item,.add-album{
+	float: left;
+	width: 23%;
+	height: 210px;
+	border:1px solid #ccc;
+	margin-right: 1.5%;
+	margin-bottom:15px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+.album-name{
+	width: 100%;
+	height: 150px;
+	line-height: 120px;
+	font-size: 30px;
+	text-align: center;
+	position: relative;
+}
+.del_album-bar{
+	position: absolute;
+	width: 0px;
+	height: 0px;
+	border-top: 35px solid #4DC0A3;
+    border-right: 40px solid transparent;
+    top:-35px;
+    left:-40px;
+    transition: all 350ms;
+    color: #fff;
+    z-index: 20
+}
+.del_album-bar span{
+	position: absolute;
+	top: -33px;
+	left :4px;
+}
+.del_album-bar:hover{
+	color: #F58D08
+}
+.album-item:hover .del_album-bar{
+	top:0;
+	left: 0;
+}
+.album-name-label{
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	z-index: 99;
+	left:0px;
+	top:38px;
+	background: #fff;
+	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.album-name-label::selection{
+	background: #fff;
+	color: #000
+}
+input.album-name-input{
+	display: inline-block;
+	width: 80%;
+	line-height: 30px;
+	font-size: 20px;
+}
+.album-name-button{
+	display: block;
+	width: 60px;
+	line-height: 25px;
+	height: 25px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #4DC0A3;
+	margin:auto;
+	margin-top:-10px;
+	letter-spacing: 5px;
+	border: 1px solid #4DC0A3;
+	border-radius: 3px;
+	text-align: center;
+}
+.album-name-button:hover{
+	background: #4DC0A3;
+	color:#fff;
+}
+.album-name-button:hover{
+	text-decoration: none;
+}
+.album-info{
+	margin-left: 10%;
+	width: 80%;
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	
+}
+.album-info-item{
+	line-height: 20px;
+	text-align: center;
+}
+.create-time::before,.update-time::before{
+	font-family: 'Glyphicons Halflings';
+	content:"\e023";
+	color: #aaa;
+	font-weight: bolder;
+	vertical-align: text-bottom;
+	margin-right: 5px;
+}
+.create-time::before{
+	content:"\e023";
+}
+.update-time::before{
+	content:"\e030";
+}
+
+.add-album-button{
+	width: 100px;
+	height: 100px;
+	border: 2px solid rgba(77, 193, 180, 0.36);
+	border-radius:50px;
+	margin:auto;
+	color:rgba(77, 193, 180, 0.36);
+	font-size: 75px;
+	line-height: 85px;
+	text-align: center;
+	margin-top:48px ;
+}
+
+.tooltip{
+	font-family: inherit;
+}
+.tooltip-inner{
+	background-color: #4DC0A3;
+}
+.tooltip.top .tooltip-arrow{
+	border-top-color: #4DC0A3;
+}

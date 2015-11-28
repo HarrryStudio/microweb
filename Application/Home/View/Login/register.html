@@ -1,0 +1,153 @@
+<block name="style">
+    <script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="__CSS__/register.css">
+</block>
+<block name="content">
+    <div id="content_top">
+        <div id="first_content_top"><div class="circle"><strong>1</strong></div><p>输入账号和密码</p></div>
+        <div id="second_content_top"><div class="circle"><strong>2</strong></div><p>选择密码问题</p></div>
+        <div id="third_content_top"><div class="circle"><strong>3</strong></div><p>注册成功</p></div>
+    </div>
+    <!-- 账号，密码表单 -->
+    <form class="form-horizontal" role="form" name="f1" id="first_form">
+        <div class="form-group">
+            <label for="account" class="col-sm-2 control-label">账&emsp;户</label>
+            <div class="col-sm-8">
+                <div class="input"><input type="text" class="form-control" onkeyup="value=value.replace(/[\W]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" id="account" maxlength="15"></div>
+                <div class="hint">
+                    <span class="account_hint">字母、数字或其组合9-15位</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Password" class="col-sm-2 control-label">密&emsp;码</label>
+            <div class="col-sm-8">
+                <div class="input"><input type="password" class="form-control" id="Password" maxlength="16"></div>
+                <div class="hint pwd_hint">
+                    <span>长度为6-16个字符</span><br/>
+                    <span>不能包含空格</span><br/>
+                    <span>不能是9位以下纯数字</span>
+                    <span class="indicate_top"></span>
+                    <span class="indicate_bot"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword" class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-8">
+                <div class="input"><input type="password" class="form-control" id="confirmPassword" maxlength="16"></div>
+                <div class="hint">
+                    <span class="conpwd_hint">请再次输入密码</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-default" id="next_problem">下一步</button>
+                <a href="javascript:history.go(-1);">
+                    <button type="button" class="btn btn-default" id="goback">返回</button>
+                </a>
+            </div>
+        </div> 
+    </form>
+    <!-- 密保问题表单 -->
+    <form  class="form-horizontal" role="form" id="second_form">
+        <select class="form-control" id="problem" style="display: none;">
+            <option value="-1">请选择密保问题</option>
+            <foreach name="problem" item="vo">
+                <option value="{$vo.id}">{$vo.question}</option>
+            </foreach>
+        </select>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密保问题一:</label>
+            <div class="col-sm-8">
+                <select class="form-control" id="problem1">
+                    <option value="-1">请选择密保问题</option>
+                    <foreach name="problem" item="vo">
+                        <option value="{$vo.id}">{$vo.question}</option>
+                    </foreach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="answer1" class="col-sm-2 control-label">答案</label>
+            <div class="col-sm-8">
+                <div class="input"><input type="text" class="form-control" id="answer1"></div>
+                <div class="hint"><span></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密保问题二:</label>
+            <div class="col-sm-8">
+                <select class="form-control" id="problem2">
+                    <option value="-1">请选择密保问题</option>
+                    <foreach name="problem" item="vo">
+                        <option value="{$vo.id}">{$vo.question}</option>
+                    </foreach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="answer2" class="col-sm-2 control-label">答案</label>
+            <div class="col-sm-8">
+                <div class="input"><input type="text" class="form-control" id="answer2"></div>
+                <div class="hint"><span></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密保问题三:</label>
+            <div class="col-sm-8">
+                <select class="form-control" id="problem3">
+                    <option value="-1">请选择密保问题</option>
+                    <foreach name="problem" item="vo">
+                        <option value="{$vo.id}">{$vo.question}</option>
+                    </foreach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="answer3" class="col-sm-2 control-label">答案</label>
+            <div class="col-sm-8">
+                <div class="input"><input type="text" class="form-control" id="answer3"></div>
+                <div class="hint"><span></span></div>
+            </div>
+        </div>
+        <div class="form-group has-success has-feedback">
+            <label  class="col-sm-2 control-label" for="authCode">验证码:</label>
+            <div class="col-sm-8">
+                <input name="verify" type="text" id="authCode" class="form-control"/>
+                <img src="verify" border="0" title="点击刷新" alt="验证码" id="authImg" onClick="this.src=this.src+'?'+Math.random()"/>
+                <span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-default" id="registerNow">立即注册</button>
+                <button type="button" class="btn btn-default" id="back">返回</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- 注册成功提示信息 -->
+    <form  class="form-horizontal" role="form" id="third_form">
+        <div id="third_form_info">
+        	<img src="__IMAGES__/back/ok.png"/>
+            <p>恭喜你注册成功</p>
+            <a href="{:U('login')}"><button type="button" class="btn btn-default">返回登陆</button></a>
+            <a ><button type="button" class="btn btn-default" data-url=__MODULE__/website/index id="but">去个人主页</button></a>
+        </div>
+    </form>
+
+    <div id="top-alert-back">
+        <div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close_hint"><span aria-hidden="true">×</span></button>
+            <div class="alert-content"></div>
+        </div>
+    </div>
+    <div id="top-alert-back"></div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__JS__/register.js"></script>
+</block>

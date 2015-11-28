@@ -1,0 +1,53 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*导航位于下面*/
+.NavDown img{
+    /*width: 32%;*/
+    height: 60px;
+    margin-left: 1%;
+}
+.NavDown{
+    line-height: 80px;
+    white-space: nowrap;
+    position: absolute;
+}
+.showDown{
+    width: 60%;
+    margin: 5% auto;
+}
+.showDown img{
+    width: 100%;
+    height: 120px;
+}
+/*导航位于右面*/
+.NavRight img{
+    width: 100%;
+    height: 73px;
+    margin-top: 3%;
+    float: left;
+}
+.NavRight{
+    width: 30%;
+    display: inline;
+    float: right;
+    height: 200px;
+    margin-right: 2%;
+}
+.showRight{
+    width: 60%;
+    margin-top: 10%;
+    margin-left: 5%;
+    display: inline-block;
+}
+.showRight img{
+    width: 100%;
+    height: 120px;
+}
+/*流式布局*/
+.picShowList img{
+    margin: 1% 2%;
+    width: 46%;
+}

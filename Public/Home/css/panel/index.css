@@ -1,0 +1,292 @@
+body , html {
+	margin:0;
+	padding: 0;
+	/*font-size: 0px;*/
+	height: 100%;
+	color:#444;
+}
+html{
+	font-size: 0px
+}
+body{
+	background-color:#EDEDED;
+	font-size: 14px;
+}
+ul{
+	padding:0px;
+	margin: 0px;
+}
+iframe{
+	border: none;
+	box-shadow: none;
+}
+/*头*/
+.header{
+	width: 100%;
+	height:40px;
+	background-color: #3577BB;
+}
+/*中间*/
+.middle{
+	width: 100%;
+	max-width: 1260px;
+	min-width: 960px;
+	margin: 20px auto 0px auto;
+	height: 560px;
+}
+.main{
+	min-height: 400px;
+	max-height: 610px;
+	width: 100%;
+	height: 100%;
+}
+.side-left,.side-right,.center{
+	float: left;
+	height:100%;
+	/*margin-top:10px;*/
+}
+.side-left,.side-right{
+	border: 1px solid #ddd;
+	outline: #e9e9e9 solid 2px;
+	background-color: #fff
+}
+.side-left{
+	width: 24%;
+}
+
+/*左边*/
+.left-side-title{
+	width: 100%;
+	
+}
+.left-side-title h3{
+	padding:0px;
+	margin:0px;
+	height: 45px;
+	background-color: #3577BB;
+	color:#fff;
+	line-height: 45px;
+	letter-spacing: 6px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+.left-ide-body{
+	 margin-top: 12px;
+	 height:460px;
+	 box-sizing:border-box;
+	 padding: 10px;
+	 padding-top: 10px;
+}
+.controller-item{
+	float: left;
+	width: 25%;
+	/*height: 100px;*/
+	text-align: center;
+	margin: 10px 4% 10px 4%;
+}
+.controller-icon{
+	width: 100%;
+	height: 70px;
+	border: 1px solid #000;
+	cursor: pointer;
+}
+.controller-item p{
+	padding:10px 5px; 
+	margin: 0;
+	font-size: 12px
+}
+.controller-intro{
+	display: none;
+}
+
+
+/*右边*/
+.side-right{
+	width: 32%;
+}
+.right-panel{
+	width: 100%;
+	height: 100%;
+}
+.right-nav{
+	box-sizing:border-box;
+	width: 100%;
+}
+.right-nav-item{
+	float: left;
+	width: 50%;
+	height: 45px;
+	text-align: center;
+	background-color: #3577BB;
+	color:#fff;
+	line-height:45px;
+	letter-spacing: 4px;
+	font-size: 16px;
+}
+.right-vessel{
+	clear: both;
+	height: 515px;
+	overflow: hidden;
+}
+.right-content{
+	width: 100%;
+	height: 100%;
+}
+.snav{
+	width: 100%;
+	height: 43px;
+}
+.snav-itme{
+	height: 43px;
+	width: 25%;
+	min-width: 70px;
+	line-height:43px;
+	text-align: center;
+	letter-spacing: 2px;
+	/*vertical-align:bottom; */
+}
+.slide-bar{
+	height: 4px;
+	border-top: 1px solid #c2cdda;
+	background: -webkit-linear-gradient(to bottom,#efeeef 2%,#fff 100%);
+	background: -moz-linear-gradient(to bottom,#efeeef 2%,#fff 100%);
+	background: -o-linear-gradient(to bottom,#efeeef 2%,#fff 100%);
+	background: linear-gradient(to bottom,#efeeef 2%,#fff 100%);
+}
+.slider{
+	height: 2px;
+	width: 25%;
+	min-width: 70px;
+	background-color: #3577BB;
+	margin-top: -3px;
+	border-radius:1px; 
+}
+.column-panel{
+	 margin-top: 12px;
+	 height:460px;
+	 box-sizing:border-box;
+	 padding: 20px;
+	 padding-top: 10px;
+}
+.column-table-head{
+	width: 100%;
+	background: #E8F2FC;
+}
+table.column-table{
+	width: 100%;
+	table-layout: fixed;
+	font-size: 12px;
+}
+td,th{
+	height: 45px;
+	text-align: center;
+}
+.forbide{
+	font-weight: bolder;
+	cursor:pointer;
+}
+.forbidden::before{
+	content: "\2716";
+	color:red;
+}
+.allowed::before{
+	content: "\2714";
+	color:green;
+}
+.column-do-item{
+	width: 14px;
+	height: 16px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 0 5px;
+	cursor: pointer;
+	color: #555
+}
+.column-do-item:hover{
+	color:#389AFF;
+}
+.unmove{
+	color: #bbb;
+	cursor: auto
+}
+.unmove:hover{
+	color: #bbb;
+}
+.column-del:hover{
+	color: #FF6570;
+}
+.column-other{
+	margin-top: 10px;
+}
+.column-add{
+	float:right;
+	background:#4795E0;
+	color:#fff;
+	border-radius: 3px;
+	width: 90px;
+	padding: 0px 10px;
+	height: 30px;
+	text-align: center;
+	line-height:31px ;
+	box-shadow: 1px 1px 3px #d3d3d3;
+	cursor: pointer
+}
+/*--end右边--*/
+
+
+
+
+
+
+
+/*中间*/
+.center{
+	width: 43%;
+}
+.main-panel{
+	width: 70%;
+	margin: auto;
+	height: 100%;
+}
+.phone{
+	background-color: #fff;
+	border:#ddd solid 2px;
+	border-radius: 40px;
+	height: 100%;
+	box-sizing:border-box;
+	padding:13% 2% 18% 2%; 
+}
+.screen{
+	box-sizing:border-box;
+	width: 100%;
+	height: 100%;
+	border:1px #ddd solid;
+}
+.search-bar{
+	position: relative;
+	width: 100%;
+	background: #E1E1E1;
+	height: 40px;
+	box-sizing:border-box;
+	padding: 5px;
+	line-height: 10%;
+}
+.search-input{
+	box-sizing:border-box;
+	width: 80%;
+	/*margin: 1%;*/
+	margin-left: 10px;
+	height: 28px;
+	border:none;
+	border-radius: 2px;
+	outline: #e9e9e9 solid 1px;
+}
+
+/*脚*/
+.footer{
+	clear: both;
+	width: 100%;
+	height:0px;
+}
+

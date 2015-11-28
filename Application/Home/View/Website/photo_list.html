@@ -1,0 +1,79 @@
+<extend name="base"/>
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/uploadify/uploadify.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/layer/layer.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/layer/green_theme.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/side.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/website/photo.css">
+	<script type="text/javascript" src='__STATIC__/layer/layer.js'></script>
+</block>
+<block name='senior-nav'></block>
+<block name="side">
+	<div class="side">
+		<div class="side-head">网站资源</div>
+		<div class="side-item"><a href="__CONTROLLER__/album_list/site_id/{$album_info['site_id']}">相册</a></div>
+		<div class="side-item"><a href="__CONTROLLER__/article_list/site_id/{$album_info['site_id']}">文章</a></div>
+	</div>
+</block>
+<block name="content">
+	<!-- <div class="centent-head">相册详情</div> -->
+	<div class="album-info">
+		<span class="alubm-name">{$album_info['name']}</span>
+		<button id="update-photo-button">上传图片</button>
+	</div>
+	<!-- <input id="uploadify_url" type="hidden" value="__STATIC__/uploadify/"> -->
+	<!-- <input id="upload_url" type="hidden" value="{:U('Picture/uploadPicture')}"> -->
+	
+	<!-- <input id="file_upload" name="file_upload" type="file" multiple="true"> -->
+	<!-- {$photo_list|dump} -->
+	<input id="del-photo-url" type="hidden" value="__CONTROLLER__/del_photo">
+	<div class="photo-bar">
+		<foreach name="photo_list" item="vo">
+			<div class="photo-item" data-id="{$vo.id}">
+				<img src="{:C('UPLOAD_ROOT')}{$vo['savepath']}{$vo['savename']}" alt="{$vo['savename']}">
+				<div class="photo-opreration">
+					<div class="photo-del glyphicon glyphicon-trash"></div>
+				</div>
+			</div>
+		</foreach>
+	</div>
+</block>
+<block name='other'>
+<div class="upload-photo-body">
+	<div class="upload-photo-dialog">
+		<div class="upload-photo-dialog-title">
+			<span>上传图片</span>
+			<span class="upload-photo-dialog-close">&#10006;</span>
+		</div>
+		<div class="upload-photo-dialog-content">
+			<div class="upload-photo-option-bar">
+			</div>
+			<div class="upload-photo-div">
+				<div class="chose-photo">
+					<button class="chose-photo-button">选择图片</button>
+					<form id="upload-file-form" action="__CONTROLLER__/upload_photo" method="post" enctype="multipart/form-data" >
+					<input type="text" name="album_id" value="{:I('get.album_id')}">
+					</form>
+				</div>
+				<div class="update-photo">
+					<div class="update-photo-list">
+						<div class="add-update-photo">
+							添加图片
+						</div>
+					</div>
+					<div class="update-photo-operation">
+						<button class="start-update">开始上传</button>
+						<div class="upload-progress-bar">
+							<progress value="0" max="0" style="display: inline-block;"></progress><span></span>%
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</block>
+<block name="script">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" src="__JS__/website/photo_list.js"></script>
+</block>

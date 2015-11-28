@@ -1,0 +1,186 @@
+<extend name="Public/base" />
+
+<block name="style">
+<style type="text/css">
+	th,td{
+		cursor: default;
+		text-align:center;
+	}
+	#tb_time{
+		width: 20%;
+	}
+	td img{
+		width: 15px;
+		height: 15px;
+		cursor: pointer;
+	}
+
+</style>
+</block>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title"> <h2>栏目主题列表</h2> </div>
+	<div class="cf">
+		<div class="fl">
+	        <a class="btn" href="{:U('addColumn')}">新 增</a>
+	    </div>
+
+        <!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<div class="sleft">
+				<input type="text" name="nickname" class="search-input" value="{:I('nickname')}" placeholder="请输入标题或者ID">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('column')}"><i class="btn-search"></i></a>
+			</div>
+		</div>
+    </div>
+
+
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<!-- <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th> -->
+		<th style="text-align:center">ID</th>
+		<th style="text-align:center">图标</th>
+		<th style="text-align:center">标题</th>
+		<th style="text-align:center">链接</th>
+		<th style="text-align:center">位置</th>
+		<th style="text-align:center">创建时间</th>
+		<th style="text-align:center">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="list">
+		<volist name="list" id="vo">
+		<tr>
+            <!-- <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td> -->
+			<td>{$vo.id} </td>
+			<td style=""><img src="__ROOT__/Uploads/{$vo.savepath}{$vo.savename}"></td>
+			<td style="">{$vo.name}</td>
+			<td style="">{$vo.url}</td>
+			<td style="">
+				<img class="up" src="__IMAGES__/material/up.jpg" value="{$vo.id}">&ensp;
+				<img class="down" src="__IMAGES__/material/down.jpg" value="{$vo.id}"> </td>
+			<td id="tb_time"><?php echo date("Y-m-d H-i-s", $vo["update_time"]);?></td>
+			<td><eq name="vo.forbidden" value="0">
+				<a href="{:U('changeStatus?type=topic&method=forbidUser&id='.$vo['id'])}" class="ajax-get deal" style="color:red">禁用</a>
+				<else/>
+				<a href="{:U('changeStatus?type=topic&method=resumeUser&id='.$vo['id'])}" class="ajax-get deal" style="color:green">启用</a>
+				</eq>&emsp;
+				 <a href="{:U('addColumn?seat='.$vo['id'])}">编辑</a>&emsp;
+                <a href="{:U('changeStatus?type=topic&method=deleteUser&id='.$vo['id'])}" class="confirm ajax-get deal">删除</a>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+			<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+    <input id="img" type="hidden" name="" value="__IMAGES__/material/">
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+    <input type="hidden" id="addr" value="{:U('position')}">
+</block>
+
+<block name="script">
+	<!-- // <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script> -->
+<script type="text/javascript">
+
+    /**
+     * 第一条上灰色
+     * 最后一条下灰色
+     */
+window.onload = function(){
+	// 第一个最后一个column的调序箭头失效
+	var img = $("#img").val();
+	$(".up:first").attr('src', img+"up2.jpg");
+	$(".down:last").attr('src', img+"down2.jpg");
+	$("tbody").find("tr:first").find(".up").click(function(){
+		var a = $(this).index();
+		// alert(a);
+		return;
+	});
+}
+
+
+//变换位置
+	$(".up").click(function(){
+		if ($(this)[0] == $(".up:first")[0]) {
+			return;
+		};
+		var id = $(this).attr("value");
+		var url = $("#addr").attr("value");
+		$.ajax({
+			type: "post",
+			url : url,
+			data: {type:"1",seat:id,tb:"topic"},
+			success:function(data){
+				window.location.reload();
+			},
+			error:function(request){
+				var error = "<span id='sp' style='width:90%;height:30px;background:red;float:left;margin-left:-120px;z-index:10'><h2 style='color:white;'>对不起，操作失败！</h2></span>";
+				$(".main-title").append(error);
+				setTimeout(function(){
+		            $("#sp").remove();
+		        },2000)
+			}
+		})
+	})
+	$(".down").click(function(){
+		if ($(this)[0] == $(".down:last")[0]) {
+			return;
+		};
+		var id = $(this).attr("value");
+		var url = $("#addr").attr("value");
+		$.ajax({
+			type: "post",
+			url : url,
+			data: {type:"2",seat:id,tb:"topic"},
+			success:function(data){
+				window.location.reload();
+			},
+			error:function(request){
+				var error = "<span id='sp' style='width:90%;height:30px;background:red;float:left;margin-left:-120px;z-index:10'><h2 style='color:white;'>对不起，操作失败！</h2></span>";
+				$(".main-title").append(error);
+				setTimeout(function(){
+		            $("#sp").remove();
+		        },2000)
+			}
+		})
+	})
+
+//	$(".deal").click(function(){
+//		setTimeout(function(){
+//			window.location.reload();
+//		},1000)
+//	})
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+    //导航高亮
+    highlight_subnav('{:U('User/index')}');
+</script>
+</block>

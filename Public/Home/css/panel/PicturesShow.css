@@ -1,0 +1,109 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#PicturesShow{
+    display: inline-block;
+    width: 88%;
+    margin: 0px 6%;
+    font-size: 14px !important;
+    font-family: '宋体' !important;
+    /*font-size: 18px;*/
+    font-weight: 700 !important;
+    color: #777777 !important;
+}
+.title{
+    width: 100%;
+    /*font-size: 20px;*/
+    line-height: 30px;
+    margin-top: 1%;
+}
+#PicturesShow .content{
+    margin-top: 3%;
+    width: 100%;
+    /*margin-left: 10%;*/
+}
+.setTitle{
+    width: 40%;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: auto;
+    font-family: '宋体' !important;
+    color: #777777 !important;
+    padding-left: 3px;
+}
+.type{
+    float: left;
+    width: 100%;
+}
+.img{
+    width: 90%;
+    float: right;
+    margin-right: 3%;
+}
+.pattern{
+    width: 23%;
+    height: 100px;
+    float: left;
+    margin-left: 4%;
+}
+.pattern img{
+    width: 90%;
+    height: 80px;
+    margin: 6px;
+}
+.hr{
+    width: 100%;
+    height: 100%;
+    -moz-border-image:url(../../../../../microweb/Public/Controller/nav/Images/nav-border.png) 3 4 round;
+    -webkit-border-image:url(../../../../../microweb/Public/Controller/nav/Images/nav-border.png) 3 4 round;
+    -o-border-image:url(../../../../../microweb/Public/Controller/nav/Images/nav-border.png) 3 4 round;
+    border-image:url(../../../../../microweb/Public/Controller/nav/Images/nav-border.png) 3 4 round;
+}
+
+.type_title{
+    margin-top: 2%;
+    width: 100%;
+    float: left;
+    /*font-size: 20px;*/
+}
+/*.hint{*/
+    /*margin-top: 4%;*/
+    /*margin-left: 18%;*/
+    /*display: inline-block;*/
+    /*font-size: 14px;*/
+    /*color: #808080;*/
+/*}*/
+.selectAlbum{
+    margin-top: 2%;
+    float: left;
+    width: 100%;
+    /*font-size: 20px;*/
+}
+.albumList{
+    border: solid 1px rgba(128, 128, 128, 0.44);
+    min-height: 170px;
+    float: right;
+    width: 87%;
+    margin-right: 3%;
+}
+
+.albumListContent label{
+    width: 100%;
+    float: left;
+}
+.albumListContent{
+    line-height: 30px;
+    width: 100%;
+    border: 0px;
+    border-collapse: collapse;
+}
+.ablumName{
+    padding-left: 6%;
+    width: 80%;
+}
+.identification{
+    text-align: center;
+    width: 20%;
+}

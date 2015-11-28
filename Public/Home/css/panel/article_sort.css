@@ -1,0 +1,85 @@
+body{
+	font-family: "宋体";
+	font-size: 14px;
+	margin: 0 6%;
+}
+ul{
+	list-style: none;
+	padding-left: 0;
+}
+#article_sort{
+	margin-top: 3%;
+	width: 100%;
+}
+.clear_both{
+	clear: both;
+}
+fieldset{
+	width: 88%;
+	margin: 0 auto;
+}
+.select_text{
+	display: inline-block;
+	line-height: 25px;
+	margin-top: 1%;
+}
+.select_all{
+	display: inline-block;
+	float: right;
+	height: 25px;
+	margin-right: 5%;
+	margin-top: 1%;
+}
+#style_list{
+	margin-bottom: 1.5rem;
+}
+.type_list>input{
+	margin-right: 1rem;
+}
+.article_sort_info{
+	display: none;
+}
+#type_data{
+	display: inline-block;
+	margin-top: 1%;
+	width: 94%;
+	float: right;
+}
+#type_data>ul>li{
+	float: left;
+	width: 48%;
+	border: solid 1px gray;
+	margin-left: -1px;
+	margin-top: -1px;
+	padding: 0px;
+}
+
+#type_data .content label{
+	display: inline-block;
+	width: 100%;
+	overflow: hidden;
+}
+#type_data .select_span select{
+	border: none;
+	text-align: center;
+	width: 100%;
+}
+#type_data li span:first-child{
+	width: 7%;
+	border-left: solid 0px gray;
+}
+#type_data .content{
+	width: 50%;
+}
+#type_data span{
+	margin: 0px;
+	height: 20px;
+	float: left;
+	border-left: solid 1px gray;
+}
+#type_data .select_span{
+	text-align: center;
+	padding-left: 1px;
+	width: 42%;
+	display: inline-table;
+}

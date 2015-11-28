@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/panel/article_sort.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript">
+		var APP = '__ROOT__';
+	</script>
+	<script type="text/javascript" src="__JS__/panel/article_sort.js"></script>
+</head>
+<body>
+	<div id="article_sort">
+<!-- 		<ul class="tab_nav">
+	<li class="active"><a href="#base_setting"></a>常规</li>
+	<li><a href="#advance_setting">展示设置</a>
+	</li>
+</ul> -->
+		<ul class="setting">
+			<li>
+				<div>
+					<label>模块标题:&nbsp;</label><input type="text" name="" value="文章分类">
+				</div>
+			</li>
+			<li>
+			<li>
+				<div>
+					<div class="type_list">
+						<span class="select_text">选择文章:</span>
+						<span class="select_all">
+							<input id="type_all" type="checkbox" name="type[]" value="0">
+							<label for="type_all">All</label>
+						</span>
+						<form id="type_data">
+							<ul>
+								<li><span></span><span class="content">分类</span><span class="select_span">栏目</span></li>
+								<li><span></span><span class="content">分类</span><span class="select_span">栏目</span></li>
+							<volist name="type_list" id="vo">
+								<li>
+								<span><input class="type_checkbox" id="sort_{$vo.id}" type="checkbox" name="type[]" value="{$vo.id}">
+								</span><span class="content"><label for="sort_{$vo.id}">{$vo.name}</label>
+								</span><span class="select_span"><select name="vo2.id">
+									<volist name="column_list" id="vo2">						
+										<option value="{$vo2.id}" data="{$vo2.url}">{$vo2.name}</option>
+									</volist>
+								</select></span></li>
+							</volist>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="article_sort_info">
+		<ul>
+		<volist name="type_list" id="vo">
+			<li><a href="<?php $ii = $vo['name']; echo U('Panel/article_sort_info?article_sort_id='.$ii);?>">{$vo.name}</a></li>		
+			<hr>
+		</volist>
+		</ul>
+	</div>
+	<input type='hidden' id="controller-id" value="{$controller_id}">
+	<input id="status" type="hidden" name="" value="{$status}">
+</body>
+</html>
+				<!-- <fieldset>
+					<legend>请选择文章分类</legend>
+					<div>
+						<div class="type_list">
+							<form id="type_data">
+								<label for="type_all">全部</label>
+								<input id="type_all" type="checkbox" name="type[]" value="0">
+								<br>
+								<volist name="type_list" id="vo">						
+									<label for="sort_{$vo.id}">{$vo.name}</label>
+									<input class="type_checkbox" id="sort_{$vo.id}" type="checkbox" name="type[]" value="{$vo.id}">
+									<select name="vo2.id">
+										<volist name="column_list" id="vo2">						
+											<option value="{$vo2.id}" data="{$vo2.url}">{$vo2.name}</option>
+										</volist>
+									</select>		
+								</volist>
+							</form>
+						</div>
+						<div class="column_list">
+							<label for="type_all">选择栏目</label>
+							<br>
+				<volist name="column_list" id="vol">
+				<label for="column_list_{$vo.id}"></label>
+				<input class="column_list_checkbox" id="column_list_{$vo.id}" type="radio" name="column" data="" value="{$vo.id}">
+				</volist>
+						</div>
+					</div>
+				</fieldset>
+							</li> -->

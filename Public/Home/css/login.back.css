@@ -1,0 +1,21 @@
+.form-horizontal{width: 60%; margin: 0 auto;	border-radius: 5px;	overflow: hidden; border: 1px solid #00FFFF;}
+.form-group{width: 80%;	float: left; margin-bottom: 0; margin-left: 100px !important; margin-top: 10px;}
+#log_top{ width: 60%; height: 50px;	border-radius: 5px;	margin: 50px auto 50px auto; background: #F1F6F2;}
+#log_top_left{	width: 50%;	height: 100%; float: left; text-align: center; padding-top: 15px; color: white; border-radius: 5px;/* background:#017BD1;*/ position: relative;}
+#log_top_right{	width: 50%;	height: 100%; float: right; text-align: center; padding-top: 15px; color: white; border-radius: 5px; position: relative; /*background:#017BD1;*/}
+/*#log_top_left p,#log_top_right p{ margin-top: 10px; }*/
+#log_top_left:before{content:"";position: absolute;left:60%;top:40px;width:0;height:0;
+	border-left: 50px solid transparent; border-right: 5px solid transparent;/*border-top: 30px solid #017BD1;*/}
+#log_top_right:before{	content:"";position: absolute;right:60%;top:40px;width:0;height:0; 
+	border-left: 5px solid transparent; border-right: 50px solid transparent;/*border-top: 30px solid #017BD1;*/}
+
+.col-sm-3 {width: 60%;}
+.btn{ width: 150px;margin-left: 110px; }
+/*.back{background: red;}*/
+
+
+.checkbox{display: initial;}
+.forgetPassword{ float: right;}
+/*a{ color: #000000;}
+a:hover{text-decoration: none;}*/
+#authCode{display: initial; width: 50%;}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="__P_CSS__/magic.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="__P_JS__/magic.js"></script>
+</head>
+
+<body>
+	<div id="artical_list">
+		<ul class="tab_nav">
+			<li>常规</li>
+			<li>展示设置</li>
+		</ul>
+		<ul class="setting">
+			<li>模块标题</li>
+			<li>模块样式</li>
+			<li>
+				<fieldset>
+					<legend>请选择列表的条件</legend>
+					<div>
+						<span>显示的文章</span>
+						<span>{$display_status}</span>
+					</div>
+					<div>
+						<span>文章分类</span>
+							<input id="check_all" type="radio" name="choose_show" value="true" placeholder="" checked="checked">
+							<label for="check_all">全部</label>
+							<input id="choose_type" type="radio" name="choose_show" value="" placeholder="">
+							<label for="choose_type">指定</label>
+						<volist name="article_sort" id="vo">
+						</volist>
+					</div>
+				</fieldset>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

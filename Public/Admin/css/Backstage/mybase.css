@@ -1,0 +1,25 @@
+/*.header{
+	background-color: #31C6E7;
+}
+.sidebar{
+	background: #9EE2F7;
+	border-right: 5px solid #DEDEDE;
+}
+.side-sub-menu > li > .item:hover{
+	background: #31C6E7;
+}
+.main-nav .current {
+	border-radius: 5px;
+	background: 0;
+	text-align: center;
+	overflow: hidden;
+}
+.main-nav .current a {
+	background-color: #AFEEEE;
+}
+.main-nav li a:hover {
+	border-radius: 5px;
+	overflow: hidden;
+	color: green;
+	background-color: #00FFFF;
+}*/

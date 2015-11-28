@@ -1,0 +1,109 @@
+<extend name="base"/>
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="__CSS__/website/set_classify.css">
+</block>
+<block name='senior-nav'></block>
+<block name="side">
+	<div class="side">
+		<div class="side-head">网站资源</div>
+		<div class="side-item"><a href="__CONTROLLER__/album_list/site_id/{$site_id}">相册</a></div>
+		<div class="side-item"><a href="__CONTROLLER__/article_list/site_id/{$site_id}">文章</a></div>
+	</div>
+</block>
+<block name="content">
+	<div class="centent-head">分类管理</div>
+	<input id="site_id" type="hidden" value="{$site_id}">
+	<input id="change-sort-url" type="hidden" value="__CONTROLLER__/type_change_sort">
+	<input id="del-type-url" type="hidden" value="__CONTROLLER__/del_type">
+	<input id="add-type-url" type="hidden" value="__CONTROLLER__/add_type">
+
+	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">添加分类</button>
+	<table>
+		<thead>
+		<tbody>
+			<volist name="type_list" id="vo">
+				<tr data-id="{$vo.id}">
+					<td class="type-name">{$vo.name}</td>
+					<td class="type-sort">
+						<div class="type-sort-up glyphicon glyphicon-arrow-up"></div>
+						<div class="type-sort-down glyphicon glyphicon-arrow-down"></div>
+					</td>
+					<td class="type-operation">
+						<div class="type-edit">编辑</div>
+						<div class="type-del">删除</div>
+					</td>
+				</tr>
+			</volist>
+		</tbody>
+	</table>
+</block>
+<block name="other">
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <button type="button" class="close" 
+	               data-dismiss="modal" aria-hidden="true">
+	                  &times;
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">
+					添加相册
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+				<div>
+					<label for="type_name">请输入分类名称：</label>
+					<input id="type_name" type="text" value="">
+				</div>
+	         </div>
+	         <div class="modal-footer">
+	            <button type="button" class="btn btn-default" 
+	               data-dismiss="modal">关闭
+	            </button>
+	            <button id="create-new-type" type="button" target-url="__CONTROLLER__/add_type" class="btn btn-primary">
+	               添加
+	            </button>
+	         </div>
+	      </div>
+		</div>
+	</div>
+	<!-- ================ -->
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog" 
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <button type="button" class="close" 
+	               data-dismiss="modal" aria-hidden="true">
+	                  &times;
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">
+					退出
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+				<form action="">
+					<div>
+						<p>删除后将清除所有相关资源,确认要删除吗？</p>
+					</div>
+				</form>
+	         </div>
+	         <div class="modal-footer">
+	            <button type="button" class="btn btn-default" 
+	               data-dismiss="modal">取消
+	            </button>
+	            <button type="button" class="btn btn-primary confirm">
+	               确认
+	            </button>
+	         </div>
+	      </div>
+		</div>
+	</div>
+
+</block>
+<block name="script">
+	<script type="text/javascript" src="__JS__/website/set_classify.js"></script>
+</block>

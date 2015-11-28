@@ -1,0 +1,51 @@
+<extend name="Public:base" />
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__/login.css">
+</block>
+<block name="content">
+    <div id="log_top">
+        <div id="log_top_left"><p>登&emsp;陆</p></div>
+        <div id="log_top_right"><p>注&emsp;册</p></div>
+    </div>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">账&emsp;户</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control account" id="inputEmail3" value="{$Think.cookie.user_account}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">密&emsp;码</label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control password" id="inputPassword3" value="{$Think.cookie.user_password}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="authCode" class="col-sm-2 control-label">验证码</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="authCode">
+                <img src="verify" border="0" title="点击刷新" alt="验证码" id="authImg" onClick="this.src=this.src+'?'+Math.random()"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" class="rememb">记住密码
+                    </label>
+                </div>
+                <div class="forgetPassword">
+                     <a href="forgotPassword">忘记密码</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3">
+                <button type="button" class="btn btn-default login">登录</button>
+            </div>
+        </div>
+    </form>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__JS__/login.js"></script>
+</block>

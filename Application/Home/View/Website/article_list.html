@@ -1,0 +1,211 @@
+<extend name="base"/>
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="__CSS__/website/article.css">
+</block>
+<block name='senior-nav'></block>
+<block name="side">
+	<div class="side">
+		<div class="side-head">网站资源</div>
+		<div class="side-item"><a href="__CONTROLLER__/album_list/site_id/{$site_id}">相册</a></div>
+		<div class="side-item"><a href="__SELF__">文章</a></div>
+	</div>
+</block>
+<block name="content">
+	<div class="centent-head">文章
+		<div class="set-bar">
+			<div class="set-item classify" url='__CONTROLLER__/set_classify/site_id/{$site_id}'>分类管理</div>
+		</div>
+	</div>
+	<input id="site_id" type="hidden" value="{$site_id}">
+	<!-- <input id="create_album_url" type="hidden" value="__CONTROLLER__/create_album">
+	<input id="edit_album_url" type="hidden" value="__CONTROLLER__/edit_album">
+	<input id="del_album_url" type="hidden" value="__CONTROLLER__/del_album"> -->
+	<input id="top-article-url" type="hidden" value="__CONTROLLER__/top_article">
+	<input id="status-article-url" type="hidden" value="__CONTROLLER__/update_article_status">
+	<div class="article-panel">
+		<div class="function-bar">
+			<div class="function add-article"><a href='__CONTROLLER__/add_article/site_id/{$site_id}'>添加文章</a></div>
+			<div class="function more-do">批量操作</div>
+			<div class="search-bar">
+				<form class="search-form">
+					<div class="search-type">
+						<input type="hidden" name="type_id" id="search-type-id" value="{$seach['type_id']}">
+						<span class="search-type-name">所有</span>
+						<span class="search-down glyphicon glyphicon-triangle-bottom"></span>
+						<ul>
+							<li data='-1'><a>所有</a></li>
+							<li data='0'><a>未分类</a></li>
+							<volist name="type_list" id="vo">
+						  		<li data='{$vo.id}'><a>{$vo.name}</a></li>
+						  	</volist>
+						</ul>
+					</div>
+					<input name="title" type="text" id="search-text" value="{$search['title']}">
+					<div url="__ACTION__/site_id/{$site_id}/p/{$now_page}" class="search-icon glyphicon glyphicon-search"></div>
+				</form>
+			</div>
+		</div>
+		<div class="more-do-bar">
+			<div class="do-item status-article" url="__CONTROLLER__/update_article_status/status/0">启用</div>
+			<div class="do-item status-article" url="__CONTROLLER__/update_article_status/status/1">禁用</div>
+			<div class="do-item status-article" url="__CONTROLLER__/update_article_status/status/-1">删除</div>
+			<div class="do-item change-classify" url="__CONTROLLER__/change_article_type/type_id/">修改分类
+				<ul>
+					<volist name="type_list" id="vo">
+						<li value="{$vo.id}">{$vo.name}</li>
+					</volist>
+					<empty name="type_list">
+						<li><a id="add-type-a" href="__CONTROLLER__/set_classify/site_id/{$site_id}">添加分类</a></li>
+					</empty>
+				</ul>
+			</div>
+			<div class="do-item cencel-moro-do">退出批量操作</div>
+		</div>
+		<div class="article-bar">
+			<table class="article-table">
+				<thead>
+					<th class="table-checkbox"><input type="checkbox" id="chose-article"></th>
+					<th class="table-title">标题</th>
+					<th class="table-type">类型</th>
+					<th class="table-time">创建时间</th>
+					<th class="table-operation">操作</th>
+				</thead>
+			 	<tbody>
+			 		<volist name='article_list' id='vo' key='k'>
+			 			<tr>
+			 				<td><input type="checkbox" name="ids[]" class="article-item" value="{$vo.id}"></td>
+			 				<td>
+			 				<if condition="$vo['status'] eq 1">
+			 					<span class="art-sta art-for"></span>
+			 					<else/>
+			 					<if condition="$vo['is_top'] eq 1">
+			 						<span class="art-sta art-top"></span>
+								<else />
+									<span class="art-sta art-nor"></span>
+								</if>
+			 				</if>
+			 				<span class="art-til">{$vo.title}</span>
+			 				</td>
+			 				<td><?php echo $vo['name']? $vo['name']:"未分类" ?></td>
+			 				<td>{$vo.create_time|date='Y-m-d',###}</td>
+			 				<td class="operation-bar">
+			 					<div class="dropdown">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu{$k}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								  	<span>请选择</span>
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu{$k}" data-id="{$vo.id}" data-type='{$vo.type_id}'>
+								  		<li class="article-option-edit"><a href="__CONTROLLER__/add_article/article_id/{$vo.id}">编辑</a></li>
+									  	<li class="article-option-del aritcle-status-item" data-status="-1"><a>删除</a></li>
+									  	<if condition="$vo['status'] eq 1">
+											<li class="article-option-apply aritcle-status-item" data-status="0"><a>启用</a>
+									  	<else />
+									  		<li class="article-option-forbide aritcle-status-item" data-status="1"><a>禁用</a></li>
+										  	<if condition="$vo['is_top'] eq 1">
+										  		<li class="article-option-bottom top-status-item"  data-status="0"><a>取消置顶</a></li>
+										  	<else />
+										  		<li class="article-option-top top-status-item" data-status="1"><a>设为置顶</a></li>
+										  	</if>
+									  	</if>
+									  	<li class="article-option-change"><a>修改分类</a></li>
+									  </ul>
+								</div>
+			 				</td>
+			 			</tr>
+			 		</volist>
+			 	</tbody>
+			 </table> 
+		</div>
+		<div class="page">
+			{$page}
+		</div>
+	</div>
+
+</block>
+<block name="other">
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <button type="button" class="close" 
+	               data-dismiss="modal" aria-hidden="true">
+	                  &times;
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">
+					修改分类
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+				<form class="change-type-form" action="">
+					<div>
+						<label for="type-id">请选择分类：</label>
+						<input id="way" type="hidden" name="way" value="">
+						<input id="type-id" type="hidden" name="type_id" value="">
+						<input id="article-id" type="hidden" name="article_id"value="">
+						<div class="type-dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						  	<span id="type-name-span">请选择</span>
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						  	<volist name="type_list" id="vo">
+						  		<li data='{$vo.id}'><a>{$vo.name}</a></li>
+						  	</volist>
+						  </ul>
+						</div>
+						<empty name="type_list">
+							<div class="empty-info">还没有分类,先去<a id="add-type-a" href="__CONTROLLER__/set_classify/site_id/{$site_id}">添加分类</a>吧</div>
+						</empty>
+					</div>
+				</form>
+	         </div>
+	         <div class="modal-footer">
+	            <button type="button" class="btn btn-default" 
+	               data-dismiss="modal">关闭
+	            </button>
+	            <button id="change-article-type" type="button" target-url="__CONTROLLER__/change_article_type/type_id/" class="btn btn-primary">
+	               提交更改
+	            </button>
+	         </div>
+	      </div>
+		</div>
+	</div>
+
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog" 
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <button type="button" class="close" 
+	               data-dismiss="modal" aria-hidden="true">
+	                  &times;
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">
+					退出
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+				<form action="">
+					<div>
+						<p>删除后将清除所有相关资源,确认要删除吗？</p>
+					</div>
+				</form>
+	         </div>
+	         <div class="modal-footer">
+	            <button type="button" class="btn btn-default" 
+	               data-dismiss="modal">取消
+	            </button>
+	            <button type="button" class="btn btn-primary confirm">
+	               确认
+	            </button>
+	         </div>
+	      </div>
+		</div>
+	</div>
+</block>
+<block name="script">
+	<script type="text/javascript" src="__JS__/website/article.js"></script>
+</block>

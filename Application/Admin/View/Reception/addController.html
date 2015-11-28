@@ -1,0 +1,144 @@
+<extend name="Public/base"/>
+<block name="style">
+<style type="text/css">
+   
+    .file {width:120px;position: relative;display:inline-block;background:#D0EEFF;border:1px solid #99D3F5;border-radius:4px;padding:4px 12px;overflow: hidden;color:#1E88C7;text-decoration: none;text-indent:0;line-height:20px;margin-top: 15px;}
+    .file input {width: 100px; position: absolute;font-size:100px;right:0;top:0;opacity:0;}
+    .textarea{width: 35%;}
+    #into_img{
+        width: 140px;
+        height: 100px;
+        float: left;
+        border-radius: 0.5em;
+        display: none;
+        overflow: hidden;
+        background: red;
+    }
+    #uploadifive-upload{margin-top: -100px; border-radius: 0.5em; }
+    #upload{ width: 140px; height: 30px; overflow: hidden;}
+    #readAsDataURL{
+        text-align: center;
+        border-radius: 0.5em;
+        margin-top: 5px;
+        overflow: hidden;
+        background: #D0EEFF;
+    }
+    #into_img img{
+        width: 100%;
+        height: 100%;
+    }
+    #hint_addr,#hint_name{
+        color: red;
+        display: none;
+    }
+</style>
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>{$modular}</h2><?php echo session("flash_error");?>
+        {$er}
+    </div>
+    
+    <form onsubmit="return checkInput();" action="{:U()}" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <div class="form-item">
+            <label class="item-label">请输入控件名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" id="c_name" name="c_name" value="{$list.name}">
+                <span id="hint_name">不能为空</span>
+            </div>
+            <input type="hidden" name="choice" value="{$list.id}">
+        </div>
+        <div class="form-item">
+            <label class="item-label">请输入控件简介</label>
+            <div class="controls textarea">
+                <!-- <input type="text" class="text input-large" name="c_intro" value=""> -->
+                    <textarea name="c_intro">{$list.intro}</textarea>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">请输入控件链接<span class="check-tips">（在控制器中的方法）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" id="c_addr" name="c_addr" value="{$list.url}">
+                <span id="hint_addr">不能为空</span>
+            </div>
+        </div>
+        <div class="form-item" style="width:100%;height:100px;">
+            <div style="width:200px;height:100px;float:left;overflow:hidden;">
+                <a href="javascript:;" class="file">请选择添加效果图<input type="file" name="upfile" id="upload"></a>
+                <!--<a href="javascript:;" class="file" id="readAsDataURL" onclick="showDataByURL();">预览效果图</a>    -->
+            </div>
+            <div id="into_img">
+                <if condition="$list.icon != '' ">
+                    <img id="old_img" src="__ROOT__/Uploads/{$list.icon}">
+                </if>
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+    var old_img = $("#old_img").attr("src");
+    if(old_img != undefined){
+        $("#into_img").show();
+    }
+    //判断是否选图片
+    var oInput = document.getElementById('upload');
+    oInput.onchange = function() {
+        if(!this.value == '') {
+            showDataByURL();
+        }
+    }
+
+    //导航高亮
+    highlight_subnav('{:U('Reception/widget')}');
+
+    setTimeout(function(){
+        $(".alert").remove();
+    },2000);
+
+    //获取图片信息
+     function showDataByURL() {
+        var resultFile = document.getElementById("upload").files[0];
+        if (resultFile) {
+            var reader = new FileReader();
+            reader.readAsDataURL(resultFile);
+            reader.onload = function (e) {
+                var urlData = this.result;
+                $("#into_img").show();
+                $("#old_img").remove();
+                document.getElementById("into_img").innerHTML += "<img src='" + urlData + "' alt='" + resultFile.name + "'/>";
+            }; 
+        }else{
+            return;
+        }
+    }
+    /*
+     * 判断不能为空
+     * 控件名、链接地址
+     */
+    function checkInput(){
+        var c_name = document.getElementById("c_name").value;
+        if(c_name == ""){
+          $("#hint_name").show(setTimeout(function(){
+              $("#hint_name").fadeOut();
+          },2000));
+          $("#c_name").focus();
+          return false;
+        }
+        var c_addr = document.getElementById("c_addr").value;
+        if(c_addr == "") {
+          $("#hint_addr").show(setTimeout(function(){
+              $("#hint_addr").fadeOut();
+          },2000));
+          $("#c_addr").focus();
+          return false;
+        }
+    }
+</script>
+</block>

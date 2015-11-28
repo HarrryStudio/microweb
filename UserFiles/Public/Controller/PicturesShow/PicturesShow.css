@@ -1,0 +1,73 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.content{
+    width: 80%;
+    margin: 3% auto;
+    font-size: 16px;
+    font-family: "楷体";
+}
+
+.setTitle{
+    width: 50%;
+    line-height: 20px;
+    border-radius: 4px;
+}
+.img{
+    width: 70%;
+    float: left;
+}
+.pattern{
+    width: 25%;
+    height: 60px;
+    float: left;
+    margin-left: 4%;
+    margin-top: 20px;
+}
+.pattern img{
+    width: 93%;
+    height: 50px;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.hr{
+    width: 97%;
+    height: 95%;
+    -moz-border-image:url(../nav/Images/nav-border.png) 3 4 round;
+    -webkit-border-image:url(../nav/Images/nav-border.png) 3 4 round;
+    -o-border-image:url(../nav/Images/nav-border.png) 3 4 round;
+    border-image:url(../nav/Images/nav-border.png) 3 4 round;
+}
+
+.type_title{
+    margin-top: 3%;
+    line-height: 65px;
+    width: 20%;
+    float: left;
+}
+.hint{
+    margin-top: 4%;
+    margin-left: 18%;
+    display: inline-block;
+    font-size: 14px;
+    color: #808080;
+}
+.selectAlbum{
+    margin-top: 5%;
+}
+.albumList{
+    margin-top: 2%;
+    border: solid 1px #000000;
+    min-height: 150px;
+}
+.albumListContent{
+    margin-top: 2%;
+    line-height: 20px;
+    width: 100%;
+}
+.albumListContent label{
+    width: 100%;
+    float: left;
+}

@@ -1,0 +1,199 @@
+<extend name="Public/base" />
+
+<block name="style">
+<style type="text/css">
+	#content{
+		width: 80%;
+		min-height: 300px;
+		height: auto;
+		margin-bottom: 10px;
+		/*background: #AFEEEE;*/
+	}
+	.news{
+		min-width: 50%;
+		min-height: 75px;
+		border-radius: 0.5em;
+		overflow: hidden;
+		background: #AFEEEE;
+		margin-bottom: 2px;
+	}
+	.people_info{
+		width: 100%;
+		height: 40px;
+		margin-bottom: 3px;
+	}
+	.people_img{
+		width: 40px;
+		height: 40px;
+		float: left;
+	}
+	.people_info_right{
+		min-width: 20%;
+		float: left;
+		font-size: 8px;
+		margin-left: 5px;
+	}
+	.people_name,.people_info_time{
+		min-width: 60px;
+		width: auto;
+		height: 20px;
+	}
+	.people_message{
+		min-width: 150px;
+		max-width: 90%;
+		min-height: 30px;
+		border-radius: 8px;
+		background: #87CEEB;
+		margin-left: 5px;
+		margin-bottom: 3px;
+		/*display: none;*/
+		line-height: 30px;
+		padding-left: 10px;
+
+	}
+	.reply_info{
+		/*width: 100%;*/
+		height: 40px;
+		float: right;
+		margin-bottom: 3px;
+	}
+	.reply_name,.reply_info_time{
+		min-width: 60px;
+		height: 20px;
+		text-align: right;
+	}
+	.reply_message{
+		width: 90%;
+		float: right;
+		min-height: 30px;
+		text-align: right;
+		margin-right: 10px;
+		border-radius: 0.5em;
+		background: #98FB98;
+		padding-right: 10px;
+		line-height: 30px;
+	}
+	#reply{
+		width: 100%;
+		min-height: 50px;
+		margin-top: 10px;
+		border-radius: 8px;
+		margin-bottom: 20px;
+	}
+
+
+
+	.info{
+		min-height: 300px;
+		max-height: 400px;
+		overflow: auto;
+	}
+	#submit{
+		width: 100px;
+		height: 30px;
+		line-height: 2;
+		text-align: center;
+		border-radius: 5px;
+		border: 1px solid #BDE3EB;
+		cursor: not-allowed;
+	}
+
+	::-webkit-scrollbar{
+		width: 5px;
+		height: 5px;
+	}
+	::-webkit-scrollbar-button{
+		display: none;
+	}
+	::-webkit-scrollbar-track {
+	    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	    border-radius: 0;
+	    background: rgba(0,0,0,0.1);
+	}
+	::-webkit-scrollbar-thumb {
+	    border-radius: 5px;
+	    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	    background: rgba(0,0,0,0.2);
+	}
+</style>
+</block>
+
+<block name="body">
+	<div class="main-title">
+		<h2>{$modular}</h2>
+	</div>
+	<div id="content">
+		<div class="info">
+			
+			<volist name="list" id="vo">
+				<div class="news">
+				<eq name="vo.way" value="0">
+					<div class="people_info">
+						<div class="people_img"><img id="people" src="__IMAGES__/material/people.png"/></div>
+						<div class="people_info_right">
+							<div class="people_name">{$vo.name}</div>
+							<div class="people_info_time"><?php echo date("Y-m-d H:i", $vo['time']);?></div>
+						</div>
+					</div>
+					<div class="people_message">{$vo.content}</div>
+				<else/>
+					<div class="reply_info">
+						<div class="people_info_right">
+							<div class="reply_name">管理员</div>
+							<div class="reply_info_time"><?php echo date("Y-m-d H:i", $vo['time']);?></div>
+						</div>
+						<div class="people_img"><img id="manager" src="__IMAGES__/material/manager.png"/></div>
+					</div>
+					<div class="reply_message">{$vo.content}</div>
+				</eq>
+				</div>
+			</volist>
+			<a id="message_end" href="#end"></a>
+			<a name="end"></a>
+		</div>
+		<textarea id="reply" placeholder="Ctrl+Enter回复信息"></textarea>
+		<input type="hidden" id="seat" value="{$user_id}">
+		<input type="hidden" id="url" value="{:U('reply_message')}">
+	</div>
+	<div id="submit">提交信息</div>	
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	$(function() {
+		document.getElementById("message_end").click();
+		$("#submit").attr('disabled', true);
+	})
+	$("#reply").mouseout(function() {
+		if ($.trim($("#reply").val()) != "") {
+			$("#submit").attr('disabled', false);
+			$("#submit").css('cursor', 'pointer');
+		};
+	});
+	$("#submit").click(function() {
+		var user_id = $("#seat").attr("value");
+		var content = $("#reply").val();
+		if ($.trim(content) == "") {
+			return;
+		};
+		var url = $("#url").attr("value");
+		$.post(url,{id:user_id,content:content},
+			function(result){
+				if (result) {
+					window.location.reload();
+				}else{
+					alert("回复失败");
+				};
+				// console.log(result);
+			}
+		)
+	})
+	$("#reply").keydown(function(event){
+		if (event.ctrlKey && event.keyCode==13){
+
+			$("#submit").click();
+		};
+		
+	})
+</script>
+</block>

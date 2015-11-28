@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$meta_title} | 微网站生成系统</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/base.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/side.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__JS__/base.js"></script>
+	<script type="text/javascript" src="__STATIC__/uploadifive/jquery.uploadifive.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" >
+		var APP = "__ROOT__";
+	</script>
+	<block name="style"></block>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="header">
+		<div class="auto-center">
+			<!-- logo -->
+			<div class="logo">Logo</div>
+			<!-- 主导航 -->
+			<ul class="main-nav">
+				<li class="nav-item"><a href="{:U('Website/index')}" >我的网站</a></li>
+				<li class="nav-item"><a href="{:U('Account/personalDetails')}" >账户信息</a></li>
+				<li class="nav-item"><a href="{:U('Message/index')}" >留言</a></li>
+				<li class="nav-item"><a href="{:U('Help/index')}" >帮助教程</a></li>
+			</ul>
+			<!-- /主导航 -->
+			<!-- 登录状态信息 -->
+
+			<div class="login-bar">
+				<div class="head-icon">
+					<a href="{:U('Account/personalDetails')}">
+						<empty name="head_img">
+							<img src="__IMAGES__/head_img/user.png" alt="head-img" class="head-img">
+						<else />
+							<img src="__UPLOADS__/{$head_img}" alt="head-img">
+						</empty>
+					</a>
+				</div>
+				<if condition="is_login()"> 
+					<a onclick="return confirm('确定要退出?')" class="login-status logout-butotn" href="{:U('Login/logout')}">退出</a>
+				<else />
+					<a class="login-status login-button"  href="{:U('Login/login')}">登录</a>
+				</if>
+				
+			</div>
+			<!-- /登录状态信息 -->
+		</div>
+	</div>
+	<div class="senior-nav">
+		<block name='senior-nav'>
+				<ul>
+					<li class="senior-nav-item"><a href="">基本信息</a></li>
+					<li class="senior-nav-item"><a href="">账户安全</a></li>
+				</ul>
+		</block>
+	</div>
+	<!-- /头部 -->
+	<!-- 中间 -->
+	<div class="center">
+		<!-- 边栏 -->
+		<block name="side">
+			<div class="side">
+				<div class="side-head">网站资源</div>
+				<div class="side-item"><a href="">相册</a></div>
+				<div class="side-item"><a href="">文章</a></div>
+			</div>
+		</block>
+		<!-- /边栏 -->
+		<!-- 内容区 -->
+		<div class="content">
+			<block name="content"></block>
+		</div>
+		<!-- 内容区 -->
+	</div>
+	<!-- /中间 -->
+	<!-- 页脚 -->
+	<div class="footer">
+		
+	</div>
+	<input id="primary-index" type="hidden" value="{$primary_index}">
+	<input id="senior-index" type="hidden" value="{$senior_index}">
+	<input id="nav-index" type="hidden" value="{$nav_index}">
+	<!-- /页脚 -->
+	<block name='other'></block>
+<div id="top-alert-back">
+	<div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">
+	      <button type="button" class="close"><span aria-hidden="true">×</span></button>
+	      <div class="alert-content"></div>
+	</div>
+</div>
+	<block name="script"></block>
+</body>
+</html>

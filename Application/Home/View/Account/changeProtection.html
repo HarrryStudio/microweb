@@ -1,0 +1,86 @@
+<extend name="Public:base" />
+<block name="style">
+    <link rel="stylesheet" type="text/css" href="__CSS__/changeProtection.css">
+</block>
+<block name='senior-nav'>
+    <ul>
+        <li class="senior-nav-item"><a href="{:U('personalDetails')}">个人信息</a></li>
+        <li class="senior-nav-item"><a href="{:U('changeProtection')}">账户安全</a></li>
+    </ul>
+</block>
+<block name="side">
+    <div class="side">
+        <div class="side-head">账户安全</div>
+        <div class="side-item active">修改密保</div>
+        <div class="side-item"><a href="{:U('changePassword')}">修改密码</a></div>
+    </div>
+</block>
+<block name="content">
+    <form class="form-horizontal" role="form">
+        <div class="verifyProblem">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">问题一:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="problem1">
+                        <option value="-1">请选择密保问题</option>
+                        <foreach name="problem" item="vo">
+                            <option value="{$vo.id}">{$vo.question}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="answer1" class="col-sm-2 control-label">答&emsp;案</label>
+                <div class="col-sm-8">
+                    <div class="input"><input type="text" class="form-control" id="answer1"></div>
+                    <div class="hint"><span></span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">问题二:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="problem2">
+                        <option value="-1">请选择密保问题</option>
+                        <foreach name="problem" item="vo">
+                            <option value="{$vo.id}">{$vo.question}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="answer2" class="col-sm-2 control-label">答&emsp;案</label>
+                <div class="col-sm-8">
+                    <div class="input"><input type="text" class="form-control" id="answer2"></div>
+                    <div class="hint"><span></span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">问题三:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="problem3">
+                        <option value="-1">请选择密保问题</option>
+                        <foreach name="problem" item="vo">
+                            <option value="{$vo.id}">{$vo.question}</option>
+                        </foreach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="answer3" class="col-sm-2 control-label">答&emsp;案</label>
+                <div class="col-sm-8">
+                    <div class="input"><input type="text" class="form-control" id="answer3"></div>
+                    <div class="hint"><span></span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" id="verifyNow">立即验证</button>
+                    <button type="button" class="btn btn-default" id="changeProtection">修改密保</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__JS__/changeProtection.js"></script>
+</block>

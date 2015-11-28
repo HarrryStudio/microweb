@@ -1,0 +1,36 @@
+<extend name="Public:base" />
+<block name="style">
+    <style type="text/css">
+        .help{
+            margin-left: 5%;
+        }
+        .help_update_time{
+            float: right;
+        }
+        .help_content{
+            font-size: 16px;
+            margin-top: 3%;
+            min-height: 250px;
+        }
+    </style>
+</block>
+<block name='senior-nav'>
+</block>
+<block name="side">
+</block>
+<block name="content">
+    <div class="help">
+        <div class="help_title">
+            <h3><span>主题: </span> <span>{$help.guide_title}</span></h3>
+        </div>
+        <div class="help_content">
+            <span>内容: </span> <span style="display: inline-table;">{$help.content|html_entity_decode}</span>
+        </div>
+        <div class="help_update_time">
+            <span>更新时间: </span> <span>{$help.update_time|date="Y-m-d",###}</span>
+        </div>
+    </div>
+</block>
+<block name="script">
+
+</block>

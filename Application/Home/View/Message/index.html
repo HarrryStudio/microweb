@@ -1,0 +1,51 @@
+<extend name="Public:base" />
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="__CSS__/message.css" />
+</block>
+ <block name='senior-nav'>
+</block>
+<block name="side">
+</block>
+ <block name="content">
+ 	<div id="info">
+ 	<a id="message_end" href="#end"></a>
+ 	<notempty name="list">
+
+ 		<volist name="list" id="vo">
+ 			<eq name="vo.way" value="0">
+	 			<div class="mes_time"><?php echo date("Y-m-d H:i",$vo['time']);?></div>
+	 			<div class="mes_info">
+	 				<div class="personal_info">
+						<empty name="vo.img">
+			 				<div class="user_img"><img src="__IMAGES__/head_img/user.png"></div>
+						<else />
+		 					<div class="user_img"><img src="__UPLOADS__/{$vo.img}"></div>
+						</empty>
+		 				<!-- <div class="user_img"><img src="__IMAGES__/head_img/user.png"></div> -->
+	 				</div>
+	 				<div class="mes_content">&emsp;{$vo.content}</div>
+	 			</div>
+ 			<else/>
+	 			<div class="mes_time"><?php echo date("Y-m-d H:i",$vo['time']);?></div>
+	 			<div class="mes_info">
+	 				<div class="manager_info">
+		 				<div class="manager_img"><img src="__IMAGES__/head_img/manager.png"></div>
+	 				</div>
+	 				<div class="return_content">{$vo.content}&emsp;</div>
+	 			</div>
+ 			</eq>
+ 		</volist>
+		
+		<a name="end"></a>
+		<div class="clear_float"></div>
+ 		<else/>
+ 			<div id="no_file"><img src="__IMAGES__/back/empty.png">亲.要留点儿什么吗...</div>
+ 		</notempty>
+ 	</div>
+ 	<textarea id="talk" placeholder="要回复点什么..."></textarea>
+ 	<div id="submit">提交信息</div>	
+
+ </block>
+ <block name="script">
+	<script type="text/javascript" src="__JS__/message.js"></script>
+ </block>

@@ -1,0 +1,38 @@
+/*弹出栏目编辑表单的样式*/
+.column-form{
+	width: 500px;
+	color : #666;
+}
+.column-form-item{
+	width: 350px;
+	margin: 20px auto;
+}
+.column-form-label{
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+	font-weight: normal
+}
+.column-form-input{
+	width: 200px;
+	height: 24px;
+}
+#add_column_icon{
+	width: 72px;
+	float: left;
+	margin-left: 15px;
+	clear: both;
+}
+#show_icon{
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-left: 20px;
+	margin-top: -10px;
+	border-radius: 5px;
+	border: 1px solid #4FC1A7;
+}
+#show_icon img{
+	width: 100%;
+	height: 100%;
+}

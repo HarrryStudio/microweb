@@ -1,0 +1,145 @@
+.side{
+	background: none;
+	background-image:url(./images/background1.jpg);
+	background-position: center;
+	background-size: cover;
+	width: 50%;
+}
+	.user-bar{
+		width: 100%;
+		margin: 3rem auto 0;
+		display: block;
+		height: auto;
+	}
+	.head-icon{
+		width: 50%;
+		padding-top:50%; 
+		margin:auto;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	.user-name{
+		width: 100%;
+		color: #fff;
+		margin-top: 0.5rem;
+		text-align: center;
+	}
+	.nav-bar{
+		margin: 0;
+	}
+	.nav-item{
+		width: 100%;
+		text-align: center;
+		font-family: 'Microsoft Yahei';
+		cursor: pointer;
+		border-bottom: none;
+		margin-top: 0.6rem;
+	}
+	
+	.nav-item a{
+		color:#BCC1C5;
+		width: 60%;
+		overflow: hidden;
+		margin: auto;
+		border: 1px solid #111;
+		border-radius: 5px;
+		line-height: inherit;
+	}
+	.nav-item.active a,.nav-item a:hover {
+		background: #BCA6B2;
+	}
+	.nav-icon{
+		display: none;
+	}
+	.nav-item .nav-name{
+		display: block;
+		font-size: 0.7rem;
+		color: black;
+		text-decoration: none;
+	}
+
+	.nav-item .nav-name:hover{
+		color: black;
+	}
+
+.header{
+	color:#fff;
+	background: #472D38;
+	line-height: 2.5rem;
+	height:2.5rem;
+	font-size: 1.4rem;
+}
+	.header h1{
+		font-family: "Microsoft Yahei";
+		font-size: inherit;
+		line-height: inherit;
+		text-align: center;
+		color: #B6A6AC;
+
+	}
+	.header .menu-button{
+		position: absolute;
+		top: 0px;
+		left:2%;
+		text-align: center;
+		line-height: inherit;
+		height: 100%;
+		z-index: 2;
+		cursor: pointer;
+		width: 2rem;
+		background-image:url(./images/menu.png);
+		background-repeat: no-repeat;
+		background-size:85%;
+		background-position: center;
+	}
+
+.center{
+	background: none;
+	
+}
+.background{
+	background: url(./images/background.jpg);
+	background-size: cover;
+}
+
+.controller-title{
+	height: 2.0rem;
+	line-height: 2.0rem;
+	text-align: center;
+	background-color: #513241;
+	color:#fff;
+}
+.controller-title:before{
+	display: none;
+}
+
+.footer{
+
+}
+	.footer>.top{
+		height: 1.2rem;
+	}
+	.top-button{
+		height: 100%;
+		font-weight:bold;
+		float: right;
+		margin-right:10px; 
+		line-height: 30px;
+		cursor:pointer;
+	}
+	.top-button::after{
+		content:"\25B2";
+		margin-left: 3%
+	}
+
+.moveRight{
+	-webkit-transform: translate3d(50%,0,0);
+	-moz-transform: translate3d(50%,0,0);
+	-ms-transform: translate3d(50%,0,0);
+	-o-transform: translate3d(50%,0,0);
+	transform: translate3d(50%,0,0);
+}
+.moveLeft{
+	transition: all 350ms;
+	transform: translate3d(0,0,0);
+}

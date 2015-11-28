@@ -1,0 +1,60 @@
+/*.bannerTitle{*/
+    /*text-align: center;*/
+/*}*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.chooseAlbum{
+    /*margin-left: 6%;*/
+    margin-top: 3%;
+}
+#banner{
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    /*margin-top: 0px;*/
+    /*margin-top: 2%;*/
+    font-family: '宋体' !important;
+    /*font-size: 20px;*/
+    font-weight: 700 !important;
+    color: #777777 !important;
+}
+.bannerContent{
+    display: inline-block;
+    width: 88%;
+    margin: 0px 6%;
+}
+.chooseAlbum span{
+    margin-left: 2%;
+    cursor: pointer;
+}
+.pic_show{
+    border: solid 1px #EDEDED;
+    float: left;
+    width: 96%;
+    margin-left: 4%;
+    margin-top: 2%;
+    display: inline-block;
+    min-height: 320px;
+}
+.pattern{
+    width: 31%;
+    height: 145px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+.pattern img{
+    margin: 6px;
+    width: 95%;
+    height: 125px;
+}
+.hr{
+    width: 100%;
+    height: 100%;
+    -moz-border-image:url(../../../Controller/nav/Images/nav-border.png) 3 4 round;
+    -webkit-border-image:url(../../../Controller/nav/Images/nav-border.png) 3 4 round;
+    -o-border-image:url(../../../Controller/nav/Images/nav-border.png) 3 4 round;
+    border-image:url(../../../Controller/nav/Images/nav-border.png) 3 4 round;
+}

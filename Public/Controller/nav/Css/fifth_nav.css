@@ -1,0 +1,49 @@
+#show_nav{
+	width: 100%;
+	height: auto;
+	float: left;
+	cursor: default;
+	background-repeat: round;
+	background-image: url(../Images/background-5.png);
+}
+.nav_all{
+	width: 100%;
+	height: 40px;
+	float: left;
+}
+.nav_all div{
+	width: 9%;
+	height: 90%;
+	float: left;
+	cursor: pointer;
+	margin-left: 10%;
+	margin-top: 1%;
+	background-size: 32px;
+}
+.nav_all p{
+	float: left;
+	font-size: 10px;
+	margin-top: 12px;
+	margin-left: 5%;
+}
+.nav_all span{
+	width: 15%;
+	height: 100%;
+	color: white;
+	float: right;
+	font-size: 25px;
+}
+.nav_all span{
+	cursor: pointer;
+}
+#outside,#internal{
+	display: none;
+}
+.nav_one,.nav_five,.nav_three{background-image:url(../Images/sekuai.png);background-size: 100% 100%;}
+
+/*#one{background-image: url(../Images/shopping.png);}
+#two{background-image: url(../Images/plane.png)}
+#three{background-image: url(../Images/music.png)}
+#four{background-image: url(../Images/idea.png)}
+#five{background-image: url(../Images/bike.png)}
+#six{background-image: url(../Images/tools.png)}*/

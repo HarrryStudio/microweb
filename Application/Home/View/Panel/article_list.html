@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/panel/article_list.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript">
+		var APP = '__ROOT__';
+	</script>
+	<script type="text/javascript" src="__JS__/panel/article_list.js"></script>
+</head>
+<body>
+	<div id="article_list">
+		<ul class="tab_nav">
+<!-- 			<li class="active"><a href="#base_setting"></a>常规</li>
+<li><a href="#advance_setting">展示设置</a>
+</li> -->
+		</ul>
+		<ul class="setting">
+
+			<li>
+				<div>
+					<label>模块标题:&nbsp;</label><input type="text" name="" value="文章列表">
+					<label for="">请选择栏目:</label>
+
+					<select name="column_list" id="column">
+						<volist name="column_list" id="vo">
+							<option value="{$vo.id}" data="{$vo.url}" class="column_item">{$vo.name}</option>
+						</volist>
+					</select>
+				</div>
+			</li>
+			<li>
+				<br>
+				<div>
+					<span>列表样式:</span>
+					<br>
+					<div id="style_list">
+						<div class="pattern" va="121">
+							<div class="hr"><img src="__IMAGES__/article/article_list1.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__IMAGES__/article/article_list2.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__IMAGES__/article/article_list3.jpg"></div>
+						</div>
+						<div class="clear_both"></div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="">
+					<span>列表条件:</span>
+					<div class="type_list">
+						<div class="article_type">
+							<span class="select_all">
+								<!--<label for="type_all">全选</label>-->
+								<input id="type_all" type="checkbox" name="type[]" value="0">
+							</span>
+							<span>文章分类</span>
+						</div>
+						<form id="type_data">
+							<ul class="article_type_item">
+							<empty name="type_list">
+								请先添加文章和分类
+							<else />
+								<volist name="type_list" id="vo">
+									<li>
+										<input class="type_checkbox" id="sort_{$vo.id}" type="checkbox" name="type[]" value="{$vo.id}">
+										<label for="sort_{$vo.id}">{$vo.name}</label>
+									</li>
+								</volist>
+							</empty>
+							</ul>
+						</form>
+					</div>
+				</div>
+
+				<div id="top-alert-back">
+					<div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">
+					      <button type="button" class="close"><span aria-hidden="true">×</span></button>
+					      <div class="alert-content"></div>
+					</div>
+				</div>
+				<!-- <fieldset>
+					<legend>请选择列表的条件</legend>
+				<div>
+					<span>显示的文章</span>
+					<span>{$display_status}</span>
+				</div>
+					<div>
+						<span>文章分类</span>
+						<br>
+				<input id="check_all" type="radio" name="choose_show" value="true" placeholder="" checked="checked">
+				<label for="check_all">全部</label>
+				<input id="choose_type" type="radio" name="choose_show" value="" placeholder="">
+				<label for="choose_type">指定</label>
+				<br>
+						<div class="type_list">
+							<form id="type_data">
+								<label for="type_all">全部</label>
+									<input id="type_all" type="checkbox" name="type[]" value="0">
+								<br>
+								<volist name="type_list" id="vo">						
+									<label for="sort_{$vo.id}">{$vo.name}</label>
+										<input class="type_checkbox" id="sort_{$vo.id}" type="checkbox" name="type[]" value="{$vo.id}">
+								</volist>
+							</form>
+						</div>
+					</div>
+				</fieldset> -->
+			</li>
+		</ul>
+<!-- 		<div class="button">
+	<button id="save">保存</button>
+	<button id="cancle">取消</button>
+</div> -->
+	</div>
+	<div class="article_info">
+		<ul>
+			<volist name="article_info" id="vo">
+				<li><a href="<?php $ii = $vo['id']; echo U('Panel/article_info?article_id='.$ii);?>">{$vo.title}</a></li>		
+			</volist>
+		</ul>
+	</div>
+	<input id="target_url" type="hidden" name="" value="{:U('Panel/article_type')}">
+	<input id="article_url" type="hidden" name="" value="{:U('Panel/article_info')}?article_id=">
+	<input id="img_url" type="hidden" name="" value="{:C('UPLOAD_ROOT')}">
+	<input id="home_img" type="hidden" name="" value="__IMAGES__">
+	<input type='hidden' id="controller-id" value="{$controller_id}">
+	<input id="status" type="hidden" name="" value="{$status}">
+	<script type="text/javascript">
+		var temp = $(".article_info")[0].innerHTML;
+	</script>
+</body>
+</html>

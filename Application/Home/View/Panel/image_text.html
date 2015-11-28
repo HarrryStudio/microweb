@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/panel/image_text.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript">
+		var APP = '__ROOT__';
+	</script>
+	<!-- <script type="text/javascript" src="__JS__/panel/article_list.js"></script> -->
+	<script type="text/javascript" src="__JS__/panel/image_text.js"></script>
+</head>
+
+<body>
+	<div id="image_text">
+<!-- 		<ul class="tab_nav">
+	<li class="active"><a href="#base_setting"></a>常规</li>
+	<li><a href="#advance_setting">展示设置</a>
+	</li>
+</ul> -->
+		<ul class="setting">
+			<li>
+				<div>
+					<label>模块标题:&nbsp;</label><input type="text" name="" value="图文展示">
+				</div>
+			</li>
+			<li>
+				<div>
+					<p>选择样式:</p>
+					<div id="style_list">
+						<div class="pattern" va="121">
+							<div class="hr"><img src="__IMAGES__/article/image_text1.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__IMAGES__/article/image_text2.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__IMAGES__/article/image_text3.jpg"></div>
+						</div>
+						<div class="pattern" va="121">
+							<div class=""><img src="__IMAGES__/article/image_text4.jpg"></div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+<!-- 		<div class="img_list">
+	<p>选择图片</p>
+		<volist name="img_list" id="vo">
+		<div class="pattern2" va="121">
+			<div>
+			<img src="__ROOT__/Uploads/{$vo.savepath}{$vo.savename}">
+			</div>
+		</div>
+		</volist>
+</div> -->
+		<div class="article_list">
+			<p>选择文章</p>
+			<ul>
+				<volist name="article_list" id="vo">
+					<li class="article_item">
+						<input id="article_{$vo.id}" type="radio" name="article_id" value="{$vo.id}">
+						<label for="article_{$vo.id}">{$vo.title}</label>
+						<img src="__IMAGES__/panel/viwepagerAdd2.png">
+						<input type="hidden" name="" value="{$vo.content}">
+						<input class="img_src" type="hidden" name="" value="__UPLOADS__/{$vo.savepath}{$vo.savename}">
+					</li>
+				</volist>
+			</ul>
+		</div>
+		<div class="page" onclick="return false">
+			{$page}
+		</div>
+	</div>
+	<input id="target_url" type="hidden" name="" value="{:U('Panel/article_info')}">
+	<input id="controller-id" type="hidden" name="" value="{$controller_id}">
+	<input id="status" type="hidden" name="" value="{$status}">
+</body>
+</html>

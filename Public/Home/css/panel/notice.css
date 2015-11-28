@@ -1,0 +1,158 @@
+*{
+    margin:0px;
+    padding:0px;
+    cursor: pointer;
+}
+#notice{
+    font-size: 14px !important;
+    margin-right: 6%;
+
+    font-family: '宋体' !important;
+    /*font-size: 18px;*/
+    font-weight: 700 !important;
+    color: #777777 !important;
+    margin-left: 6%;
+    margin-top: 1%;
+}
+label{
+    margin-bottom:0px;
+}
+.noticeTitle{
+    margin-top: 3%;
+    line-height: 30px;
+}
+.setNoticeTitle{
+    font-size: 14px;
+    line-height: 20px;
+
+    /*line-height: 28px;*/
+    /*font-size: 18px;*/
+    cursor: auto;
+}
+.setNoticeType{
+    margin-top: 1px;
+    line-height: 30px;
+}
+.noticeContent{
+    margin-top: 1%;
+    line-height: 30px;
+}
+.noticeContent span{
+    /*margin-top:1%;*/
+    display: inline-block;
+    height: 30px;
+}
+.noticeContent img{
+    width: 110%;
+    margin-bottom: 16%;
+    margin-left: -20%;
+}
+.noticeContent input{
+    margin-bottom: -12%;
+}
+.setNotice table{
+    margin-top: 1%;
+    width: 100%;
+    border: solid 1px #000000;
+}
+.setNotice td{
+    padding-left: 14%;
+}
+.noticeList {
+    margin-top:1%;
+}
+.setNotice{
+    margin-left: 10%;
+    /*margin-left: 13%;*/
+    /*margin-right: 2px;*/
+    margin-right: 1%;
+}
+.addBtn{
+    float: right;
+    margin-right: 3%;
+    color: green;
+    cursor: pointer;
+}
+.showContent div{
+    float: left;
+    line-height: 25px;
+    width: 33.3%;
+    text-align: center;
+}
+.showContentList{
+    border: solid 1px gray;
+    min-height: 200px;
+    border-top: 0px;
+    display: inline-block;
+    width: 99.9%;
+}
+.bottomHr{
+    width: 35px;
+    float: left;
+    height: 1px;
+    border: solid 1px green;
+    margin-bottom: 1px;
+}
+.showContentList .showContent:nth-child(even){
+    background:cadetblue;
+}
+.showContent{
+    width: 100%;
+    float: left;
+}
+/*弹出层*/
+.popup{
+    left: -80%;
+    width: 47%;
+    min-height: 220px;
+    background-color: #fff;
+    z-index: 99999;
+    position: absolute;
+    top: 25%;
+    border-radius: 4px;
+    border: solid 1px #00A0E8;
+}
+.popupTitle{
+    padding: 5%;
+    width: 100%;
+    background: #00A0E8;
+    line-height: 10%;
+    border-radius: 2px;
+    color: white;
+    text-align: center;
+    font-family: 宋体;
+    font-size: 20px;
+}
+.setPopupContent, .setPopupType{
+    padding-left: 10%;
+    margin-top: 5%;
+}
+.setPopupType{
+    height:50px;
+}
+.btnOKFalse{
+    margin-top: 5%;
+    text-align: center;
+}
+.hint{
+    color: red;
+    font-family: '楷体';
+    font-size: 16px;
+    display: inline-block;
+    line-height: 15px;
+    margin-left: 30%;
+    margin-top: 5%;
+}
+.deletePopup, .savePopup{
+    margin-left: 2%;
+    cursor: pointer;
+}
+.savePopup:hover,.deletePopup:hover{
+    color: red;
+}
+.addOK,.addFalse{
+    width: 15%;
+}
+.setPopup{
+    cursor: auto;
+}

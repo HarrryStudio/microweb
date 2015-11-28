@@ -1,0 +1,101 @@
+<extend name="Public/base"/>
+<block name="style">
+<style type="text/css">
+	#ip1,#ip2{
+		width: 100px;height: 30px;background: red;border: 0;float: left;text-align: center;}
+	#ip2{margin-left: -50px;z-index: 2;}
+	.file {position: relative;display:inline-block;background:#D0EEFF;border:1px solid #99D3F5;border-radius:4px;
+	    padding:4px 12px;overflow: hidden;color:#1E88C7;text-decoration: none;text-indent:0;line-height:20px;}
+	.file input { position: absolute;font-size:100px;right:0;top:0;opacity:0;}
+
+	#layer{
+		width: 400px;
+		height: 200px;
+		z-index: 30;
+		text-align: center;
+		background: black;
+		opacity: 0.8;
+		border: solid 6px;
+        border-color: #Ddd;
+        border-radius: 15px;
+        display: none;
+        
+	}
+	/*#upload{
+		width: 75px;
+		border: 0;
+		margin-top: 3px;
+		position: relative;
+	}*/
+.uploadify-button {
+    background-image: linear-gradient(bottom, #505050 0%, #707070 100%);
+    background-image: -o-linear-gradient(bottom, #505050 0%, #707070 100%);
+    background-image: -moz-linear-gradient(bottom, #505050 0%, #707070 100%);
+    background-image: -webkit-linear-gradient(bottom, #505050 0%, #707070 100%);
+    background-image: -ms-linear-gradient(bottom, #505050 0%, #707070 100%);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #505050),
+        color-stop(1, #707070)
+    );
+    background-position: center top;
+    background-repeat: no-repeat;
+    color: #FFF;
+    font: bold 12px Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    float: left;
+    opacity: 0.7;
+    text-align: center;
+    margin-left: 135px;
+    margin-top: 5%;
+}
+#SWFUpload_0{
+	margin-top: 5px;
+	margin-left: 75px;
+	width: 120px;
+}
+.uploadify-queue-item{
+	font-size: 10px;
+	width: 330px;
+	height: 20px;
+	border-radius: 1em;
+	margin-left: 20px;
+}
+
+</style>
+</block>
+
+<block name="body">
+		<!-- <a href="javascript:;"class="file">选择文件<input type="fi le" name="upfile" id="upload"></a> -->
+		<input type="button" id="bt" value="请选择">
+		<div id="layer">
+			<input type="file" id="file_upload" name="file_upload" multiple="true">
+		</div>
+
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	 
+	 $("#bt").click(function(){
+	 	$("#layer").toggle();
+	 });
+ 		
+	$('#file_upload').uploadify({
+		'swf'      : '__ROOT__/Public/Static/uploadify/uploadify.swf',
+        'uploader' : '__ROOT__/index.php/Admin/Reception/uploadPictures',
+        'buttonText' : '请选择文件',
+        'fileTypeExts' :    '*.jpg; *.png; *.JPG ; *.PNG',
+        'onUploadSuccess' : function(file, data, response) {
+            // setTimeout(function(){
+        		console.log(data);
+            	// window.location.reload();
+            // },1000);
+        }
+	});
+
+</script>
+</block>

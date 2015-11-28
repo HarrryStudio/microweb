@@ -1,0 +1,158 @@
+<extend name="Public/base"/>
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="__CSS__/website/index.css">
+</block>
+<block name='senior-nav'></block>
+<block name="side">
+	<div class="side">
+		<div class="side-head">我的网站</div>
+		<div class="side-item"><a href="__SELF__">网站列表</a></div>
+	</div>
+</block>
+<block name="content">
+	<input id="delete_site_url" type="hidden" value="__CONTROLLER__/delete_site">
+	<input id="compile_site_url" type="hidden" value="{:U('Panel/index')}">
+	<input id="download_site_url" type="hidden" value="__CONTROLLER__/download_site">
+	
+	<input id="resource_management_site_url" type="hidden" value="__CONTROLLER__/album_list">
+	<div class="centent-head">
+		网站列表
+	</div>
+	<foreach name="site_list" item="vo" >
+		<div class="list" id="list_{$vo.id}" data="{$vo.id}">
+			<div class="site-show">
+				<!-- <div class="site-face" url="
+				<?php /*echo C('USER_FILE_DIR').'/'.$vo['url'].'index.html'*/ ?>
+				">
+					&#936;
+					<img src="" alt="{$vo['site_name']}">
+				</div> -->
+
+				<div class="site-info">
+					<span class="site-name">{$vo['site_name']}</span>
+					<span class="site-url" >{$vo['url']}</span>
+					<div class="site-status">
+						<if condition="$vo['status'] eq 0"><span class="normal">[正常]</span>
+						<else /><span class="fordidden">[禁用]</span>
+						</if>
+					</div>
+				</div>
+			</div>
+			<div class="site-other">
+				<!-- <div class="site-status-item">
+					<label>大 小：</label>
+					<span>{:formatSize($vo['size'])}</span>
+				</div> -->
+				<div class="site-status-item">
+					<label>点 击 量：</label>
+					<span>{$vo['click_num']}</span>
+				</div>
+				<div class="site-status-item">
+					<label>创建时间：</label>
+					<span>{$vo['create_time']|date="Y-m-d",###}</span>
+				</div>
+				<div class="site-status-item">
+					<label>更新时间：</label>
+					<span>{$vo['update_time']|date="Y-m-d",###}</span>
+				</div>
+			</div>
+			<div class="site-do">
+				<input type="hidden" value="{$vo.id}">
+				<button title="编辑" class="download_site" type="button" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-download-alt"  aria-hidden="true"></span> 下载
+				</button>
+				<button title="资源管理" class="resource_management_site" type="button" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-cog"  aria-hidden="true"></span>
+					 管理
+				</button>
+				<button title="删除" class="delete_site" type="button" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-remove"  aria-hidden="true"></span> 删除
+				</button>
+			</div>
+		</div>
+	</foreach>
+	<if condition="count($site_list) lt C('MAX_SITE_NUM')">
+	<div target-url="__CONTROLLER__/check_site_num" class="add_site_button" type="button">
+		<div class="add-button">&#10010;</div>
+	</div>
+	</if>
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <button type="button" class="close" 
+	               data-dismiss="modal" aria-hidden="true">
+	                  &times;
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">
+					新建网站
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+				<form class="add-site-form" action="">
+					<div>
+						<label for="site_name">请输入网站名字：</label>
+						<input id="site_name" type="text" name="site_name" class="form-control" value="">
+					</div>
+					<div>
+						<label for="site_url">请输入二级域名：</label>
+						<input id="site_url" placeholder="example" type="text" name="url" class="form-control" value="">
+					</div>
+				</form>
+	         </div>
+	         <div class="modal-footer">
+	            <button type="button" class="btn btn-default" 
+	               data-dismiss="modal">关闭
+	            </button>
+	            <button id="create_new_site" type="button" target_url="__CONTROLLER__/add_site" class="btn btn-primary">
+	               提交更改
+	            </button>
+	         </div>
+	      </div>
+		</div>
+	</div>
+
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog" 
+	   aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+	      <div class="modal-content">
+	         <div class="modal-header">
+	            <button type="button" class="close" 
+	               data-dismiss="modal" aria-hidden="true">
+	                  &times;
+	            </button>
+	            <h4 class="modal-title" id="myModalLabel">
+					退出
+	            </h4>
+	         </div>
+	         <div class="modal-body">
+				<form action="">
+					<div>
+						<p>删除后将清除所有相关资源,确认要删除吗？</p>
+					</div>
+				</form>
+	         </div>
+	         <div class="modal-footer">
+	            <button type="button" class="btn btn-default" 
+	               data-dismiss="modal">取消
+	            </button>
+	            <button type="button" class="btn btn-primary confirm">
+	               确认
+	            </button>
+	         </div>
+	      </div>
+		</div>
+	</div>
+</block>
+<block name='other'>
+	<!-- <div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">
+	      <button type="button" class="close"><span aria-hidden="true">×</span></button>
+	      <div class="alert-content">Best check yo self, you're not looking too good.</div>
+    </div> -->
+</block>
+<block name="script">
+	<script type="text/javascript" src="__JS__/website/index.js"></script>
+</block>

@@ -1,0 +1,99 @@
+<extend name="Public/base" />
+
+<block name="style">
+	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.parse.js"></script>
+	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+	<style type="text/css">
+		.main-title{
+			margin-bottom: 10px;
+		}
+		#content{
+			width: 95%;
+			height: 400px;
+			margin-bottom: 20px;
+			background: white;
+		}
+		#title{
+			width: 95%;
+			height: 50px;
+		}
+		#ipt{
+			width: 200px;
+			height: 25px;
+			border-radius: 5px;
+			border: 2px solid #D4D4D4;
+		}
+		
+		
+	</style>
+</block>
+
+<block name="body">
+	<div class="main-title">
+		<h2>编辑指导使用教程</h2>
+	</div>
+	<div id="title"><h3 id="h" style="width:90px;float: left;">内容标题：</h3>
+		<input id="ipt" type="text" value="{$list.guide_title}"></div>
+    <div id="content">
+    	<textarea id="myEditor" name="news_content" style="width:100%;min-height:80%;float:left;">{$list.content}</textarea>
+    </div>
+    
+    <button class="btn" url="{:U()}" uid="{$list.id}">提交</button>
+
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		var ue = UE.getEditor("myEditor",{
+			toolbars: [['source', '|', 'undo', 'redo', '|','bold', 'italic', 'underline', 'fontborder', 'strikethrough', 
+            'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'pasteplain', '|', 'forecolor', 
+            'backcolor', 'insertorderedlist', 'insertunorderedlist', '|', 'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'indent', '|', 'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|', 'justifyleft', 'justifycenter', 'justifyright', 
+            'justifyjustify', '|', 'touppercase', 'tolowercase', '|','link', 'unlink','|','insertimage', 'emotion', 'attachment',
+            'insertcode', 'pagebreak', 'background', '|', 'spechars', 'snapscreen', '|','inserttable', 'deletetable', 
+            'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 
+            'mergedown', 'splittocells', 'splittorows', 'splittocols', '|', 'searchreplace']],
+    		autoHeightEnabled: true,
+   			autoFloatEnabled: true
+		});
+		//加内容改变事件监听
+		ue.addListener('contentChange',function(e){
+			$(".btn").attr("disabled",false);
+		});
+		$(".btn").click(function(){
+			var title = $("#ipt").val();
+			$("#wore").remove();
+			if (/<\s*(\S+)(\s[^>]*)?>[\s\S]*<\s*\/\1\s*>/.test(title)==true || title=="") {
+				var error = "<span id='wore' style='color:red;font-size:16px;margin-left:20px;'>请确认输入信息</span>";
+				$("#ipt").after(error);
+				return;
+			};
+			if (title.length>10) {
+				var error = "<span id='wore' style='color:red;font-size:16px;margin-left:20px;'>请简练文字信息</span>";
+				$("#ipt").after(error);
+				return;
+			};
+			var url = $(this).attr("url");
+			var editor = ue.getContent();
+			var seat = $(this).attr("uid");
+
+			$.post(url,{title:title,editor:editor,seat:seat},function(data){
+				if (data==""){
+					var error = "<span id='sp' style='width:90%;line-height:30px;background:red;float:left;margin-left:-160px;z-index:10'><h2 style='color:white;'>对不起，操作失败！</h2></span>";
+			    }else{
+					$(".btn").attr("disabled",true);
+					var error = "<span id='sp' style='width:90%;line-height:30px;background:green;float:left;margin-left:-160px;z-index:10'><h2 style='color:white;'>编辑成功</h2></span>";
+				}
+				$(".main-title").append(error);
+				setTimeout(function(){
+					$("#sp").remove();
+				},2000);
+			});
+		})
+	
+
+	</script>
+
+</block>

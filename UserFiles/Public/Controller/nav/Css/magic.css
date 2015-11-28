@@ -1,0 +1,29 @@
+*{margin: 0;padding: 0;}
+#box{
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	border: 1px solid #4FC1A7;
+}
+.pattern{
+	width: 28%;
+	height: 110px;
+	float: left;
+	margin-left: 4%;
+	margin-top: 20px;
+	/*border: 1px solid red;*/
+}
+.pattern img{
+	width: 93%;
+	height: 90%;
+	margin-top: 6px;
+	margin-left: 6px;
+}
+.hr{
+	width: 97%;
+	height: 95%;
+	-moz-border-image:url(../Images/nav-border.png) 3 4 round;	/* Old Firefox */
+	-webkit-border-image:url(../Images/nav-border.png) 3 4 round;	/* Safari and Chrome */
+	-o-border-image:url(../Images/nav-border.png) 3 4 round;		/* Opera */
+	border-image:url(../Images/nav-border.png) 3 4 round;
+}

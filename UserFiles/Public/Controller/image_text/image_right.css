@@ -1,0 +1,38 @@
+.image_text_container{
+	width: 100%;
+	color: #C1DDB7;
+	background-image: url(../images/background.jpg);
+}
+.clear_float{
+	clear: both;
+}
+.image_text_container4 .image_text_img{
+	width: 30%;
+	height: 100px;
+	/*background: red;*/
+	margin: 50px auto 0;
+	shape-outside: padding-box;
+	float: right;
+	overflow: hidden;
+}
+.image_text_container4 .image_text_img img{
+	width: 100%;
+	height: 100%;
+}
+.image_text_container4 .image_text_title{
+	text-align: center;
+	display: inline-block;
+	width: 70%;
+	font-size: 0.7rem;
+}
+.image_text_container4 .image_text_title>h4{
+	text-indent: 1em;
+	font-size: 1rem;
+	margin: 0 auto;
+	display: inline-block;
+}
+.image_text_container4 .image_text_container>p{
+	text-indent: 1em;
+	font-size: smaller;
+	margin: 0;
+}

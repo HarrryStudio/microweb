@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+	<title>index</title>
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Static/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Theme/Public/index.css">
+	<link rel="stylesheet" type="text/css" id="theme-css" href="__USERFILES__/Public/Theme/theme-default/theme.css">
+
+<!-- 	<style type="text/css">
+	.article_detail .article_content{
+		padding: 5px;
+	}
+
+</style> -->
+
+
+	<script type="text/javascript" src='__USERFILES__/Public/Static/jquery-2.0.3.min.js'></script>
+    <script type="text/javascript" src='__USERFILES__/Public/Static/bootstrap/js/bootstrap.js'></script>
+	<script type="text/javascript" src='__USERFILES__/Public/Theme/Public/index.js'></script>
+	<style type="text/css">
+		.article_detail{
+			padding: 0 2%;
+
+		}
+		.article_content{
+			padding: 0 2%;
+			font-size: 0.8rem;
+		}
+		.article_content p{
+			text-indent: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="side main">
+		<div class="user-bar">
+			<div class="head-icon"></div>
+			<div class="user-name"></div>
+		</div>
+		<div class="nav-move nav-move-left"></div>
+		<div class="nav-bar">
+			<volist name="nav_list" id='vo'>
+				<!-- //高亮 -->
+				<if condition="$vo['id'] eq $now_column">
+					<div class="nav-item active" data-column="{$vo.id}">
+				<else />
+					<if condition="$vo['forbidden'] eq 1">
+						<div class="nav-item forbidden" data-column="{$vo.id}">
+					<else />
+						<div class="nav-item" data-column="{$vo.id}">
+					</if>
+				</if><a href="{$vo.url}.html">
+					<span class='nav-icon' style="background-image:url({$vo.icon_url})"></span>
+					<span class="nav-name">{$vo.name}</span></a>
+				</div>
+			</volist>
+		</div>
+		<div class="nav-move nav-move-right"></div>
+	</div>  
+	<div class="header main">
+		<div class="menu-button"></div>
+		<h1>{$site_name}</h1>
+	</div>
+	<div class="top-bar main zi"></div>
+	<div class="clearfix main"></div>
+	<div class="background main"></div>
+	<div class="center main" id="browser_frame" ondragenter='dragenter(event)' ondrop='drop(event)'>
+		{$content}
+		<div class="background_img">
+			<img src="__UPLOADS__/img/{$article_item['savepath']}{$article_item['savename']}" alt="{$article['savename']}">
+		</div>
+		<h4 style="text-align: center">{$article_item['title']}</h4>
+		<div class="article_detail" style="text-indent: 2rem">
+			作者：<span>{$article_item['author']}</span>
+			创建时间：<span>{$article_item['create_time']|date="y-m-d",###}</span>
+			修改时间：<span>{$article_item['update_time']|date="y-m-d",###}</span>
+		</div>
+		<div class="article_content">
+			{$article_item['content']|htmlspecialchars_decode}
+		</div>
+	</div>
+	<div class="footer main">
+		<div class="footer-border"></div>
+		<div class="foot-text">
+			<p>©2015 {$site_name} 版权所有</p>
+			<p>技术支持：marchsoft</p>
+		</div>
+	</div>
+</body>
+</html>

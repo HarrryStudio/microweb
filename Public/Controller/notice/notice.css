@@ -1,0 +1,84 @@
+.noticeContent span{
+    margin-top:1%;
+    display: inline-block;
+    height: 30px;
+}
+.setNotice table{
+    margin-top: 1%;
+    width: 100%;
+    border: solid 1px #000000;
+}
+.setNotice td{
+    padding-left: 2%;
+    margin-left: 3px;
+    border: solid 1px #000;
+}
+.noticeList {
+    margin-top:3%;
+    text-align:center;
+}
+.addBtn{
+    float:right;
+    margin-right:5%;
+}
+.showContent div{
+    float: left;
+    line-height: 25px;
+    width: 32%;
+    padding-left: 1%;
+}
+.showContentList{
+    border: solid 2px #000;
+    margin-top: 1px;
+    min-height: 150px;
+}
+.showContentList .showContent:nth-child(even){
+    background:cadetblue;
+}
+.showContent{
+    width: 100%;
+    float: left;
+}
+/*弹出层*/
+.popup{
+    left: -80%;
+    width: 50%;
+    min-height: 200px;
+    background-color: #fff;
+    z-index: 99999;
+    position: absolute;
+    top: 25%;
+    border-radius: 4px;
+}
+.popupTitle{
+    padding: 5%;
+    width: 90%;
+    background: #4188C6;
+    line-height: 10%;
+    border-radius: 4px;
+}
+.setPopupContent, .setPopupType{
+    padding-left: 10%;
+    margin-top: 5%;
+}
+.btnOKFalse{
+    margin-top: 8%;
+    text-align: center;
+}
+.hint{
+    color: red;
+    font-family: '楷体';
+    font-size: 16px;
+    display: inline-block;
+    line-height: 15px;
+    margin-left: 30%;
+    margin-top: 5%;
+}
+.deletePopup, .savePopup{
+    margin-left: 2%;
+    cursor: pointer;
+}
+.savePopup:hover,.deletePopup:hover{
+    color: red;
+}
+

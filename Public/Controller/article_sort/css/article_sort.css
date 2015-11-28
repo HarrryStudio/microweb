@@ -1,0 +1,26 @@
+li{
+	list-style: none;
+}
+ul{
+	padding-left: 0;
+}
+#article_sort{
+	width: 35rem;
+	border: 1px solid #4FC1A7;
+}
+.clear_both{
+	clear: both;
+}
+fieldset{
+	width: 88%;
+	margin: 0 auto;
+}
+#style_list{
+	margin-bottom: 1.5rem;
+}
+.type_list>input{
+	margin-right: 1rem;
+}
+.article_sort_info{
+	display: none;
+}

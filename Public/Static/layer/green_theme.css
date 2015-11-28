@@ -1,0 +1,43 @@
+.tip{
+	background: #ececec;
+	box-shadow: 0 0 10px rgba(0,0,0,.5);
+	font-family: 微软雅黑; 
+}
+.tip_back{
+	opacity: 0.2;
+	background-color: #000;
+}
+.tip_title{
+	background-color: #4DC0A3;
+	color:#fff;
+}
+.tip_button_bar{
+	text-align: right;
+}
+.tip_button_bar>button{
+	width: 55px;
+	height: 28px;
+	border:none;
+	background-color: #E1E1E1;
+	border-radius: 3px;
+	border:1px solid #777;
+	color:#777;
+	margin-left: 10px;
+	font-size: 14px;
+	/*font-weight: bold;*/
+	font-family: Microsoft YaHei;
+	/*margin-right: 7%;*/
+}
+.tip_button_bar>.tip_sure{
+	background-color: #4DC0A3;
+	border:1px solid #4DC0A3;
+	color:#fff;
+}
+.tip_notice{
+	float: left;
+	display: block;
+	background-image: url(../image/tip_notice.png);
+	width: 30px;
+	height: 30px;
+	margin-right: 15px;
+}

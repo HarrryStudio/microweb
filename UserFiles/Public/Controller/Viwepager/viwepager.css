@@ -1,0 +1,56 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.content{
+    width: 80%;
+    margin: 3% auto;
+    font-size: 16px;
+    font-family: "楷体";
+}
+
+.setTitle{
+    width: 50%;
+    line-height: 20px;
+    border-radius: 4px;
+}
+
+img{
+    margin-top: 6%;
+    width: 25%;
+}
+.img{
+    width: 60%;
+    float: left;
+}
+.type_title{
+    margin-top: 3%;
+    line-height: 50px;
+    width: 20%;
+    float: left;
+}
+.hint{
+    margin-top: 4%;
+    margin-left: 18%;
+    display: inline-block;
+    font-size: 14px;
+    color: #808080;
+}
+.selectAlbum{
+    margin-top: 5%;
+}
+.albumList{
+    margin-top: 2%;
+    border: solid 1px #000000;
+    min-height: 150px;
+}
+.albumListContent{
+    margin-top: 2%;
+    line-height: 20px;
+    width: 100%;
+}
+.albumListContent label{
+    width: 100%;
+    float: left;
+}

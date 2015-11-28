@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/panel/banner.css">
+    <!--<link rel="stylesheet" type="text/css" href="__CSS__/panel/alert_info.css">-->
+    <script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+    <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__JS__/panel/banner.js"></script>
+    <!--<script type="text/javascript" src="__JS__/panel/alert_info.js"></script>-->
+</head>
+<body>
+<div id="banner">
+    <!--<div class="bannerTitle">-->
+        <!--<h3>横幅</h3>-->
+    <!--</div>-->
+    <div class="bannerContent">
+        <div class="chooseAlbum">
+            请选择图册:
+            <foreach name="album_list" item="vo">
+                <span class="album" albumId = "{$vo.id}">{$vo.name}</span>
+            </foreach>
+        </div>
+        <div class="pic_show">
+            <empty name="album_list">
+                <h3 style="text-align: center; color: red;">无相册,请去添加</h3>
+            <else />
+                <foreach name="album_pic" item="vo">
+                    <div class='pattern'>
+                        <div>
+                            <img src="__ROOT__/Uploads/{$vo.savepath}{$vo.savename}">
+                        </div>
+                    </div>
+                </foreach>
+            </empty>
+        </div>
+    </div>
+    <!--{$controller-id|dump}-->
+    <!--{$controller-id}-->
+    <input type="hidden" id="controller-id" value="{$controllerId}" />
+    <input type="hidden" id="status" value="{$status}">
+    <!--<div id="top-alert-back">-->
+        <!--<div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">-->
+            <!--<button type="button" class="close_hint"><span aria-hidden="true">×</span></button>-->
+            <!--<div class="alert-content"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+</div>
+</body>
+</html>

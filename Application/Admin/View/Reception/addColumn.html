@@ -1,0 +1,118 @@
+<extend name="Public/base"/>
+<block name="style">
+<style type="text/css">
+    .file {width:75px;position: relative;display:inline-block;background:#D0EEFF;border:1px solid #99D3F5;border-radius:4px;padding:4px 12px;overflow: hidden;color:#1E88C7;text-decoration: none;text-indent:0;line-height:20px;margin-top: 3px;}
+    .file input {width: 100px; position: absolute;font-size:100px;right:0;top:0;opacity:0;}
+    .textarea{width: 35%;}
+     #into_img{
+        width: 50px;
+        height: 50px;
+        display: none;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 0.5em;
+        border: 1px solid white;
+    }
+    #into_img img{
+        width: 100%;
+        height: 100%;
+    }
+    #hint_addr,#hint_name{
+        color: red;
+        display: none;
+    }
+</style>
+</block>
+
+<block name="body">
+<div class="main-title">
+    <h2>{$modular}</h2><?php echo session("flash_error");?><?php echo session("flash_success");?>
+</div>
+
+<form onsubmit="return checkInput();" action="{:U()}" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <div class="form-item">
+        <label class="item-label">请输入栏目名称</label>
+        <div class="controls">
+            <input type="text" class="text input-large" id="column" name="column" value="{$list.name}">
+            <span id="hint_name">不能为空</span>
+        </div>
+        <input type="hidden" name="choice" value="{$list.id}">
+    </div>
+    <div class="form-item">
+        <label class="item-label">请输入链接地址<span class="check-tips">（例如:index,news）</span></label>
+        <div class="controls">
+            <input type="text" class="text input-large" id="addr_link" name="addr_link" value="{$list.url}">
+            <span id="hint_addr">不能为空</span>
+        </div>
+    </div>
+    <div class="form-item" style="width:100%;height:auto;">
+        <div style="width:150px;height:auto;overflow:hidden;">
+            <div id="into_img">
+                <if condition="$list.icon != '' ">
+                    <img id="old_img" src="__ROOT__/Uploads/{$list.savepath}{$list.savename}">
+                </if>
+            </div>
+            <a href="javascript:;" class="file">请选择图标<input type="file" name="upfile" id="upload"></a>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <button class="btn submit-btn" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+        <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+    </div>
+</form>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+    var old_img = $("#old_img").attr("src");
+    if(old_img != undefined){
+        $("#into_img").show();
+    }
+    //导航高亮
+    highlight_subnav('{:U('Reception/column')}');
+
+    setTimeout(function(){
+        $(".alert").remove();
+    },2000);
+
+    //获取图片信息
+    $("#upload").on("change",function(){
+        var resultFile = document.getElementById("upload").files[0];
+        if (resultFile) {
+            var reader = new FileReader();
+            reader.readAsDataURL(resultFile);
+            reader.onload = function (e) {
+                var urlData = this.result;
+                $("#into_img").show();
+                $("#old_img").remove();
+                document.getElementById("into_img").innerHTML += "<img src='" + urlData + "' alt='" + resultFile.name + "'/>";
+            }; 
+        }else{
+            return;
+        }
+    })
+    /*
+    * 判断不能为空
+    * 控件名、链接地址
+    */
+    function checkInput(){
+        var column = document.getElementById("column").value;
+        if(column == ""){
+            $("#hint_name").show(setTimeout(function(){
+                $("#hint_name").fadeOut();
+            },2000));
+            $("#column").focus();
+            return false;
+        }
+        var addr_link = document.getElementById("addr_link").value;
+        if(addr_link == "") {
+            $("#hint_addr").show(setTimeout(function(){
+                $("#hint_addr").fadeOut();
+            },2000));
+            $("#addr_link").focus();
+            return false;
+        }
+    }
+</script>
+</block>

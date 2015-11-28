@@ -1,0 +1,28 @@
+.form-horizontal{
+	width: 70%;
+}
+.form-group{
+    width: 95%;
+    margin-left: 0 !important;
+}
+.form-group input{
+    display: inline;
+}
+.input{
+    width: inherit;
+}
+#authCode{
+    width: 30%;
+}
+.col-sm-8{
+	width: 70%;
+}
+.col-sm-8 div {
+    float: left;
+}
+#changeProtection{
+    display: none;
+}
+#problem1,#problem2,#problem3{
+	width: 70%;
+}

@@ -1,0 +1,149 @@
+<extend name="Public/base"/>
+
+<block name="style">
+<style>
+    body{
+    	padding-top: 40px;
+        padding-left: 0px;
+    }
+    #main{
+        background: #F6F6F6;
+    }
+    #home_page_top{
+    	width: 95%;
+    	height:80px;
+    	margin: 20px auto;
+    	/*background: #ADD8E6 ;*/
+    }
+    .show_mod{
+        width: 16%;
+        height: 100%;
+        float: left;
+        /*background:  red ;*/
+        margin-left: 3%;
+        border: 1px solid #ADD8E6;
+    }
+    #show_mod_one{
+        margin-left: 4%;
+    }
+    .show_mod_left{
+        width: 43%;
+        opacity: 0.7;
+        border-right: 2px solid rgb(233,233,233);
+    }
+    .show_mod_right{
+        width: 55%;
+    }
+    .show_mod_left,.show_mod_right{
+        height: 100%;
+        float: left;
+        /*line-height: 6em;*/
+        background: white;
+        text-align: center;
+    }
+    .show_mod_left img{
+        width: 90px;
+        height: 80px;
+    }
+    .show_mod_right_up{
+        width: 100%;
+        height: 56%;
+        line-height: 3em;
+        /*border-bottom: 2px solid rgb(233,233,233);*/
+    }
+    .show_mod_right_down{
+        width: 100%;
+        height: 42%;
+        line-height: 2em;
+    }
+    #home_page_introduce{
+    	width: 95%;
+    	height:300px;
+    	margin: 0 auto;
+        margin-top: 50px;
+    	/*background: #00FFFF;*/
+        /*border: 1px solid #cdcdcd; */
+    }
+    #tb{
+        width: 98%;
+        height: 300px;
+        float: left;
+        margin-left: 1%;
+    }
+    #tab{
+        margin-left: 10%;
+    }
+    td{
+        border-bottom: 1px solid rgb(233,233,233);
+    }
+    #td_first{
+        width: 100%;
+        height: 35px;
+        background: #eeeeee;
+    }
+</style>
+</block>
+
+<block name="body">
+  
+	<div id="home_page_top">
+        <div class="show_mod" id="show_mod_one">
+            <div class="show_mod_left"><img src="__IMAGES__/material/tuandui.jpg"></div>
+            <div class="show_mod_right">
+                <div class="show_mod_right_up"><h2> {$list["team"]} </h2></div>
+                <div class="show_mod_right_down">团队规模</div>
+            </div>
+        </div>
+        <div class="show_mod">
+            <div class="show_mod_left"><img src="__IMAGES__/material/yonghu.png"></div>
+            <div class="show_mod_right">
+                <div class="show_mod_right_up"><h2> {$list["user"]} </h2></div>
+                <div class="show_mod_right_down">用户数</div>
+                
+            </div>
+        </div>
+        <div class="show_mod">
+            <div class="show_mod_left"><img src="__IMAGES__/material/wangzhan.png"></div>
+            <div class="show_mod_right">
+                <div class="show_mod_right_up"><h2> {$list["site"]} </h2></div>
+                <div class="show_mod_right_down">网站数</div>
+            </div>
+        </div>
+        <div class="show_mod">
+            <div class="show_mod_left"><img src="__IMAGES__/material/kongjian.jpg"></div>
+            <div class="show_mod_right">
+                <div class="show_mod_right_up"><h2> {$list["cont"]} </h2></div>
+                <div class="show_mod_right_down">控件数</div>
+            </div>
+        </div>
+        <div class="show_mod">
+            <div class="show_mod_left"><img src="__IMAGES__/material/wenzhang.png"></div>
+            <div class="show_mod_right">
+                <div class="show_mod_right_up"><h2> {$list["article"]} </h2></div>
+                <div class="show_mod_right_down">文章数</div>
+            </div>
+        </div>
+	</div>
+
+	<div id="home_page_introduce">
+		<table id="tb">
+            <td id="td_first"><h3> 微站信息介绍--》 </h3></td><tr/>
+            <td>研发团队：&emsp;三月软件工作室之创新团队</td><tr/>
+            <td>团队规定：&emsp;日工作，日完成，日总结，日汇报，拒绝迟到早退</td><tr/>
+            <td>团队方向：&emsp;三十年专注 PHP</td><tr/>
+            <td>团队信条：&emsp;专注从简，优中选优，团结协作</td><tr/>
+            <td>产品介绍：&emsp;适用于win系列/linux系统，便于所有人士组建自己网站的微站产品</td><tr/>
+            <td>组建日期：&emsp;2015/08/05</td>
+        </table>
+	</div>
+
+</block>
+
+<block name="script" >
+	<script type="text/javascript">
+		$(function(){
+	        $('.copyright').html('<div class="copyright"> ©2015 新乡三月软件科技有限公司版权所有</div>');
+	        $('.sidebar').remove();
+	    })
+    </script>
+</block>

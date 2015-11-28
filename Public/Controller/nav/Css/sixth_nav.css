@@ -1,0 +1,76 @@
+#show_nav{
+	width: 100%;
+	height: auto;
+	float: left;
+	cursor: default;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-repeat: round;
+	background-image: url(../Images/background-6.jpg);
+}
+.nav_all{
+	width: 18%;
+	height: 45px;
+	float: left;
+	margin-top: 25px;
+	text-align: center;
+	background: #F77B93;
+	position: relative;
+}
+.nav_all:before{ 
+	content:"";
+	right: 0;
+	bottom: 45px;
+	position: absolute;
+	border-bottom:20px solid #F77B93;
+	border-left:30px solid transparent;
+	border-right:30px solid transparent;
+}
+.nav_all:after{
+	content:"";
+	right: 0;
+	top: 45px;
+	position: absolute;
+	border-top:20px solid #F77B93;
+	border-left:30px solid transparent;
+	border-right:30px solid transparent;
+}
+.nav_all div{
+	width: 70%;
+	height: 65%;
+	cursor: pointer;
+	margin: 0 auto;
+	background-size: 45px 30px;
+}
+.nav_all p{
+	margin: 0;
+	padding: 0;
+	color: #FFD2D7;
+	font-size: 12px;
+	overflow: hidden;
+	font-family: "黑体";
+}
+.nav_all div:hover{
+	width: 80%;
+	height: 100%;
+	z-index: 100;
+	margin: 0 auto;
+	cursor: pointer;
+	position: relative;
+	background-size: 55px 48px;
+}
+span{display: none;}
+
+#nav_first{margin: 20px 15px auto 30%}
+#nav_second{margin: 20px auto;}
+#nav_third{margin: 8px 27% auto 19%;}
+#nav_forth{margin: 8px auto}
+#nav_fifth{margin: 20px 15px auto 30%;}
+#nav_sixth{margin: 20px auto}
+
+/*#one{background-image: url(../Images/shopping.png);}
+#two{background-image: url(../Images/plane.png)}
+#three{background-image: url(../Images/music.png)}
+#four{background-image: url(../Images/idea.png)}
+#five{background-image: url(../Images/bike.png)}
+#six{background-image: url(../Images/tools.png)}*/

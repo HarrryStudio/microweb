@@ -1,0 +1,142 @@
+<extend name="Public/base"/>
+<block name="style">
+<link rel="stylesheet" type="text/css" href="__CSS__/Backstage/reception_index.css" />
+</block>
+
+<block name="body">
+		<div class="main-title"><h2>{$modular}</h2> 
+			<button id="bt">添加图片</button>
+		</div>
+		<div id="layer">
+			<input type="file" id="file_upload" name="file_upload" multiple="true">
+		</div>
+		<div id="pic">
+			<notempty name="list">
+			<volist name="list" id="vo">
+				<div class="pic_info">
+					<div class="img_delete">
+						<div class="pic_img">
+							<img src="<?php echo '__ROOT__/Uploads/';?>{$vo.savepath}/{$vo.savename}">
+						</div>
+						<div class="del" val="{$vo.id}"><img src="__IMAGES__/delete.png"></div>
+					</div>
+					<div class="pic_img_name">{$vo.name}
+						<input type="hidden" class="id" value="{$vo.id}">
+						</div>
+					<div class="pic_time">
+						<label>更新时间：</label><?php echo date("Y-m-d", $vo['update_time']);?>
+					</div>
+				</div>
+			</volist>
+			<else/>
+				<img id="empty_file" src="__IMAGES__/empty.png">
+			</notempty>
+		</div>
+		<input type="hidden" id="addr" value="{:U('editimg')}">
+		<input type="hidden" id="delete" value="{:U('delimg')}">
+		<!-- <div id="hint"></div> -->
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	$(".pic_img_name").keydown(function (event) {
+		if(event.keyCode == 13) {
+			$(this).blur();
+		}
+	})
+
+	$(".pic_img_name").dblclick(function(){
+		$(".pic_img_name").attr("contentEditable", "false");
+		$(this).attr("contentEditable", "true");
+		$(this).focus();
+		var old_content = $(this).text();
+		var seat = $(this).find(".id").attr("value");
+		$(this).unbind("blur");
+		$(this).blur(function(){
+			var content = $(this).text();
+			content = content.replace(/(^\s*)|(\s*$)/g, "");
+			var addr = $("#addr").attr("value");
+			$.post(addr,{content:content,seat:seat},
+				function(response){
+					if (response) {
+						window.location.reload();
+					};
+			});
+		});
+	})
+
+	$(".img_delete").mouseover(function(){
+		$(this).find(".del").toggle();
+	}).mouseout(function(){
+		$(this).find(".del").toggle();
+	});
+
+	$(".del").click(function(){
+		if(!confirm("你确定要删除?")){
+			return;
+		}
+		var set_id = $(this).attr("val");
+		url = $("#delete").attr("value");
+		$.post(url,{id:set_id},function(data){
+			// console.log(data)
+			if (data){
+				window.location.reload();
+			}else{
+				alert("删除失败");
+			}
+		});
+	})
+
+	 $("#bt").click(function(){
+	 	hideLayer();
+	 	$("#layer").toggle();
+	 	return false;
+	 });
+ 		
+	$('#file_upload').uploadify({
+		'swf'      : '__ROOT__/Public/Static/uploadify/uploadify.swf',
+        'uploader' : '__ROOT__/index.php/Admin/Reception/uploadPictures',
+        'buttonText' : '请选择文件',
+        // 'fileTypeExts' :    '*.jpg; *.png; *.JPG ; *.PNG',
+        'onUploadSuccess' : function(file, data, response) {
+        	if (data == 1) {
+				window.location.reload();
+        		alert("图片信息重复");
+        	}
+			setTimeout(function(){
+	        	window.location.reload();
+	        },500);
+		// console.log(data);
+
+        }
+	});
+
+
+	$('body').click(function () {
+		return hideLayer();	
+	})
+
+	function  hideLayer() {
+		var area = $('#layer').offset()
+		var pointx = event.x;
+		var pointy = event.y;
+		var layer_width = $('#layer').width();
+		var layer_height = $('#layer').height();
+/*		console.log($('#layer').css('display'));
+		console.log('pointx' + pointx);
+		console.log('pointy' + pointy);
+		console.log('area.left' + (area.left + layer_width));
+		console.log('area.top' + (area.top + layer_height));
+		console.log('width'+layer_width);
+		console.log('layer_height'+layer_height);
+*/
+		if ($('#layer').css('display') == 'block') {		
+			if (pointx < area.left || pointy < area.top ||  pointx > area.left + layer_width || pointy > area.top + layer_height) {
+				console.log("2222222222222222222222");
+				$("#layer").toggle();
+				return false;
+			};
+		};
+	}
+</script>
+</block>

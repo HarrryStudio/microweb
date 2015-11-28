@@ -1,0 +1,30 @@
+.bannerTitle{
+    text-align: center;
+}
+.chooseAlbum span{
+    margin-left: 2%;
+    color: green;
+    font-family: '楷体';
+    cursor:pointer
+}
+.pattern{
+    width: 28%;
+    height: 110px;
+    float: left;
+    margin-left: 4%;
+    margin-top: 20px;
+}
+.pattern img{
+    width: 93%;
+    height: 90%;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+.hr{
+    width: 97%;
+    height: 95%;
+    -moz-border-image:url(../nav/Images/nav-border.png) 3 4 round;
+    -webkit-border-image:url(../nav/Images/nav-border.png) 3 4 round;
+    -o-border-image:url(../nav/Images/nav-border.png) 3 4 round;
+    border-image:url(../nav/Images/nav-border.png) 3 4 round;
+}

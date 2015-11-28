@@ -1,0 +1,39 @@
+.content{
+	width: 83%;
+	border-left:1px solid #eee;
+}
+.side{
+	width: 16%;
+	min-height: 100px;
+	float: left;
+}
+.side-head{
+	height:47px;
+	line-height: 27px;
+	text-align: center;
+	margin: 0 8px 34px 8px;
+	border-bottom:1px solid #eee;
+	padding:10px;
+	font-size: 18px;
+	position: relative;
+}
+.side-head::before{
+	content: " ";
+	display: block;
+	float: left;
+	width: 4px;
+	height: 19px;
+	background: #4DC0A3;
+	margin-top: 4px 
+}
+.side-item{
+	margin-bottom: 12px;
+	height:42px;
+	line-height: 42px;
+	text-align: center;
+	font-size: 14px
+}
+.side-item.active{
+	background:#4DC0A3;
+	color:#fff;
+}

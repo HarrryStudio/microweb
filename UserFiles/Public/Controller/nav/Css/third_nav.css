@@ -1,0 +1,55 @@
+#show_nav{
+	width: 100%;
+	height: auto;
+	float: left;
+	cursor: default;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-repeat: round;
+	background-image: url(../Images/background-3.jpg);
+}
+.nav_all{
+	width: 22%;
+	height: 50px;
+	text-align: center;
+	overflow: hidden;
+}
+.nav_all div:hover{
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+	z-index: 1000;
+	cursor: pointer;
+	position: relative;
+	background-size: 60px 50px;
+}
+.nav_all div{
+	width: 70%;
+	height: 70%;
+	margin: 0 auto;
+	background-size: 50px 40px;
+}
+.nav_all p{
+	font-family: "黑体";
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	color: #AC91A0;
+	overflow: hidden;
+}
+span{display: none;}
+.internal{
+	width: 100%;
+	float: left;
+}
+#nav_first,#nav_sixth{margin: 0 38% auto 38%;}
+#nav_second{float: left;margin: 0 18% 10px 18%;}
+#nav_third{margin-bottom: 10px;}
+#nav_forth{float: left;margin: 0 18% auto 18%;}
+
+/*#one{background-image: url(../Images/timing.png)}
+#two{background-image: url(../Images/record.png)}
+#three{background-image: url(../Images/clock.png)}
+#four{background-image: url(../Images/link.png)}
+#five{background-image: url(../Images/off-line.png)}
+#six{background-image: url(../Images/speak.png)}*/

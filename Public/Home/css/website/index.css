@@ -1,0 +1,124 @@
+.list,.add_site_button{
+	width: 25%;
+	min-width: 237px;
+	height:250px;
+	border:1px solid #ddd;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 1px 1px 1px #ccc;
+	padding:30px 0;
+	position: relative;
+	display: inline-block;
+	margin-right: 3%;
+	margin-bottom: 20px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.site-show,.site-other{
+	width: 85%;
+	margin-left:12.5%; 
+	float: left;
+	margin-bottom: 20px;
+	height: 100px;
+}
+.site-name{
+	display: inline-block;
+	/*max-width:90%; */
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow:ellipsis;
+	font-size: 30px;
+	width: 90%;
+}
+.site-face{
+	width: 70px;
+	height: 100px;
+	font-size: 60px;
+	line-height: 100px;
+	text-align: center;
+	float: left;
+	border: 1px solid #eee
+}
+.site-info{
+
+	float: left;
+	width: 100%;
+	/*margin-left: 20px*/
+}
+
+.site-url{
+	color:#999;
+}
+.site-status{
+	margin-top: 10px;
+}
+.site-status .normal{
+	color: #6FB737
+}
+.site-status .forbidden{
+	color:#F44C33;
+}
+.site-other label{
+	width: 70px;
+	text-align:right;
+	/*display: block;*/
+}
+.site-do{
+	position: absolute;
+	top:100%;
+	left:0;
+	height: 50px;
+	width: 100%;
+	font-size: 0px;
+	transition: all 350ms;
+	background: -webkit-linear-gradient(bottom,rgba(77, 193, 180, 0.7),rgba(77, 193, 180, 0));
+	background: -moz-linear-gradient(bottom,rgba(77, 193, 180, 0.7),rgba(77, 193, 180, 0));
+	background: -ms-linear-gradient(bottom,rgba(77, 193, 180, 0.7),rgba(77, 193, 180, 0));
+	background: -o-linear-gradient(bottom,rgba(77, 193, 180, 0.7),rgba(77, 193, 180, 0));
+	background: linear-gradient(bottom,rgba(77, 193, 180, 0.7),rgba(77, 193, 180, 0));
+	padding: 22px 20px 1px;
+}
+.site-do button{
+	margin:0;
+	background: transparent;
+	border:1px solid #777;
+	color: #444;
+	border-radius:3px;
+	font-size: 14px;
+	width: 31%;
+	margin-right: 3%;
+	padding: 0;
+	text-align: center;
+}
+.site-do button:last-child{
+	margin:0;
+}
+.site-do button:hover{
+	color:#111;
+	border-color: #111
+}
+.list:hover .site-do{
+	margin-top:-50px; 
+}
+.add-button{
+	width: 150px;
+	height: 150px;
+	border: 2px solid rgba(77, 193, 180, 0.36);
+	border-radius:75px;
+	margin:auto;
+	color:rgba(77, 193, 180, 0.36);
+	font-size: 100px;
+	line-height: 138px;
+	text-align: center;
+	margin-top:20px 
+}
+.add-site-form div{
+	margin: 10px 0px;
+	margin-left: 15%;
+}
+.add-site-form input{
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+}
+

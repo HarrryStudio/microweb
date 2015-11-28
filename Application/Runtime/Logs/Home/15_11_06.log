@@ -1,0 +1,538 @@
+[ 2015-11-06T21:30:51+08:00 ] ::1 /microweb/index.php/Home/Panel/index/site_id/61
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000793s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.009336s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009405s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0039s ]
+SQL: SELECT user_column.id,`name`,`forbidden`,`sort`,`url`,`savepath`,`savename` FROM `user_column` left join picture on user_column.icon = picture.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0045s ]
+SQL: SELECT `theme` FROM `site_info` WHERE `id` = '61' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE `forbidden` = 0 AND `status` = 0 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: SELECT a.addr,a.id,b.savepath,b.savename FROM theme as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.addr <> ''  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0038s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.forbidden = 0  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000178s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000223s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038912s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038971s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003391s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003439s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015112s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015180s ]
+
+[ 2015-11-06T21:30:52+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/201
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000576s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000985s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001077s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '201' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0051s ]
+SQL: SELECT html.html FROM `user_column` INNER JOIN html on html.id = user_column.html_id  WHERE user_column.id = '201' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0049s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '5' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0050s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column as a left join picture as b on a.icon = b.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0040s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '61' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0045s ]
+SQL: SELECT `addr` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0042s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000144s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000228s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037457s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037540s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001173s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001237s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000154s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.008986s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007084s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.001348s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000014s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.007267s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000915s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000970s ]
+
+[ 2015-11-06T21:31:09+08:00 ] ::1 /microweb/index.php/Home/Panel//article_sort/id/18/is_edit/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000655s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000785s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000858s ]
+SQL: SHOW COLUMNS FROM `type` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`name` FROM `type` WHERE `site_id` = 61  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `user_column` WHERE `site_id` = 61  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000114s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000161s ]
+NOTIC: [8] Undefined variable: status E:\www\microweb\Application\Runtime\Cache\Home\c0ac48a0fee33bfe02a38fa1a7d7fc21.php 第 58 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039031s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039082s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000529s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000566s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002772s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002834s ]
+
+[ 2015-11-06T21:31:22+08:00 ] ::1 /microweb/index.php/Home/Panel/index/site_id/addColumn
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000453s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000674s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000729s ]
+
+[ 2015-11-06T21:31:52+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/undefined/theme.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000536s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000672s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000716s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = 'undefined' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000042s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000085s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.065971s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.066018s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000555s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000586s ]
+
+[ 2015-11-06T21:31:53+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/undefined/theme.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000462s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000634s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000674s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = 'undefined' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000044s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000088s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007509s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009070s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002045s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002107s ]
+
+[ 2015-11-06T21:32:03+08:00 ] ::1 /microweb/index.php/Home/Panel/index/site_id/61
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000631s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000788s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000831s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0031s ]
+SQL: SELECT user_column.id,`name`,`forbidden`,`sort`,`url`,`savepath`,`savename` FROM `user_column` left join picture on user_column.icon = picture.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0033s ]
+SQL: SELECT `theme` FROM `site_info` WHERE `id` = '61' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE `forbidden` = 0 AND `status` = 0 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0032s ]
+SQL: SELECT a.addr,a.id,b.savepath,b.savename FROM theme as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.addr <> ''  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0034s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.forbidden = 0  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000187s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000237s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010830s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010898s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000670s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000722s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000911s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000963s ]
+
+[ 2015-11-06T21:32:03+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/201
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003294s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001230s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001313s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0064s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '201' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0049s ]
+SQL: SELECT html.html FROM `user_column` INNER JOIN html on html.id = user_column.html_id  WHERE user_column.id = '201' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0044s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '5' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0040s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column as a left join picture as b on a.icon = b.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0059s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '61' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0041s ]
+SQL: SELECT `addr` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0042s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000130s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000215s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011403s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011480s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000755s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000810s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000751s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000888s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000013s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.000877s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000967s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001026s ]
+
+[ 2015-11-06T21:33:48+08:00 ] ::1 /microweb/index.php/Home/Panel/index/site_id/61
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000442s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000940s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001007s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0034s ]
+SQL: SELECT user_column.id,`name`,`forbidden`,`sort`,`url`,`savepath`,`savename` FROM `user_column` left join picture on user_column.icon = picture.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0037s ]
+SQL: SELECT `theme` FROM `site_info` WHERE `id` = '61' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE `forbidden` = 0 AND `status` = 0 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0029s ]
+SQL: SELECT a.addr,a.id,b.savepath,b.savename FROM theme as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.addr <> ''  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0035s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.forbidden = 0  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000165s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000206s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010137s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010187s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000452s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000484s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001056s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001122s ]
+
+[ 2015-11-06T21:33:48+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/201
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000581s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000891s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000976s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '201' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0050s ]
+SQL: SELECT html.html FROM `user_column` INNER JOIN html on html.id = user_column.html_id  WHERE user_column.id = '201' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0043s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '5' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0057s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column as a left join picture as b on a.icon = b.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0045s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '61' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0044s ]
+SQL: SELECT `addr` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0045s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000264s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000459s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012434s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012491s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000427s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000466s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000420s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000526s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000006s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.000515s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000586s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000618s ]
+
+[ 2015-11-06T21:33:50+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/202
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000355s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000858s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000935s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '202' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0036s ]
+SQL: SELECT html.html FROM `user_column` INNER JOIN html on html.id = user_column.html_id  WHERE user_column.id = '202' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0033s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '5' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0041s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column as a left join picture as b on a.icon = b.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0033s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '61' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0031s ]
+SQL: SELECT `addr` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0031s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000088s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000138s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008269s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008312s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000395s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000428s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000053s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.003078s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002077s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000472s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000009s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.002166s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000586s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000618s ]
+
+[ 2015-11-06T21:33:56+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000562s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000594s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000649s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = 'index' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000041s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000083s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005487s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005542s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000722s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000762s ]
+
+[ 2015-11-06T21:40:48+08:00 ] ::1 /microweb/index.php/Home/Panel/index/site_id/61
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000611s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000885s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000958s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0039s ]
+SQL: SELECT user_column.id,`name`,`forbidden`,`sort`,`url`,`savepath`,`savename` FROM `user_column` left join picture on user_column.icon = picture.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0045s ]
+SQL: SELECT `theme` FROM `site_info` WHERE `id` = '61' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0167s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE `forbidden` = 0 AND `status` = 0 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0034s ]
+SQL: SELECT a.addr,a.id,b.savepath,b.savename FROM theme as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.addr <> ''  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0041s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.forbidden = 0  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000234s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000295s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012626s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012702s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000678s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000720s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000846s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000905s ]
+
+[ 2015-11-06T21:40:48+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/201
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000375s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000659s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000713s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '201' AND `site_id` = '61' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0046s ]
+SQL: SELECT html.html FROM `user_column` INNER JOIN html on html.id = user_column.html_id  WHERE user_column.id = '201' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0046s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '5' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0048s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column as a left join picture as b on a.icon = b.id  WHERE `site_id` = '61' ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0059s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '61' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0039s ]
+SQL: SELECT `addr` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0055s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000135s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000206s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013933s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014014s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000665s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000719s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000732s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.000793s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000014s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.000913s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000948s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001078s ]
+
+[ 2015-11-06T21:41:04+08:00 ] ::1 /microweb/index.php/Home/Panel//Viwepager/id/17/is_edit/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000533s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001435s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003163s ]
+SQL: SHOW COLUMNS FROM `album` [ RunTime:0.0049s ]
+SQL: SELECT `id`,`name`,`create_time`,`update_time` FROM `album` WHERE `site_id` = 61 ORDER BY create_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000072s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000125s ]
+NOTIC: [8] Undefined variable: status E:\www\microweb\Application\Runtime\Cache\Home\cc2f7d1ddf477b234c035431f803a923.php 第 60 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012633s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012682s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000737s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000776s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000712s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000747s ]
+
+[ 2015-11-06T21:41:08+08:00 ] ::1 /microweb/index.php/Home/Panel//Viwepager/id/17/is_edit/Viwepager
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000346s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000541s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000586s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `photo` [ RunTime:0.0036s ]
+SQL: SELECT picture.savepath,picture.savename FROM `photo` INNER JOIN picture on photo.pic_id = picture.id  WHERE `album_id` = '19'  [ RunTime:0.0003s ]
+
+[ 2015-11-06T21:41:18+08:00 ] ::1 /microweb/index.php/Home/Panel//article_sort/id/18/is_edit/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000503s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004131s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004434s ]
+SQL: SHOW COLUMNS FROM `type` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`name` FROM `type` WHERE `site_id` = 61  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `user_column` WHERE `site_id` = 61  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000143s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000204s ]
+NOTIC: [8] Undefined variable: status E:\www\microweb\Application\Runtime\Cache\Home\c0ac48a0fee33bfe02a38fa1a7d7fc21.php 第 58 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014035s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014095s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000953s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001161s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001219s ]
+
+[ 2015-11-06T21:41:32+08:00 ] ::1 /microweb/index.php/Home/Panel//article_sort/id/18/is_edit/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001844s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001444s ]
+SQL: SHOW COLUMNS FROM `type` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`name` FROM `type` WHERE `site_id` = 61  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `user_column` WHERE `site_id` = 61  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000192s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000311s ]
+NOTIC: [8] Undefined variable: status E:\www\microweb\Application\Runtime\Cache\Home\c0ac48a0fee33bfe02a38fa1a7d7fc21.php 第 58 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016104s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016174s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000639s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000686s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000607s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000642s ]
+
+[ 2015-11-06T21:41:37+08:00 ] ::1 /microweb/index.php/Home/Panel//article_list/id/15/is_edit/0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000648s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001052s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001135s ]
+SQL: SHOW COLUMNS FROM `type` [ RunTime:0.0063s ]
+SQL: SELECT `id`,`name` FROM `type` WHERE `site_id` = 61  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0495s ]
+SQL: SELECT * FROM `user_column` WHERE `site_id` = 61  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000168s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000250s ]
+NOTIC: [8] Undefined variable: display_status E:\www\microweb\Application\Runtime\Cache\Home\511bc8d45f23d85f088711233527469d.php 第 84 行.
+NOTIC: [8] Undefined variable: article_info E:\www\microweb\Application\Runtime\Cache\Home\511bc8d45f23d85f088711233527469d.php 第 114 行.
+NOTIC: [8] Undefined variable: status E:\www\microweb\Application\Runtime\Cache\Home\511bc8d45f23d85f088711233527469d.php 第 122 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.043447s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043499s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000407s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000440s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000639s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000675s ]
+
+[ 2015-11-06T21:41:38+08:00 ] ::1 /microweb/index.php/Home/Panel/article_type.html?type%5B%5D=12&type%5B%5D=13
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000452s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000649s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000687s ]
+NOTIC: [8] Use of undefined constant in - assumed 'in' E:\www\microweb\Application\Home\Controller\PanelController.class.php 第 221 行.
+SQL: SHOW COLUMNS FROM `article` [ RunTime:0.0036s ]
+SQL: SELECT article.id,picture.savepath,picture.savename,article.title,article.content FROM `article` left join picture ON  article.pic_id = picture.id  WHERE article.type_id IN ('12','13') AND article.status = 0 ORDER BY article.is_top desc, article.create_time desc LIMIT 5   [ RunTime:0.0005s ]
+

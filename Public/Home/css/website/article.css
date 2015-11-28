@@ -1,0 +1,284 @@
+.set-bar{
+	float: right;
+	font-size: 14px;
+	font-weight: normal;
+	margin-right:50px;
+}
+.centent-head{
+	width: 90%;
+	border-bottom: 2px #ddd solid;
+	height: 40px
+}
+.article-panel{
+	width: 95%
+}
+.set-item{
+	cursor:pointer;
+}
+.set-item:hover{
+	text-decoration: underline;
+}
+.function-bar,.more-do-bar{
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding-left: 10px;
+	border-bottom: 1px #ddd solid;
+}
+.function{
+	display: inline-block;
+	height: 30px;
+	background: #4DC0A3;
+	color:#fff;
+	line-height: 20px;
+	padding: 5px 15px ;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-right: 10px; 
+}
+.function a{
+	color: inherit;
+	text-decoration: none;
+}
+.function a:hover{
+	color: inherit;
+	text-decoration: none;
+}
+
+.search-bar{
+	float: right;
+	min-width: 300px;
+	height: 34px;
+	/*line-height: 34px;*/
+	border: 1px #ddd solid;
+	border-radius: 4px;
+	margin-top: 10px
+}
+
+.search-bar div{
+	float: left;
+	height: 100%
+}
+.search-type ul{
+	display: none;
+	position: absolute;
+	width: 100%;
+	top:100%;
+	left:0px; 
+	background: #fff;
+	border: 1px #ddd solid;
+	border-bottom: 0px;
+	box-shadow: 1px 4px 10px 1px #f1f1f1
+}
+.search-type ul li{
+	padding: 8px 7px;
+	border-bottom:1px #ddd solid;
+	cursor: pointer;
+}
+
+.search-type{
+	position: relative;
+	width: 110px;
+	padding:8px 7px;
+	border-right: 1px #ddd solid;
+	line-height: 16px
+}
+.search-down{
+	float: right;
+	font-size: 12px;
+	color: #666
+}
+input#search-text{
+	line-height: 25px;
+	float: left;
+	padding: 2px 4px;
+    height: 32px;
+    min-width: 180px;
+    line-height: 30px;
+    border: none
+}
+input#search-text:focus{
+	outline: none;
+}
+.search-icon{
+	width: 35px;
+	border-left: 1px #ddd solid;
+	line-height: 31px;
+	text-align: center;
+	color: #888;
+	cursor: pointer;
+}
+.search-icon:hover{
+	color: #444;
+}
+
+
+
+
+.more-do-bar{
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+	display: none;
+}
+.do-item{
+	display: inline-block;
+	height: 100%;
+	line-height: 20px;
+	color: #888;
+	cursor: pointer;
+	margin-right: 15px;
+}
+.do-item:hover{
+	color: #4DC0A3;
+	text-decoration: underline;
+}
+.do-item input{
+	vertical-align: text-top;
+}
+.do-item ul{
+	position: absolute;
+	color:#888;
+	border:1px solid #ddd;
+	padding:5px 10px;
+	margin-top: 5px;
+	background: #fff;
+	min-width: 100px;
+	display: none;
+}
+.do-item ul li{
+	height: 26px;
+	line-height: 26px;
+	border-bottom: 1px solid #ddd;
+}
+.do-item ul li:last-child{
+	border-bottom: none
+}
+.do-item ul li:hover{
+	background: #f6f6f6
+}
+.change-classify{
+	position: relative;
+}
+.change-classify:hover ul{
+	display: block;
+}
+
+table.article-table{
+	margin-top: 20px;
+	line-height: 40px;
+	width: 100%;
+	table-layout: fixed;
+	font-size: 12px;
+}
+th.table-title{
+	width: 40%;
+}
+th.table-type{
+	width: 20%;
+}
+th.table-time{
+	width: 20%;
+}
+th.table-operation{
+	width: 20%;
+}
+th.table-checkbox{
+	width: 0px;
+}
+
+
+table.article-table td,table.article-table th{ 
+	padding-left: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}
+table.article-table td.operation-bar{
+	overflow: visible;
+}
+table.article-table thead{
+	background: #f1f1f1
+}
+table.article-table tr:nth-child(2n){
+	background: #fafafa
+}
+.dropdown .dropdown-toggle{
+	padding: 3px 10px;
+	font-size: 12px; 
+}
+.dropdown .dropdown-menu{
+	font-size: 12px;
+	padding:3px 0;
+	min-width:60px;
+	top:80%;
+}
+.dropdown .dropdown-menu li{
+	cursor: pointer;
+}
+
+.art-sta{
+	display: inline-block;
+	width: 20px;
+	font-size: 10px;
+}
+.art-for:before{
+	content:"[禁]";
+	color:#F92672;
+}
+.art-top:before{
+	content:"[顶]";
+	color:#FFDA15;
+}
+
+.type-dropdown{
+	display: inline-block;
+	position: relative;
+}
+.type-dropdown .dropdown-toggle{
+	min-width: 160px;
+	text-align: left;
+}
+.type-dropdown .caret{
+	float: right;
+	margin-top: 8px;
+}
+#type-name-span{
+	float: left;
+}
+
+.page{
+	text-align: right;
+	margin-top: 20px;
+	font-size: 0px;
+}
+.page a,.page span{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #ddd;
+	border-left: none;
+	line-height: 30px;
+	text-align: center;
+	font-size: 14px;
+	cursor: pointer;
+}
+.page span{
+	background: #4DC0A3;
+	color:#fff;
+}
+.page a{
+	text-decoration: none;
+}
+.page a:hover{
+	text-decoration: none;
+}
+.page a:first-child,.page span:first-child{
+	border-left: 1px solid #ddd;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+.page a:last-child,.page span:last-child{
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
