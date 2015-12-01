@@ -3,16 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo ($meta_title); ?> | 微网站生成系统</title>
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Static/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/base.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/side.css">
-	<script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
-	<script type="text/javascript" src="/microweb/Public/Static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Home/js/base.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Static/uploadifive/jquery.uploadifive.min.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Static/uploadify/jquery.uploadify.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Static/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/side.css">
+	<script type="text/javascript" src='/microweb_git/Public/Static/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="/microweb_git/Public/Static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Home/js/base.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Static/uploadifive/jquery.uploadifive.min.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Static/uploadify/jquery.uploadify.min.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/website/article.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/website/article.css">
 
 </head>
 <body>
@@ -33,9 +33,9 @@
 			<div class="login-bar">
 				<div class="head-icon">
 					<a href="<?php echo U('Account/personalDetails');?>">
-						<?php if(empty($head_img)): ?><img src="/microweb/Public/Home/images/head_img/user.png" alt="head-img" class="head-img">
+						<?php if(empty($head_img)): ?><img src="/microweb_git/Public/Home/images/head_img/user.png" alt="head-img" class="head-img">
 						<?php else: ?>
-							<img src="/microweb/Uploads/<?php echo ($head_img); ?>" alt="head-img"><?php endif; ?>
+							<img src="/microweb_git/Uploads/<?php echo ($head_img); ?>" alt="head-img"><?php endif; ?>
 					</a>
 				</div>
 				
@@ -56,28 +56,28 @@
 		<!-- 边栏 -->
 		<div class="side">
 			<div class="side-head">网站资源</div>
-			<div class="side-item"><a href="/microweb/index.php/Home/Website/album_list/site_id/<?php echo ($site_id); ?>">相册</a></div>
-			<div class="side-item"><a href="/microweb/index.php/Home/Website/article_list/site_id/<?php echo ($site_id); ?>">文章</a></div>
+			<div class="side-item"><a href="/microweb_git/index.php/Home/Website/album_list/site_id/<?php echo ($site_id); ?>">相册</a></div>
+			<div class="side-item"><a href="/microweb_git/index.php/Home/Website/article_list/site_id/<?php echo ($site_id); ?>">文章</a></div>
 		</div>
 		<!-- /边栏 -->
 		<!-- 内容区 -->
 		<div class="content">
-			<?php $site_id = (int)session('site_id'); if( $site_id > 0 ){ echo '<div class="to-panel"><a href="/microweb/index.php/Home/Panel/index/site_id/'.$site_id.'">前往编辑页</a></div>'; } ?>
+			<?php $site_id = (int)session('site_id'); if( $site_id > 0 ){ echo '<div class="to-panel"><a href="/microweb_git/index.php/Home/Panel/index/site_id/'.$site_id.'">前往编辑页</a></div>'; } ?>
 			
 	<div class="centent-head">文章
 		<div class="set-bar">
-			<div class="set-item classify" url='/microweb/index.php/Home/Website/set_classify/site_id/<?php echo ($site_id); ?>'>分类管理</div>
+			<div class="set-item classify" url='/microweb_git/index.php/Home/Website/set_classify/site_id/<?php echo ($site_id); ?>'>分类管理</div>
 		</div>
 	</div>
 	<input id="site_id" type="hidden" value="<?php echo ($site_id); ?>">
-	<!-- <input id="create_album_url" type="hidden" value="/microweb/index.php/Home/Website/create_album">
-	<input id="edit_album_url" type="hidden" value="/microweb/index.php/Home/Website/edit_album">
-	<input id="del_album_url" type="hidden" value="/microweb/index.php/Home/Website/del_album"> -->
-	<input id="top-article-url" type="hidden" value="/microweb/index.php/Home/Website/top_article">
-	<input id="status-article-url" type="hidden" value="/microweb/index.php/Home/Website/update_article_status">
+	<!-- <input id="create_album_url" type="hidden" value="/microweb_git/index.php/Home/Website/create_album">
+	<input id="edit_album_url" type="hidden" value="/microweb_git/index.php/Home/Website/edit_album">
+	<input id="del_album_url" type="hidden" value="/microweb_git/index.php/Home/Website/del_album"> -->
+	<input id="top-article-url" type="hidden" value="/microweb_git/index.php/Home/Website/top_article">
+	<input id="status-article-url" type="hidden" value="/microweb_git/index.php/Home/Website/update_article_status">
 	<div class="article-panel">
 		<div class="function-bar">
-			<div class="function add-article"><a href='/microweb/index.php/Home/Website/add_article/site_id/<?php echo ($site_id); ?>'>添加文章</a></div>
+			<div class="function add-article"><a href='/microweb_git/index.php/Home/Website/add_article/site_id/<?php echo ($site_id); ?>'>添加文章</a></div>
 			<div class="function more-do">批量操作</div>
 			<div class="search-bar">
 				<form class="search-form">
@@ -92,18 +92,18 @@
 						</ul>
 					</div>
 					<input name="title" type="text" id="search-text" value="<?php echo ($search['title']); ?>">
-					<div url="/microweb/index.php/Home/Website/article_list/site_id/<?php echo ($site_id); ?>/p/<?php echo ($now_page); ?>" class="search-icon glyphicon glyphicon-search"></div>
+					<div url="/microweb_git/index.php/Home/Website/article_list/site_id/<?php echo ($site_id); ?>/p/<?php echo ($now_page); ?>" class="search-icon glyphicon glyphicon-search"></div>
 				</form>
 			</div>
 		</div>
 		<div class="more-do-bar">
-			<div class="do-item status-article" url="/microweb/index.php/Home/Website/update_article_status/status/0">启用</div>
-			<div class="do-item status-article" url="/microweb/index.php/Home/Website/update_article_status/status/1">禁用</div>
-			<div class="do-item status-article" url="/microweb/index.php/Home/Website/update_article_status/status/-1">删除</div>
-			<div class="do-item change-classify" url="/microweb/index.php/Home/Website/change_article_type/type_id/">修改分类
+			<div class="do-item status-article" url="/microweb_git/index.php/Home/Website/update_article_status/status/0">启用</div>
+			<div class="do-item status-article" url="/microweb_git/index.php/Home/Website/update_article_status/status/1">禁用</div>
+			<div class="do-item status-article" url="/microweb_git/index.php/Home/Website/update_article_status/status/-1">删除</div>
+			<div class="do-item change-classify" url="/microweb_git/index.php/Home/Website/change_article_type/type_id/">修改分类
 				<ul>
 					<?php if(is_array($type_list)): $i = 0; $__LIST__ = $type_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li value="<?php echo ($vo["id"]); ?>"><?php echo ($vo["name"]); ?></li><?php endforeach; endif; else: echo "" ;endif; ?>
-					<?php if(empty($type_list)): ?><li><a id="add-type-a" href="/microweb/index.php/Home/Website/set_classify/site_id/<?php echo ($site_id); ?>">添加分类</a></li><?php endif; ?>
+					<?php if(empty($type_list)): ?><li><a id="add-type-a" href="/microweb_git/index.php/Home/Website/set_classify/site_id/<?php echo ($site_id); ?>">添加分类</a></li><?php endif; ?>
 				</ul>
 			</div>
 			<div class="do-item cencel-moro-do">退出批量操作</div>
@@ -137,7 +137,7 @@
 								    <span class="caret"></span>
 								  </button>
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu<?php echo ($k); ?>" data-id="<?php echo ($vo["id"]); ?>" data-type='<?php echo ($vo["type_id"]); ?>'>
-								  		<li class="article-option-edit"><a href="/microweb/index.php/Home/Website/add_article/article_id/<?php echo ($vo["id"]); ?>">编辑</a></li>
+								  		<li class="article-option-edit"><a href="/microweb_git/index.php/Home/Website/add_article/article_id/<?php echo ($vo["id"]); ?>">编辑</a></li>
 									  	<li class="article-option-del aritcle-status-item" data-status="-1"><a>删除</a></li>
 									  	<?php if($vo['status'] == 1): ?><li class="article-option-apply aritcle-status-item" data-status="0"><a>启用</a>
 									  	<?php else: ?>
@@ -202,7 +202,7 @@
 						  	<?php if(is_array($type_list)): $i = 0; $__LIST__ = $type_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li data='<?php echo ($vo["id"]); ?>'><a><?php echo ($vo["name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 						  </ul>
 						</div>
-						<?php if(empty($type_list)): ?><div class="empty-info">还没有分类,先去<a id="add-type-a" href="/microweb/index.php/Home/Website/set_classify/site_id/<?php echo ($site_id); ?>">添加分类</a>吧</div><?php endif; ?>
+						<?php if(empty($type_list)): ?><div class="empty-info">还没有分类,先去<a id="add-type-a" href="/microweb_git/index.php/Home/Website/set_classify/site_id/<?php echo ($site_id); ?>">添加分类</a>吧</div><?php endif; ?>
 					</div>
 				</form>
 	         </div>
@@ -210,7 +210,7 @@
 	            <button type="button" class="btn btn-default" 
 	               data-dismiss="modal">关闭
 	            </button>
-	            <button id="change-article-type" type="button" target-url="/microweb/index.php/Home/Website/change_article_type/type_id/" class="btn btn-primary">
+	            <button id="change-article-type" type="button" target-url="/microweb_git/index.php/Home/Website/change_article_type/type_id/" class="btn btn-primary">
 	               提交更改
 	            </button>
 	         </div>
@@ -258,7 +258,7 @@
 	</div>
 <div id="top-alert-back">
 
-	<script type="text/javascript" src="/microweb/Public/Home/js/website/article.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Home/js/website/article.js"></script>
 
 </body>
 </html>

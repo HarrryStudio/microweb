@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="/microweb/Public/Static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/panel/viwepager.css">
-    <!--<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/panel/alert_info.css">-->
-    <script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
-    <script type="text/javascript" src="/microweb/Public/Static/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/microweb/Public/Home/js/panel/viwepager.js"></script>
-    <!--<script type="text/javascript" src="/microweb/Public/Home/js/panel/alert_info.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/microweb_git/Public/Static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/panel/viwepager.css">
+    <!--<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/panel/alert_info.css">-->
+    <script type="text/javascript" src='/microweb_git/Public/Static/jquery-2.0.3.min.js'></script>
+    <script type="text/javascript" src="/microweb_git/Public/Static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/microweb_git/Public/Home/js/panel/viwepager.js"></script>
+    <!--<script type="text/javascript" src="/microweb_git/Public/Home/js/panel/alert_info.js"></script>-->
 </head>
 <body>
     <div id="PicturesShow">
@@ -28,9 +28,9 @@
                 </div>
 
                 <div class="img">
-                    <img type="1" src="/microweb/Public/Home/images/panel/such1.jpg">
-                    <img type="2" src="/microweb/Public/Home/images/panel/such2.jpg">
-                    <img type="3" src="/microweb/Public/Home/images/panel/such4.jpg">
+                    <img type="1" src="/microweb_git/Public/Home/images/panel/such1.jpg">
+                    <img type="2" src="/microweb_git/Public/Home/images/panel/such2.jpg">
+                    <img type="3" src="/microweb_git/Public/Home/images/panel/such4.jpg">
                 </div>
             </div>
             <div style="clear: both"></div>
@@ -47,7 +47,7 @@
                                         <?php echo ($vo["name"]); ?>
                                     </td>
                                     <td class="identification">
-                                        <img src="/microweb/Public/Home/images/panel/viwepagerAdd2.png">
+                                        <img src="/microweb_git/Public/Home/images/panel/viwepagerAdd2.png">
                                     </td>
                                 </tr><?php endforeach; endif; ?>
                         </table><?php endif; ?>

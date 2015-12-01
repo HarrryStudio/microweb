@@ -3,14 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>首页|微网站生成系统</title>
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/index.css" />
-	<script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
-	<script type="text/javascript" src="/microweb/Public/Home/js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/index.css" />
+	<script type="text/javascript" src='/microweb_git/Public/Static/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="/microweb_git/Public/Home/js/index.js"></script>
 </head>
 
 <body>
 	<div id="scoller_top">
-	<img id="top_img" src="/microweb/Public/Home/images/back/logo.png">
+	<img id="top_img" src="/microweb_git/Public/Home/images/back/logo.png">
 		<ul>
 			<a href="#first_screen"><li>首页</li></a>
 			<a href="#second_screen"><li>功能</li></a>
@@ -74,12 +74,12 @@
 			<div id="forth_screen_title">联系我们</div>
 			<div id="forth_screen_info_left" class="tilt">
 				<div class="forth_left_show recover">
-					<img src="/microweb/Public/Home/images/back/clipboard.png">
+					<img src="/microweb_git/Public/Home/images/back/clipboard.png">
 				</div>
 			</div>
 			<div id="forth_screen_info_right" class="tilt">
 				<div class="forth_right_show recover">
-					<img src="/microweb/Public/Home/images/back/link.png">
+					<img src="/microweb_git/Public/Home/images/back/link.png">
 					<p>qq:1009291860;&emsp;&emsp;&emsp;<br/>
 						  1125269680&emsp;&emsp;
 					<p>微信：1009291860&emsp;&emsp;

@@ -3,16 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo ($meta_title); ?> | 微网站生成系统</title>
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Static/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/base.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/side.css">
-	<script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
-	<script type="text/javascript" src="/microweb/Public/Static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Home/js/base.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Static/uploadifive/jquery.uploadifive.min.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Static/uploadify/jquery.uploadify.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Static/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/side.css">
+	<script type="text/javascript" src='/microweb_git/Public/Static/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="/microweb_git/Public/Static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Home/js/base.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Static/uploadifive/jquery.uploadifive.min.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Static/uploadify/jquery.uploadify.min.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/website/resource.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_git/Public/Home/css/website/resource.css">
 
 </head>
 <body>
@@ -33,9 +33,9 @@
 			<div class="login-bar">
 				<div class="head-icon">
 					<a href="<?php echo U('Account/personalDetails');?>">
-						<?php if(empty($head_img)): ?><img src="/microweb/Public/Home/images/head_img/user.png" alt="head-img" class="head-img">
+						<?php if(empty($head_img)): ?><img src="/microweb_git/Public/Home/images/head_img/user.png" alt="head-img" class="head-img">
 						<?php else: ?>
-							<img src="/microweb/Uploads/<?php echo ($head_img); ?>" alt="head-img"><?php endif; ?>
+							<img src="/microweb_git/Uploads/<?php echo ($head_img); ?>" alt="head-img"><?php endif; ?>
 					</a>
 				</div>
 				
@@ -56,26 +56,26 @@
 		<!-- 边栏 -->
 		<div class="side">
 			<div class="side-head">网站资源</div>
-			<div class="side-item"><a href="/microweb/index.php/Home/Website/album_list/site_id/<?php echo ($site_id); ?>">相册</a></div>
-			<div class="side-item"><a href="/microweb/index.php/Home/Website/article_list/site_id/<?php echo ($site_id); ?>">文章</a></div>
+			<div class="side-item"><a href="/microweb_git/index.php/Home/Website/album_list/site_id/<?php echo ($site_id); ?>">相册</a></div>
+			<div class="side-item"><a href="/microweb_git/index.php/Home/Website/article_list/site_id/<?php echo ($site_id); ?>">文章</a></div>
 		</div>
 		<!-- /边栏 -->
 		<!-- 内容区 -->
 		<div class="content">
-			<?php $site_id = (int)session('site_id'); if( $site_id > 0 ){ echo '<div class="to-panel"><a href="/microweb/index.php/Home/Panel/index/site_id/'.$site_id.'">前往编辑页</a></div>'; } ?>
+			<?php $site_id = (int)session('site_id'); if( $site_id > 0 ){ echo '<div class="to-panel"><a href="/microweb_git/index.php/Home/Panel/index/site_id/'.$site_id.'">前往编辑页</a></div>'; } ?>
 			
 	<div class="centent-head">图册</div>
 	<input id="site_id" type="hidden" value="<?php echo ($site_id); ?>">
-	<input id="create_album_url" type="hidden" value="/microweb/index.php/Home/Website/create_album">
-	<input id="edit_album_url" type="hidden" value="/microweb/index.php/Home/Website/edit_album">
-	<input id="del_album_url" type="hidden" value="/microweb/index.php/Home/Website/del_album">
+	<input id="create_album_url" type="hidden" value="/microweb_git/index.php/Home/Website/create_album">
+	<input id="edit_album_url" type="hidden" value="/microweb_git/index.php/Home/Website/edit_album">
+	<input id="del_album_url" type="hidden" value="/microweb_git/index.php/Home/Website/del_album">
 	<?php if(is_array($album_list)): foreach($album_list as $key=>$vo): ?><div class="album-item" data-id="<?php echo ($vo["id"]); ?>">
 			<div class="del_album-bar"><span>&#10006;</span></div>
 			<div>
 				<div class="album-name">
 					<label class="album-name-label"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"><?php echo ($vo['name']); ?></label>
 					<input class="album-name-input form-control" value="<?php echo ($vo['name']); ?>">
-					<a class="album-name-button" href="/microweb/index.php/Home/Website/photo_list/album_id/<?php echo ($vo["id"]); ?>">打开</a>
+					<a class="album-name-button" href="/microweb_git/index.php/Home/Website/photo_list/album_id/<?php echo ($vo["id"]); ?>">打开</a>
 				</div>
 				<!-- <img src="" alt="<?php echo ($vo["name"]); ?>"> -->
 				<div class="album-info">
@@ -117,7 +117,7 @@
 	            <button type="button" class="btn btn-default" 
 	               data-dismiss="modal">关闭
 	            </button>
-	            <button id="create_new_album" type="button" target_url="/microweb/index.php/Home/Website/add_site" class="btn btn-primary">
+	            <button id="create_new_album" type="button" target_url="/microweb_git/index.php/Home/Website/add_site" class="btn btn-primary">
 	               创建
 	            </button>
 	         </div>
@@ -154,7 +154,7 @@
 	</div>
 <div id="top-alert-back">
 
-	<script type="text/javascript" src="/microweb/Public/Home/js/website/resource.js"></script>
+	<script type="text/javascript" src="/microweb_git/Public/Home/js/website/resource.js"></script>
 
 </body>
 </html>

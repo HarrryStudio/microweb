@@ -6,6 +6,7 @@ class PublicController extends Controller {
 
 	public function login()
 	{
+        
 		$this->display();
 	}
 
