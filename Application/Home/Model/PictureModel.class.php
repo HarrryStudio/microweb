@@ -9,6 +9,9 @@ use Think\Upload;
  */
 
 class PictureModel extends Model{
+
+    protected $trueTableName='home_picture';
+    
     /**
      * 自动完成
      * @var array
