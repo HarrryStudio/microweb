@@ -51,10 +51,13 @@ class AlbumModel extends Model{
 	 */
 	public function get_photo_list($album_id){
 		$map['album_id'] = $album_id;
-		$map['picture.status'] = 0;
+		$map['home_picture.status'] = 0;
 		$Photo = M('photo');
 		$result = $Photo->field('photo.id,savename,savepath,size')
-						->join('left join album on photo.album_id = album.id right join picture on photo.pic_id = picture.id')
+						// ->join('left join album on photo.album_id = album.id right join picture on photo.pic_id = picture.id')
+						// author zhangbo    
+						// modify  split  admin  & home   picture table
+						->join('left join album on photo.album_id = album.id right join home_picture on photo.pic_id = home_picture.id')
 						->where($map)
 						->order('photo.create_time desc')
 						->select();
