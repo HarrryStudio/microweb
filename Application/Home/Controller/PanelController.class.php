@@ -27,7 +27,7 @@ class PanelController extends BaseController {
         $site_info = M()->table('site_info')->field('theme')->where(array('id'=>$site_id))->find();
 
         $controller_list = M('controller')
-                            ->field('id,name,intro,url,icon')
+                            ->field('id,name,intro,cname,icon')
                             ->where(array('forbidden' => 0 , 'status' => 0))
                             ->order('sort')
                             ->select();
@@ -274,8 +274,38 @@ class PanelController extends BaseController {
      * @return [type]          [description]
      */
     public function control_widget($name,$is_edit){
-
+        $class =  $item['name'] . WIDGET_NAME;
+        import(MODULE_NAME ."/" . WIDGET_NAME .$class);
+        if(class_exists($class)) {
+            $widget = new $class($item);
+        }else {
+            $this->show(':( 没有找到控件');
+            return;
+        }
+        $widget->controller($is_edit);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
 *获取栏目信息
