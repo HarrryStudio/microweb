@@ -3,19 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo ($meta_title); ?> | 微网站生成系统</title>
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Static/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/base.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/side.css">
-	<script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
-	<script type="text/javascript" src="/microweb/Public/Static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Home/js/base.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Static/uploadifive/jquery.uploadifive.min.js"></script>
-	<script type="text/javascript" src="/microweb/Public/Static/uploadify/jquery.uploadify.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Static/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Home/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Home/css/side.css">
+	<script type="text/javascript" src='/microweb_v2/Public/Static/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="/microweb_v2/Public/Static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/microweb_v2/Public/Home/js/base.js"></script>
+	<script type="text/javascript" src="/microweb_v2/Public/Static/uploadifive/jquery.uploadifive.min.js"></script>
+	<script type="text/javascript" src="/microweb_v2/Public/Static/uploadify/jquery.uploadify.min.js"></script>
 	<script type="text/javascript" >
-		var APP = "/microweb";
+		var APP = "/microweb_v2";
 	</script>
 	
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/website/index.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Home/css/website/index.css">
 
 </head>
 <body>
@@ -37,9 +37,9 @@
 			<div class="login-bar">
 				<div class="head-icon">
 					<a href="<?php echo U('Account/personalDetails');?>">
-						<?php if(empty($head_img)): ?><img src="/microweb/Public/Home/images/head_img/user.png" alt="head-img" class="head-img">
+						<?php if(empty($head_img)): ?><img src="/microweb_v2/Public/Home/images/head_img/user.png" alt="head-img" class="head-img">
 						<?php else: ?>
-							<img src="/microweb/Uploads/<?php echo ($head_img); ?>" alt="head-img"><?php endif; ?>
+							<img src="/microweb_v2/Uploads/<?php echo ($head_img); ?>" alt="head-img"><?php endif; ?>
 					</a>
 				</div>
 				<?php if(is_login()): ?><a onclick="return confirm('确定要退出?')" class="login-status logout-butotn" href="<?php echo U('Login/logout');?>">退出</a>
@@ -60,18 +60,18 @@
 		
 	<div class="side">
 		<div class="side-head">我的网站</div>
-		<div class="side-item"><a href="/microweb/index.php/Home/Website/index.html">网站列表</a></div>
+		<div class="side-item"><a href="/microweb_v2/index.php/Home/Website/index.html">网站列表</a></div>
 	</div>
 
 		<!-- /边栏 -->
 		<!-- 内容区 -->
 		<div class="content">
 			
-	<input id="delete_site_url" type="hidden" value="/microweb/index.php/Home/Website/delete_site">
+	<input id="delete_site_url" type="hidden" value="/microweb_v2/index.php/Home/Website/delete_site">
 	<input id="compile_site_url" type="hidden" value="<?php echo U('Panel/index');?>">
-	<input id="download_site_url" type="hidden" value="/microweb/index.php/Home/Website/download_site">
+	<input id="download_site_url" type="hidden" value="/microweb_v2/index.php/Home/Website/download_site">
 	
-	<input id="resource_management_site_url" type="hidden" value="/microweb/index.php/Home/Website/album_list">
+	<input id="resource_management_site_url" type="hidden" value="/microweb_v2/index.php/Home/Website/album_list">
 	<div class="centent-head">
 		网站列表
 	</div>
@@ -125,7 +125,7 @@
 				</button>
 			</div>
 		</div><?php endforeach; endif; ?>
-	<?php if(count($site_list) < C('MAX_SITE_NUM')): ?><div target-url="/microweb/index.php/Home/Website/check_site_num" class="add_site_button" type="button">
+	<?php if(count($site_list) < C('MAX_SITE_NUM')): ?><div target-url="/microweb_v2/index.php/Home/Website/check_site_num" class="add_site_button" type="button">
 		<div class="add-button">&#10010;</div>
 	</div><?php endif; ?>
 	<!-- 模态框（Modal） -->
@@ -158,7 +158,7 @@
 	            <button type="button" class="btn btn-default" 
 	               data-dismiss="modal">关闭
 	            </button>
-	            <button id="create_new_site" type="button" target_url="/microweb/index.php/Home/Website/add_site" class="btn btn-primary">
+	            <button id="create_new_site" type="button" target_url="/microweb_v2/index.php/Home/Website/add_site" class="btn btn-primary">
 	               提交更改
 	            </button>
 	         </div>
@@ -224,7 +224,7 @@
 	</div>
 </div>
 	
-	<script type="text/javascript" src="/microweb/Public/Home/js/website/index.js"></script>
+	<script type="text/javascript" src="/microweb_v2/Public/Home/js/website/index.js"></script>
 
 </body>
 </html>

@@ -33,10 +33,10 @@ $(function(){
 	$('.controller-item').each(function(){
 		this.ondragstart = function(event){
 			console.log("dragStart");
-	        event.dataTransfer.setData("Text", $(this).attr('index'));
+	        event.dataTransfer.setData("Text", $(this).attr('name'));
 		}
 	})
-	// 鼠标移除panel时隐藏 占位div
+	// 鼠标移出panel时隐藏 占位div
 	$('body')[0].ondragover = function(event){
 		panelFrame.window.dragLeave(event);  
 	}
@@ -55,9 +55,9 @@ $(function(){
 		footToUp();
 	})
 	
-	$('.footer-nav-button.back-img').on('click',function(){
+	$('<div class="footer-nav-bu"></div>tton.back-img').on('click',function(){
 		$('.footer-bar').animate({"top" : '-200px'},250);
-		footToUp();
+		footToUp();		
 	})
 	//隐藏 主题,背景页面
 	$('body').on('click',function(e){
@@ -322,17 +322,17 @@ function reFirstLast(){
 }
 /**
  * 在iframe中创建新的controller 或者编辑
- * @param index controller的id
+ * @param name controller的cname
  */
-function add_controller(index,is_edit){
+function add_controller(cname,is_edit){
 	//隐藏占位符
 	//var iframe = getPanelFrame();
 	// console.log(iframe);
 	is_edit = is_edit || 0;
 	$(getPro()).hide();
-	var url = $('.controller-item[index='+index +']').attr('data-url');
+	var url = $('#control_widget_url')+cname+"/is_edit/"+is_edit;
 	$.layer({
-		html:"<iframe width='800px' height='400px' name='controEdit' src='"+$('#contro-root').val()+url+"/is_edit/"+is_edit+"'></iframe>",
+		html:"<iframe width='800px' height='400px' name='controEdit' src='"+url+"'></iframe>",
 		buttonCancel:true,
 		buttonSureText:"保存",
 		buttonCancelText:"取消",
@@ -346,7 +346,6 @@ function add_controller(index,is_edit){
             }
 		}
 	});
-	
 }
 /**
  * 添加新栏目

@@ -11,10 +11,20 @@ class UserColumnModel extends Model{
 		array('url','/^([A-Za-z0-9_]){1,20}+$/','栏目名由1-20位字母或数字或下划线组成',self::MODEL_BOTH),
 	);
 
-	public function get_column_info($site_id){
-    	 $result = $this->field('user_column.id,name,forbidden,sort,url,savepath,savename')
-                     ->join('left join picture on user_column.icon = picture.id')
-					 ->where(array('site_id' => $site_id))
+    /**
+     * 栏目信息
+     * @param  int    $site_id    要查询的网站id
+     * @param  bool   $forbidden  是否在乎forbidden
+     * @return bool|array     false 查询失败    array 查询结果
+     */
+	public function get_column_info($site_id,$forbidden = false){
+        $where['a.site_id'] = $site_id;
+        if($forbidden){
+            $where['a.forbidden'] = 0;
+        }
+    	$result = $this->alias('a')->field('a.id, a.name, a.forbidden, a.sort, a.url, b.savepath, b.savename')
+                     ->join('left join picture as b on a.icon = b.id')
+					 ->where($where)
 					 ->order('sort')
 					 ->select();
 		if(!$result){
@@ -28,39 +38,80 @@ class UserColumnModel extends Model{
 		return $result;
     }
 
-    public function add_column($pic_id = null){
-        //新建html
-        $m = M();
-        $m->startTrans();
-        $html_id = $m->table('html')->add(array('html'=>''));
-        if(!$html_id){
-            $m->rollback();
-            $this->error = '生成页面失败';
+    /**
+     * @return string  初始化的json字符串
+     * @author 凌端化
+     */
+    private function init_html_json(){
+        return json_encode( array(  "header" => "","content" => array()  ,"footer" => "" ) );
+    }
+
+    /**
+     * 初始化网页(栏目)
+     * @param $site_id 网站id
+     * @return boolean  成功与否
+     * @author 凌端化
+     */
+    public function initColumns($site_id){
+        /*获取 后台设置的nav*/
+        $nav = M('topic as a')->field('a.id, a.name, a.sort , a.url, a.icon, CONCAT(savepath,savename) as icon_url')
+            ->join('left join picture as b on a.icon = b.id')
+            ->where(array('a.status'=>0,'a.forbidden'=>0))
+            ->select();
+        if($nav === false){
             return false;
         }
+
+        $datalist = [];
+
+        /*初始化 html.json */
+        $data['html'] = $this->init_html_json();
+
+        /*新建空白html 并生成对应用户的nav*/
+        foreach ($nav as $key => $value) {
+            $data['site_id'] = $site_id;
+            $data['name']    = $value['name'];
+            $data['sort']    = $key + 1;
+            $data['url']     = $value['url'];
+            $data['icon']    = $value['icon'];
+
+            $datalist[] = $data;
+        }
+
+        return $this->addAll($datalist);
+    }
+
+    /**
+     * 添加栏目
+     * @param null $pic_id  栏目图标id
+     * @return bool 成功与否
+     * @update harrry 2015-12-3
+     */
+    public function add_column($pic_id = null){
         $site_id = session("site_id");
+        if(empty($site_id)){
+            $this->error = '没有网站';
+            return false;
+        }
         //添加栏目信息
         $max = M()->table("user_column")
-                   ->where(array('site_id' => $site_id ))
-                   ->max('sort');
-        
+            ->where(array('site_id' => $site_id ))
+            ->max('sort');
+
         $data['site_id'] = $site_id;
-        $data['html_id'] = $html_id;
         $data['name'] = I("post.name");
         $data['sort'] = (int)$max + 1;
         $data['url'] = I("post.link");
+        $data['html'] = $this->init_html_json();
         if($pic_id > 0){
-	        $data['icon'] = $pic_id;
+            $data['icon'] = $pic_id;
         }
-        $column_id = M()->table("user_column")->data($data)->add();
-        // echo M()->getLastSql();
-        if(!$column_id){
-        	$m->rollback();
-            $this->error = '添加失败';
-            return;
+        if( $this->create($data) && ($column_id = $this->add()) ){
+            $data['column_id'] = $column_id;
+        }else{
+            return false;
         }
-        $m->commit();
-        $data['column_id'] = $column_id;
+
         return $data;
     }
 
@@ -97,5 +148,57 @@ class UserColumnModel extends Model{
     	}
     	$this->commit();
     	return true;
+    }
+
+
+    public function get_html_json($colnum_id){
+        $result = $this->field('html')->where(array('id' => $colnum_id))->find();
+        return $result;
+    }
+
+    public function get_nav_list($site_id){
+        $nav_list = $this->alias('a')
+            ->field('a.id , a.name, a.sort, a.forbidden, a.url, savepath, savename')
+            ->join('left join picture as b on a.icon = b.id')
+            ->where(array('a.site_id' => $site_id , 'a.forbidden' => 0))
+            ->order('sort')
+            ->select();
+        $root = C('UPLOAD_ROOT');
+        foreach ($nav_list as $key => $value) {
+            $nav_list[$key]['icon_url'] = $root.$value['savepath'].$value['savepath'];
+        }
+        return $nav_list;
+    }
+
+
+    /**
+     * 修改html
+     * @return bool  成功与否
+     * @author 凌端化
+     * @create 2015-12-3
+     */
+    public function writeHtml(){
+        $id = I('get.column_id');
+        $content = I('content');
+        if(!empty( $content )){
+            $result = M()->table('html')
+                ->where(array('id'=>$id))
+                ->save( array('html'=>$content) );
+            if($result === false){
+                $this->error = 'html保存失败';
+                return false;
+            }
+        }
+        $theme = I('theme');
+        $back = I('back');
+        if(!empty( $theme ) || !empty( $back ) )
+            $result = M()->table('site_info')
+                ->where(array('id'=>session('site_id')))
+                ->save(array('theme'=>I('theme'),'back'=>I('back')));
+        if($result === false){
+            $this->error = 'info保存失败';
+            return false;
+        }
+        return true;
     }
 }

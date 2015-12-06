@@ -132,89 +132,69 @@ class WebsiteController extends BaseController {
     	}
     	$this->ajaxReturn($ajax);
     }
+    //harrry_change :::  删除方法 init_site
 
-    /**生成静态页面*/
-    protected function init_site($site_id){
-        /*获取 后台设置的nav*/
-        $nav = M('topic as a')->field('a.id, a.name, a.sort , a.url, a.icon, CONCAT(savepath,savename) as icon_url')
-                              ->join('left join picture as b on a.icon = b.id')
-                              ->where(array('a.status'=>0,'a.forbidden'=>0))
-                              ->select();
-        if($nav === false){
-            return false;
-        }
-        $m = M();
-        $m->startTrans();
-        /*新建空白html 并生成对应用户的nav*/
-        foreach ($nav as $key => $value) {
-            $html_id = $m->table('html')->add(array('html'=>''));
-            if(!$html_id){
-                $m->rollback();
-                return false;
-            }
-            $data['site_id'] = $site_id;
-            $data['html_id'] = $html_id;
-            $data['name']    = $value['name'];
-            $data['sort']    = $key + 1;
-            $data['url']     = $value['url'];
-            $data['icon']    = $value['icon']; 
-            $column_id = $m->table('user_column')->add($data);
-            if(!$column_id){
-                $m->rollback();
-                return false;
-            }
-            $nav[$key]['column_id'] = $column_id;
-            $nav[$key]['html_id'] = $html_id;
-        }
-        $m->commit();
-        return true;
-    }
-
+    //harrry_change :::
     /**
      * 添加网站
      * create 时 model里面自动验证
      * $data[] 需要添加的数据
      * $map    条件
-     * @return $ajax 0（成功）或1（失败） [添加结果] message 提示信息
+     * return $ajax 0（成功）或1（失败） [添加结果] message 提示信息
      */
     public function add_site(){
-    	$data['site_name'] = I('post.site_name');
-    	$data['url'] = I('post.url');
-    	$data['user_id'] = session('user_info')['id'];
-    	$data['create_time'] = time();
-    	$data['update_time'] = time();
-    	$map['user_id'] = $data['user_id'];
-    	$map['status'] = 0;
-    	$SiteInfo = D("SiteInfo");
-        $SiteInfo->startTrans();
-    	$result = $SiteInfo->create($data);
 
-    	if (!$result) {
-    		$ajax['code'] = 1;
-    		$ajax['message'] = $SiteInfo->getError();
-    		$this->ajaxReturn($ajax);
-    	}
-    	else {
-    		$add_result = $SiteInfo->where($map)->add();
-    		if ($add_result) {
-                $result = $this->init_site($add_result);
-                if($result){
-    			    $ajax['code'] = 0;
-                    $SiteInfo->commit();
-                }else{
-                    $SiteInfo->rollback();
-                    $ajax['code'] = 1;
-                    $ajax['message'] = "初始化网站失败";
-                }
-    		}
-    		else {
-                $SiteInfo->rollback();
-    			$ajax['code'] = 1;
-    			$ajax['message'] = "添加失败,请稍后再试";
-    		}
-            array_push($_SESSION['site_info'], $add_result);
-	    	$this->ajaxReturn($ajax);
-    	}
+        $SiteInfo = D("SiteInfo");
+        $result = $SiteInfo->add_site();
+
+        if (!$result) {
+            $ajax['code'] = 1;
+            $ajax['message'] = $SiteInfo->getError();
+            $this->ajaxReturn($ajax);
+        }else{
+            $ajax['code'] = 0;
+            array_push($_SESSION['site_info'], $result);
+        }
+        $this->ajaxReturn($ajax);
+        return;
+
+//    	$data['site_name'] = I('post.site_name');
+//    	$data['url'] = I('post.url');
+//    	$data['user_id'] = session('user_info')['id'];
+//    	$data['create_time'] = time();
+//    	$data['update_time'] = time();
+//    	$map['user_id'] = $data['user_id'];
+//    	$map['status'] = 0;
+//    	$SiteInfo = D("SiteInfo");
+//        $SiteInfo->startTrans();
+//    	$result = $SiteInfo->create($data);
+//
+//    	if (!$result) {
+//    		$ajax['code'] = 1;
+//    		$ajax['message'] = $SiteInfo->getError();
+//    		$this->ajaxReturn($ajax);
+//    	}
+//    	else {
+//    		$add_result = $SiteInfo->where($map)->add();
+//    		if ($add_result) {
+//                $result = $this->init_site($add_result);
+//                if($result){
+//    			    $ajax['code'] = 0;
+//                    $SiteInfo->commit();
+//                }else{
+//                    $SiteInfo->rollback();
+//                    $ajax['code'] = 1;
+//                    $ajax['message'] = "初始化网站失败";
+//                }
+//    		}
+//    		else {
+//                $SiteInfo->rollback();
+//    			$ajax['code'] = 1;
+//    			$ajax['message'] = "添加失败,请稍后再试";
+//    		}
+//            array_push($_SESSION['site_info'], $add_result);
+//	    	$this->ajaxReturn($ajax);
+//    	}
     }
 
     /**

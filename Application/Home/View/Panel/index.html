@@ -64,7 +64,7 @@
 									for($j = 0; $j < 8 && $i < $count; $j ++,$i ++){
 										// echo $j .'//'.$i
 							?>
-										<div class="controller-item" draggable="true" index="{$controller_list[$i]['id']}" data-url="{$controller_list[$i]['url']}/id/{$controller_list[$i]['id']}">
+										<div class="controller-item" draggable="true" index="{$controller_list[$i]['id']}" data-name="{$controller_list[$i]['cname']}">
 											<div class="controller-icon" style="background-image:url( {:C('UPLOAD_ROOT')}{$controller_list[$i]['icon']})">
 												<div class="controller-intro">{$controller_list[$i]['intro']}</div>
 											</div>

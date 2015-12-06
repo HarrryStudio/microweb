@@ -4,9 +4,9 @@ function allow(event){
 //触发父级的弹出iframe
 function drop(event){
 	event.preventDefault();
-	var controller_id = event.dataTransfer.getData("Text");
+	var controller = event.dataTransfer.getData("Text");
 	//console.log(controller_id);
-	window.parent.add_controller(controller_id);
+	window.parent.add_controller(controller);
 }
 //显示占位符
 function dragover(event){

@@ -13,6 +13,11 @@ class SiteInfoModel extends Model{
 
 		array('url', 'checkUrl', '此二级域名已经被占用', 0, 'callback', 3)
 		);
+    protected $_auto = array (
+        array('create_time','time',1,'function'),
+        array('update_time','time',3,'function'),
+    );
+
 	/**
 	 * 取得网站列表
 	 * @param  [int] 	$user_id 		[用户id]
@@ -30,4 +35,35 @@ class SiteInfoModel extends Model{
 		$result = $this->where(array('status' => 0,'url' => $url))->find();
 		return empty($result);
 	}
+
+    /**
+     * 新建网站
+     * @return bool|mixed 错误 返回 false  成功 返回 新网站的相关数据
+     * @author 凌端化
+     */
+    public function add_site(){
+        $data['site_name'] = trim( I('post.site_name') );
+        $data['url'] = trim( I('post.url') );
+        $data['user_id'] = session('user_info')['id'];
+
+        $this->startTrans();
+
+        if( $this->create($data) && ( $result = $this->add() ) ){
+            $Column = D('UserColumn');
+            if( $Column->initColumns($result) ){
+                $this->commit();
+                return $result;
+            }else{
+                $this->rollback();
+                //$this->error = "初始化失败";
+            }
+        }else{
+            $this->rollback();
+           // $this->error = "创建失败";
+        }
+        return false;
+
+    }
+
+
 }

@@ -1,8 +1,8 @@
 <?php if (!defined('THINK_PATH')) exit();?>
-<link rel="stylesheet" type="text/css" href="/microweb/Public/Static/bootstrap/css/bootstrap.css">
-    <script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
-    <script type="text/javascript" src="/microweb/Public/Static/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/login.css">
+<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Static/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src='/microweb_v2/Public/Static/jquery-2.0.3.min.js'></script>
+    <script type="text/javascript" src="/microweb_v2/Public/Static/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Home/css/login.css">
 
 
     <form class="form-horizontal" role="form">
@@ -58,4 +58,4 @@
     </div>
 
 
-    <script type="text/javascript" src="/microweb/Public/Home/js/login.js"></script>
+    <script type="text/javascript" src="/microweb_v2/Public/Home/js/login.js"></script>

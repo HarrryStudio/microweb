@@ -3,14 +3,14 @@
 <head id = "adafd">
 	<meta charset="UTF-8">
 	<title>编辑面板|微网站生成系统</title>
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Static/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Static/layer/layer.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Static/layer/panel_theme.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/panel/index2.css">
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/panel/column.css">
-	<script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
-	<script type="text/javascript" src='/microweb/Public/Static/layer/layer.js'></script>
-	<script type="text/javascript" src="/microweb/Public/Home/js/panel/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Static/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Static/layer/layer.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Static/layer/panel_theme.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Home/css/panel/index2.css">
+	<link rel="stylesheet" type="text/css" href="/microweb_v2/Public/Home/css/panel/column.css">
+	<script type="text/javascript" src='/microweb_v2/Public/Static/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src='/microweb_v2/Public/Static/layer/layer.js'></script>
+	<script type="text/javascript" src="/microweb_v2/Public/Home/js/panel/index.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -19,7 +19,7 @@
 			<div class="logo">Logo</div>
 			<ul class="main-nav">
 				<li class="nav-item"><a class="win" href="<?php echo U('Website/index');?>" >我的网站</a></li>
-				<li class="nav-item"><a class="win" href="/microweb/index.php/Home/Website/album_list/site_id/<?php echo ($site_id); ?>" >资源管理</a></li>
+				<li class="nav-item"><a class="win" href="/microweb_v2/index.php/Home/Website/album_list/site_id/<?php echo ($site_id); ?>" >资源管理</a></li>
 				<li class="nav-item"><a class="win" href="<?php echo U('Help/index');?>" >帮助教程</a></li>
 			</ul>
 			<!-- /主导航 -->
@@ -77,7 +77,7 @@
 								<input name="dd" type="text" class="search-input" />
 							</div> -->
 							<div class="browser">
-							<iframe id="panel-frame" name="panelFrame" src="/microweb/index.php/Home/Panel/readHtml/column_id/<?php echo ($nowColumn["id"]); ?>" width="100%" height="100%">
+							<iframe id="panel-frame" name="panelFrame" src="/microweb_v2/index.php/Home/Panel/readHtml/column_id/<?php echo ($nowColumn["id"]); ?>" width="100%" height="100%">
 							</iframe>
 							</div>
 						</div>
@@ -150,7 +150,7 @@
 						<div class="theme-item default" data-id='0'>
 							
 						</div>
-						<?php if(is_array($theme_list)): $i = 0; $__LIST__ = $theme_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="theme-item change-flag" data-id='<?php echo ($vo["id"]); ?>' addr="/microweb/UserFiles/Public/Theme/<?php echo ($vo["addr"]); ?>"><img src="/microweb/Uploads/<?php echo ($vo["savepath"]); echo ($vo["savename"]); ?>"></div><?php endforeach; endif; else: echo "" ;endif; ?>
+						<?php if(is_array($theme_list)): $i = 0; $__LIST__ = $theme_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="theme-item change-flag" data-id='<?php echo ($vo["id"]); ?>' addr="/microweb_v2/UserFiles/Public/Theme/<?php echo ($vo["addr"]); ?>"><img src="/microweb_v2/Uploads/<?php echo ($vo["savepath"]); echo ($vo["savename"]); ?>"></div><?php endforeach; endif; else: echo "" ;endif; ?>
 					</div>
 					<div class="list-arrow right-arrow"></div>
 				</div>
@@ -158,12 +158,12 @@
 					<div class="list-arrow left-arrow"></div>
 					<div class="back-list">
 						<div class="back-item default" data-id='0'>
-							<!-- <img src="/microweb/Uploads/<?php echo ($vo["savepath"]); echo ($vo["savename"]); ?>"> -->
+							<!-- <img src="/microweb_v2/Uploads/<?php echo ($vo["savepath"]); echo ($vo["savename"]); ?>"> -->
 							<div class="null-back"></div>
 							<div class="back-name"><span>空</span></div>
 						</div>
 						<?php if(is_array($back_list)): $i = 0; $__LIST__ = $back_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="back-item change-flag" data-id='<?php echo ($vo["id"]); ?>'>
-								<img src="/microweb/Uploads/<?php echo ($vo["savepath"]); echo ($vo["savename"]); ?>">
+								<img src="/microweb_v2/Uploads/<?php echo ($vo["savepath"]); echo ($vo["savename"]); ?>">
 								<div class="back-name"><span><?php echo ($vo["name"]); ?></span></div>
 							</div><?php endforeach; endif; else: echo "" ;endif; ?>
 					</div>
@@ -175,14 +175,14 @@
 	</div>
 	<!-- /页脚 -->
 	<input id="contro-root" type="hidden" value="<?php echo C('CONTROLLER_ROOT_PATH');?>/" />
-	<input type="hidden" id="add-column-url" value="/microweb/index.php/Home/Panel/add_column">
-	<input type="hidden" id="forbide-column-url" value="/microweb/index.php/Home/Panel/forbide_column">
-	<input type="hidden" id="del-column-url" value="/microweb/index.php/Home/Panel/del_column">
-	<input type="hidden" id="sort-column-url" value="/microweb/index.php/Home/Panel/sort_column">
+	<input type="hidden" id="add-column-url" value="/microweb_v2/index.php/Home/Panel/add_column">
+	<input type="hidden" id="forbide-column-url" value="/microweb_v2/index.php/Home/Panel/forbide_column">
+	<input type="hidden" id="del-column-url" value="/microweb_v2/index.php/Home/Panel/del_column">
+	<input type="hidden" id="sort-column-url" value="/microweb_v2/index.php/Home/Panel/sort_column">
 	
-	<input type="hidden" id="writeHtml-url" now-column="<?php echo ($nowColumn["id"]); ?>" value="/microweb/index.php/Home/Panel/writeHtml/column_id/">
-	<input type="hidden" id="writeArticle-url" value="/microweb/index.php/Home/Panel/writeArticle/">
-	<input type="hidden" id="readHtml-url" value="/microweb/index.php/Home/Panel/readHtml/column_id/">
+	<input type="hidden" id="writeHtml-url" now-column="<?php echo ($nowColumn["id"]); ?>" value="/microweb_v2/index.php/Home/Panel/writeHtml/column_id/">
+	<input type="hidden" id="writeArticle-url" value="/microweb_v2/index.php/Home/Panel/writeArticle/">
+	<input type="hidden" id="readHtml-url" value="/microweb_v2/index.php/Home/Panel/readHtml/column_id/">
 	<div id="top-alert-back">
 		<div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">
 		      <button type="button" class="close"><span aria-hidden="true">×</span></button>
