@@ -1,2 +1,2 @@
-/Application/Runtime
-/Application/Common/Conf
+/Application/Runtime/*
+/Application/Common/Conf/*
