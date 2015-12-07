@@ -4,7 +4,7 @@ use Think\Controller;
 /**
  * 操作面板
  */
-class PanelController extends BaseController {
+class PanelController extCends BaseController {
 
     public function allowColumn($id){
        // echo session("site_id");
