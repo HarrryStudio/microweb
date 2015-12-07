@@ -1,55 +1,30 @@
 //魔方导航js
 //gaoyadong
 $(function(){
-	url = $("#url").attr("value");
-	site_id = $("#web_info").attr("value");
 	$(".pattern").click(function(){
 		$(".pattern").find("div").removeClass("hr");
 		$(this).find("div").addClass("hr");
-		var site = $(this).attr("va");
-		
-/*		switch(site){
-			case "type_a": $cs_url="/first_nav.css"; $choice=1; $index=1; break;
-			case "type_b": $cs_url="/second_nav.css"; $choice=1; break;
-			case "type_c": $cs_url="/third_nav.css"; $choice=2; break;
-			case "type_d": $cs_url="/forth_nav.css"; $choice=1; break;
-			case "type_e": $cs_url="/fifth_nav.css"; $choice=1; break;
-			case "type_f": $cs_url="/sixth_nav.css"; $choice=2; break;
-			default: return false; break;
-		}*/
 	})
 })
 
 function save(){
-	typeof($cs_url)=="undefined"? $cs_url="/first_nav.css" : $cs_url;
-	typeof($choice)=="undefined"? $choice=1 : $choice;
-	console.log('lllllllllllllllllllllllll');
-	// var ICON_ROOT_PATH = APP+"/Public/Controller/nav/Images/";
-	$index = $(".pattern").index($(".hr").parent());
+	var theme = $(".hr").parent().attr('va');
+	var url = $('#save-url').val();
 	console.log(url);
-	$.post(url,{id:site_id},function(data){
+	$.post(url,{name:"Magic",resource:"",theme: theme,option:""},function(data){
 		console.log(data);
-/*		var link1 = APP + "/Public/Controller/nav/Css" +$cs_url;
-		var  loadCss ="<link rel = 'stylesheet' href = " + link1 + " />";
-		$(parent.document.getElementById('panel-frame').contentDocument.head).append(loadCss);*/
-		// alert(site_id);
-		// alert($choice+"///"+data.length);
-		if ($choice==1 && data.length != 0) {
-			var html = randomadd(data);			//调用遍历添加函数	
-		}else if($choice==2 && data.length==6){
-			var html = fixadd(data);			//调用定值函数	
+		if(data.status == 1){
+			html = data['data'];
+			$status = $("#status").val();
+			if($status == 1){
+				var elem = window.parent.getOperationElem();
+				$(elem).hide().before(html).remove();
+			}else{
+				var pro = window.parent.getPro();
+				$(pro).before(html);
+			}
 		}else{
-			// alert("请重新选择导航样式"+$choice+"///"+data.length);
-			return;
-		}
-
-		var pro = window.parent.getPro();
-		$status = $("#status").val();
-		if($status == 1){
-			$elem = window.parent.getOperationElem();
-			$($elem).hide().before(html).remove();
-		}else{
-			$(pro).before(html);
+			alert("失败");
 		}
 		window.parent.$.layer.close();
 	});
@@ -96,36 +71,3 @@ console.log(data);
 	html += "</div>";
 	return html;
 }
-
-// function randomadd(){
-// 	var html="";
-
-// 	html += "<div id='show_nav' onmouseover='initController(this)'>";
-
-// 		html +="<div class='nav_all nav_one'>";
-// 			html +="<div id='one'></div><p>栏目一</p><span>></span>";
-// 		html +="</div>";
-
-// 		html +="<div class='nav_all nav_two'>";
-// 			html +="<div id='two'></div>";
-// 		html +="<p>栏目二</p><span>></span></div>";
-
-// 		html +="<div class='nav_all nav_three'>";
-// 			html +="<div id='three'></div>";
-// 		html +="<p>栏目三</p><span>></span></div>";
-
-// 		html +="<div class='nav_all nav_four'>";
-// 			html +="<div id='five'></div>";
-// 		html +="<p>栏目四</p><span>></span></div>";
-
-// 		html +="<div class='nav_all nav_five'>";
-// 			html +="<div id='five'></div>";
-// 		html +="<p>栏目五</p><span>></span></div>";
-
-// 		html +="<div class='nav_all nav_six'>";
-// 			html +="<div id='six'></div>";
-// 		html +="<p>栏目六</p><span>></span></div>";
-// 	html +="</div>";
-
-// 	return html;
-// }

@@ -30,4 +30,9 @@ class MagicWidget extends Widget
     }
 
 
+    public function index(){
+        echo "I'm widget";
+    }
+
+
 }
