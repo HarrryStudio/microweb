@@ -33,12 +33,12 @@ $(function(){
 	$('.controller-item').each(function(){
 		this.ondragstart = function(event){
 			console.log("dragStart");
-	        event.dataTransfer.setData("Text", $(this).attr('name'));
+	        event.dataTransfer.setData("Text", $(this).attr('data-name'));
 		}
 	})
 	// 鼠标移出panel时隐藏 占位div
 	$('body')[0].ondragover = function(event){
-		panelFrame.window.dragLeave(event);  
+		panelFrame.window.dragLeave(event);
 	}
 	//footer栏 的选择面板显示
 	$('.updown').on('click',function(){
@@ -54,10 +54,10 @@ $(function(){
 		$('.footer-bar').animate({"top" : 0},250);
 		footToUp();
 	})
-	
+
 	$('<div class="footer-nav-bu"></div>tton.back-img').on('click',function(){
 		$('.footer-bar').animate({"top" : '-200px'},250);
-		footToUp();		
+		footToUp();
 	})
 	//隐藏 主题,背景页面
 	$('body').on('click',function(e){
@@ -175,11 +175,11 @@ $(function(){
 	// $(document).on('click','.confirm',function(){
 	// 	confirm_load($(this).attr('href'));
 	// })
-	// 
-	// 
-	// 
+	//
+	//
+	//
 	//window.onbeforeunload = function() {return '正处于编辑,离开页面可能会丢失修改';};
-	
+
 	// $(document).on('click','a',function(event){
 	// 	event.stopPropagation();
 	// 	confirm_load($(this).attr('href'),!$(this).is('.win'));
@@ -298,7 +298,7 @@ function footToDown(){
 }
 /**
  * 得到手机的iframe
- * @return jquery对象 
+ * @return jquery对象
  */
 function getPanelFrame(){
 	return $('#panel-frame').contents();
@@ -330,7 +330,7 @@ function add_controller(cname,is_edit){
 	// console.log(iframe);
 	is_edit = is_edit || 0;
 	$(getPro()).hide();
-	var url = $('#control_widget_url')+cname+"/is_edit/"+is_edit;
+	var url = $('#control-widget-url').val()+cname+"/is_edit/"+is_edit;
 	$.layer({
 		html:"<iframe width='800px' height='400px' name='controEdit' src='"+url+"'></iframe>",
 		buttonCancel:true,
@@ -374,7 +374,7 @@ function newColumn(column_info){
 		$(tr).attr("data-icon",column_info.icon_url);
 		style = 'background-image:url('+column_info.icon_url+')';
 	}
-	
+
 	$(tr).attr("data-forbide",0);
 	$(tr).attr("data-sort",column_info.sort);
 	$(tr).attr("index",column_info.column_id);
@@ -459,7 +459,7 @@ function addColumnEvent(){
 				})
 			}
 		});
-		
+
 	});
 	//及时查看图片效果
 	$(document).on('change',"#add_column_icon",function(){
@@ -470,7 +470,7 @@ function addColumnEvent(){
             reader.onload = function (e) {
                 var urlData = this.result;
                 document.getElementById("show_icon").innerHTML = "<img src='" + urlData + "' alt='" + fileTag.name + "'/>";
-            }; 
+            };
         }else{
             return;
         }
@@ -483,7 +483,7 @@ function addColumnEvent(){
 		var link = tr.attr("data-link");
 		var icon = tr.attr("data-icon");
 		var id = tr.attr('index');
-	
+
 		var html =   "<div class='column-form'><form><input name='id' type='hidden' value='"+id+"'/>"
 					+"<div class='column-form-item'>"
 						+"<label class='column-form-label' >栏目名称：</label>"
@@ -574,7 +574,7 @@ function addColumnEvent(){
 				}
 			}
 		)
-		
+
 	})
 	// column 向上调序 功能
 	$('.column-up').click(function(){

@@ -8,6 +8,7 @@
 
 namespace Home;
 use Think\Controller;
+use Think\Think;
 
 class Widget extends Controller{
 
@@ -92,4 +93,4 @@ class Widget extends Controller{
 
 
 
-} 
+}
