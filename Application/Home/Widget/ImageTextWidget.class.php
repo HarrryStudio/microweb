@@ -1,5 +1,7 @@
 <?php
 namespace Home\Widget;
+use Home\Widget;
+
 /**
 * 
 */

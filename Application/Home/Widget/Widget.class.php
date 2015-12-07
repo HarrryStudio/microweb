@@ -8,7 +8,7 @@
 
 namespace Home\Widget;
 use Think\Controller;
-
+use Think\Think;
 class Widget extends Controller{
 
     protected $thme = null;
