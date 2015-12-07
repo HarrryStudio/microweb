@@ -143,14 +143,16 @@ class PictureModel extends Model{
      * 清除数据库中的废物数据和相对文件
      */
     public function removeFile(){
-        $trash = $this->where(array('used'=>0))->select();
+        //harrry_change ::: update
+        $trash = $this->where(array('used'=> array('lt',0) ))->select();
         $file = "";
+        $this->startTrans();
         foreach ($trash as $key => $value) {
             $file = C('UPLOAD_ROOT').$value['savepath'].$value['savename'];
             if( is_file( $file ) ){
                 $result = unlink($file);
                 if(!$result){
-                    $model->rollback();
+                    $this->rollback();
                     $this->error = "删除文件".$file."失败";
                     return false;
                 }else{
@@ -158,34 +160,37 @@ class PictureModel extends Model{
                 }
             }
         }
+        $this->commit();
     }
-
+    //harrry_change ::: update
     public function deleteFile($id){
-        
-        $info = $this->where(array('id'=>$id))->find();
-        if(empty($info)){
-            return false;
-        }
 
-        if((int)$info['used'] > 1){
-            if(!$this->where(array('id'=>$id))->setDec('used')){
-                return false;
-            }
-        }
-        $this->startTrans();
-        if(!$this->where(array('id'=>$id))->delete()){
-            return false;
-        }
-        $file = C('UPLOAD_ROOT').$info['savepath'].$info['savename'];
-        if( is_file($file) ){
-            if(@unlink($file)){
-                $this->commit();
-                return true;
-            }else{
-                $this->rollback();
-                return false;
-            }
-        }
+        $this->where(array('id'=>$id))->setDec('used');
+        
+//        $info = $this->where(array('id'=>$id))->find();
+//        if(empty($info)){
+//            return false;
+//        }
+//
+//        if((int)$info['used'] > 1){
+//            if(!$this->where(array('id'=>$id))->setDec('used')){
+//                return false;
+//            }
+//        }
+//        $this->startTrans();
+//        if(!$this->where(array('id'=>$id))->delete()){
+//            return false;
+//        }
+//        $file = C('UPLOAD_ROOT').$info['savepath'].$info['savename'];
+//        if( is_file($file) ){
+//            if(@unlink($file)){
+//                $this->commit();
+//                return true;
+//            }else{
+//                $this->rollback();
+//                return false;
+//            }
+//        }
     }
 
     /*

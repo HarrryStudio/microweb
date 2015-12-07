@@ -27,14 +27,14 @@ class PanelController extends BaseController {
         $site_info = M()->table('site_info')->field('theme')->where(array('id'=>$site_id))->find();
 
         $controller_list = M('controller')
-                            ->field('id,name,intro,url,icon')
+                            ->field('id,name,intro,cname,icon')
                             ->where(array('forbidden' => 0 , 'status' => 0))
                             ->order('sort')
                             ->select();
         $theme_list = M()->table('theme as a')
-                         ->field('a.addr,a.id,b.savepath,b.savename')
+                         ->field('a.name,a.id,b.savepath,b.savename')
                          ->join('picture as b on a.pic_id = b.id')
-                         ->where(array('a.status'=> 0,'a.addr'=>array('neq',"")))
+                         ->where(array('a.status'=> 0,'a.name'=>array('neq',"")))
                          ->select();
                          // echo M()->getLastSql();
         $back_list = M()->table('background as a')
@@ -52,114 +52,203 @@ class PanelController extends BaseController {
         $this->display();
     }
 
-    public function show_user_html($site_url,$column_url){
 
-        //M('site_info')->field('id,name,intro')where(array('id' => $site_id))->select();
-    }
-
-    
-
+    //harrry_change ::: update
+    /**
+     * 显示html
+     */
     public function readHtml(){
-        $id = I('column_id');
+        $column_id = I('column_id');
         //echo "fff".$id;
         $user_id = session('user_info')['id'];
-        $site_id = session('site_id');
-        if(empty($id)){
-            echo "还没创建任何栏目,请在右边栏目中创建";
+        if(empty($user_id)){
+            $this->error("没有找到用户");
             return;
-        }elseif(!$this->allowColumn($id)){
+        }
+        $site_id = session('site_id');
+        if(empty($site_id)){
+            $this->error("还没创建任何栏目,请在右边栏目中创建");
+            return;
+        }elseif(!$this->allowColumn($column_id)){
             //echo $id;
             //echo 'error';
             $this->error('无权访问网页');
             return;
         }
         $result = M()->table('user_column')
-                   ->field('html.html')
-                   ->join('html on html.id = user_column.html_id')
-                   ->where(array('user_column.id'=>$id))
-                   ->find();
+            ->field("html")
+            ->where(array('id'=>$column_id,'forbidden'=>0))
+            ->find();
         if(empty($result)){
             $this->error('没有找到网页');
-        }else{  
-            $this->show( $this->showHtml($user_id,$site_id,$result['html'],$id) );
+            return;
         }
-    }
 
-    public function showHtml($user_id,$site_id,$content,$now_column){
         $user_info = M()->table('user_info')->field('nickname,head_img')->find($user_id);
-       // var_dump($user_info);
-        $nav = M()->table('user_column as a')
-                  ->field('a.id , a.name, a.sort, a.forbidden, a.url, savepath,savename')
-                  ->join('left join picture as b on a.icon = b.id')
-                  ->where(array('site_id'=>$site_id))
-                  ->order('sort')
-                  ->select();
-        $root = C('UPLOAD_ROOT');
-        foreach ($nav as $key => $value) {
-            $nav[$key]['icon_url'] = $root.$value['savepath'].$value['savepath'];
+
+        $Column = D('UserColumn');
+        $json = $Column->get_html_json($column_id);
+        $content = $this->resolve_json($json);
+
+        $site_common = $this->get_site_common($site_id);
+
+        $theme_templet = $site_common['theme_templet'];
+        unset($site_common['theme_templet']);
+
+        foreach($site_common as $key => $value){
+            $this->assign($key,$value);
         }
-        $site_info = M()->table('site_info')
-                        ->field('site_name,theme,back')
-                        ->where(array('status' => 0, 'id' => $site_id))
-                        ->find();
-
-            $theme = M()->table('theme')
-                        ->field('addr')
-                        ->where(array('status' => 0, 'id' => $site_info['theme']))
-                        ->find();
-
-             $back = M()->table('background as a')
-                        ->field('a.id,savepath,savename')
-                        ->join('picture as b on a.pic_id = b.id')
-                        ->where(array('a.id' => $site_info['back'], 'a.status' => 0) )
-                        ->find();
-
         $this->assign('user_info',$user_info);
-        $this->assign('site_name',$site_info['site_name']);
-        $this->assign('nav_list',$nav);
-        $this->assign('now_column',$now_column);
-        $this->assign('theme',$theme['addr']);
-        $this->assign('back_url',$back['savepath'] . $back['savename']);
+        $this->assign('now_column',$column_id);
         $this->assign('content',$content);
-        return $this->fetch('Public/theme');
+        $this->display( $theme_templet );
+
     }
 
+    /**
+     * 找到主题的模板
+     * @param $theme_name 主题名
+     * @return string   模板地址
+     * 模板文件 是Home/View/Theme文件夹下 名为{$theme_name}_theme.html   可以没有 默认选择 theme.html
+     */
+    private function load_theme_templet($theme_name){
+        $html_name = $theme_name."_theme";
+        if(file_exists(C('THEME_HTML_ROOT').$html_name."html")){
+            return "Theme/".$html_name;
+        }else{
+            return "Theme/theme";
+        }
+    }
+
+    /**
+     * 加载主题文件
+     * @param $theme_name   文件名
+     * css,js 分别在Public/Home/theme/{$theme_name} 文件夹下 的 css文件夹下 和 js文件夹下
+     * @return data['html'] string  模板文件   ['public'] string 引入js,css文件的html脚本
+     */
+    private function load_theme_file($theme_name){
+
+        $dir_name = C('THEME_PUBLIC_ROOT').$theme_name;
+        $data = [];
+        if(is_dir($dir_name)){
+            if(is_dir($dir_name."/js")){
+                if ($dh = opendir($dir_name."/js")) {
+                    while (($file = readdir($dh)) !== false) {
+                        $data['js'] = $file;
+                        //$data['public'] .= '<script type="text/javascript" src="'.$file.'"></script>'."\n";
+                    }
+                    closedir($dh);
+                }
+            }
+            if(is_dir($dir_name."/css")){
+                if ($dh = opendir($dir_name."/css")) {
+                    while (($file = readdir($dh)) !== false) {
+                        $data['css'] = $file;
+                        //$data['public'] .= '<link rel="stylesheet" type="text/css" href="'.$file.'">'."\n";
+                    }
+                    closedir($dh);
+                }
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * 得到网站的通用信息
+     * @param $site_id  网站id
+     * @return array    通用信息
+     */
+    public function get_site_common($site_id){
+        $Column = D('UserColumn');
+
+        $site_info = M()
+            ->table('site_info')
+            ->field('site_name,theme,back')
+            ->where(array('status' => 0, 'id' => $site_id))
+            ->find();
+        $back = M()
+            ->table('background as a')
+            ->field('a.id,savepath,savename')
+            ->join('picture as b on a.pic_id = b.id')
+            ->where(array('a.id' => $site_info['back'], 'a.status' => 0) )
+            ->find();
+
+        $site_info['back'] = $back['savepath'] . $back['savename'];
+
+        $theme = M()
+            ->table('theme')
+            ->field('name')
+            ->where(array('status' => 0, 'id' => $site_info['theme']))
+            ->find();
+        $theme_file = $this->load_theme_file($theme['name']);
+
+        $theme_templet= $this->load_theme_templet($theme['name']);
+
+        $nav_list = $Column->get_nav_list($site_id);
+
+        return array(
+            'site_info'     =>  $site_info,
+            'nav_list'      =>  $nav_list,
+            'theme_templet' =>  $theme_templet,
+            'theme_file'    =>  $theme_file
+        );
+    }
+
+    /**
+     * 解析json 返回html
+     * @param  $json   json字符串
+     *  { header : {} ,
+     *   content: [
+     *       { name: , resoures : , theme :} , .....
+     *   ],
+     *    footer: {},
+     * }
+     * @return string  html
+     */
+    public function resolve_json($json){
+        $content = json_decode($json,true);
+        $widgets = [];
+        foreach($content['content'] as $item){
+            $class =  $item['name'] . WIDGET_NAME;
+            import(MODULE_NAME ."/" . WIDGET_NAME .$class);
+            if(class_exists($class)) {
+                $widgets[] = new $class($item);
+            }else {
+                continue;
+            }
+        }
+        // 页面缓存
+        ob_start();
+        ob_implicit_flush(0);
+        foreach($widgets as $widget){
+            $widget->show();
+        }
+        $content = ob_get_clean();
+        \Think\Hook::listen('view_filter',$content);
+        return $content;
+    }
+
+
+    //harrry ::: update
+    /**
+     * 修改html
+     */
     public function writeHtml(){
         $return  = array('status' => 0, 'info' => '保存成功', 'data' => '');
         $id = I('get.column_id');
         // echo $id;
-        $content = I('content');
-        $content = htmlspecialchars_decode($content);
         if(!$this->allowColumn($id)){
             $return['info'] = '无权访问网页';
             $this->ajaxReturn($return);
             return;
         }
-        $html_id = M()->table('user_column')
-                      ->field('html_id')
-                      ->where(array('user_column.id'=>$id))
-                      ->find();
+        $Column = D("UserColumn");
+        $result = $Column->writeHtml();
 
-        if(empty($html_id)){
-            $return['info'] = '没有找到网页';
-            $this->ajaxReturn($return);
-            return;
-        }
-        $result = M()->table('html')
-                     ->where(array('id'=>$html_id['html_id']))
-                     ->save( array('html'=>$content) );
-        if($result === false){
-            $return['info'] = 'html保存失败';
-            $this->ajaxReturn($return);
-            return;
-        }
-        $result = M()->table('site_info')
-                     ->where(array('id'=>session('site_id')))
-                     ->save(array('theme'=>I('theme'),'back'=>I('back')));
-        if($result === false){
-            $return['info'] = 'info保存失败';
-        }else{
+        if($result){
             $return['status'] = 1;
+        }else{
+            $return['info'] = $Column->getError();
         }
         $this->ajaxReturn($return);
     }
@@ -176,6 +265,47 @@ class PanelController extends BaseController {
         }
         $this->ajaxReturn($return);
     }
+
+
+    /**
+     * [control_widget description]
+     * @param  [type] $name    [description]
+     * @param  [type] $is_edit [description]
+     * @return [type]          [description]
+     */
+    public function control_widget($name,$is_edit){
+        $class =  $item['name'] . WIDGET_NAME;
+        import(MODULE_NAME ."/" . WIDGET_NAME .$class);
+        if(class_exists($class)) {
+            $widget = new $class($item);
+        }else {
+            $this->show(':( 没有找到控件');
+            return;
+        }
+        $widget->controller($is_edit);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
 *获取栏目信息
@@ -208,42 +338,39 @@ class PanelController extends BaseController {
     /**
     *添加编辑页右侧栏目导航信息
     *gaoyadong
+     * @update harrry 2015-12-3
     */
     public function addColumn(){
-        $pic_id = 0;
         $return  = array('status' => 0, 'info' => '保存成功', 'data' => '');
-        foreach ($_FILES as $key => $value) {
-            $file = $value['name'];
-        }
-        if(!empty($file)){
-            $info = $this->upload_column_icon();
-            if(empty($info)){
-                $return['info'] = '上传图片失败';
-                $this->ajaxReturn($return);
-                return;
+
+        $pic_info = $this->upload_column_icon();
+
+        if($pic_info === false){
+            $return['info'] = "上传图片失败";
+        }else{
+            if($pic_info > 0){
+                $pic_id = $pic_info['column_icon']['id'];
             }
-            $info = $info['column_icon'];
-            $pic_id = $info['id'];
+            $Column = D('UserColumn');
+            $result = $Column->add_column($pic_id);
+            if(!$result){
+                $return['info'] = "添加失败";
+                if( $pic_id > 0){
+                    $this->rollback_column_icon();
+                }
+            }else{
+                if( $pic_id > 0){
+                    $result['icon_url'] = C('UPLOAD_ROOT').$pic_info['savepath'].$pic_info['savename'];
+                }
+                $return['data'] = $result;
+                $return['status'] = 1;
+            }
         }
-        $Column = D('UserColumn');
-        $result = $Column->add_column($pic_id);
-        if(!$result){
-            $m->rollback();
-            $return['info'] = $Column->getError();
-            $this->ajaxReturn($return);
-            return;
-        }
-        
-        if($pic_id > 0){
-            $result['icon_url'] = C('UPLOAD_ROOT').$info['savepath'].$info['savename'];
-        }
-        $return['data'] = $result;
-        $return['status'] = 1;
         $this->ajaxReturn($return);
     }
     /**
      * 编辑 栏目column
-     * @return $id $name $url [$_file]
+     * @update harrry 2015-12-3
      */
     public function editColumn(){
         $return  = array('status' => 0, 'info' => '保存成功', 'data' => '');
@@ -253,39 +380,31 @@ class PanelController extends BaseController {
             $this->ajaxReturn($return);
             return;
         }
-        $pic_id = 0;
-        foreach ($_FILES as $key => $value) {
-            $file = $value['name'];
-        }
-        // var_dump($file);
-        if(!empty($file)){
-            $info = $this->upload_column_icon();
-            if(empty($info)){
-                $return['info'] = '上传图片失败';
-                $this->ajaxReturn($return);
-                return;
+        $pic_info = $this->upload_column_icon();
+
+
+        if($pic_info === false){
+            $return['info'] = "上传图片失败";
+        }else{
+            if($pic_info > 0){
+                $pic_id = $pic_info['column_icon']['id'];
             }
-            $info = $info['column_icon'];
-            $pic_id = $info['id'];
-        }
-        //var_dump($info);
-        $Column = D('UserColumn');
-        $result = $Column->edit_column($pic_id);
-        if($result){
-            if($pic_id > 0){  // 删除旧图片
-                $pre_pic = $Column->find(I('id')); 
-                D('picture')->deleteFile($pic_id['icon']);
-                $result['icon_url'] = C('UPLOAD_ROOT').$info['savepath'].$info['savename'];
+            $Column = D('UserColumn');
+            $result = $Column->edit_column($pic_id);
+            if(!$result){
+                $return['info'] = "修改失败";
+                if( $pic_id > 0){
+                    $this->rollback_column_icon();
+                }
+            }else{
+                if( $pic_id > 0){
+                    $result['icon_url'] = C('UPLOAD_ROOT').$pic_info['savepath'].$pic_info['savename'];
+                }
+                $return['data'] = $result;
+                $return['status'] = 1;
             }
-            $return['data'] = $result;
-            $return['status'] = 1;
-            $this->ajaxReturn($return);
-            return;
+
         }
-        if($pic_id > 0){// 删除刚刚上传的图片
-            D('picture')->deleteFile($pic_id);
-        }
-        $return['info'] = $Column->getError();
         $this->ajaxReturn($return);
     }
     /**
@@ -408,8 +527,7 @@ class PanelController extends BaseController {
         $info = $Picture->upload(
             $_FILES,
             array_merge(C('PICTURE_UPLOAD'),array('savePath'=>'column/')),
-            C('PICTURE_UPLOAD_DRIVER'),
-            C("UPLOAD_{$pic_driver}_CONFIG")
+            C('PICTURE_UPLOAD_DRIVER')
         ); 
         return $info;
     }
@@ -693,6 +811,7 @@ class PanelController extends BaseController {
         $this->assign('article_list',$article_list);
         $this->display();
     }
+
     
 
 

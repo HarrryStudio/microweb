@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+	<title>index</title>
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Static/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Theme/Public/index.css">
+	<empty name='theme '>
+		<link rel="stylesheet" type="text/css" id="theme-css" href="__USERFILES__/Public/Theme/theme-default/theme.css">
+		<script type="text/javascript" id="theme-js" src="__USERFILES__/Public/Theme/theme-default/theme.js"></script>
+	<else />
+		<link rel="stylesheet" type="text/css" id="theme-css" href="__USERFILES__/Public/Theme/{$theme}/theme.css">
+		<script type="text/javascript" id="theme-js" src="__USERFILES__/Public/Theme/{$theme}/theme.js"></script>
+	</empty>
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/PicturesShow/PicPhoneShow.css">
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/article_list/article_list_show_all.css">
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/image_text/image_text_show_all.css">
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/article_sort/article_sort_show.css">
+	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/nav/nav_all.css">
+
+	<script type="text/javascript" src='__USERFILES__/Public/Static/jquery-2.0.3.min.js'></script>
+    <script type="text/javascript" src='__USERFILES__/Public/Static/bootstrap/js/bootstrap.js'></script>
+	<script type="text/javascript" src='__USERFILES__/Public/Theme/Public/index.js'></script>
+	<script type="text/javascript" src='__JS__/panel/drag.js'></script>
+	<script type="text/javascript" src='__USERFILES__/Public/Controller/Viwepager/viwepagerPhone.js'></script>
+	<script type="text/javascript" src='__USERFILES__/Public/Controller/PicturesShow/PicPhoneShow.js'></script>
+    <script type="text/javascript" src='__USERFILES__/Public/Controller/article_list/article_list.js'></script>
+</head>
+<body>
+	<div class="side main">
+		<div class="user-bar">
+			<div class="head-icon" style="background-image:url({:C('UPLOAD_ROOT')}{$user_info.head_img})"></div>
+			<div class="user-name">{$user_info.nickname}</div>
+		</div>
+		<div class="nav-move nav-move-left"></div>
+		<div class="nav-bar">
+			<volist name="nav_list" id='vo'>
+				<if condition="$vo['id'] eq $now_column">
+					<div class="nav-item active" data-column="{$vo.id}">
+				<else />
+					<if condition="$vo['forbidden'] eq 1">
+						<div class="nav-item forbidden" data-column="{$vo.id}">
+					<else />
+						<div class="nav-item" data-column="{$vo.id}">
+					</if>
+				</if><a href="{$vo.url}.html">
+					<span class='nav-icon' style="background-image:url({$vo.icon_url})"></span>
+					<span class="nav-name">{$vo.name}</span></a>
+				</div>
+			</volist>
+		</div>
+		<div class="nav-move nav-move-right"></div>
+	</div>  
+	<div class="header main">
+		<div class="menu-button"></div>
+		<h1>{$site_name}</h1>
+	</div>
+	<div class="top-bar main zi"></div>
+	<div class="clearfix main"></div>
+	<div class="background main" <notempty name="back_url">style="background-image:url({:C('UPLOAD_ROOT')}{$back_url})"</notempty>></div>
+	<div class="center main" id="browser_frame" ondragenter='dragenter(event)' ondrop='drop(event)'>
+		{$content}
+		<div class='pro' ondragover='allow(event)'></div>
+	</div>
+	<div class="footer main">
+		<div class="footer-border"></div>
+		<div class="foot-text">
+			<p>©2015 {$site_name} 版权所有</p>
+			<p>技术支持：marchsoft</p>
+		</div>
+	</div>
+</body>
+</html>

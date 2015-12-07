@@ -4,9 +4,9 @@ function allow(event){
 //触发父级的弹出iframe
 function drop(event){
 	event.preventDefault();
-	var controller_id = event.dataTransfer.getData("Text");
+	var controller = event.dataTransfer.getData("Text");
 	//console.log(controller_id);
-	window.parent.add_controller(controller_id);
+	window.parent.add_controller(controller);
 }
 //显示占位符
 function dragover(event){
@@ -35,7 +35,7 @@ function dragLeave(event){
 	$('.pro').hide(); 
 }
 //初始化编辑框
-function initController(elem,id){
+function initController(elem,cname){
 		
 		var that = elem;
 		//移除其他operation
@@ -54,7 +54,7 @@ function initController(elem,id){
 		operation.className = 'operation-elem operation-nav-bar';
 		operation.setAttribute('data-target','0');
 		operation.setAttribute('data-controller','0');
-		operation.setAttribute('data-id',id);
+		operation.setAttribute('data-name',cname);
 		operation.innerHTML = "<div class='oparetion-item edit-controller'>编辑控件</div>"
 							// +"<div class='oparetion-item style-controller'>编辑样式</div>"
 							+"<div class='oparetion-item del-controller'>&#10006;</div>";
@@ -107,7 +107,7 @@ $(function(){
 				|| X < $('.operation-left')[0].offsetLeft || X > $('.operation-right')[0].offsetLeft){
 			}else{return;}
 		}
-		initController(this,$(this).attr('data-id'));
+		initController(this,$(this).attr('data-name'));
 	})
 
 	//*显示暂占位符*//
@@ -116,7 +116,7 @@ $(function(){
 	});
 	//*编辑控件*//
 	$(document).on('click',".oparetion-item.edit-controller",function(){
-		window.parent.add_controller($(this).parent().attr('data-id'),1);
+		window.parent.add_controller($(this).parent().attr('data-name'),1);
 	})
 	//*删除控件*//
 	$(document).on('click',".oparetion-item.del-controller",function(){
