@@ -11,7 +11,7 @@ function save(){
 	var theme = $(".hr").parent().attr('va');
 	var url = $('#save-url').val();
 	console.log(url);
-	$.post(url,{name:"Magic",resource:"",theme: theme,option:""},function(data){
+	$.post(url,{name:"Magic",resource:"",theme: theme, option:""},function(data){
 		console.log(data);
 		if(data.status == 1){
 			html = data['data'];

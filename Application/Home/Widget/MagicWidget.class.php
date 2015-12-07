@@ -31,7 +31,13 @@ class MagicWidget extends Widget
 
 
     public function index(){
-        echo "I'm widget";
+        $nav_list = D('UserColumn')->get_nav_list();
+        $this->assign('nav_list',$nav_list);
+        $this->loadtemplet($this->choose_template($data['theme']));
+    }
+
+    public function choose_template($theme_name){
+        return "one";
     }
 
 
