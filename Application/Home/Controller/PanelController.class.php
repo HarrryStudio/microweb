@@ -22,7 +22,7 @@ class PanelController extends BaseController {
             return $this->error();
         }
         session('site_id',$site_id);
-        
+
         $column_info = D('UserColumn')->get_column_info($site_id);
         $site_info = M()->table('site_info')->field('theme')->where(array('id'=>$site_id))->find();
 
@@ -272,10 +272,11 @@ class PanelController extends BaseController {
      * @param  String $name    空间名
      * @param  String $data    json数据
      */
-    public function control_widget($name,$data){
+    public function control_widget($name,$data = null){
         $class =  $name . WIDGET_NAME;
-        import(MODULE_NAME ."/" . WIDGET_NAME .$class);
-        if(class_exists($class)) {
+        import(MODULE_NAME ."/" . WIDGET_NAME . "/" .$class);
+        if(class_exists(MODULE_NAME . "\\" . WIDGET_NAME . "\\" .$class)) {
+            $class = "\\".MODULE_NAME . "\\" . WIDGET_NAME . "\\" .$class;
             $widget = new $class($data);
         }else {
             $this->show(':( 没有找到控件');
@@ -333,7 +334,7 @@ class PanelController extends BaseController {
             ->where("u.site_id=".$id)->select();
         $this->ajaxReturn($list);
     }
-    
+
     /**
     *添加编辑页右侧栏目导航信息
     *gaoyadong
@@ -493,10 +494,10 @@ class PanelController extends BaseController {
         $return  = array('status' => 0, 'info' => '调序成功', 'data' => '');
         $now_column_id = I('post.now_column_id');
         $to_column_id = I('post.to_column_id');
-        
+
         if(empty($now_column_id) || empty($to_column_id)){
             $return['info'] = "请选择要移动的栏目";
-            $this->ajaxReturn($return); 
+            $this->ajaxReturn($return);
             return;
         }
 
@@ -527,7 +528,7 @@ class PanelController extends BaseController {
             $_FILES,
             array_merge(C('PICTURE_UPLOAD'),array('savePath'=>'column/')),
             C('PICTURE_UPLOAD_DRIVER')
-        ); 
+        );
         return $info;
     }
 
@@ -610,7 +611,7 @@ class PanelController extends BaseController {
     }
     /**
      * 取得对应的文章信息
-     * @return 
+     * @return
      */
     public function article_info(){
         $map['article.id'] = I('get.article_id');
@@ -677,7 +678,7 @@ class PanelController extends BaseController {
             }
         }
 /*        $map2['album.site_id'] = session('site_id');
-        $Album = M('album'); 
+        $Album = M('album');
         $img_list = $Album->field('picture.id, picture.savepath, picture.savename')
         ->join('photo ON album.id = photo.album_id')
         ->join('picture ON photo.pic_id = picture.id')
@@ -811,7 +812,7 @@ class PanelController extends BaseController {
         $this->display();
     }
 
-    
+
 
 
 }
