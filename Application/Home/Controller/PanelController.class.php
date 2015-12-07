@@ -273,16 +273,35 @@ class PanelController extends BaseController {
      * @param  String $data    json数据
      */
     public function control_widget($name,$data = null){
+        if( ($widget = $this->load_widget($name,$data)) ) {
+            $widget->controller(!empty($data));
+        }else {
+            $this->show(':( 没有找到控件');
+        }
+    }
+
+    public function load_widget($name,$data){
         $class =  $name . WIDGET_NAME;
         import(MODULE_NAME ."/" . WIDGET_NAME . "/" .$class);
         if(class_exists(MODULE_NAME . "\\" . WIDGET_NAME . "\\" .$class)) {
             $class = "\\".MODULE_NAME . "\\" . WIDGET_NAME . "\\" .$class;
-            $widget = new $class($data);
+            return new $class($data);
         }else {
-            $this->show(':( 没有找到控件');
-            return;
+            return false;
         }
-        $widget->controller(!empty($data));
+    }
+
+
+    public function save_widget(){
+        $return = array('status' => 0, 'data' => "", 'info' => "");
+        $data = I('post.');
+        $widget = $this->load_widget($data['name'],$data);
+        $result = $widget->index();
+        if($result){
+            $return['data'] = $result;
+            $return['status'] = 1;
+        }
+        $this->ajaxReturn($return)
     }
 
 

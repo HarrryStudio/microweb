@@ -20,11 +20,15 @@ class Widget extends Controller{
 
     public $name = "";
 
-    public function __construct($theme,$resource,$option) {
+    public function __construct($theme = "", $resource = "", $option = "") {
         $this->view     = Think::instance('Think\View');
         $this->theme    = $theme;
         $this->resource = $resource;
         $this->option   = $option;
+    }
+
+    public function index(){
+        echo "I'm widget";
     }
 
 
