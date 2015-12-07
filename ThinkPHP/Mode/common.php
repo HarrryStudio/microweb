@@ -46,6 +46,7 @@ return array(
         BEHAVIOR_PATH . 'BuildLiteBehavior'.EXT,
         BEHAVIOR_PATH . 'ParseTemplateBehavior'.EXT,
         BEHAVIOR_PATH . 'ContentReplaceBehavior'.EXT,
+        APP_PATH . 'Home/Widget/Widget'.EXT,
     ),
     // 行为扩展定义
     'tags'  =>  array(
