@@ -296,12 +296,14 @@ class PanelController extends BaseController {
         $return = array('status' => 0, 'data' => "", 'info' => "");
         $data = I('post.');
         $widget = $this->load_widget($data['name'],$data);
-        $result = $widget->index();
+        ob_start();ob_implicit_flush(0);
+        $widget->index();
+        $result = ob_get_clean();
         if($result){
             $return['data'] = $result;
             $return['status'] = 1;
         }
-        $this->ajaxReturn($return)
+        $this->ajaxReturn($return);
     }
 
 

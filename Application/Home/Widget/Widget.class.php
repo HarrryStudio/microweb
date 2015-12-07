@@ -47,12 +47,12 @@ class Widget extends Controller{
         if('php' == strtolower(C('TMPL_ENGINE_TYPE'))) { // 使用PHP原生模板
             $_content   =   $content;
             // 模板阵列变量分解成为独立变量
-            extract($this->tVar, EXTR_OVERWRITE);
+            extract($this->view->get(), EXTR_OVERWRITE);
             // 直接载入PHP模板
             empty($_content)?include $templateFile:eval('?>'.$_content);
         }else{
             // 视图解析标签
-            $Template->fetch($templateFile,$this->view->tVar,C('TMPL_CACHE_PREFIX'));
+            $Template->fetch($templateFile,$this->view->get(),C('TMPL_CACHE_PREFIX'));
         }
     }
 
@@ -92,7 +92,7 @@ class Widget extends Controller{
                 }
             }
         }
-        return $data;
+        return $template_name;
     }
 
 

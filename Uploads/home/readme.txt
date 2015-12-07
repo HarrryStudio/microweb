@@ -1,0 +1,2 @@
+person头像和 
+column网站相册中的图片

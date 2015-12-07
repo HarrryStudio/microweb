@@ -1,0 +1,5 @@
+#ThinkPHP
+/Runtime/*
+/Conf/*
+/UserFiles/*
+TestController.class.php
