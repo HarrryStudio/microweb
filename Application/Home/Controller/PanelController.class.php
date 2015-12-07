@@ -212,7 +212,7 @@ class PanelController extends BaseController {
             $class =  $item['name'] . WIDGET_NAME;
             import(MODULE_NAME ."/" . WIDGET_NAME .$class);
             if(class_exists($class)) {
-                $widgets[] = new $class($item);
+                $widgets[] = new $class($item['theme'],$item['resource'],$item['config']);
             }else {
                 continue;
             }
@@ -268,21 +268,20 @@ class PanelController extends BaseController {
 
 
     /**
-     * [control_widget description]
-     * @param  [type] $name    [description]
-     * @param  [type] $is_edit [description]
-     * @return [type]          [description]
+     * 编辑控件 移交给具体类实现
+     * @param  String $name    空间名
+     * @param  String $data    json数据
      */
-    public function control_widget($name,$is_edit){
-        $class =  $item['name'] . WIDGET_NAME;
+    public function control_widget($name,$data){
+        $class =  $name . WIDGET_NAME;
         import(MODULE_NAME ."/" . WIDGET_NAME .$class);
         if(class_exists($class)) {
-            $widget = new $class($item);
+            $widget = new $class($data);
         }else {
             $this->show(':( 没有找到控件');
             return;
         }
-        $widget->controller($is_edit);
+        $widget->controller(!empty($data));
     }
 
 
