@@ -1,5 +1,6 @@
 <?php
 namespace Home\Widget;
+use Home\Widget;
 /**
  * 文章列表控件
  * Created by zhangbo
@@ -9,15 +10,15 @@ namespace Home\Widget;
 class ArticleListWidget extends Widget
 {
 
-  function __construct($theme,$resource,$option)
+  function __construct($resource,$option)
   {
-    parent::__construct($theme,$resource,$option);
+    parent::__construct($resource,$option);
     $this->name = 'article_list';
   }
 
   public function controller($is_edit)
   {
-
+    
     $this->display('panel/'.$this->name);
   }
 

@@ -15,7 +15,7 @@ class TestController extends Controller
 	public function articlelist()
 	{
 		$ArticleList = new \Home\Widget\ArticleListWidget();
-		var_dump($ArticleList);
+		$ArticleList->Controller();
 	}
 }
 
