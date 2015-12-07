@@ -1,6 +1,5 @@
 <?php
 namespace Home\Widget;
-use Home\Widget;
 /**
  * 文章列表控件
  * Created by zhangbo

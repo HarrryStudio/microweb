@@ -6,9 +6,8 @@
  * Time: 20:27
  */
 
-namespace Home;
+namespace Home\Widget;
 use Think\Controller;
-use Think\Think;
 
 class Widget extends Controller{
 
@@ -93,4 +92,4 @@ class Widget extends Controller{
 
 
 
-}
+} 
