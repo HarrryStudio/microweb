@@ -1,5 +1,6 @@
 <?php
-namespace Home\Weight;
+namespace Home\Widget;
+use Home\Widget;
 /**
  * 文章列表控件
  * Created by zhangbo
@@ -8,13 +9,28 @@ namespace Home\Weight;
  */
 class ArticleListWidget extends Widget
 {
-  private $name;
-  private $index;
-  function __construct($name,$index)
+
+  function __construct($theme,$resource,$option)
   {
-    $this::name=$name;
-    $this::name=$name;
+    parent::__construct($theme,$resource,$option);
+    $this->name = 'article_list';
   }
+
+  public function controller($is_edit)
+  {
+
+    $this->display('panel/'.$this->name);
+  }
+
+  public function get_theme_list()
+  {
+
+  }
+
+
+
+
+
   protected function getDate()
   {
 
