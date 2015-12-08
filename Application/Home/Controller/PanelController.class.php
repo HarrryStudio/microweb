@@ -134,7 +134,7 @@ class PanelController extends BaseController {
             if(is_dir($dir_name."/js")){
                 if ($dh = opendir($dir_name."/js")) {
                     while (($file = readdir($dh)) !== false) {
-                        $data['js'] = $file;
+                        $data['js'][] = $file;
                         //$data['public'] .= '<script type="text/javascript" src="'.$file.'"></script>'."\n";
                     }
                     closedir($dh);
@@ -143,7 +143,7 @@ class PanelController extends BaseController {
             if(is_dir($dir_name."/css")){
                 if ($dh = opendir($dir_name."/css")) {
                     while (($file = readdir($dh)) !== false) {
-                        $data['css'] = $file;
+                        $data['css'][] = $file;
                         //$data['public'] .= '<link rel="stylesheet" type="text/css" href="'.$file.'">'."\n";
                     }
                     closedir($dh);
@@ -296,11 +296,22 @@ class PanelController extends BaseController {
         $return = array('status' => 0, 'data' => "", 'info' => "");
         $data = I('post.');
         $widget = $this->load_widget($data['name'],$data);
-        $result = $widget->index();
-        if($result){
-            $return['data'] = $result;
-            $return['status'] = 1;
+        $site_id = session('site_id');
+        if(empty($site_id)){
+            $result['info'] = "没有找到网站";
+        }else{
+            ob_start();ob_implicit_flush(0);
+            $widget->index($site_id);
+            $result = ob_get_clean();
+            if($result){
+                $return['data'] = $result;
+                $return['status'] = 1;
+            }
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e96b5d5ed84c3b8aa81f47b5bb68d2895f41807
         $this->ajaxReturn($return);
     }
 

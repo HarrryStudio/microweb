@@ -9,6 +9,10 @@
 namespace Home;
 use Think\Controller;
 use Think\Think;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9e96b5d5ed84c3b8aa81f47b5bb68d2895f41807
 class Widget extends Controller{
 
     protected $thme = null;
@@ -42,16 +46,17 @@ class Widget extends Controller{
 
     public function insert_content($content = null){
         $Template = Think::instance('Think\\Template');
-        $templateFile = $this->loadtemplet($this->theme);
+        $templateFile = $this->load_template_file($this->name,$this->theme);
+        $this->export_theme_link($this->name,$this->theme);
         if('php' == strtolower(C('TMPL_ENGINE_TYPE'))) { // 使用PHP原生模板
             $_content   =   $content;
             // 模板阵列变量分解成为独立变量
-            extract($this->tVar, EXTR_OVERWRITE);
+            extract($this->view->get(), EXTR_OVERWRITE);
             // 直接载入PHP模板
             empty($_content)?include $templateFile:eval('?>'.$_content);
         }else{
             // 视图解析标签
-            $Template->fetch($templateFile,$this->view->tVar,C('TMPL_CACHE_PREFIX'));
+            $Template->fetch($templateFile,$this->view->get(),C('TMPL_CACHE_PREFIX'));
         }
     }
 
@@ -66,34 +71,65 @@ class Widget extends Controller{
         );
     }
 
+    public function filter_theme_template($theme){
+        return $theme;
+    }
 
-    public function loadtemplet($template){
-        $template_name = C('WIDGET_TEMPLATE_ROOT').$this->name."/".$template.C('WIDGET_TEMPLATE_SUFFIX');
-        $dir_name = C('WIDGET_PUBLIC_ROOT').$this->name;
-        $data = [];
-        if(is_dir($dir_name)){
-            if(is_dir($dir_name."/js")){
-                if ($dh = opendir($dir_name."/js")) {
-                    while (($file = readdir($dh)) !== false) {
-                        $data['js'] = $file;
-                        //$data['public'] .= '<script type="text/javascript" src="'.$file.'"></script>'."\n";
-                    }
-                    closedir($dh);
+
+    public function filter_theme_link($theme){
+        return $theme;
+    }
+
+
+    public function load_template_file($name,$theme){
+        $theme = $this->filter_theme_template($theme);
+        $template_name = C('WIDGET_TEMPLATE_ROOT').$name."/".$theme.C('WIDGET_TEMPLATE_SUFFIX');
+        return $template_name;
+    }
+
+    /**
+     * @param $name 空间名
+     * @return $array js,css
+     */
+    public function load_template_link($name,$theme){
+        $theme = $this->filter_theme_link($theme);
+        $root = C('WIDGET_PUBLIC_PATH');
+        if(file_exists($root."public.js")){
+            $data["js"][] = $root."public.js";
+        }
+        if(file_exists($root."css.js")){
+            $data["css"][] = $root."public.js";
+        }
+        $widget = $root.$name."/";
+        if(is_dir($widget)){
+            if(is_dir($widget."js")){
+                if(file_exists($widget."js/public.js")){
+                    $data["js"][] = $widget."js/public.js";
+                }
+                if(file_exists($widget."js/".$theme.".js")){
+                    $data["js"][] = $widget."js/".$theme.".js";
                 }
             }
-            if(is_dir($dir_name."/css")){
-                if ($dh = opendir($dir_name."/css")) {
-                    while (($file = readdir($dh)) !== false) {
-                        $data['css'] = $file;
-                        //$data['public'] .= '<link rel="stylesheet" type="text/css" href="'.$file.'">'."\n";
-                    }
-                    closedir($dh);
+            if(is_dir($widget."css")){
+                if(file_exists($widget."css/public.css")){
+                    $data["css"][] = $widget."css/public.css";
+                }
+                if(file_exists($widget."css/".$theme.".css")){
+                    $data["css"][] = $widget."css/".$theme.".css";
                 }
             }
         }
         return $data;
     }
 
+    public function export_theme_link($name,$theme){
+        $data = $this->load_template_link($name,$theme);
+        foreach( $data['css'] as $value ){
+            echo '<link rel="stylesheet" href="'.$value.'" media="screen" title="no title" charset="utf-8">';
+        }
+        foreach( $data['js'] as $value ){
+            echo '<script type="text/javascript" src="'.$value.'"></script>';
+        }
+    }
 
-
-} 
+}

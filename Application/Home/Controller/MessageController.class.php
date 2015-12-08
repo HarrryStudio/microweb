@@ -15,7 +15,7 @@ class MessageController extends BaseController {
     }
 
     public function talk(){
-    	$data['user_id'] = session("user_info")['id'];  
+    	$data['user_id'] = session("user_info")['id'];
     	$data['content'] = I("post.text");
     	$data['way'] = 0;
     	$data['time'] = time();

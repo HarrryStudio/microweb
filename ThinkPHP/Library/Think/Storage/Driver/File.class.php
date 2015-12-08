@@ -26,7 +26,7 @@ class File extends Storage{
      * 文件内容读取
      * @access public
      * @param string $filename  文件名
-     * @return string     
+     * @return string
      */
     public function read($filename,$type=''){
         return $this->get($filename,'content',$type);
@@ -37,7 +37,7 @@ class File extends Storage{
      * @access public
      * @param string $filename  文件名
      * @param string $content  文件内容
-     * @return boolean         
+     * @return boolean
      */
     public function put($filename,$content,$type=''){
         $dir         =  dirname($filename);
@@ -57,7 +57,7 @@ class File extends Storage{
      * @access public
      * @param string $filename  文件名
      * @param string $content  追加的文件内容
-     * @return boolean        
+     * @return boolean
      */
     public function append($filename,$content,$type=''){
         if(is_file($filename)){
@@ -71,7 +71,7 @@ class File extends Storage{
      * @access public
      * @param string $filename  文件名
      * @param array $vars  传入变量
-     * @return void        
+     * @return void
      */
     public function load($_filename,$vars=null){
         if(!is_null($vars)){
@@ -84,7 +84,7 @@ class File extends Storage{
      * 文件是否存在
      * @access public
      * @param string $filename  文件名
-     * @return boolean     
+     * @return boolean
      */
     public function has($filename,$type=''){
         return is_file($filename);
@@ -94,11 +94,11 @@ class File extends Storage{
      * 文件删除
      * @access public
      * @param string $filename  文件名
-     * @return boolean     
+     * @return boolean
      */
     public function unlink($filename,$type=''){
         unset($this->contents[$filename]);
-        return is_file($filename) ? unlink($filename) : false; 
+        return is_file($filename) ? unlink($filename) : false;
     }
 
     /**
@@ -106,7 +106,7 @@ class File extends Storage{
      * @access public
      * @param string $filename  文件名
      * @param string $name  信息名 mtime或者content
-     * @return boolean     
+     * @return boolean
      */
     public function get($filename,$name,$type=''){
         if(!isset($this->contents[$filename])){

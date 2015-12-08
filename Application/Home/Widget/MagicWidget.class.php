@@ -30,8 +30,18 @@ class MagicWidget extends Widget
     }
 
 
-    public function index(){
-        echo "I'm widget";
+    public function index($site_id){
+        $nav_list = D('UserColumn')->get_nav_list($site_id);
+        $this->assign('nav_list',$nav_list);
+        $this->insert_content();
+    }
+
+    public function filter_theme_link($theme){
+        return $theme."_nav";
+    }
+
+    public function filter_theme_template($theme){
+        return "one";
     }
 
 
