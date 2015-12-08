@@ -6,7 +6,7 @@
  * Time: 20:27
  */
 
-namespace Home\Widget;
+namespace Home;
 use Think\Controller;
 use Think\Think;
 class Widget extends Controller{
