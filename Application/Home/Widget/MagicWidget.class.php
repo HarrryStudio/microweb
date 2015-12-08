@@ -30,14 +30,17 @@ class MagicWidget extends Widget
     }
 
 
-    public function index(){
-        $nav_list = D('UserColumn')->get_nav_list();
+    public function index($site_id){
+        $nav_list = D('UserColumn')->get_nav_list($site_id);
         $this->assign('nav_list',$nav_list);
-        $this->theme = $this->choose_template($this->theme);
         $this->insert_content();
     }
 
-    public function choose_template($theme_name){
+    public function filter_theme_link($theme){
+        return $theme."_nav";
+    }
+
+    public function filter_theme_template($theme){
         return "one";
     }
 

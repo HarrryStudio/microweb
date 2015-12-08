@@ -48,6 +48,7 @@ return array(
 
 	'WIDGET_TEMPLATE_SUFFIX' => "_theme.html",
 	'WIDGET_TEMPLATE_ROOT'   => APP_PATH."Home/View/Widget/",
+	'WIDGET_PUBLIC_PATH'     => './Public/Home/Widget/',
 
 	define ('IMAGES', __ROOT__.'/Public/Home/images')
 
