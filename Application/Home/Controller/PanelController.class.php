@@ -308,10 +308,7 @@ class PanelController extends BaseController {
                 $return['status'] = 1;
             }
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 9e96b5d5ed84c3b8aa81f47b5bb68d2895f41807
         $this->ajaxReturn($return);
     }
 

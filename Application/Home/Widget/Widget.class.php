@@ -9,10 +9,7 @@
 namespace Home;
 use Think\Controller;
 use Think\Think;
-<<<<<<< HEAD
-=======
 
->>>>>>> 9e96b5d5ed84c3b8aa81f47b5bb68d2895f41807
 class Widget extends Controller{
 
     protected $thme = null;
