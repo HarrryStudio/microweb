@@ -129,7 +129,7 @@ class Widget extends Controller{
         //     echo '<script type="text/javascript" src="'.$value.'"></script>';
         // }
         foreach( $data['css'] as $value ){
-            echo 'dynamicLoading.css("'.$value.'");';
+            echo 'dynamicLoading.css("'.__ROOT__.$value.'");';
         }
         // foreach( $data['js'] as $value ){
         //     echo 'dynamicLoading.js("'.$value.'");';
