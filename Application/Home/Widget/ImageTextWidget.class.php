@@ -53,6 +53,7 @@ class ImageTextWidget extends Widget
 
 	public function index()
 	{
+		
 		// 就跟 controller 的 index的一样
 	}
 
