@@ -285,7 +285,7 @@ class PanelController extends BaseController {
         import(MODULE_NAME ."/" . WIDGET_NAME . "/" .$class);
         if(class_exists(MODULE_NAME . "\\" . WIDGET_NAME . "\\" .$class)) {
             $class = "\\".MODULE_NAME . "\\" . WIDGET_NAME . "\\" .$class;
-            return new $class($data);
+            return new $class($data['theme'],$data['resource'],$data['option']);
         }else {
             return false;
         }

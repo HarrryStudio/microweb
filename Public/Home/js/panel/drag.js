@@ -25,18 +25,18 @@ function dragover(event){
 	}else{
 		$('.pro').insertBefore($(that));
 	}
-	
+
 }
 function dragenter(event){
 	//console.log("onDrop enter");
 	$('.pro').show();
 }
 function dragLeave(event){
-	$('.pro').hide(); 
+	$('.pro').hide();
 }
 //初始化编辑框
 function initController(elem,cname){
-		
+
 		var that = elem;
 		//移除其他operation
 		$('.operation-elem').remove();
@@ -63,7 +63,7 @@ function initController(elem,cname){
 		operation_all.appendChild(top_border);
 		operation_all.appendChild(bottom_border);
 		operation_all.appendChild(operation);
-		
+
 		var top = that.offsetTop;
 		var width = that.offsetWidth;
 		var height = that.offsetHeight;
@@ -93,7 +93,7 @@ function initController(elem,cname){
 			operation.style.top = top - operation.offsetHeight + 'px';
 		}
 		operation.style.left = left + width - operation.offsetWidth - 2 + 'px';
-		
+
 		$('.center').data('elem',that);
 }
 $(function(){
@@ -103,7 +103,7 @@ $(function(){
 		if($('.operation-elem').length > 0){
 			var Y = event.clientY + $('body')[0].scrollTop - $('.header').height();
 			var X = event.clientX + $('body')[0].scrollLeft;
-			if( Y < $('.operation-top')[0].offsetTop || Y > $('.operation-bottom')[0].offsetTop 
+			if( Y < $('.operation-top')[0].offsetTop || Y > $('.operation-bottom')[0].offsetTop
 				|| X < $('.operation-left')[0].offsetLeft || X > $('.operation-right')[0].offsetLeft){
 			}else{return;}
 		}
@@ -162,10 +162,10 @@ $(function(){
 		//console.log("out");
 		var Y = event.clientY + $('body')[0].scrollTop - $('.header').height();
 		var X = event.clientX + $('body')[0].scrollLeft;
-		if( Y < $('.operation-nav-bar')[0].offsetTop 
+		if( Y < $('.operation-nav-bar')[0].offsetTop
 			|| (Y < $('.operation-top')[0].offsetTop && X < $('.operation-nav-bar')[0].offsetLeft)
-			|| Y > $('.operation-bottom')[0].offsetTop 
-			|| X < $('.operation-left')[0].offsetLeft 
+			|| Y > $('.operation-bottom')[0].offsetTop
+			|| X < $('.operation-left')[0].offsetLeft
 			|| X > $('.operation-right')[0].offsetLeft){
 			$('.operation-elem').remove();
 			//console.log("remove");
