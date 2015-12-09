@@ -12,7 +12,7 @@ use Think\Think;
 
 class Widget extends Controller{
 
-    protected $thme = null;
+    protected $theme = null;
 
     protected $resource = null;
 
@@ -121,12 +121,20 @@ class Widget extends Controller{
 
     public function export_theme_link($name,$theme){
         $data = $this->load_template_link($name,$theme);
+        echo '<script type="text/javascript">';
+        // foreach( $data['css'] as $value ){
+        //     echo '<link rel="stylesheet" type="text/css" href="'.$value.'" media="all" title="no title" charset="utf-8">';
+        // }
+        // foreach( $data['js'] as $value ){
+        //     echo '<script type="text/javascript" src="'.$value.'"></script>';
+        // }
         foreach( $data['css'] as $value ){
-            echo '<link rel="stylesheet" href="'.$value.'" media="screen" title="no title" charset="utf-8">';
+            echo 'dynamicLoading.css("'.$value.'");';
         }
-        foreach( $data['js'] as $value ){
-            echo '<script type="text/javascript" src="'.$value.'"></script>';
-        }
+        // foreach( $data['js'] as $value ){
+        //     echo 'dynamicLoading.js("'.$value.'");';
+        // }
+        echo '</script>';
     }
 
 }

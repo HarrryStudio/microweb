@@ -6,7 +6,31 @@ $(function(){
 		$(this).find("div").addClass("hr");
 	})
 })
-
+var dynamicLoading = {
+    css: function(path){
+		if(!path || path.length === 0){
+			throw new Error('argument "path" is required !');
+		}
+		var p_document = window.parent.panelFrame.document;
+		var head = p_document.getElementsByTagName('head')[0];
+        var link = p_document.createElement('link');
+        link.href = path;
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        head.appendChild(link);
+    },
+    js: function(path){
+		if(!path || path.length === 0){
+			throw new Error('argument "path" is required !');
+		}
+		var p_document = window.parent.panelFrame.document;
+		var head = p_document.getElementsByTagName('head')[0];
+        var script = p_document.createElement('script');
+        script.src = path;
+        script.type = 'text/javascript';
+        head.appendChild(script);
+    }
+}
 function save(){
 	var theme = $(".hr").parent().attr('va');
 	var url = $('#save-url').val();
