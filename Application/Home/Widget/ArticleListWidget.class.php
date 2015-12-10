@@ -13,9 +13,6 @@ class ArticleListWidget extends Widget
   function __construct($theme,$resource,$config)
   {
     parent::__construct($theme,$resource,$config);
-
-// test
-    $this->theme = 'one';
     
     $this->name = 'ArticleList';
   }
@@ -25,8 +22,8 @@ class ArticleListWidget extends Widget
 /*    if(!empty($is_edit)){
         $this->assign("status",1);
     }*/
-
-/*    $Type = M('type');
+    
+    $Type = M('type');
     $map['site_id'] = session('site_id');
     $type_list = $Type->field('id, name')->where($map)->select();
     
@@ -37,9 +34,15 @@ class ArticleListWidget extends Widget
     $this->assign('controller_id',I('id'));
     $this->assign('type_list',$type_list);
     $this->display('panel/article_list');
-    */
+    
 
     // $getType = I('get.type');
+
+  }
+
+  public function index()
+  {
+
       if (I('post.type')[0] == 0) {
 
       } else {
@@ -64,14 +67,8 @@ class ArticleListWidget extends Widget
           $value[$key]['savename'] = $ARTICLE_DEFAULT_IMG_NAME;
         }
       }
-      $this->assign("article_info", $article_info);
+    $this->assign("article_info", $article_info);
     $this->insert_content(); 
-  }
-
-  public function index()
-  {
-
-    // $this->insert_content();
   }
 
   public function get_theme_list()
@@ -79,14 +76,16 @@ class ArticleListWidget extends Widget
 
   }
 
-  protected function get_date()
-  {
+  public function filter_theme_link($theme){
+    // return $theme.''
+  }
+
+  public function filter_theme_template($theme){
 
   }
-  protected function detail()
-  {
-    
-  }
+
+
+
 }
 
 

@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 		var APP = '__ROOT__';
 	</script>
-	<script type="text/javascript" src="__JS__/panel/article_list.js"></script>
+
 </head>
 <body>
 	<div id="article_list">
@@ -132,6 +132,23 @@
 	<input id="status" type="hidden" name="" value="{$status}">
 	<script type="text/javascript">
 		var temp = $(".article_info")[0].innerHTML;
+	</script>
+	<!--  -->
+	<script type="text/javascript">
+		function save() {
+			var url = "__CONTROLLER__/save_widget";
+			$.post(url, {'name':'ArticleList'}, function (data) {
+				console.log(data);
+/*				var pro = window.parent.getPro();
+				if ($("#status").val() == 1) {
+					elem = window.parent.getOperationElem();
+					$(elem).hide().before(html).remove();
+				} else {
+					$(pro).before(html);
+				}
+				window.parent.$.layer.close();	*/
+			})			
+		}	
 	</script>
 </body>
 </html>
