@@ -4,24 +4,29 @@
 	</div>
 	<div class='article_info'>
 		<ul class='article_list'>
-		<foreach name="article_info" item="item">
-			{$item|dump}
-			<li><a class='article-link main_article' href="column_url" data-url='article_url+data[i].id+&column_id=+column_id+'>
-			<div class='first_article' style="background-image:url({$item['savepath']}{$item['savename']}); background-repeat: no-repeat; background-size:cover'">
-			<div class='article_title'>{$item['title']}</div>"
+		<volist name="article_info" id="item">
+		<if condition="$key eq 0">
+			<li>
+				<a class='article-link main_article' href'"+column_url+".html' data-url='"+article_url+data[i].id+"&column_id="+column_id+"'>
+				<div class='first_article' style="background-image:url({$item['savepath']}{$item['savename']}); background-repeat: no-repeat; background-size:cover">
+					<div class='article_title'>{$item['title']}</div>
+				</div>
+		<else/>
 			<li>
 				<a class='article-link sub_article' href='"+column_url+".html' data-url='"+article_url+data[i].id+"&column_id="+column_id+"'>
-					<div class='article_text'>
-						<ul><li class='article_title'>{$item['title']}</li></ul>
-					</div>
-					<div class='img_container'>
-						<img src="__UPLOADS__/{$item['savepath']}{$item['savename']}">
-					</div>
+				<div class='article_text'>
+					<ul><li class='article_title'>{$item['title']}</li></ul>
+				</div>
+				<div class='img_container'>
+					<img src="{$item['savepath']}{$item['savename']}">
+				</div>
+		</if>
 				</a>
 			</li>
-			<hr />
-		</foreach>
+			<if condition="$key lt count($article_info)-1">
+				<hr />
+			</if>
+		</volist>
 		</ul>
-	</div>
 	</div>
 </div>

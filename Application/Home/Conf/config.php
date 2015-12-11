@@ -50,7 +50,7 @@ return array(
 	'WIDGET_TEMPLATE_ROOT'   => APP_PATH."Home/View/Widget/",
 	'WIDGET_PUBLIC_PATH'     => './Public/Home/Widget/',
 
-	'ARTICLE_DEFAULT_IMG_PATH' => './Public/Home/images/article/',
+	'ARTICLE_DEFAULT_IMG_PATH' => __ROOT__.'/Public/Home/images/article/',
 	'ARTICLE_DEFAULT_IMG_NAME' => 'default.jpg',
 
 	define ('IMAGES', __ROOT__.'/Public/Home/images')

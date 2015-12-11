@@ -72,7 +72,7 @@ class Widget extends Controller{
         return $theme;
     }
 
-
+    
     public function filter_theme_link($theme){
         return $theme;
     }
@@ -94,8 +94,11 @@ class Widget extends Controller{
         if(file_exists($root."public.js")){
             $data["js"][] = $root."public.js";
         }
-        if(file_exists($root."css.js")){
+/*        if(file_exists($root."css.js")){
             $data["css"][] = $root."public.js";
+        }*/
+        if(file_exists($root."public.css")){
+            $data["css"][] = $root."public.css";
         }
         $widget = $root.$name."/";
         if(is_dir($widget)){
