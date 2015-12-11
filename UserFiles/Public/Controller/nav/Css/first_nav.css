@@ -35,12 +35,12 @@
 #outside,#internal,span{
 	display: none;
 }
-.nav-0{background: #D1C340}
-.nav-1{background: #DCD386}
-.nav-2{background: #FFCE75}
-.nav-3{background: #9EC68A}
-.nav-4{background: #68BAAB}
-.nav-5{background: #D0A4A3}
+.nav:nth-child(0){background: #D1C340}
+.nav:nth-child(1){background: #DCD386}
+.nav:nth-child(2){background: #FFCE75}
+.nav:nth-child(3){background: #9EC68A}
+.nav:nth-child(4){background: #68BAAB}
+.nav:nth-child(5){background: #D0A4A3}
 
 /*#one{background-image: url(../Images/shopping.png);}
 #two{background-image: url(../Images/plane.png)}

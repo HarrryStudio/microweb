@@ -1,53 +1,29 @@
-#show_nav{
-	width: 100%;
-	height: auto;
-	float: left;
-	cursor: default;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	background-image: url(../Images/background.jpg);
+.show_nav.forth{
+	background-image: url(../images/background.jpg);
 }
-#firstline,#secondline{
-	width: 100%;
-	height: 90px;
-}
-#secondline{
-	margin-top: 8px;
-}
-.nav_all{
-	width: 20%;
-	height: 90px;
+.forth>.nav_all{
+	width: 30%;
+	height: 5rem;
 	float: left;
 	text-align: center;
-	margin-left: 10%;
+	margin-left: 2.5%;
+	padding: 0.4rem 0.5rem;
 }
-.nav_all div{
-	width: 72%;
-	height: 60%;
-	cursor: pointer;
+.forth>.nav_all a{
+	color:#ADBDC7;
+	text-decoration: none;
+}
+.forth>.nav_all a:hover{
+	color:#DAE1E6;
+}
+.forth>.nav_all div{
+	width: 60%;
+	height: 65%;
 	margin: 0 auto;
-	background-size: 45px 50px;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
-.nav_all p{
-	font-size: 10px;
-	margin-top: 5px;
+.forth>.nav_all p{
+	font-size: 0.7rem;
+	margin-top: 0.3rem;
 }
-.nav_all div:hover{
-	width: 80%;
-	height: 70%;
-	cursor: pointer;
-	margin: 0 auto;
-	z-index: 100;
-	position: relative;
-	background-size: 55px 60px;
-}
-#outside,#internal,span{
-	display: none;
-}
-
-/*#one{background-image: url(../Images/timing.png)}
-#two{background-image: url(../Images/record.png)}
-#three{background-image: url(../Images/clock.png)}
-#four{background-image: url(../Images/link.png)}
-#five{background-image: url(../Images/off-line.png)}
-#six{background-image: url(../Images/speak.png)}*/

@@ -1,56 +1,40 @@
-#show_nav{
-	width: 100%;
-	height: auto;
-	float: left;
-	cursor: default;
-	background: #6F8A9D;
-}
-.nav_all{
+.first>.nav_all{
 	width: 50%;
-	height: 60px;
+	height: 3rem;
+	line-height: 3rem;
 	float: left;
-	text-align: center;
 }
-.nav_all a{
-	float: left;
+.first>.nav_all a{
 	width: 100%;
 	height: 100%;
 	position: relative;
-	z-index: 100;
+	display: block;
+	vertical-align: middle;
 }
-.nav_all div{
-	width: 30%;
-	height: 90%;
-	float: left;
+.first>.nav_all div{
+	width: 2rem;
+	height: 2rem;
 	cursor: pointer;
-	margin-left: 10%;
-	background-size: 50px;
+	background-size: cover;
+	position: absolute;
+	left:10%;
+	top:0.5rem;
+	margin: auto;
 }
-.nav_all p{
-	font-size: 16px;
-	width: 80px;
-	height: 20px;
-	float: left;
-	overflow: hidden;
-	margin-top: 10%;
-}
-.nav_all div:hover{
-	width: 40%;
+.first>.nav_all p{
+	display: block;
+	width: 100%;
 	height: 100%;
-	float: left;
-	margin-left: 13%;
-	background-size: 65px;
+	overflow: hidden;
+	padding: 0 0 0 40%;
+	font-size: 1rem;
 }
-#outside,#internal,span{
-	display: none;
-}
-.nav-0{background: #D1C340}
-.nav-1{background: #DCD386}
-.nav-2{background: #FFCE75}
-.nav-3{background: #9EC68A}
-.nav-4{background: #68BAAB}
-.nav-5{background: #D0A4A3}
-
+.first>.nav:nth-child(0){background: #D1C340}
+.first>.nav:nth-child(1){background: #DCD386}
+.first>.nav:nth-child(2){background: #FFCE75}
+.first>.nav:nth-child(3){background: #9EC68A}
+.first>.nav:nth-child(4){background: #68BAAB}
+.first>.nav:nth-child(5){background: #D0A4A3}
 /*#one{background-image: url(../Images/shopping.png);}
 #two{background-image: url(../Images/plane.png)}
 #three{background-image: url(../Images/music.png)}
