@@ -50,16 +50,24 @@ var dynamicLoading = {
 }
 
 function save() {
-	var url = $("#save-url").val();
+	var is_edit = $("#is_edit").val();
+	var save_url = $("#save-url").val();
 	var theme = $(".hr").parent().attr('data-theme');
-	$.post(url, {'name':'ArticleList', 'theme':theme, 'source':'article', 'option':'option'}, function (data) {
+	var title = $("#title").val();
+	var selected = $("#type_data").serialize();
+	var column_url = $("#column option:selected").attr('data');
+	var column_id = $("#column").val();
+	var article_url = $("#article_url").val();
+	var option ={'title':title, 'column_id':column_id, 'column_url':column_url, 'selected':selected, 'article_url':article_url};
+	var data = {'name':'ArticleList', 'theme':theme, 'source':'article', 'option':option};
+	$.post(save_url, data, function (data) {
 		console.log(data);
 		if ($("#status").val() == 1) {
 			elem = window.parent.getOperationElem();
-			$(elem).hide().before(data.data).remove();
+			$(elem).hide().before(data.data.html).remove();
 		} else {
 			var pro = window.parent.getPro();
-			$(pro).before(data.data);
+			$(pro).before(data.data.html);
 		}
 		window.parent.$.layer.close();	
 	})			

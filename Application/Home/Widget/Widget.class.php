@@ -57,13 +57,13 @@ class Widget extends Controller{
         }
     }
 
-    public function get_josn(){
+    public function get_json(){
         return json_encode(
             array(
                 'name'     =>  $this->name,
                 'theme'    =>  $this->theme,
                 'resource' =>  $this->resource,
-                'config'   =>  $this->config
+                'option'   =>  $this->option
             )
         );
     }

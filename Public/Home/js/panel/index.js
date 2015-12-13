@@ -324,7 +324,7 @@ function reFirstLast(){
  * 在iframe中创建新的controller 或者编辑
  * @param name controller的cname
  */
-function add_controller(cname,is_edit){
+function add_controller(cname,is_edit,json){
 	//隐藏占位符
 	//var iframe = getPanelFrame();
 	// console.log(iframe);

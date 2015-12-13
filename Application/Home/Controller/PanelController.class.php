@@ -304,7 +304,8 @@ class PanelController extends BaseController {
             $widget->index($site_id);
             $result = ob_get_clean();
             if($result){
-                $return['data'] = $result;
+                $return['data']['html'] = $result;
+                $return['data']['json'] = $widget->get_json();
                 $return['status'] = 1;
             }
         }

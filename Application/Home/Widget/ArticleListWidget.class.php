@@ -10,9 +10,9 @@ use Home\Widget;
 class ArticleListWidget extends Widget
 {
 
-  function __construct($theme,$resource,$config)
+  function __construct($theme,$resource,$option)
   {
-    parent::__construct($theme,$resource,$config);
+    parent::__construct($theme,$resource,$option);
     $this->name = 'ArticleList';
   }
 
@@ -30,8 +30,9 @@ class ArticleListWidget extends Widget
     $column_list = $Column->where($map)->select();
     
     $this->assign("column_list", $column_list);
-    $this->assign('controller_id',I('id'));
-    $this->assign('type_list',$type_list);
+    $this->assign('controller_id', I('id'));
+    $this->assign('type_list', $type_list);
+    //$this->assign('option', $option);
     $this->display('panel/article_list');
   }
 
@@ -44,6 +45,8 @@ class ArticleListWidget extends Widget
     }
     $article_info = D('article')->article_widget_list($map);
     $this->assign("article_info", $article_info);
+    $this->assign('cname', $this->name);
+    $this->assign('option', $this->option);
     $this->insert_content(); 
   }
 

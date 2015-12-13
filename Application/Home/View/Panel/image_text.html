@@ -4,20 +4,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="__CSS__/panel/image_text.css">
 	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
-	<script type="text/javascript">
-		var APP = '__ROOT__';
-	</script>
-	<!-- <script type="text/javascript" src="__JS__/panel/article_list.js"></script> -->
-	<script type="text/javascript" src="__JS__/panel/image_text.js"></script>
+	<script type="text/javascript" src='__JS__/panel/image_text.js'></script>
 </head>
 
 <body>
 	<div id="image_text">
-<!-- 		<ul class="tab_nav">
-	<li class="active"><a href="#base_setting"></a>常规</li>
-	<li><a href="#advance_setting">展示设置</a>
-	</li>
-</ul> -->
+		{$data|dump}
 		<ul class="setting">
 			<li>
 				<div>
@@ -28,16 +20,16 @@
 				<div>
 					<p>选择样式:</p>
 					<div id="style_list">
-						<div class="pattern" va="121">
+						<div class="pattern" data-style="first">
 							<div class="hr"><img src="__IMAGES__/article/image_text1.jpg"></div>
 						</div>
-						<div class="pattern" va="121">
+						<div class="pattern" data-style="second">
 							<div class=""><img src="__IMAGES__/article/image_text2.jpg"></div>
 						</div>
-						<div class="pattern" va="121">
+						<div class="pattern" data-style="third">
 							<div class=""><img src="__IMAGES__/article/image_text3.jpg"></div>
 						</div>
-						<div class="pattern" va="121">
+						<div class="pattern" data-style="fourth">
 							<div class=""><img src="__IMAGES__/article/image_text4.jpg"></div>
 						</div>
 					</div>
@@ -57,7 +49,7 @@
 		<div class="article_list">
 			<p>选择文章</p>
 			<ul>
-				<volist name="article_list" id="vo">
+				<volist name="data['article_list']" id="vo">
 					<li class="article_item">
 						<input id="article_{$vo.id}" type="radio" name="article_id" value="{$vo.id}">
 						<label for="article_{$vo.id}">{$vo.title}</label>
@@ -69,7 +61,7 @@
 			</ul>
 		</div>
 		<div class="page" onclick="return false">
-			{$page}
+			{$data['page']}
 		</div>
 	</div>
 	<input id="target_url" type="hidden" name="" value="{:U('Panel/article_info')}">

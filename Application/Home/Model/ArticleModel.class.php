@@ -139,6 +139,11 @@ class ArticleModel extends Model{
         return $this->where($where)->save($data);
     }
 
+    /**
+    * 文章列表类取得列表方法
+    * map 条件
+    * 文章记录
+    */
     public function article_widget_list($map = null)
     {
         $map['article.status'] = 0;
@@ -164,5 +169,33 @@ class ArticleModel extends Model{
           }
         }
         return $article_info;
+    }
+    /*
+    * 图文展示空间获得列表
+    * map 条件
+    * data 
+    */
+    public function Image_text_widget_article_list($map = null)
+    {
+      $count = $this->where($map)->count();
+      $Page = new \Think\Page($count,5);
+      $show = $Page->show();
+      $this->join('LEFT JOIN picture on picture.id = article.pic_id')
+            ->where($map)
+            ->field('article.id, article.title, article.content, picture.savepath, picture.savename')
+            ->order('article.is_top desc, article.create_time desc')
+            ->limit($Page->firstRow.','.$Page->listRows)
+            ->select();
+      foreach ($article_list as $key => $value) {
+          $article_list['content'] = htmlspecialchars_decode($article_list['content']);
+      }
+      $p = I('get.p');
+      $data['article_list'] = $article_list;
+      if (!empty($p)) {
+        $data['page'] = $show;
+      }
+      // return $this->getLastSql();
+      var_dump($data);
+      return $data;
     }
 }

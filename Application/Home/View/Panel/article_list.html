@@ -11,7 +11,7 @@
 		<ul class="setting">
 			<li>
 				<div>
-					<label>模块标题:&nbsp;</label><input type="text" name="" value="文章列表">
+					<label>模块标题:&nbsp;</label><input id="title" type="text" name="title" value="文章列表">
 					<label for="">请选择栏目:</label>
 					<select name="column_list" id="column">
 						<volist name="column_list" id="vo">
@@ -89,6 +89,7 @@
 	<input type='hidden' id="controller-id" value="{$controller_id}">
 	
 	<input id="status" type="hidden" name="" value="{$status}">
+	<input id="option-url" type="hidden" value="">
 	<input id="save-url" type="hidden" value="{:U('panel/save_widget')}">
 </body>
 </html>

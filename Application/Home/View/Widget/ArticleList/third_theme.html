@@ -1,5 +1,5 @@
-<div class='article_list_container2 controller' data-id='"+$('#controller-id').val()+"'>
-    <div class='controller-title'>+$(".setting input:first").val()+"</div>
+<div class='article_list_container2 controller' data-id="{$cname}">
+    <div class='controller-title'>{$option['title']}</div>
     <div class='article_info'>
         <div class='navText'>
             <div class = 'article_list'>
@@ -14,18 +14,18 @@
     <div class='textContent'>
     <foreach name="article_info" item="item">
         <if condition="$key eq 0">
-            <a class='article-link' href='"+column_url+".html' data-url='"+article_url+data[i].id+"column_id="+column_id+"'>
-                <div class='detail'>
-                    <img src="+img_src+">
+            <a class='article-link' href="{$option['column_url']}.html" data-url="{$option['article_url']}{$item['id']}/column_id/{$item['column_id']}">
+            <div class='detail'>
+                    <img src="{$item['savepath']}{$item['savename']}">
         <else/>
-            <a style='display:none' class='article-link' href='"+column_url+".html' data-url='"+article_url+data[i].id+"column_id="+column_id+"'>
-                <div class='detail'><img src="+img_src+">
+            <a style='display:none' class='article-link' href="{$option['column_url']}.html" data-url="{$option['article_url']}{$item['id']}/column_id/{$item['column_id']}">
+                <div class='detail'><img src="{$item['savepath']}{$item['savename']}">
         </if>
                     {$item['content']}
                 </div>
             </a>
     </foreach>
-    </div>
+            </div>
         <div class='clear_float'></div>
     </div>
     <div class='clear_float'>
