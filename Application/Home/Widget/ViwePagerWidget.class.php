@@ -14,25 +14,31 @@ class ViwePagerWidget extends Widget
     public function __construct($theme,$resource,$config) {
         parent::__construct($theme,$resource,$config);
         $this->name = "ViwePager";
+        $this -> theme = "viwepager";
     }
 
     public function controller($is_edit){
-        $id = I("id");      //¿Ø¼þid
-        $this -> assign("controllerId",$id);
+        $this -> assign("controllerName",$this->name);
         $is_edit = I('get.is_edit',0);
         if(!empty($is_edit)){       //ÅÐ¶ÏÊÇ·ñÎª±à¼­
             $this->assign("status", 1);
         }
-        $album_id = I('album_id');
-        if(empty($album_id)){
+//        $album_id = I('album_id');
+        $json_data = I("post.json_data");
+        if(empty($json_data)){
             $album = D('Album');
             $album_list = $album -> get_album_list(session('site_id'));
             $this -> assign('album_list',$album_list);
             $this->display("Panel/viwePager");
         }else{
             $photo = D("Picture");
-            $pic = $photo -> getPicture($album_id);
-            $this->ajaxReturn($pic);
+            $pic = $photo -> getPicture($json_data["resource"]);
+            $this -> assign("frist_img",$pic[0]["savepath"].$pic[0]["savename"]);
+            $this -> assign("pic_list",$pic);
+            $this -> assign("pic_num",count($pic));
+//            $this -> assign("title",$json_data["option"]["title"]);
+            $this -> assign("type",$json_data["option"]["type"]);
+            $this -> index();
         }
     }
 
@@ -40,8 +46,12 @@ class ViwePagerWidget extends Widget
 
     }
 
+    public function filter_theme_template($theme){
+        return $theme;
+    }
+
     public function index(){
-        echo "I'm widget";
+        $this->insert_content();
     }
 }
 ?>
