@@ -3,23 +3,23 @@
     <if condition="$type eq 3">
         <div class='picShowList'>
             <foreach name="pic_list" item="vo">
-                <img src='/microweb_v2/Uploads/{$vo.savepath}/{$vo.savename}'>
+                <img src='__UPLOADS__/{$vo.savepath}/{$vo.savename}'>
             </foreach>
     <elseif condition="$type eq 2" />
         <div class='showPic showRight'>
-            <img src='/microweb_v2/Uploads/{$frist_img}'>
+            <img src='__UPLOADS__/{$frist_img}'>
         </div>
         <div class='NavRight'>
             <foreach name="pic_list" item="vo">
-                <img src='/microweb_v2/Uploads/{$vo.savepath}/{$vo.savename}'>
+                <img src='__UPLOADS__/{$vo.savepath}/{$vo.savename}'>
             </foreach>
     <else/>
         <div class='showPic showDown'>
-            <img src='/microweb_v2/Uploads/{$frist_img}'>
+            <img src='__UPLOADS__/{$frist_img}'>
         </div>
         <div class='NavDown'>
             <foreach name="pic_list" item="vo">
-                <img src='/microweb_v2/Uploads/{$vo.savepath}/{$vo.savename}'>
+                <img src='__UPLOADS__/{$vo.savepath}/{$vo.savename}'>
             </foreach>
     </if>
         </div>
