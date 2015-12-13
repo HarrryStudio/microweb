@@ -138,31 +138,4 @@ class ArticleModel extends Model{
         $data['is_top'] = $status;
         return $this->where($where)->save($data);
     }
-
-    public function article_widget_list($map = null)
-    {
-        $map['article.status'] = 0;
-        $Article = M('article');
-        $article_info = $Article
-          ->field('article.id, picture.savepath, picture.savename, article.title, article.content')
-          ->join('left join picture ON  article.pic_id = picture.id')
-          ->where($map)
-          ->order('article.is_top desc, article.create_time desc')
-          ->limit(5)
-          ->select();
-
-        $article_default_img_path = C('ARTICLE_DEFAULT_IMG_PATH');
-        $article_default_img_name = C('ARTICLE_DEFAULT_IMG_NAME');
-        foreach ($article_info as $key => $value) {
-          $article_info[$key]['content'] = htmlspecialchars_decode($value['content']);
-          if (empty($value[$key]['savename'])) {
-            $article_info[$key]['savepath'] = $article_default_img_path;
-            $article_info[$key]['savename'] = $article_default_img_name;
-          }
-          else{
-            $article_info[$key]['savepath'] = __UPLOADS__.$value['savepath'];
-          }
-        }
-        return $article_info;
-    }
 }

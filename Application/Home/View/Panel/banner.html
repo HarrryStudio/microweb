@@ -29,7 +29,7 @@
                 <foreach name="album_pic" item="vo">
                     <div class='pattern'>
                         <div>
-                            <img src="__ROOT__/Uploads/{$vo.savepath}{$vo.savename}">
+                            <img img_id="{$vo.id}" src="__ROOT__/Uploads/{$vo.savepath}{$vo.savename}">
                         </div>
                     </div>
                 </foreach>
