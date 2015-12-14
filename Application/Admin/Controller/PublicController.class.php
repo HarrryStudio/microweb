@@ -75,5 +75,4 @@ class PublicController extends Controller {
 	
     
 }
-
  ?>

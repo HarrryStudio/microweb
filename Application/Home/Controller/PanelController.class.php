@@ -746,28 +746,28 @@ class PanelController extends BaseController {
     }
 
 //横幅
-    public function banner(){
-        $id = I("id");      //控件id
-        $this -> assign("controllerId",$id);
-        $is_edit = I('get.is_edit',0);
-        if(!empty($is_edit)){
-            $this->assign("status", 1);
-        }
-        $album_id = I('album_id');
-        if(empty($album_id)){
-            $album = D('Album');
-            $album_list = $album -> get_album_list(session('site_id'));
-            $this -> assign('album_list',$album_list);
-            $photo = D("Picture");
-            $pic = $photo -> getPicture($album_list[0]['id']);
-            $this -> assign('album_pic',$pic);
-            $this -> display();
-        }else{
-            $photo = D("Picture");
-            $pic = $photo -> getPicture($album_id);
-            $this->ajaxReturn($pic);
-        }
-    }
+//    public function banner(){
+//        $id = I("id");      //控件id
+//        $this -> assign("controllerId",$id);
+//        $is_edit = I('get.is_edit',0);
+//        if(!empty($is_edit)){
+//            $this->assign("status", 1);
+//        }
+//        $album_id = I('album_id');
+//        if(empty($album_id)){
+//            $album = D('Album');
+//            $album_list = $album -> get_album_list(session('site_id'));
+//            $this -> assign('album_list',$album_list);
+//            $photo = D("Picture");
+//            $pic = $photo -> getPicture($album_list[0]['id']);
+//            $this -> assign('album_pic',$pic);
+//            $this -> display();
+//        }else{
+//            $photo = D("Picture");
+//            $pic = $photo -> getPicture($album_id);
+//            $this->ajaxReturn($pic);
+//        }
+//    }
 //图片展示
     public function PicturesShow(){
         $id = I("id");      //控件id

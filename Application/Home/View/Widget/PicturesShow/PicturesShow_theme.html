@@ -1,0 +1,26 @@
+<div style='width: 100%;display: inline-block;min-height: 240px;overflow: hidden;' class='controller' data-name='{$controllerName}'>
+    <div class='controller-title'>{$title}</div>
+    <if condition="$type eq 3">
+        <div class='picShowList'>
+            <foreach name="pic_list" item="vo">
+                <img src='__UPLOADS__/{$vo.savepath}/{$vo.savename}'>
+            </foreach>
+    <elseif condition="$type eq 2" />
+        <div class='showPic showRight'>
+            <img src='__UPLOADS__/{$frist_img}'>
+        </div>
+        <div class='NavRight'>
+            <foreach name="pic_list" item="vo">
+                <img src='__UPLOADS__/{$vo.savepath}/{$vo.savename}'>
+            </foreach>
+    <else/>
+        <div class='showPic showDown'>
+            <img src='__UPLOADS__/{$frist_img}'>
+        </div>
+        <div class='NavDown'>
+            <foreach name="pic_list" item="vo">
+                <img src='__UPLOADS__/{$vo.savepath}/{$vo.savename}'>
+            </foreach>
+    </if>
+        </div>
+</div>

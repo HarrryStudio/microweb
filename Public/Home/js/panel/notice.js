@@ -66,42 +66,69 @@ function save(){
 //        alert("公告不能为空");
         window.parent.alert_info("公告不能为空",-1);
         return;
-    }
-
-    var html="";
-    html +="<head></head>";
-    html +="<div class='controller' data-id='"+$("#controller-id").val()+"'>";
-    html +="<div class='controller-title'>"+$setTitle+"</div>";
-    html +="<div style='height: 25px;'>";
-    if($url != null){
-        html +="<span style='float: left; display: inline-block;'><img src='"+$url+"'></span>";
-    }
-    if($(".setNoticeType [type=radio]:checked").val()=='cell'){     //纵向公告
-        html +="<marquee  style='font-size: 14px; width: 90%; float: left; height:21px;' scrollAmount=1 direction=up onmouseover=stop() onmouseout=start()>";
-        for(i = 0; i < $num; i++){
-            $ShowPopup = $('.showContentList').find('.showContent').eq(i).find('div').eq(0).html();
-            html +="<span style='margin-left: 10%; display: inline-block;'>"+$ShowPopup+"</span><br/>";
-        }
-    }else{          //横向公告
-        html +="<marquee  style='font-size: 14px; width: 90%; float: left; height:21px;' scrollAmount=3 onmouseover=stop() onmouseout=start()>";
-        for(i = 0; i < $num; i++){
-            $ShowPopup = $('.showContentList').find('.showContent').eq(i).find('div').eq(0).html();
-            html +="<span style='margin-left: 10%; display: inline-block;'>"+$ShowPopup+"</span>";
-        }
-    }
-    $status = $("#status").val();
-    if($status == 1){
-        console.log(window.parent.getOperationElem());
-    }
-    html +="</marquee></div></div>";
-
-    var pro = window.parent.getPro();
-    $status = $("#status").val();
-    if($status == 1){
-        $elem = window.parent.getOperationElem();
-        $($elem).hide().before(html).remove();
     }else{
-        $(pro).before(html);
+        var popupCon={};
+        for(i = 0; i < $num; i++){
+            $ShowPopup = $('.showContentList').find('.showContent').eq(i).find('div').eq(0).html();
+            popupCon[i]={};
+            popupCon[i]['con'] = $ShowPopup;
+        }
     }
-    window.parent.$.layer.close();
+    var popupType = $(".setNoticeType [type=radio]:checked").val()
+    var json_data = {
+        name:"notice",
+        theme:"notice",
+        resource:popupCon,
+        option:{icon:$url,type:popupType,title:$setTitle}
+    };
+
+    $.post('notice',{json_data:json_data},function(data){
+
+        var pro = window.parent.getPro();
+        $status = $("#status").val();
+        if($status == 1){
+            $elem = window.parent.getOperationElem();
+            $($elem).hide().before(data).remove();
+        }else{
+            $(pro).before(data);
+        }
+        window.parent.$.layer.close();
+    })
+
+    //var html="";
+    //html +="<head></head>";
+    //html +="<div class='controller' data-id='"+$("#controller-id").val()+"'>";
+    //html +="<div class='controller-title'>"+$setTitle+"</div>";
+    //html +="<div style='height: 25px;'>";
+    //if($url != null){
+    //    html +="<span style='float: left; display: inline-block;'><img src='"+$url+"'></span>";
+    //}
+    //if($(".setNoticeType [type=radio]:checked").val()=='cell'){     //纵向公告
+    //    html +="<marquee  style='font-size: 14px; width: 90%; float: left; height:21px;' scrollAmount=1 direction=up onmouseover=stop() onmouseout=start()>";
+    //    for(i = 0; i < $num; i++){
+    //        $ShowPopup = $('.showContentList').find('.showContent').eq(i).find('div').eq(0).html();
+    //        html +="<span style='margin-left: 10%; display: inline-block;'>"+$ShowPopup+"</span><br/>";
+    //    }
+    //}else{          //横向公告
+    //    html +="<marquee  style='font-size: 14px; width: 90%; float: left; height:21px;' scrollAmount=3 onmouseover=stop() onmouseout=start()>";
+    //    for(i = 0; i < $num; i++){
+    //        $ShowPopup = $('.showContentList').find('.showContent').eq(i).find('div').eq(0).html();
+    //        html +="<span style='margin-left: 10%; display: inline-block;'>"+$ShowPopup+"</span>";
+    //    }
+    //}
+    ////$status = $("#status").val();
+    ////if($status == 1){
+    ////    console.log(window.parent.getOperationElem());
+    ////}
+    //html +="</marquee></div></div>";
+    //
+    //var pro = window.parent.getPro();
+    //$status = $("#status").val();
+    //if($status == 1){
+    //    $elem = window.parent.getOperationElem();
+    //    $($elem).hide().before(html).remove();
+    //}else{
+    //    $(pro).before(html);
+    //}
+    //window.parent.$.layer.close();
 }

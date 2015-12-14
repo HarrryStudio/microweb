@@ -40,7 +40,6 @@ class Widget extends Controller{
 //        }
 //    }
 
-
     public function insert_content($content = null){
         $Template = Think::instance('Think\\Template');
         $templateFile = $this->load_template_file($this->name,$this->theme);
@@ -72,7 +71,7 @@ class Widget extends Controller{
         return $theme;
     }
 
-    
+
     public function filter_theme_link($theme){
         return $theme;
     }
@@ -94,11 +93,8 @@ class Widget extends Controller{
         if(file_exists($root."public.js")){
             $data["js"][] = $root."public.js";
         }
-/*        if(file_exists($root."css.js")){
+        if(file_exists($root."css.js")){
             $data["css"][] = $root."public.js";
-        }*/
-        if(file_exists($root."public.css")){
-            $data["css"][] = $root."public.css";
         }
         $widget = $root.$name."/";
         if(is_dir($widget)){

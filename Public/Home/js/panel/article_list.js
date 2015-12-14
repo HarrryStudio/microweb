@@ -1,4 +1,8 @@
 $(function(){
+	$(".pattern").on("click",function(){
+		$(".pattern").find("div").removeClass("hr");
+		$(this).find("div").addClass("hr");
+	})
 	var flag = false;
 	var url_suffix = "&?";
 	var url = $(".article_info a").attr('url');
@@ -16,10 +20,6 @@ $(function(){
 			$("#type_all")[0].checked = false;
 			flag = false;
 		}
-	});
-	$(".pattern").click(function(){
-		$(".pattern").find("div").removeClass("hr");
-		$(this).find("div").addClass("hr");
 	})
 })
 
@@ -69,6 +69,5 @@ function save() {
 			var pro = window.parent.getPro();
 			$(pro).before(data.data.html);
 		}
-		window.parent.$.layer.close();	
-	})			
+	}
 }

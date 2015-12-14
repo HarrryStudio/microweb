@@ -202,8 +202,8 @@ class PictureModel extends Model{
         $where['album_id'] = $album_id;
         $pic = $photo
             ->where($where)
-            ->join('picture on photo.pic_id = picture.id')
-            ->field('picture.savepath,picture.savename')
+            ->join('home_picture on photo.pic_id = home_picture.id')
+            ->field('home_picture.savepath,home_picture.savename,home_picture.id')
             ->select();
         if(empty($pic)){
             $pic = "false";

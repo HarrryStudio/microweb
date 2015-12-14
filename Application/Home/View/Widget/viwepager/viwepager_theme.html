@@ -1,0 +1,34 @@
+<!--<div class='controller-title'>{$title}</div>-->
+<div style='max-height: 230px' class='controller' data-id='"+$("#controller-id").val()+"'>
+    <div id='carousel-example-generic' class='carousel slide'>
+        <div class='carousel-inner' style='height:210px'>
+            <div class='item active'>
+                <img style='width: 100%;height:210px;' src='__UPLOADS__/{$frist_img}'>
+            </div>
+            <volist name="pic_list" id="vo" offset="1" length='9'>
+                <div class='item'>
+                    <img style='width: 100%;height:210px;' src='__UPLOADS__/{$vo["savepath"]}/{$vo["savename"]}'>
+                </div>
+            </volist>
+        </div>
+    <if condition="$type eq 1">
+        <a class='left carousel-control' href='#carousel-example-generic' data-slide='prev'>
+            <span class='glyphicon glyphicon-chevron-left'></span>
+        </a>
+        <a class='right carousel-control' href='#carousel-example-generic' data-slide='next'>
+            <span class='glyphicon glyphicon-chevron-right'></span>
+        </a>
+    <elseif condition="$type eq 2" />
+        <ol class='carousel-indicators'>
+            <li data-target='#carousel-example-generic' data-slide-to='0' class='active'>{$pic_num}</li>
+        <volist name="pic_list" id="vo" offset="1" length='9'>
+            <li data-target='#carousel-example-generic' data-slide-to="{$key}"></li>
+        </volist>
+        </ol>
+    <elseif condition="$type eq 3" />
+        <a style='margin-left:49%' class='getdown' id='down'>
+            <span style='cursor: pointer;' class='glyphicon glyphicon-chevron-down'></span>
+        </a>
+    </if>
+    </div>
+</div>

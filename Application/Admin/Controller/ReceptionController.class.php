@@ -225,14 +225,20 @@ class ReceptionController extends BaseController{
     public function addController($c_name="",$c_intro="",$c_addr="",$seat="",$choice=""){
         if ($seat) {
             $list = M("controller")->field("id,name,intro,url,icon")->where("id=".$seat)->find();
+            $effect_img = M("theme")
+                    ->field("theme.id,picture.savename,picture.savepath")
+                    ->join('picture ON theme.pic_id = picture.id')
+                    ->where("theme.status=0 and theme.controller_id=".$seat)
+                    ->order("theme.update_time desc")
+                    ->select();
             $this->assign("list", $list);
+            $this->assign("effect_img", $effect_img);
 //            dump($list);
             $this->assign("modular", "编辑控件信息");
         }else{
             $this->assign("modular", "新增控件管理");
         }
         if (IS_POST) {
-            
             $upfile = $_FILES['upfile'];
             trim($c_name)=="" && $this->falsh_error("控件名称信息不能为空！");
             // trim($c_name)=="" && $this->error("请完善控件名称信息！");
@@ -254,20 +260,30 @@ class ReceptionController extends BaseController{
                 $this->display();
                 return;
             }*/
-            $upload = new \Think\Upload();// 实例化上传类
-            $upload->maxSize   =     3145728 ;// 设置附件上传大小
-            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-            $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
-            $upload->savePath  =     'controller/'; // 设置附件上传（子）目录
-            $info   =   $upload->upload();
-            if(!empty($info)){
-                $data['icon'] = $info['upfile']['savepath'].$info['upfile']['savename'];
-            }
+
+
+//            $upload = new \Think\Upload();// 实例化上传类
+//            $upload->maxSize   =     3145728 ;// 设置附件上传大小
+//            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+//            $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+//            $upload->savePath  =     'Admin/'; // 设置附件上传（子）目录
+//            $info   =   $upload->upload();
+//            if(!empty($info)){
+//                $data['icon'] = $info['upfile']['savepath'].$info['upfile']['savename'];
+//            }
+
+
+
 //            $data['icon'] = $info['upfile']['savepath'].$info['upfile']['savename'];
             $data['name'] = $c_name;
             $find = M("controller")->where($data)->select();
             if(!empty($find)){
                 $this->error("控件已存在");
+            }
+            $picture = A("Picture");
+            $img_res = $picture->uploadPicture();
+            if($img_res){
+                $data['img_id'] = $img_res["Filedata"]['id'];
             }
             $data['intro'] = $c_intro;
             $data['url'] = $c_addr;
@@ -294,13 +310,78 @@ class ReceptionController extends BaseController{
                 // $this->falsh_error(2121221121);
                 return;
             }else{
-                $this->display();   
+                $this->display();
             }
            
         }
         $this->display();
     }
 
+    //上传图片
+    public function upload(){
+        $controller_id = I("get.id");
+        $save_add = I("get.old_img");
+        $picture = A("Picture");
+        $img_res = $picture->uploadPicture();
+        if($img_res){
+            if($save_add=="true"){
+                $where["controller_id"] = $controller_id;
+                $have_no = M("theme")->where("status=0 and controller_id=".$controller_id." and pic_id=".$img_res["Filedata"]['id'])->find();
+                if($have_no){
+                    $res = "no";
+                }else{
+                    $id = M("theme")->where($where)->order("update_time asc")->select();
+                    $data['update_time'] = time();
+                    $data["pic_id"]=$img_res["Filedata"]['id'];
+                    $where1["id"] = $id[0]["id"];
+                    $res = M("theme")->where($where1)->save($data);
+                    if($res){
+                        $res=$id[0]["id"];
+                    }
+                }
+            }else{
+                $theme = M("theme");
+                $where["controller_id"] = $controller_id;
+                $where["status"] = 1;
+                $theme_id = $theme -> where($where)->find();
+                if($theme_id["id"]){
+                    $data["pic_id"]=$img_res["Filedata"]['id'];
+                    $data['update_time'] = time();
+                    $data["status"] = 0;
+                    $res = M("theme") -> where('id='.$theme_id["id"]) -> save($data);
+                    if($res){
+                        $res=$theme_id["id"];
+                    }
+                }else{
+                    $data["pic_id"]=$img_res["Filedata"]['id'];
+                    $data["controller_id"] = $controller_id;
+                    $data['create_time'] = time();
+                    $data['update_time'] = time();
+                    $data["name"]="效果图";
+                    $res = $theme->add($data);
+                }
+            }
+            if($res){
+                $img_res["theme_id"]=$res;
+                $this->ajaxReturn($img_res);
+            }
+        }else{
+            $this->ajaxReturn($img_res);
+        }
+    }
+
+    //效果图去除
+    public function delete_theme(){
+        $theme_id = I("post.theme_id");
+        $theme = M("theme");
+        $res = $theme -> where("id=".$theme_id) -> data("status=1 and update_time = ".time()) -> save();
+        if($res){
+            $this->ajaxReturn("ok");
+        }else{
+            $this->ajaxReturn("false");
+        }
+
+    }
 
     public function falsh_error($msg) {
         session('flash_error', '<div class="alert alert-error" style="width:80%;height:40px;float:left;position: absolute;"><h2 style="color:white;z-index:10;">'.$msg.'</h2></div>');
@@ -464,4 +545,3 @@ class ReceptionController extends BaseController{
 
 }
 ?>
-
