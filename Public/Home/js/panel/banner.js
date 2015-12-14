@@ -53,9 +53,10 @@ function save(){
         window.parent.alert_info("请选择图片");
         return;
     }
-    var json_data = {name:"banner",theme:"banner",resource:$url,option:{albumId:$albumId,img_id:$img_id}}
+    var json_data = {name:"Banner",theme:"banner",resource:$url,option:{albumId:$albumId,img_id:$img_id}}
 
-    $.post("banner",{json_data:json_data},function(data){
+    var url = $("#save-url").val();
+    $.post(url, json_data,function(data){
         //console.log(data);
         var pro = window.parent.getPro();
         $status = $("#status").val();
