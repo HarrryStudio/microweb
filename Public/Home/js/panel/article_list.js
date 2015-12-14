@@ -69,5 +69,6 @@ function save() {
 			var pro = window.parent.getPro();
 			$(pro).before(data.data.html);
 		}
-	}
+		window.parent.$.layer.close();
+	});
 }
