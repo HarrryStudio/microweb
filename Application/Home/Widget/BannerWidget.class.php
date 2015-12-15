@@ -17,6 +17,7 @@ class BannerWidget extends Widget
     }
 
     public function controller($is_edit){
+        $is_edit = I("get.is_edit");
         $album_id = I('album_id');
         if(!empty($album_id)){
             $photo = D("Picture");

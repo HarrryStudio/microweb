@@ -17,6 +17,7 @@ class NoticeWidget extends Widget
     }
 
     public function controller($is_edit){
+        $is_edit = I("get.is_edit");
         $this->assign("status", $is_edit);
         $this->display("Panel/notice");
     }
