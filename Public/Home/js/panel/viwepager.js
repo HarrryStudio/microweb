@@ -31,6 +31,7 @@ $(function(){
         album_id = $(this).attr("date");
     })
 })
+
 var dynamicLoading = {
     css: function(path){
         if(!path || path.length === 0){
@@ -56,6 +57,7 @@ var dynamicLoading = {
         head.appendChild(script);
     }
 }
+
 function save(){
     //var title = $(".setTitle").val();
     //if(title == ""){

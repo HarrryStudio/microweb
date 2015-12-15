@@ -54,6 +54,7 @@ function save(){
         return;
     }
     var json_data = {name:"Banner",theme:"banner",resource:$url,option:{albumId:$albumId,img_id:$img_id}}
+
     var save_url = $("#save_widget").val();
     $.post(save_url,json_data,function(data){
         //console.log(data);

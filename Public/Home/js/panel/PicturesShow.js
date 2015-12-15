@@ -73,6 +73,7 @@ function save(){
         //option:{type:$type}
         option:{type:$type,title:$title}
     }
+
     var save_url = $("#save_widget").val();
     $.post(save_url,json_data,function(data){
         //console.log(data);
