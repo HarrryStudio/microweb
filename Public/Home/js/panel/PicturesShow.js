@@ -67,27 +67,30 @@ function save(){
         return;
     }
     var json_data = {
-        name:"pictureShow",
-        theme:"pictureShow",
+        name:"PicturesShow",
+        theme:"PicturesShow",
         resource:$album_id,
         //option:{type:$type}
         option:{type:$type,title:$title}
     }
-    $.post('PicturesShow',{json_data:json_data},function(data){
-        if(data=="false"){
-            window.parent.alert_info("相册为空",-1);
-            return;
-        }
-        var pro = window.parent.getPro();
-        $status = $("#status").val();
-        if($status == 1){
-            $elem = window.parent.getOperationElem();
-            $($elem).hide().before(data).remove();
+    var save_url = $("#save_widget").val();
+    $.post(save_url,json_data,function(data){
+        //console.log(data);
+        console.log(data);
+        if(data.status == 1){
+            html = data['data']['html'];
+            $status = $("#status").val();
+            if($status == 1){
+                var elem = window.parent.getOperationElem();
+                $(elem).hide().before(html).remove();
+            }else{
+                var pro = window.parent.getPro();
+                $(pro).before(html);
+            }
         }else{
-            $(pro).before(data);
+            alert("失败");
         }
         window.parent.$.layer.close();
-
 
 
 //        var html="";

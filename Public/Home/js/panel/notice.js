@@ -76,21 +76,28 @@ function save(){
     }
     var popupType = $(".setNoticeType [type=radio]:checked").val()
     var json_data = {
-        name:"notice",
+        name:"Notice",
         theme:"notice",
         resource:popupCon,
         option:{icon:$url,type:popupType,title:$setTitle}
     };
 
-    $.post('notice',{json_data:json_data},function(data){
-
-        var pro = window.parent.getPro();
-        $status = $("#status").val();
-        if($status == 1){
-            $elem = window.parent.getOperationElem();
-            $($elem).hide().before(data).remove();
+    var save_url = $("#save_widget").val();
+    $.post(save_url,json_data,function(data){
+        //console.log(data);
+        console.log(data);
+        if(data.status == 1){
+            html = data['data']['html'];
+            $status = $("#status").val();
+            if($status == 1){
+                var elem = window.parent.getOperationElem();
+                $(elem).hide().before(html).remove();
+            }else{
+                var pro = window.parent.getPro();
+                $(pro).before(html);
+            }
         }else{
-            $(pro).before(data);
+            alert("失败");
         }
         window.parent.$.layer.close();
     })
