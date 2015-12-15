@@ -31,6 +31,33 @@ $(function(){
         album_id = $(this).attr("date");
     })
 })
+
+var dynamicLoading = {
+    css: function(path){
+        if(!path || path.length === 0){
+            throw new Error('argument "path" is required !');
+        }
+        var p_document = window.parent.panelFrame.document;
+        var head = p_document.getElementsByTagName('head')[0];
+        var link = p_document.createElement('link');
+        link.href = path;
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        head.appendChild(link);
+    },
+    js: function(path){
+        if(!path || path.length === 0){
+            throw new Error('argument "path" is required !');
+        }
+        var p_document = window.parent.panelFrame.document;
+        var head = p_document.getElementsByTagName('head')[0];
+        var script = p_document.createElement('script');
+        script.src = path;
+        script.type = 'text/javascript';
+        head.appendChild(script);
+    }
+}
+
 function save(){
     //var title = $(".setTitle").val();
     //if(title == ""){
@@ -43,29 +70,28 @@ function save(){
         return;
     }
     var json_data = {
-        name:"viwepager",
+        name:"ViwePager",
         theme:"viwepager",
         resource:album_id,
         option:{type:type}
         //option:{title:title,type:type}
     }
-    $.post('Viwepager',{json_data:json_data},function(data){
-        if(data == "false"){
-            window.parent.alert_info("此相册为空",-1);
-            return;
-        }
-        var pro = window.parent.getPro();
-        $status = $("#status").val();
-        if($status == 1){
-            $elem = window.parent.getOperationElem();
-            $($elem).hide().before(data).remove();
+    var save_url = $("#save_widget").val();
+    $.post(save_url,json_data,function(data){
+        //console.log(data);
+        console.log(data);
+        if(data.status == 1){
+            html = data['data']['html'];
+            $status = $("#status").val();
+            if($status == 1){
+                var elem = window.parent.getOperationElem();
+                $(elem).hide().before(html).remove();
+            }else{
+                var pro = window.parent.getPro();
+                $(pro).before(html);
+            }
         }else{
-            $(pro).before(data);
-        }
-        if(type != 3){
-            window.parent.panelFrame.$('.carousel').carousel({interval: 3000});     //轮播自动滚动及时间
-        }else{
-            window.parent.panelFrame.$.showImg();
+            alert("失败");
         }
         window.parent.$.layer.close();
 

@@ -13,5 +13,4 @@ $(function(){
         }
         $(".showPic").find("img").attr("src",$(this).attr("src"));
     })
-
 })

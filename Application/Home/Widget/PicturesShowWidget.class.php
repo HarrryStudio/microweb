@@ -14,30 +14,14 @@ class PicturesShowWidget extends Widget
     public function __construct($theme,$resource,$config) {
         parent::__construct($theme,$resource,$config);
         $this->name = "PicturesShow";
-        $this -> theme ="PicturesShow";
     }
 
-    public function controller(){
-        $this -> assign("controllerName",$this->name);
-        $is_edit = I('get.is_edit',0);
-        if(!empty($is_edit)){
-            $this->assign("status", 1);
-        }
-        $json_data = I("post.json_data");
-        if(!empty($json_data)){
-            $photo = D("Picture");
-            $pic = $photo -> getPicture($json_data['resource']);
-            $this -> assign("frist_img",$pic[0]["savepath"].$pic[0]["savename"]);
-            $this -> assign("pic_list",$pic);
-            $this -> assign("type",$json_data["option"]["type"]);
-            $this -> assign("title",$json_data["option"]["title"]);
-            $this -> index();
-        }else{  //»ñµÃÍ¼²áÃû
-            $album = D('Album');
-            $album_list = $album -> get_album_list(session('site_id'));
-            $this -> assign('album_list',$album_list);
-            $this->display("Panel/picturesShow");
-        }
+    public function controller($is_edit){
+        $album = D('Album');
+        $album_list = $album -> get_album_list(session('site_id'));
+        $this -> assign('album_list',$album_list);
+        $this->assign("status", $is_edit);//±à¼­(1)ORÌí¼Ó(0)
+        $this->display("Panel/picturesShow");
     }
 
     public function get_theme_list(){
@@ -49,6 +33,13 @@ class PicturesShowWidget extends Widget
     }
 
     public function index(){
+        $photo = D("Picture");
+        $pic = $photo -> getPicture($this->resource);
+        $this -> assign("frist_img",$pic[0]["savepath"].$pic[0]["savename"]);
+        $this -> assign("pic_list",$pic);
+        $this -> assign("type",$this->option["type"]);
+        $this -> assign("title",$this->option["title"]);
+        $this -> assign("controllerName",$this->name);
         $this -> insert_content();
     }
 

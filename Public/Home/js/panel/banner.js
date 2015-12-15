@@ -39,9 +39,9 @@ $(function(){
             }else{
                 $(".pic_show").empty();
                 $url = "/microWeb/Uploads/"+data[0]['savepath']+data[0]['savename'];
-                $(".pic_show").append("<div class='pattern'><div class='hr'><img src='/microWeb_v2/Uploads/"+data[0]['savepath']+data[0]['savename']+"'></div></div>");
+                $(".pic_show").append("<div class='pattern'><div class='hr'><img src='/microWeb/Uploads/"+data[0]['savepath']+data[0]['savename']+"'></div></div>");
                 for(i = 1; i < data.length; i++){
-                    $(".pic_show").append("<div class='pattern'><div class=''><img src='/microWeb_v2/Uploads/"+data[i]['savepath']+data[i]['savename']+"'></div></div>");
+                    $(".pic_show").append("<div class='pattern'><div class=''><img src='/microWeb/Uploads/"+data[i]['savepath']+data[i]['savename']+"'></div></div>");
                 }
             }
         })
@@ -55,16 +55,22 @@ function save(){
     }
     var json_data = {name:"Banner",theme:"banner",resource:$url,option:{albumId:$albumId,img_id:$img_id}}
 
-    var url = $("#save-url").val();
-    $.post(url, json_data,function(data){
+    var save_url = $("#save_widget").val();
+    $.post(save_url,json_data,function(data){
         //console.log(data);
-        var pro = window.parent.getPro();
-        $status = $("#status").val();
-        if($status == 1){
-            $elem = window.parent.getOperationElem();
-            $($elem).hide().before(data).remove();
+        console.log(data);
+        if(data.status == 1){
+            html = data['data']['html'];
+            $status = $("#status").val();
+            if($status == 1){
+                var elem = window.parent.getOperationElem();
+                $(elem).hide().before(html).remove();
+            }else{
+                var pro = window.parent.getPro();
+                $(pro).before(html);
+            }
         }else{
-            $(pro).before(data);
+            alert("失败");
         }
         window.parent.$.layer.close();
     })
