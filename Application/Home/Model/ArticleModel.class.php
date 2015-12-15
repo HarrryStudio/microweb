@@ -194,8 +194,7 @@ class ArticleModel extends Model{
       if (!empty($p)) {
         $data['page'] = $show;
       }
-      // return $this->getLastSql();
-      var_dump($data);
+      echo  $this->getLastSql();
       return $data;
     }
 }
