@@ -180,7 +180,7 @@ class ArticleModel extends Model{
       $count = $this->where($map)->count();
       $Page = new \Think\Page($count,5);
       $show = $Page->show();
-      $this->join('LEFT JOIN picture on picture.id = article.pic_id')
+      $article_list = $this->join('LEFT JOIN picture on picture.id = article.pic_id')
             ->where($map)
             ->field('article.id, article.title, article.content, picture.savepath, picture.savename')
             ->order('article.is_top desc, article.create_time desc')
@@ -194,7 +194,6 @@ class ArticleModel extends Model{
       if (!empty($p)) {
         $data['page'] = $show;
       }
-      echo  $this->getLastSql();
       return $data;
     }
 }

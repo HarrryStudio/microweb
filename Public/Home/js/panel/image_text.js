@@ -29,3 +29,34 @@ $(function () {
 		});
 	})
 })
+
+
+
+function save () {
+	var url = $('#save-url').val();
+
+	var article_id = $('input:radio:checked').val();
+	var article_title = $("input:radio:checked").next('label').html();
+	var article_content = $('input:radio:checked').siblings('input').val();
+	var img_src = $('input:radio:checked').siblings('.img_src').val();
+	console.log("-------------"+img_src);
+	var pathName=window.document.location.pathname;
+	var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+	typeof($show_way)=="undefined"? $show_way="image_text_show.css" : $show_way;
+	console.log("pathName"+pathName);
+	console.log("projectName"+projectName);
+
+	var data = {'name':'ImageText',}
+	if ($(".article_item input").length == 0) {
+		window.parent.alert_info("请先添加文章",0);
+		return;
+	};
+
+
+	$.post(url, data, function (data) {
+
+	});
+	return;
+}
+
+

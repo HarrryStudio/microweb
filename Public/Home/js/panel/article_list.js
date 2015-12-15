@@ -4,7 +4,6 @@ $(function(){
 		$(this).find("div").addClass("hr");
 	})
 	var flag = false;
-	var url_suffix = "&?";
 	var url = $(".article_info a").attr('url');
 	$("#type_all").on("click",function () {
 		$(".type_checkbox").each(function() {
@@ -21,7 +20,7 @@ $(function(){
 			flag = false;
 		}
 	})
-})
+});
 
 var dynamicLoading = {
     css: function(path){
@@ -71,4 +70,4 @@ function save() {
 		}
 		window.parent.$.layer.close();
 	});
-}
+};

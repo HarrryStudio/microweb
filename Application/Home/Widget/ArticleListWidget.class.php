@@ -32,6 +32,8 @@ class ArticleListWidget extends Widget
     $this->assign("column_list", $column_list);
     $this->assign('controller_id', I('id'));
     $this->assign('type_list', $type_list);
+    $this->assign('theme_list', $this->get_theme_list());
+    $this->assign('is_edit', $is_edit);
     //$this->assign('option', $option);
     $this->display('panel/article_list');
   }
