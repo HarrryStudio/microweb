@@ -2,6 +2,12 @@
     margin: 0px;
     padding: 0px;
 }
+.controller{
+    width: 100%;
+    display: inline-block;
+    min-height: 260px;
+    overflow: hidden;
+}
 
 /*导航位于下面*/
 .NavDown img{
