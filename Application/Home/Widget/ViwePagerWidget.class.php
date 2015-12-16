@@ -17,6 +17,7 @@ class ViwePagerWidget extends Widget
     }
 
     public function controller($is_edit){
+        $is_edit = I("get.is_edit");
         $album = D('Album');
         $album_list = $album -> get_album_list(session('site_id'));
         $this -> assign('album_list',$album_list);
