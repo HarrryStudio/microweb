@@ -1,0 +1,32 @@
+<div class='article_list_container2 controller' data-id="{$cname}">
+    <div class='controller-title'>{$option['title']}</div>
+    <div class='article_info'>
+        <div class='navText'>
+            <div class = 'article_list'>
+                <foreach name="article_info" item="item">
+                    <div>
+                        <div class='row'></div>
+                        <span class='article_title style3'>{$item['title']}</span>
+                    </div>
+                </foreach>
+            </div>
+        </div>
+    <div class='textContent'>
+    <foreach name="article_info" item="item">
+        <if condition="$key eq 0">
+            <a class='article-link' href="{$option['column_url']}.html" data-url="{$option['article_url']}{$item['id']}/column_id/{$item['column_id']}">
+            <div class='detail'>
+                    <img src="{$item['savepath']}{$item['savename']}">
+        <else/>
+            <a style='display:none' class='article-link' href="{$option['column_url']}.html" data-url="{$option['article_url']}{$item['id']}/column_id/{$item['column_id']}">
+                <div class='detail'><img src="{$item['savepath']}{$item['savename']}">
+        </if>
+                    {$item['content']}
+                </div>
+            </a>
+    </foreach>
+            </div>
+        <div class='clear_float'></div>
+    </div>
+    <div class='clear_float'>
+</div>

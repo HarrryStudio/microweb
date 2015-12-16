@@ -1,0 +1,23 @@
+<div class='article_list_container3 controller' data-id="{$cname}">
+    <div class='controller3-title'>{$option['title']}<br><span>News</span></div>
+    <div class='article_info3'>
+        <ul class='article_list3'>
+        <volist name="article_info" id="item">
+            <li>
+                <a class='article-link' href="{$option['column_url']}.html" data-url="{$option['article_url']}{$item['id']}/column_id/{$item['column_id']}">
+                    <div class='article_text3'>
+                        <ul><li class='article_title3'>{$item['title']}</li></ul>
+                        <div class='article_content3'>{$item['content']}"</div>
+                    </div>
+                    <div class='img_container3'>
+                        <img src="{$item['savepath']}{$item['savename']}">
+                    </div>
+                </a>
+            </li>
+            <if condition="$key lt count($article_info) - 1">
+                <hr />
+            </if>
+        </volist>
+        </ul>
+    </div>
+</div>

@@ -57,14 +57,14 @@ class Widget extends Controller{
     }
 
     public function get_json(){
-        return 
+        return
             array(
                 'name'     =>  $this->name,
                 'theme'    =>  $this->theme,
                 'resource' =>  $this->resource,
                 'option'   =>  $this->option
             );
-        
+
     }
 
     public function filter_theme_template($theme){

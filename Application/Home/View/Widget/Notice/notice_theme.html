@@ -1,0 +1,20 @@
+<div class='controller' data-name='{$controllerName}'>
+    <div class='controller-title'>{$title}</div>
+    <div style='height: 25px;'>
+        <notempty name="url">
+            <span style='float: left; display: inline-block;'><img src="{$url}"></span>
+        </notempty>
+        <if condition = "NoticeType eq 'cell'">
+            <marquee  style='font-size: 14px; width: 90%; float: left; height:21px;' scrollAmount=1 direction=up onmouseover=stop() onmouseout=start()>
+            <foreach name="popupCon" item="vo">
+                <span style='margin-left: 10%; display: inline-block;'>{$vo.con}</span><br/>
+            </foreach>
+        <else/>
+            <marquee  style='font-size: 14px; width: 90%; float: left; height:21px;' scrollAmount=3 onmouseover=stop() onmouseout=start()>
+            <foreach name="popupCon" item="vo">
+                <span style='margin-left: 10%; display: inline-block;'>{$vo.con}</span>
+            </foreach>
+        </if>
+        </marquee>
+    </div>
+</div>

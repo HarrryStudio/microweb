@@ -884,8 +884,4 @@ class PanelController extends BaseController {
         $this->assign('article_list',$article_list);
         $this->display();
     }
-
-
-
-
 }

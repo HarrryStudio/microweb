@@ -56,5 +56,4 @@ class MessageController extends BaseController{
 		$this->ajaxReturn($res);
 	}
 }
-
 ?>
