@@ -96,7 +96,19 @@ function initController(elem,cname){
 
 		$('.center').data('elem',that);
 }
+
+function init_json(){
+	console.log(html_json);
+    var json = html_json.content;
+    var index = 0;
+    $(".controller").each(function(){
+        $(this).data('json',json[index]);
+        index ++;
+    });
+}
+
 $(function(){
+	init_json();
 	//*显示编辑框*//
 	$(document).on('mouseover',".center>.controller",function(){
 		//console.log("over");
@@ -116,7 +128,8 @@ $(function(){
 	});
 	//*编辑控件*//
 	$(document).on('click',".oparetion-item.edit-controller",function(){
-		window.parent.add_controller($(this).parent().attr('data-name'),1);
+		var controller = $($('.center').data('elem'));
+		window.parent.add_controller(controller.attr('data-name'),controller.data('json'));
 	})
 	//*删除控件*//
 	$(document).on('click',".oparetion-item.del-controller",function(){

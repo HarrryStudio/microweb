@@ -16,12 +16,14 @@ class MagicWidget extends Widget
         $this->name = "Magic";
     }
 
-    public function controller($is_edit){
+    public function controller($site_id,$data){
         $theme_list = $this->get_theme_list();
-
+        if(!empty($data)){
+            $this->assign("now_theme",$data['theme']);
+            $this->assign("status",true);
+        }
         $this->assign("theme_list",$theme_list);
-        $this->assign("is_edit",$is_edit);
-
+        $this->assign("theme",$this->theme);
         $this->display("Panel/magic");
     }
 
@@ -30,12 +32,12 @@ class MagicWidget extends Widget
     }
 
 
-    public function index($site_id){
+    public function index($site_id,$dynamic = false){
         $nav_list = D('UserColumn')->get_nav_list($site_id);
         $this->assign('nav_list',$nav_list);
         $this->assign('cname',$this->name);
         $this->assign('theme',$this->theme);
-        $this->insert_content();
+        $this->insert_content($dynamic);
     }
 
     public function filter_theme_link($theme){

@@ -1,3 +1,16 @@
+*{
+	margin:0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	 -moz-box-sizing: border-box;
+	      box-sizing: border-box;
+}
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	 -moz-box-sizing: border-box;
+	      box-sizing: border-box;
+}
 html,body{
 	margin:0px;
 	padding: 0px;
@@ -43,7 +56,10 @@ body::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
     background: rgba(0,0,0,0.2);
 }
-
+a {
+  color: #444;
+  text-decoration: none;
+}
 .side{
 	position: fixed;
 	background: #21232F;

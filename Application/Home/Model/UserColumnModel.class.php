@@ -153,7 +153,7 @@ class UserColumnModel extends Model{
 
     public function get_html_json($colnum_id){
         $result = $this->field('html')->where(array('id' => $colnum_id))->find();
-        return $result;
+        return $result['html'];
     }
 
     public function get_nav_list($site_id){
@@ -179,11 +179,12 @@ class UserColumnModel extends Model{
      */
     public function writeHtml(){
         $id = I('get.column_id');
+        //$content = htmlspecialchars_decode(I('content'));
         $content = I('content');
         if(!empty( $content )){
-            $result = M()->table('html')
+            $result = $this
                 ->where(array('id'=>$id))
-                ->save( array('html'=>$content) );
+                ->save( array('html'=>json_encode($content)) );
             if($result === false){
                 $this->error = 'html保存失败';
                 return false;

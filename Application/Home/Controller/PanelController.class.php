@@ -88,19 +88,23 @@ class PanelController extends BaseController {
 
         $Column = D('UserColumn');
         $json = $Column->get_html_json($column_id);
-        $content = $this->resolve_json($json);
+
+        $widget_common = $this->resolve_json($site_id,$json);
 
         $site_common = $this->get_site_common($site_id);
 
         $theme_templet = $site_common['theme_templet'];
+
+        $links = array_merge_recursive($site_common['theme_links'],$widget_common['links']) ;
+
         unset($site_common['theme_templet']);
 
-        foreach($site_common as $key => $value){
-            $this->assign($key,$value);
-        }
+        $this->assign($site_common);
+        $this->assign('html_json',$json);
         $this->assign('user_info',$user_info);
         $this->assign('now_column',$column_id);
-        $this->assign('content',$content);
+        $this->assign('content' ,$widget_common['content']);
+        $this->assign($links);
         $this->display( $theme_templet );
 
     }
@@ -123,31 +127,56 @@ class PanelController extends BaseController {
     /**
      * 加载主题文件
      * @param $theme_name   文件名
-     * css,js 分别在Public/Home/theme/{$theme_name} 文件夹下 的 css文件夹下 和 js文件夹下
+     * css,js 分别在Public/Home/Theme/{$theme_name} 文件夹下 的 css文件夹下 和 js文件夹下
      * @return data['html'] string  模板文件   ['public'] string 引入js,css文件的html脚本
      */
-    private function load_theme_file($theme_name){
+    private function load_theme_link($theme_name){
 
-        $dir_name = C('THEME_PUBLIC_ROOT').$theme_name;
-        $data = [];
-        if(is_dir($dir_name)){
-            if(is_dir($dir_name."/js")){
-                if ($dh = opendir($dir_name."/js")) {
-                    while (($file = readdir($dh)) !== false) {
-                        $data['js'][] = $file;
-                        //$data['public'] .= '<script type="text/javascript" src="'.$file.'"></script>'."\n";
+        $root_path = C('THEME_PUBLIC_ROOT');
+        $static_path = $root_path."Static/";
+        $public_path = $root_path."Public/";
+        $theme_path = $root_path.$theme_name."/";
+        $data = array('js' => [] , 'css' => []);
+        if(is_dir(".".$static_path)){
+            if ($dh = opendir(".".$static_path)){
+                while (($file = readdir($dh)) !== false) {
+                    $ext = pathinfo($file,PATHINFO_EXTENSION);
+                    if($ext == 'js'){
+                        $data['js'][] = __ROOT__.$static_path.$file;
+                    }elseif($ext == 'css'){
+                        $data['css'][] = __ROOT__.$static_path.$file;
                     }
-                    closedir($dh);
                 }
+                closedir($dh);
             }
-            if(is_dir($dir_name."/css")){
-                if ($dh = opendir($dir_name."/css")) {
-                    while (($file = readdir($dh)) !== false) {
-                        $data['css'][] = $file;
-                        //$data['public'] .= '<link rel="stylesheet" type="text/css" href="'.$file.'">'."\n";
+        }
+        if(is_dir(".".$public_path)){
+            if ($dh = opendir(".".$public_path)){
+                while (($file = readdir($dh)) !== false) {
+                    $ext = pathinfo($file,PATHINFO_EXTENSION);
+                    if($ext == 'js'){
+                        $data['js'][] = __ROOT__.$public_path.$file;
+                    }elseif($ext == 'css'){
+                        $data['css'][] = __ROOT__.$public_path.$file;
                     }
-                    closedir($dh);
                 }
+                closedir($dh);
+            }
+        }
+        if(is_dir(".".$theme_path)){
+            $theme_path = $root_path."default/";
+        }
+        if(is_dir(".".$theme_path)){
+            if ($dh = opendir(".".$theme_path)) {
+                while (($file = readdir($dh)) !== false) {
+                    $ext = pathinfo($file,PATHINFO_EXTENSION);
+                    if($ext == 'js'){
+                        $data['js'][] = __ROOT__.$theme_path.$file;
+                    }elseif($ext == 'css'){
+                        $data['css'][] = __ROOT__.$theme_path.$file;
+                    }
+                }
+                closedir($dh);
             }
         }
         return $data;
@@ -180,17 +209,16 @@ class PanelController extends BaseController {
             ->field('name')
             ->where(array('status' => 0, 'id' => $site_info['theme']))
             ->find();
-        $theme_file = $this->load_theme_file($theme['name']);
+        $theme_links = $this->load_theme_link($theme['name']);
 
         $theme_templet= $this->load_theme_templet($theme['name']);
 
         $nav_list = $Column->get_nav_list($site_id);
-
         return array(
             'site_info'     =>  $site_info,
             'nav_list'      =>  $nav_list,
             'theme_templet' =>  $theme_templet,
-            'theme_file'    =>  $theme_file
+            'theme_links'   =>  $theme_links
         );
     }
 
@@ -205,27 +233,33 @@ class PanelController extends BaseController {
      * }
      * @return string  html
      */
-    public function resolve_json($json){
+    public function resolve_json($site_id,$json){
         $content = json_decode($json,true);
+        // var_dump($content);
         $widgets = [];
         foreach($content['content'] as $item){
-            $class =  $item['name'] . WIDGET_NAME;
-            import(MODULE_NAME ."/" . WIDGET_NAME .$class);
-            if(class_exists($class)) {
-                $widgets[] = new $class($item['theme'],$item['resource'],$item['config']);
-            }else {
+            $temp = $this->load_widget($item['name'],$item);
+            if($temp == false){
                 continue;
             }
+            $widgets[] = $temp;
         }
+
+        $links = [];
+        foreach($widgets as $widget){
+            $links = array_merge_recursive($links,$widget->load_template_link());
+        }
+        $links['js'] = array_unique($links['js']);
+        $links['css'] = array_unique($links['css']);
         // 页面缓存
         ob_start();
         ob_implicit_flush(0);
         foreach($widgets as $widget){
-            $widget->show();
+            $widget->index($site_id);
         }
         $content = ob_get_clean();
         \Think\Hook::listen('view_filter',$content);
-        return $content;
+        return array('content' => $content, 'links' => $links);
     }
 
 
@@ -272,9 +306,20 @@ class PanelController extends BaseController {
      * @param  String $name    空间名
      * @param  String $data    json数据
      */
-    public function control_widget($name,$data = null){
-        if( ($widget = $this->load_widget($name,$data)) ) {
-            $widget->controller(!empty($data));
+    public function control_widget($name){
+        $data = I("post.data");
+        if(!empty($data)){
+            $data = json_decode(htmlspecialchars_decode($data),true);
+            if($data == false){
+                $this->show(':( 没有数据');
+                return;
+            }
+        }
+        $site_id = session('site_id');
+        if(empty($site_id)){
+            $this->show(':( 没有找到网站');
+        }elseif( ($widget = $this->load_widget($name,$data)) ) {
+            $widget->controller($site_id,$data);
         }else {
             $this->show(':( 没有找到控件');
         }
@@ -295,16 +340,17 @@ class PanelController extends BaseController {
     public function save_widget(){
         $return = array('status' => 0, 'data' => "", 'info' => "");
         $data = I('post.');
-        $widget = $this->load_widget($data['name'],$data);
         $site_id = session('site_id');
         if(empty($site_id)){
             $result['info'] = "没有找到网站";
         }else{
+            $widget = $this->load_widget($data['name'],$data);
             ob_start();ob_implicit_flush(0);
-            $widget->index($site_id);
+            $widget->index($site_id,true);
             $result = ob_get_clean();
             if($result){
-                $return['data'] = $result;
+                $return['data']['html'] = $result;
+                $return['data']['json'] = $widget->get_json();
                 $return['status'] = 1;
             }
         }

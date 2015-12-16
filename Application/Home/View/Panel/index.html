@@ -10,7 +10,9 @@
 	<link rel="stylesheet" type="text/css" href="__CSS__/panel/column.css">
 	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
 	<script type="text/javascript" src='__STATIC__/layer/layer.js'></script>
-	<script type="text/javascript" src="__JS__/panel/index.js"></script>
+	<script type="text/javascript" src="__JS__/panel/index/frame.js"></script>
+	<script type="text/javascript" src="__JS__/panel/index/column.js"></script>
+	<script type="text/javascript" src="__JS__/panel/index/index.js"></script>
 </head>
 <body>
 	<div class="header">
@@ -204,13 +206,14 @@
 	<input type="hidden" id="writeArticle-url" value="__CONTROLLER__/writeArticle/">
 	<input type="hidden" id="readHtml-url" value="__CONTROLLER__/readHtml/column_id/">
 	<input type="hidden" id="control-widget-url" value="__CONTROLLER__/control_widget/name/">
-
+	<input type="hidden" id="save-widget-url" value="{:U('Panel/save_widget')}">
 	<div id="top-alert-back">
 		<div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">
 		      <button type="button" class="close"><span aria-hidden="true">×</span></button>
 		      <div class="alert-content"></div>
 		</div>
-	<div id="top-alert-back">
+	</div>
+		<form id="iframe-form" method="post" target="controEdit" action="" accept-charset="UTF-8" hidden="true"><input type="text" name="data"></form>
 	<script type="text/javascript">
 		/**
 		 * 弹出信息框
