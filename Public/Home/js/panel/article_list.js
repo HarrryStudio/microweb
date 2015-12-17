@@ -61,13 +61,9 @@ function save() {
 	var data = {'name':'ArticleList', 'theme':theme, 'source':'article', 'option':option};
 	$.post(save_url, data, function (data) {
 		console.log(data);
-		if ($("#status").val() == 1) {
-			elem = window.parent.getOperationElem();
-			$(elem).hide().before(data.data.html).remove();
-		} else {
-			var pro = window.parent.getPro();
-			$(pro).before(data.data.html);
-		}
+		html = data['data']['html'];
+		var pro = window.parent.getPro();
+		$(pro).before(html);
 		window.parent.$.layer.close();
 	});
 };

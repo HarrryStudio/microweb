@@ -22,66 +22,65 @@ $(function(){
 			flag = false;
 		}
 	})
-	console.log(window.parent.getOperationElem());
 })
+
+var dynamicLoading = {
+    css: function(path){
+		if(!path || path.length === 0){
+			throw new Error('argument "path" is required !');
+		}
+		var p_document = window.parent.panelFrame.document;
+		var head = p_document.getElementsByTagName('head')[0];
+        var link = p_document.createElement('link');
+        link.href = path;
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        head.appendChild(link);
+    },
+    js: function(path){
+		if(!path || path.length === 0){
+			throw new Error('argument "path" is required !');
+		}
+		var p_document = window.parent.panelFrame.document;
+		var head = p_document.getElementsByTagName('head')[0];
+        var script = p_document.createElement('script');
+        script.src = path;
+        script.type = 'text/javascript';
+        head.appendChild(script);
+    }
+}
+
 function save(){
 	if ($(".type_checkbox").length == 0) {
 		window.parent.alert_info("请先添加文章分类",0);
 		return;
 	}
-	console.log($(".type_checkbox").length);
-	var temp = "";
-
-	// var column_id = $(".column_list_checkbox:checked").val();
-	// var column_url = $(".column_list_checkbox:checked").attr('data');
-	var i = 0;
-	var length = $(".type_checkbox:checked").length;
+	var list = [];
+	list['column_id'] = [];
+	list['column_url'] = [];
+	list['type_name'] = [];
 	$(".type_checkbox:checked").each(function() {
 		that  = $(this).parent().parent();
-		var column_id = that.find('select').val();
-		var column_url = that.find('select').find('option:selected').attr('data');
-		var type_name = that.find('label').html();
-		// temp += "<li><a href='/microWeb/index.php/Home/Panel/article_sort_info/"+column_url+".html/?article_sort_id="+column_id+"'>"+type_name+"</a></li>";
-		temp += "<li><a class='article-link' href='"+column_url+".html' data-url='/microWeb/index.php/Home/Panel/readHtml/column_id/"+column_id+"'>"+type_name+"</a></li>";
-		i++;
-		if (i != length) {
-			temp += "<hr>";
-		};
-	})
-/*	$(".type_checkbox:checked").each(function() {
-		// temp += "<li><a href='/microWeb/index.php/Home/Panel/article_sort_info?article_sort_id="+$(this).prev().html()+"&column_id="+column_id+"'>"+$(this).prev().html()+"</a></li>";
-		temp += "<li><a href='/"+column_url+".html'>"+$(this).prev().html()+"</a></li>";
-	})*/
-	var url = $("#target_url").val();
-	var type_data = $("#type_data").serialize();
-	var img_url = $("#img_url").val();
-
-
-/*	var link1 ="/microWeb/UserFiles/Public/Controller/article_sort/article_sort_show.css";
-	var  loadCss ="<link rel = 'stylesheet' href = " + link1 + "  />";
-	console.log("loadCss"+loadCss);
-	$(parent.document.getElementById('panel-frame').contentDocument.head).append(loadCss);*/
-
-	var html = "";
-	html += "<div class='article_container controller' data-id='"+$('#controller-id').val()+"'>";
-		html += "<div class='controller-title'>"+$(".setting input:first").val()+"</div>";
-		html += "<div class='article_sort'>"
-			html += "<ul class = 'article_sort_list'>";
-			// html += "<ul class = 'article_sort_list' data='"+column_id+"'>";
-			html += temp;
-			html += "</ul>";
-		html += "</div>";
-	html += "</div>";   
-	console.log(html);
-
-	var pro = window.parent.getPro();
-	if ($("#status").val() == 1) {
-		elem = window.parent.getOperationElem();
-		$(elem).hide().before(html).remove();
-	} else {
+		list['column_id'].push(that.find('select').val());
+/*		list['column_url'].push(that.find('select').find('option:selected').attr('data'));
+		list['type_name'].push(that.find('label').html());*/
+	});
+	var save_url = $("#save-url").val();
+	var json;
+	json = JSON.stringify(list['column_id']);
+	console.log(json);
+	return;
+	// var option = {'column_id':column_id, 'column_url':column_url, 'type_name':type_name};
+	var option = {'list':JSON.stringify(list), 'test':'test'};
+	var data = {'name':'ArticleSort', 'theme':null, 'source':'type', 'option':option};
+	$.post(save_url, data, function (data) {
+		console.log(data);
+		html = data['data']['html'];
+		var pro = window.parent.getPro();
 		$(pro).before(html);
-	}
-	window.parent.$.layer.close();
+		window.parent.$.layer.close();
+
+	})
 }
 
 

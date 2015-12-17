@@ -25,7 +25,10 @@ class ImageTextWidget extends Widget
 
 	public function index()
 	{
-		
+        $this->option['article_content'] = htmlspecialchars_decode($this->option['article_content']);
+		$this->assign('index',$this->option['index']);
+		$this->assign('cname',$this->name);
+		$this->assign('option', $this->option);
 		$this->insert_content();
 	}
 
@@ -39,7 +42,7 @@ class ImageTextWidget extends Widget
 	}
 
 	public function filter_theme_template($theme){
-	  return $theme;
+	  return 'first';
 	}
 
 }

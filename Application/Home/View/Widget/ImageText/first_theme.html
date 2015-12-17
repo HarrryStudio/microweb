@@ -1,27 +1,27 @@
-<if condition="$index eq 1">
+<if condition="$option['index'] eq 1">
 <div class='image_text_container2 controller' data-name='{$cname}'>
-<elseif condition="$index eq 2"/>
+<elseif condition="$option['index'] eq 2"/>
 <div class='image_text_container3 controller' data-name='{$cname}'>
-<elseif condition="$index eq 3"/>
+<elseif condition="$option['index'] eq 3"/>
 <div class='image_text_container4 controller' data-name='{$cname}'>
 <else/>	
 <div class='image_text_container controller' data-name='{$cname}'>
 </if>
-	<div class='controller-title '>{$['title']}</div>
+	<div class='controller-title '>{$option['article_title']}</div>
 		<div>
 		<div class='image_text_img'>
 			<if condition="$index eq 2">
-				<h4>+article_title+"</h4>
+				<h4>{$option['article_title']}</h4>
 			</if>
-				<img src=" +img_src+">
+				<img src="{$option['img_src']}">
 		</div>
 		<if condition="$index eq 2">
 			<div class='image_text_title'>
-				<h4>+article_title+"</h4>
+				<h4>{$option['article_title']}</h4>
 			</div>				
 		</if>
 		<br/>
-		{$article_content}
+		{$option['article_content']}
 		<div class='clear_float'></div>
 	</div>
 	</div>
