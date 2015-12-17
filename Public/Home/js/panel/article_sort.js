@@ -49,29 +49,47 @@ var dynamicLoading = {
         head.appendChild(script);
     }
 }
+function serialize_to_obj(str){
+	str = str.replace(/=/g,':');
+	str = str.replace(/&/g,',');
+	str = '{'+str+'}';
+	console.log(JSON.parse(str));
 
+	return;
+}
+/*function zidingyi () {
+	$('form [name]').each(function () {
+		console.log(this);
+	});
+}*/
 function save(){
 	if ($(".type_checkbox").length == 0) {
 		window.parent.alert_info("请先添加文章分类",0);
 		return;
 	}
-	var list = [];
-	list['column_id'] = [];
-	list['column_url'] = [];
-	list['type_name'] = [];
+	var i = 0;
+	var length = $(".type_checkbox:checked").length;
+	var temp = "";
 	$(".type_checkbox:checked").each(function() {
 		that  = $(this).parent().parent();
-		list['column_id'].push(that.find('select').val());
-/*		list['column_url'].push(that.find('select').find('option:selected').attr('data'));
-		list['type_name'].push(that.find('label').html());*/
-	});
+		var column_id = that.find('select').val();
+		var column_url = that.find('select').find('option:selected').attr('data');
+		var type_name = that.find('label').html();
+		temp += "<li><a class='article-link' href='"+column_url+".html' data-url='/microWeb/index.php/Home/Panel/readHtml/column_id/"+column_id+"'>"+type_name+"</a></li>";
+		i++;
+		if (i != length) {
+			temp += "<hr>";
+		};
+	})
+
+
+	var sort_ids = $("#type_data").serializeArray();
 	var save_url = $("#save-url").val();
-	var json;
-	json = JSON.stringify(list['column_id']);
-	console.log(json);
-	return;
+	var title = $(".setting input:first").val();
 	// var option = {'column_id':column_id, 'column_url':column_url, 'type_name':type_name};
-	var option = {'list':JSON.stringify(list), 'test':'test'};
+	// var option = {'sort_ids':sort_ids, 'title':title};
+	var option = {'list':temp, 'title':title};
+
 	var data = {'name':'ArticleSort', 'theme':null, 'source':'type', 'option':option};
 	$.post(save_url, data, function (data) {
 		console.log(data);
@@ -79,7 +97,6 @@ function save(){
 		var pro = window.parent.getPro();
 		$(pro).before(html);
 		window.parent.$.layer.close();
-
 	})
 }
 

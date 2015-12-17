@@ -17,7 +17,7 @@ class ArticleSortWidget extends Widget
     if(!empty($is_edit)){
         $this->assign("status",1);
     }*/
-    $Type = M('type');
+    $Type = M('article_type');
     $is_edit = I('get.is_edit',0);
     $map['site_id'] = session('site_id');
     $type_list = $Type->field('id, name')
@@ -36,7 +36,28 @@ class ArticleSortWidget extends Widget
 
   public function index()
   {
-    var_dump($this->option);
+    $Type = M('article_type');
+    // $sort_ids = $this->option['sort_ids'];
+   /* $types = [];
+    $ids = [];
+    foreach ($this->option['sort_ids'] as $key => $item) {
+      switch ($item['name']) {
+        case 'type':
+          $types[] = $item['value'];
+          break;
+        case 'id':
+          $ids[] = $item['value'];
+          break;
+      }
+    }
+    // $map['ids'] = $ids[];
+    $map['ids'] = $ids;
+    $map['types'] = $types;
+    var_dump($map);*/
+
+    // $Type->select();
+    // echo $Type->getLastSql();
+    $this->option['list'] = htmlspecialchars_decode($this->option['list']);
     $this->assign('option', $this->option);
     $this->insert_content(); 
   }
