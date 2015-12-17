@@ -6,8 +6,8 @@
 <block name="side">
 	<div class="side">
 		<div class="side-head">网站资源</div>
-		<div class="side-item"><a href="__SELF__">相册</a></div>
-		<div class="side-item"><a href="__CONTROLLER__/article_list/site_id/{$site_id}">文章</a></div>
+		<div class="side-item"><a href="__CONTROLLER__/index">相册</a></div>
+		<div class="side-item"><a href="U(“Article/index”)">文章</a></div>
 	</div>
 </block>
 <block name="content">
@@ -34,7 +34,7 @@
 						<span>{$vo.update_time|date='Y-m-d',###}</span>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</foreach>
 	<!-- 添加相册模态框 -->
@@ -43,12 +43,12 @@
 		<div class="add-album-button">&#10010;</div>
 	</div>
 	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	   aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
 	      <div class="modal-content">
 	         <div class="modal-header">
-	            <button type="button" class="close" 
+	            <button type="button" class="close"
 	               data-dismiss="modal" aria-hidden="true">
 	                  &times;
 	            </button>
@@ -63,10 +63,10 @@
 				</div>
 	         </div>
 	         <div class="modal-footer">
-	            <button type="button" class="btn btn-default" 
+	            <button type="button" class="btn btn-default"
 	               data-dismiss="modal">关闭
 	            </button>
-	            <button id="create_new_album" type="button" target_url="__CONTROLLER__/add_site" class="btn btn-primary">
+	            <button id="create_new_album" type="button" class="btn btn-primary">
 	               创建
 	            </button>
 	         </div>

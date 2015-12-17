@@ -22,27 +22,27 @@ class ArticleModel extends Model{
      *@return  array('result'=>数据,'page'=>分页信息)
      */
     public function get_article_list($site_id){
-    	$map['article.site_id'] = $site_id;
-    	$map['article.status'] = array('neq',-1);
+    	$map['a.site_id'] = $site_id;
+    	$map['a.status'] = array('neq',-1);
 
         $type_id = I('type_id',-1);
         $title = I('title');
         /*搜索条件*/
         if($type_id != '' && (int)$type_id >= 0){
-            $map['article.type_id'] = $type_id;
+            $map['a.type_id'] = $type_id;
             $data['type_id'] = $type_id;
         }
         if(!empty($title)){
-            $map['article.title'] = array('like','%'.$title.'%');
+            $map['a.title'] = array('like','%'.$title.'%');
             $data['title'] = $title;
         }
     	$count = (int)C('ARTICLE_PAGE_CONUT');
-    	$total = $this->join('left join type on article.type_id = type.id')
+    	$total = $this->alias('a')->join('left join article_type as b on a.type_id = b.id')
     				  ->where($map)
     				  ->count();
     	$page = new \Think\Page($total,$count);
-    	$result = $this->field('article.*,type.name')
-    				->join('left join type on article.type_id = type.id')
+    	$result = $this->alias('a')->field('a.*,b.name')
+    				->join('left join article_type as b on a.type_id = b.id')
     				->where($map)
     				->order('is_top desc,create_time desc')
     				->limit($page->firstRow.','.$page->listRows)
@@ -55,8 +55,8 @@ class ArticleModel extends Model{
      * 更新/插入文章
      * @return [type] [description]
      */
-    public function insert_article(){
-        $data = $this->create(I('post.'));
+    public function insert_article($data){
+        $data = $this->create($data);
         if(empty($data)){
             $this->error = "没有数据";
             return false;
@@ -104,9 +104,9 @@ class ArticleModel extends Model{
      * @param  $status 要得到的状态
      * @return Boolean
      */
-    public function update_article_status($id,$status){
+    public function update_article_status($site_id,$id,$status){
     	$id = is_array($id) ? implode(',',$id) : $id;
-    	$where = array('id' => array('in', $id ));
+    	$where = array('id' => array('in', $id ), 'site_id' => $site_id);
     	$data['update_time'] = NOW_TIME;
     	$data['status'] = $status;
     	if($status != 0){
@@ -120,9 +120,9 @@ class ArticleModel extends Model{
      * 设置文章类型
      * @return [type] [description]
      */
-    public function change_article_type($id,$type){
+    public function change_article_type($site_id,$id,$type){
         $id = is_array($id) ? implode(',',$id) : $id;
-        $where = array('id' => array('in', $id ));
+        $where = array('id' => array('in', $id ),'site_id' => $site_id);
         $data['update_time'] = NOW_TIME;
         $data['type_id'] = $type;
         return $this->where($where)->save($data);
@@ -132,8 +132,8 @@ class ArticleModel extends Model{
      * 置顶/取消置顶(顶:1 踩:0)
      * @return [type] [description]
      */
-    public function top_article($id,$status){
-        $where = array('id' => $id );
+    public function top_article($site_id,$id,$status){
+        $where = array('id' => $id , 'site_id' => $site_id);
         $data['update_time'] = NOW_TIME;
         $data['is_top'] = $status;
         return $this->where($where)->save($data);
@@ -173,7 +173,7 @@ class ArticleModel extends Model{
     /*
     * 图文展示空间获得列表
     * map 条件
-    * data 
+    * data
     */
     public function Image_text_widget_article_list($map = null)
     {
