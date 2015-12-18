@@ -83,6 +83,13 @@ function save(){
 	})
 
 
+	var info = [][];
+	console.log(info);
+	return;
+	$(".type_checkbox:checked").each(function () {
+
+	})
+
 	var sort_ids = $("#type_data").serializeArray();
 	var save_url = $("#save-url").val();
 	var title = $(".setting input:first").val();
