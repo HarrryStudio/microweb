@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+//魔方导航js
+//gaoyadong
+$(function(){
+	$(".pattern").click(function(){
+		$(".pattern").find("div").removeClass("hr");
+		$(this).find("div").addClass("hr");
+	})
+})
+
+function save(){
+	var theme = $(".hr").parent().attr('va');
+	window.parent.save({name:"Magic",resource:"",theme: theme, option:""},$("#status").val());
+}
+=======
 //魔方导航js
 //gaoyadong
 $(function(){
@@ -95,3 +110,4 @@ console.log(data);
 	html += "</div>";
 	return html;
 }
+>>>>>>> 6ce54d3a39a7b8291aa2a9f72f1fab54a9b6dd24

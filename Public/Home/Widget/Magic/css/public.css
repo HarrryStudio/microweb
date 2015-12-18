@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+.show_nav{
+	width: 100%;
+	height: auto;
+	font-family: "Microsoft YaHei";
+}
+.nav_all{
+	cursor: pointer;
+}
+.nav_all a{
+	text-decoration: none;
+}
+.clear_float{
+	clear: both;
+}
+=======
 *{margin: 0;padding: 0;}
 #box{
 	width: 100%;
@@ -33,3 +49,4 @@
 #four{background-image: url(../Images/sun.png)}
 #five{background-image: url(../Images/moon.png)}
 #six{background-image: url(../Images/more.png)}
+>>>>>>> 6ce54d3a39a7b8291aa2a9f72f1fab54a9b6dd24

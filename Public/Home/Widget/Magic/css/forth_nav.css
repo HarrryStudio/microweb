@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+.show_nav.forth{
+	background-image: url(../images/background.jpg);
+}
+.forth>.nav_all{
+	width: 30%;
+	height: 5rem;
+	float: left;
+	text-align: center;
+	margin-left: 2.5%;
+	padding: 0.4rem 0.5rem;
+}
+.forth>.nav_all a{
+	color:#ADBDC7;
+	text-decoration: none;
+}
+.forth>.nav_all a:hover{
+	color:#DAE1E6;
+}
+.forth>.nav_all div{
+	width: 60%;
+	height: 65%;
+	margin: 0 auto;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.forth>.nav_all p{
+	font-size: 0.7rem;
+	margin-top: 0.3rem;
+}
+=======
 #show_nav{
 	width: 100%;
 	height: auto;
@@ -51,3 +82,4 @@
 #four{background-image: url(../Images/link.png)}
 #five{background-image: url(../Images/off-line.png)}
 #six{background-image: url(../Images/speak.png)}*/
+>>>>>>> 6ce54d3a39a7b8291aa2a9f72f1fab54a9b6dd24

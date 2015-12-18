@@ -5,7 +5,7 @@ use Think\Controller;
  * 前台基类
  */
 class BaseController extends Controller {
-    final public function _initialize(){
+    public function _initialize(){
         if(IS_GET){
             $_POST = $_GET;
         }

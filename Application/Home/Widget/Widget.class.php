@@ -27,8 +27,13 @@ class Widget extends Controller{
         $this->option   = $option;
     }
 
-    public function index(){
-        echo "I'm widget";
+    public function index($site_id,$dynamic = false){
+        echo "I'm a widget to insert into phonepage";
+    }
+
+
+    public function controller($site_id,$data){
+        echo "I'm a html to show on iframe";
     }
 
 
@@ -40,31 +45,26 @@ class Widget extends Controller{
 //        }
 //    }
 
-    public function insert_content($content = null){
+
+    public function insert_content($dynamic = false){
         $Template = Think::instance('Think\\Template');
-        $templateFile = $this->load_template_file($this->name,$this->theme);
-        $this->export_theme_link($this->name,$this->theme);
-        if('php' == strtolower(C('TMPL_ENGINE_TYPE'))) { // 使用PHP原生模板
-            $_content   =   $content;
-            // 模板阵列变量分解成为独立变量
-            extract($this->view->get(), EXTR_OVERWRITE);
-            // 直接载入PHP模板
-            empty($_content)?include $templateFile:eval('?>'.$_content);
-        }else{
-            // 视图解析标签
-            $Template->fetch($templateFile,$this->view->get(),C('TMPL_CACHE_PREFIX'));
+        $templateFile = $this->load_template_file();
+        if($dynamic){
+            $this->export_theme_link($this->name,$this->theme);
         }
+        // 视图解析标签
+        $Template->fetch($templateFile,$this->view->get(),C('TMPL_CACHE_PREFIX'));
     }
 
     public function get_json(){
-        return json_encode(
+        return
             array(
                 'name'     =>  $this->name,
                 'theme'    =>  $this->theme,
                 'resource' =>  $this->resource,
                 'option'   =>  $this->option
-            )
-        );
+            );
+
     }
 
     public function filter_theme_template($theme){
@@ -78,6 +78,8 @@ class Widget extends Controller{
 
 
     public function load_template_file($name,$theme){
+        $name = $name ? $name : $this->name;
+        $theme = $theme ? $theme : $this->theme;
         $theme = $this->filter_theme_template($theme);
         $template_name = C('WIDGET_TEMPLATE_ROOT').$name."/".$theme.C('WIDGET_TEMPLATE_SUFFIX');
         return $template_name;
@@ -88,30 +90,32 @@ class Widget extends Controller{
      * @return $array js,css
      */
     public function load_template_link($name,$theme){
+        $name = $name ? $name : $this->name;
+        $theme = $theme ? $theme : $this->theme;
         $theme = $this->filter_theme_link($theme);
         $root = C('WIDGET_PUBLIC_PATH');
-        if(file_exists($root."public.js")){
-            $data["js"][] = $root."public.js";
+        if(file_exists(".".$root."public.js")){
+            $data["js"][] = __ROOT__.$root."public.js";
         }
-        if(file_exists($root."css.js")){
-            $data["css"][] = $root."public.js";
+        if(file_exists(".".$root."public.css")){
+            $data["css"][] = __ROOT__.$root."public.css";
         }
         $widget = $root.$name."/";
-        if(is_dir($widget)){
-            if(is_dir($widget."js")){
-                if(file_exists($widget."js/public.js")){
-                    $data["js"][] = $widget."js/public.js";
+        if(is_dir(".".$widget)){
+            if(is_dir(".".$widget."js")){
+                if(file_exists(".".$widget."js/public.js")){
+                    $data["js"][] = __ROOT__.$widget."js/public.js";
                 }
-                if(file_exists($widget."js/".$theme.".js")){
-                    $data["js"][] = $widget."js/".$theme.".js";
+                if(file_exists(".".$widget."js/".$theme.".js")){
+                    $data["js"][] = __ROOT__.$widget."js/".$theme.".js";
                 }
             }
-            if(is_dir($widget."css")){
-                if(file_exists($widget."css/public.css")){
-                    $data["css"][] = $widget."css/public.css";
+            if(is_dir(".".$widget."css")){
+                if(file_exists(".".$widget."css/public.css")){
+                    $data["css"][] = __ROOT__.$widget."css/public.css";
                 }
-                if(file_exists($widget."css/".$theme.".css")){
-                    $data["css"][] = $widget."css/".$theme.".css";
+                if(file_exists(".".$widget."css/".$theme.".css")){
+                    $data["css"][] = __ROOT__.$widget."css/".$theme.".css";
                 }
             }
         }
@@ -128,13 +132,17 @@ class Widget extends Controller{
         //     echo '<script type="text/javascript" src="'.$value.'"></script>';
         // }
         foreach( $data['css'] as $value ){
-            echo 'dynamicLoading.css("'.__ROOT__.$value.'");';
+            echo 'dynamicLoading.css("'.$value.'");';
+        }
+        foreach( $data['js'] as $value ){
+            echo 'dynamicLoading.js("'.$value.'");';
         }
 
         foreach ($data['js'] as $value) {
             echo 'dynamicLoading.js("'.__ROOT__.$value.'");';
         }
         echo "</script>";
+
     }
 
 }

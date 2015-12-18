@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+.show_nav.second{
+	background: #6F8A9D;
+}
+.second>.nav_all{
+	width: 30%;
+	height: 5rem;
+	float: left;
+	text-align: center;
+	margin-left: 2.5%;
+	padding: 0.4rem 0.5rem;
+}
+.second>.nav_all a{
+	color:#ADBDC7;
+}
+.second>.nav_all a:hover{
+	color:#DAE1E6;
+}
+.second>.nav_all div{
+	width: 60%;
+	height: 65%;
+	margin: 0 auto;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.second>.nav_all p{
+	font-size: 0.7rem;
+	margin-top: 0.3rem;
+}
+=======
 #show_nav{
 	width: 100%;
 	height: auto;
@@ -55,3 +85,4 @@
 #four{background-image: url(../Images/sun.png)}
 #five{background-image: url(../Images/moon.png)}
 #six{background-image: url(../Images/more.png)}*/
+>>>>>>> 6ce54d3a39a7b8291aa2a9f72f1fab54a9b6dd24

@@ -5,7 +5,7 @@ use Think\Model;
 /**
 * 相册模型
 */
-class UserColumnModel extends Model{	
+class UserColumnModel extends Model{
 	protected $_validate = array(
 		array('name','/^([\x{4e00}-\x{9fa5}A-Za-z0-9_]){1,20}+$/u','栏目名由1-6位汉字或字母或数字组成',self::MODEL_BOTH),
 		array('url','/^([A-Za-z0-9_]){1,20}+$/','栏目名由1-20位字母或数字或下划线组成',self::MODEL_BOTH),
@@ -153,7 +153,7 @@ class UserColumnModel extends Model{
 
     public function get_html_json($colnum_id){
         $result = $this->field('html')->where(array('id' => $colnum_id))->find();
-        return $result;
+        return $result['html'];
     }
 
     public function get_nav_list($site_id){
@@ -165,7 +165,7 @@ class UserColumnModel extends Model{
             ->select();
         $root = C('UPLOAD_ROOT');
         foreach ($nav_list as $key => $value) {
-            $nav_list[$key]['icon_url'] = $root.$value['savepath'].$value['savepath'];
+            $nav_list[$key]['icon_url'] = $root.$value['savepath'].$value['savename'];
         }
         return $nav_list;
     }
@@ -179,11 +179,12 @@ class UserColumnModel extends Model{
      */
     public function writeHtml(){
         $id = I('get.column_id');
+        //$content = htmlspecialchars_decode(I('content'));
         $content = I('content');
         if(!empty( $content )){
-            $result = M()->table('html')
+            $result = $this
                 ->where(array('id'=>$id))
-                ->save( array('html'=>$content) );
+                ->save( array('html'=>json_encode($content)) );
             if($result === false){
                 $this->error = 'html保存失败';
                 return false;
