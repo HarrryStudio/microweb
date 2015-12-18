@@ -1,0 +1,6 @@
+[ 2015-12-15T21:06:41+08:00 ] ::1 /microweb/index.php/heom
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000645s ]
+ERR: 无法加载模块:Heom
+

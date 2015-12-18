@@ -97,8 +97,10 @@
 		'swf'      : '__ROOT__/Public/Static/uploadify/uploadify.swf',
         'uploader' : '__ROOT__/index.php/Admin/Reception/uploadPictures',
         'buttonText' : '请选择文件',
-        // 'fileTypeExts' :    '*.jpg; *.png; *.JPG ; *.PNG',
+		'fileTypeExts' :    '*.jpg; *.png; *.JPG ; *.PNG',
         'onUploadSuccess' : function(file, data, response) {
+			console.log(data);
+			return;
         	if (data == 1) {
 				window.location.reload();
         		alert("图片信息重复");
@@ -107,7 +109,6 @@
 	        	window.location.reload();
 	        },500);
 		// console.log(data);
-
         }
 	});
 

@@ -35,6 +35,7 @@ class PictureModel extends Model{
         $setting['callback'] = array($this, 'isFile');
 		$setting['removeTrash'] = array($this, 'removeTrash');
         $Upload = new Upload($setting, $driver, $config);
+        $Upload -> savePath = "background";
         $info   = $Upload->upload($files);
         if($info){ //文件上传成功，记录文件信息
             foreach ($info as $key => &$value) {

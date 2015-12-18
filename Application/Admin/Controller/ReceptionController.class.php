@@ -119,8 +119,10 @@ class ReceptionController extends BaseController{
                 ->find();
             $this->assign("list", $list);
             $this->assign("modular","编辑栏目");
+            $this->assign("meta_title","编辑栏目");
         }else{
             $this->assign("modular","新增栏目");
+            $this->assign("meta_title","新增栏目");
         }
         if (IS_POST) {
             session('flash_error', null);
@@ -235,8 +237,10 @@ class ReceptionController extends BaseController{
             $this->assign("effect_img", $effect_img);
 //            dump($list);
             $this->assign("modular", "编辑控件信息");
+            $this->assign("meta_title","编辑控件信息");
         }else{
-            $this->assign("modular", "新增控件管理");
+            $this->assign("modular", "新增控件信息");
+            $this->assign("meta_title","新增控件信息");
         }
         if (IS_POST) {
             $upfile = $_FILES['upfile'];
@@ -322,6 +326,7 @@ class ReceptionController extends BaseController{
         $controller_id = I("get.id");
         $save_add = I("get.old_img");
         $picture = A("Picture");
+        $option = array();
         $img_res = $picture->uploadPicture();
         if($img_res){
             if($save_add=="true"){

@@ -1,0 +1,249 @@
+[ 2015-12-18T17:38:55+08:00 ] ::1 /microweb/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003603s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001223s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001414s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000154s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000290s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011898s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012034s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000949s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001129s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001382s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001540s ]
+
+[ 2015-12-18T17:53:26+08:00 ] ::1 /microweb/index.php/home
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000533s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000764s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000941s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000270s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008604s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008738s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000515s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000631s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000553s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000658s ]
+
+[ 2015-12-18T17:53:27+08:00 ] ::1 /microweb/index.php/Home/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000610s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000700s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000837s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000099s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000241s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008158s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008289s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000393s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000498s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000728s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000846s ]
+
+[ 2015-12-18T17:53:27+08:00 ] ::1 /microweb/index.php/Home/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000593s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000715s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000844s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001565s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001802s ]
+
+[ 2015-12-18T17:53:37+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6416868965607136
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000613s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000698s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000835s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000814s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000985s ]
+
+[ 2015-12-18T17:53:37+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6416868965607136?0.717310004401952
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000612s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000658s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000794s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000742s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000887s ]
+
+[ 2015-12-18T17:53:38+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6416868965607136?0.717310004401952?0.10301889479160309
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000630s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000744s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000971s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000813s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000968s ]
+
+[ 2015-12-18T17:53:39+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6416868965607136?0.717310004401952?0.10301889479160309?0.5052370431367308
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000606s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000627s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000775s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000718s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000860s ]
+
+[ 2015-12-18T17:53:40+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6416868965607136?0.717310004401952?0.10301889479160309?0.5052370431367308?0.39311789628118277
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000617s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000646s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000778s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000804s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000943s ]
+
+[ 2015-12-18T17:53:40+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6416868965607136?0.717310004401952?0.10301889479160309?0.5052370431367308?0.39311789628118277?0.9516477740835398
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000597s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000706s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000846s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000782s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000938s ]
+
+[ 2015-12-18T17:53:45+08:00 ] ::1 /microweb/index.php/Home/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000615s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000681s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000803s ]
+NOTIC: [8] Undefined index: kk D:\wamp\www\microweb\Application\Home\Controller\LoginController.class.php 第 15 行.
+NOTIC: [8] Use of undefined constant regex - assumed 'regex' D:\wamp\www\microweb\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0033s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `user_info` WHERE `account` = 'a123456781' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0029s ]
+SQL: SELECT `id` FROM `site_info` WHERE `user_id` = 1 AND `status` = 0  [ RunTime:0.0003s ]
+
+[ 2015-12-18T17:53:45+08:00 ] ::1 /microweb/index.php/Home/Website/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000533s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000613s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000728s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `site_info` WHERE `user_id` = 1 AND `status` = 0  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000179s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000296s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014999s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015131s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000558s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000689s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000778s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000929s ]
+
+[ 2015-12-18T17:53:46+08:00 ] ::1 /microweb/index.php/Home/Panel/index.html?site_id=63
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000540s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000629s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000743s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0070s ]
+SQL: SELECT a.id,a.name,a.forbidden,a.sort,a.url,b.savepath,b.savename FROM user_column a left join picture as b on a.icon = b.id  WHERE a.site_id = '63' ORDER BY sort  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0028s ]
+SQL: SELECT `theme` FROM `site_info` WHERE `id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0033s ]
+SQL: SELECT `id`,`name`,`intro`,`cname`,`icon` FROM `controller` WHERE `forbidden` = 0 AND `status` = 0 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0028s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM theme as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.name <> ''  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0033s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.forbidden = 0  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000294s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000546s ]
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015356s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015474s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000503s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000607s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000613s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000720s ]
+
+[ 2015-12-18T17:53:46+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/5
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000456s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000608s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000733s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '5' AND `site_id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0029s ]
+SQL: SELECT `html` FROM `user_column` WHERE `id` = '5' AND `forbidden` = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0028s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0036s ]
+SQL: SELECT `html` FROM `user_column` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] json_decode() expects parameter 1 to be string, array given D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 209 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 211 行.
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000451s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000564s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0041s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0030s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0036s ]
+SQL: SELECT `name` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column a left join picture as b on a.icon = b.id  WHERE a.site_id = '63' AND a.forbidden = 0 ORDER BY sort  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000131s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000260s ]
+NOTIC: [8] Undefined variable: site_name D:\wamp\www\microweb\Application\Runtime\Cache\Home\674709428c2fc9be01a833685b4f026d.php 第 49 行.
+NOTIC: [8] Undefined variable: site_name D:\wamp\www\microweb\Application\Runtime\Cache\Home\674709428c2fc9be01a833685b4f026d.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013008s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013179s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000056s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.029565s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001436s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001692s ]
+
