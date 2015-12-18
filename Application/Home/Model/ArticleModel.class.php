@@ -149,8 +149,8 @@ class ArticleModel extends Model{
         $map['article.status'] = 0;
         $Article = M('article');
         $article_info = $Article
-          ->field('article.id, picture.savepath, picture.savename, article.title, article.content')
-          ->join('left join picture ON  article.pic_id = picture.id')
+          ->field('article.id, b.savepath, b.savename, article.title, article.content')
+          ->join('left join home_picture as b ON  article.pic_id = b.id')
           ->where($map)
           ->order('article.is_top desc, article.create_time desc')
           ->limit(5)
@@ -180,9 +180,13 @@ class ArticleModel extends Model{
       $count = $this->where($map)->count();
       $Page = new \Think\Page($count,5);
       $show = $Page->show();
+<<<<<<< HEAD
       $article_list = $this->join('LEFT JOIN picture on picture.id = article.pic_id')
+=======
+      $this->join('LEFT JOIN home_picture as b on b.id = article.pic_id')
+>>>>>>> e272a82675d02ceda4d4235b0da87322c8186fdd
             ->where($map)
-            ->field('article.id, article.title, article.content, picture.savepath, picture.savename')
+            ->field('article.id, article.title, article.content, b.savepath, b.savename')
             ->order('article.is_top desc, article.create_time desc')
             ->limit($Page->firstRow.','.$Page->listRows)
             ->select();
