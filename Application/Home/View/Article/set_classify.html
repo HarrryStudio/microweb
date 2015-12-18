@@ -1,15 +1,8 @@
 <extend name="Website/base"/>
 <block name="style">
-	<link rel="stylesheet" type="text/css" href="__CSS__/website/set_classify.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/article/set_classify.css">
 </block>
 <block name='senior-nav'></block>
-<block name="side">
-	<div class="side">
-		<div class="side-head">网站资源</div>
-		<div class="side-item"><a href="__CONTROLLER__/album_list/site_id/{$site_id}">相册</a></div>
-		<div class="side-item"><a href="__CONTROLLER__/article_list/site_id/{$site_id}">文章</a></div>
-	</div>
-</block>
 <block name="content">
 	<div class="centent-head">分类管理</div>
 	<input id="site_id" type="hidden" value="{$site_id}">
@@ -105,5 +98,5 @@
 
 </block>
 <block name="script">
-	<script type="text/javascript" src="__JS__/website/set_classify.js"></script>
+	<script type="text/javascript" src="__JS__/article/set_classify.js"></script>
 </block>

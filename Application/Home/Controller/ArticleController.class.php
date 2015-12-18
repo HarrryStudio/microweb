@@ -116,7 +116,7 @@ class ArticleController extends ResourceController {
         if(!empty($article_id)){
             $article_info = M()->table('article as a')
                                ->field('a.*,b.savepath,b.savename')
-                               ->join('left join picture as b on a.pic_id = b.id')
+                               ->join('left join home_picture as b on a.pic_id = b.id')
                                ->where(array('a.status' => array('gt',-1),'a.id'=>$article_id))
                                ->find();
             $this->assign('article_info',$article_info);
@@ -139,7 +139,7 @@ class ArticleController extends ResourceController {
     public function insert_article(){
         $return  = array('status' => 0, 'info' => '添加成功', 'data' => '');
         $data = I('post.');
-        $data['site_id'] = $this->site_info['id '];
+        $data['site_id'] = $this->site_info['id'];
         $Article = D('Article');
         $result = $Article->insert_article($data);
         if($result){
@@ -199,7 +199,7 @@ class ArticleController extends ResourceController {
         $data = I('post.');
         $data['site_id'] = $this->site_info['id'];
         $Type = D('ArticleType');
-        $result = $Type->add_type();
+        $result = $Type->add_type($data);
         if($result){
             $return['status'] = 1;
         }else{
@@ -214,7 +214,7 @@ class ArticleController extends ResourceController {
      */
     public function type_change_sort(){
         $return  = array('status' => 0, 'info' => '调序成功', 'data' => '');
-        $Type = M('ArticleType');
+        $Type = D('ArticleType');
         $now_type_id = I('post.now_type_id');
         $to_type_id = I('post.to_type_id');
         if(empty($now_type_id) || empty($to_type_id)){
@@ -222,7 +222,7 @@ class ArticleController extends ResourceController {
             $this->ajaxReturn($return);
             return;
         }
-        $result = $Type->type_change_sort($now_type_id,$to_type_id);
+        $result = $Type->type_change_sort($this->site_info['id'],$now_type_id,$to_type_id);
         if(!$result){
             $return['info'] = $Type->getError();
             $this->ajaxReturn($return);

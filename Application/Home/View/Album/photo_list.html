@@ -1,20 +1,13 @@
-<extend name="base"/>
+<extend name="Website/base"/>
 <block name="style">
 	<link rel="stylesheet" type="text/css" href="__STATIC__/uploadify/uploadify.css">
 	<link rel="stylesheet" type="text/css" href="__STATIC__/layer/layer.css">
 	<link rel="stylesheet" type="text/css" href="__STATIC__/layer/green_theme.css">
 	<link rel="stylesheet" type="text/css" href="__CSS__/side.css">
-	<link rel="stylesheet" type="text/css" href="__CSS__/website/photo.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/album/photo.css">
 	<script type="text/javascript" src='__STATIC__/layer/layer.js'></script>
 </block>
 <block name='senior-nav'></block>
-<block name="side">
-	<div class="side">
-		<div class="side-head">网站资源</div>
-		<div class="side-item"><a href="__CONTROLLER__/album_list/site_id/{$album_info['site_id']}">相册</a></div>
-		<div class="side-item"><a href="__CONTROLLER__/article_list/site_id/{$album_info['site_id']}">文章</a></div>
-	</div>
-</block>
 <block name="content">
 	<!-- <div class="centent-head">相册详情</div> -->
 	<div class="album-info">
@@ -23,7 +16,7 @@
 	</div>
 	<!-- <input id="uploadify_url" type="hidden" value="__STATIC__/uploadify/"> -->
 	<!-- <input id="upload_url" type="hidden" value="{:U('Picture/uploadPicture')}"> -->
-	
+
 	<!-- <input id="file_upload" name="file_upload" type="file" multiple="true"> -->
 	<!-- {$photo_list|dump} -->
 	<input id="del-photo-url" type="hidden" value="__CONTROLLER__/del_photo">
@@ -75,5 +68,5 @@
 </block>
 <block name="script">
 	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
-	<script type="text/javascript" src="__JS__/website/photo_list.js"></script>
+	<script type="text/javascript" src="__JS__/album/photo_list.js"></script>
 </block>

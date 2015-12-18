@@ -30,18 +30,18 @@ class ArticleTypeModel extends Model{
             return false;
         }
         if($data['id']){
-            $status = $result = $this->save();
+            $status = $this->save($data);
         }else{
             $max = $this->where(array('site_id'=>$data['site_id']))->max('sort');
             $data['sort'] = (int)$max + 1;
-            $status = $result = $this->add();
+            $status = $this->add($data);
         }
         return $status != false;
     }
 
     public function type_change_sort($site_id,$now_type_id,$to_type_id){
-        $now_sort = $Type->field('sort')->where(array('id'=>$now_type_id,'site_id'=>$site_id))->find();
-        $to_sort = $Type->field('sort')->where(array('id'=>$to_type_id,'site_id'=>$site_id))->find();
+        $now_sort = $this->field('sort')->where(array('id'=>$now_type_id,'site_id'=>$site_id))->find();
+        $to_sort = $this->field('sort')->where(array('id'=>$to_type_id,'site_id'=>$site_id))->find();
         if(empty($now_sort) || empty($to_sort)){
             $this->error = "没有找到此分类";
             return false;

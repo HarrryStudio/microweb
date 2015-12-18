@@ -99,7 +99,7 @@ function addColumnEvent(){
 				var formData = new FormData(form); // 获得form内容
 
 				$.ajax({
-					url : "addColumn",
+					url : $("#add-column-url").val(),
 					type: 'post',
 					data: formData,
 					cache: false,
@@ -164,7 +164,7 @@ function addColumnEvent(){
 				var form = $(".column-form").find('form')[0];
 				var formData = new FormData(form); // 获得form内容
 				$.ajax({
-					url : "editColumn",
+					url : $("#edit-column-url").val(),
 					type: 'post',
 					data: formData,
 					cache: false,

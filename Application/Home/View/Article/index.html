@@ -1,15 +1,8 @@
 <extend name="Website/base"/>
 <block name="style">
-	<link rel="stylesheet" type="text/css" href="__CSS__/website/article.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/article/article.css">
 </block>
 <block name='senior-nav'></block>
-<block name="side">
-	<div class="side">
-		<div class="side-head">网站资源</div>
-		<div class="side-item"><a href="__CONTROLLER__/album_list/site_id/{$site_id}">相册</a></div>
-		<div class="side-item"><a href="__SELF__">文章</a></div>
-	</div>
-</block>
 <block name="content">
 	<div class="centent-head">文章
 		<div class="set-bar">
@@ -29,7 +22,7 @@
 			<div class="search-bar">
 				<form class="search-form">
 					<div class="search-type">
-						<input type="hidden" name="type_id" id="search-type-id" value="{$seach['type_id']}">
+						<input type="hidden" name="type_id" id="search-type-id" value="{$search['type_id']}">
 						<span class="search-type-name">所有</span>
 						<span class="search-down glyphicon glyphicon-triangle-bottom"></span>
 						<ul>
@@ -207,5 +200,5 @@
 	</div>
 </block>
 <block name="script">
-	<script type="text/javascript" src="__JS__/website/article.js"></script>
+	<script type="text/javascript" src="__JS__/article/article.js"></script>
 </block>
