@@ -33,7 +33,7 @@ class MagicWidget extends Widget
 
 
     public function index($site_id,$dynamic = false){
-        $nav_list = D('UserColumn')->get_nav_list($site_id);
+        $nav_list = D('UserColumn')->get_column_info($site_id,1);
         $this->assign('nav_list',$nav_list);
         $this->assign('cname',$this->name);
         $this->assign('theme',$this->theme);

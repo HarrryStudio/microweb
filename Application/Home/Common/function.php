@@ -11,7 +11,6 @@
 		if(session('site_info')['id']){
 			return true;
 		}else{
-			echo "===============";
 			return false;
 		}
 	}
@@ -99,5 +98,31 @@
 
             return true;
         }
+    }
+
+    function merge_sort($arr1,$arr2){
+        $arr3 = [];
+        $len1 = count($arr1);
+        $len2 = count($arr2);
+        $i = 0; $j = 0;
+        for(;;){
+            if($i >= $len1 || $j >= $len2 ){
+                break;
+            }
+            if($arr1[$i]['sort'] <= $arr2[$j]['sort']){
+                $arr3[] = $arr1[$i];
+                $i ++;
+            }else{
+                $arr3[] = $arr2[$j];
+                $j ++;
+            }
+        }
+        for(;$i < $len1; $i ++){
+            $arr3[] = $arr1[$i];
+        }
+        for(;$j < $len2; $j ++){
+            $arr3[] = $arr2[$j];
+        }
+        return $arr3;
     }
 ?>

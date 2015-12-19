@@ -10,7 +10,7 @@ class PanelController extends ResourceController  {
        // echo session("site_id");
         //echo "ggg".$id;
         $result = M()->table('user_column')
-                      ->where(array('id'=>$id,'site_id'=>session('site_id')))
+                      ->where(array('id'=>$id,'site_id'=>$this->site_info['id']))
                       ->find();
                // var_dump($result);
         return !empty($result);
@@ -205,7 +205,7 @@ class PanelController extends ResourceController  {
 
         $theme_templet= $this->load_theme_templet($theme['name']);
 
-        $nav_list = $Column->get_nav_list($site_id);
+        $nav_list = $Column->get_column_info($site_id,1);
         return array(
             'site_info'     =>  $site_info,
             'nav_list'      =>  $nav_list,
@@ -332,7 +332,7 @@ class PanelController extends ResourceController  {
     public function save_widget(){
         $return = array('status' => 0, 'data' => "", 'info' => "");
         $data = I('post.');
-        $site_id = session('site_id');
+        $site_id = $this->site_info['id'];
         if(empty($site_id)){
             $result['info'] = "没有找到网站";
         }else{
@@ -412,21 +412,17 @@ class PanelController extends ResourceController  {
 
         if($pic_info === false){
             $return['info'] = "上传图片失败";
+        }elseif($pic_info == 0){
+            $return['info'] = "请上传图片";
         }else{
-            if($pic_info > 0){
-                $pic_id = $pic_info['column_icon']['id'];
-            }
+            $pic_id = $pic_info['column_icon']['id'];
             $Column = D('UserColumn');
-            $result = $Column->add_column($pic_id);
+            $result = $Column->add_column($this->site_info['id'],$pic_id);
             if(!$result){
                 $return['info'] = "添加失败";
-                if( $pic_id > 0){
-                    $this->rollback_column_icon();
-                }
+                $this->rollback_column_icon();
             }else{
-                if( $pic_id > 0){
-                    $result['icon_url'] = C('UPLOAD_ROOT').$pic_info['savepath'].$pic_info['savename'];
-                }
+                $result['icon_url'] = C('UPLOAD_ROOT').$pic_info['savepath'].$pic_info['savename'];
                 $return['data'] = $result;
                 $return['status'] = 1;
             }
@@ -440,6 +436,11 @@ class PanelController extends ResourceController  {
     public function edit_column(){
         $return  = array('status' => 0, 'info' => '保存成功', 'data' => '');
         $column_id = I('post.id');
+        if(!$this->allowColumn($column_id)){
+            $return['info'] = "无权操作此栏目";
+            $this->ajaxReturn($return);
+            return;
+        }
         $pic_info = $this->upload_column_icon();
         if($pic_info === false){
             $return['info'] = "上传图片失败";
@@ -448,9 +449,9 @@ class PanelController extends ResourceController  {
                 $pic_id = $pic_info['column_icon']['id'];
             }
             $Column = D('UserColumn');
-            $result = $Column->edit_column($pic_id);
+            $result = $Column->edit_column($this->site_info['id'],$pic_id);
             if(!$result){
-                $return['info'] = "修改失败";
+                $return['info'] = $pic_info.$Column->getError();
                 if( $pic_id > 0){
                     $this->rollback_column_icon();
                 }
@@ -581,10 +582,13 @@ class PanelController extends ResourceController  {
      * @return [type] [description]
      */
     public function upload_column_icon(){
+        if(empty($_FILES['column_icon']['name'])){
+            return 0;
+        }
         $Picture = D('Picture');
         $info = $Picture->upload(
             $_FILES,
-            array_merge(C('PICTURE_UPLOAD'),array('savePath'=>'column/')),
+            C('PICTURE_UPLOAD'),
             C('PICTURE_UPLOAD_DRIVER')
         );
         return $info;

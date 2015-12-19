@@ -19,14 +19,22 @@ class UserColumnModel extends Model{
      */
 	public function get_column_info($site_id,$forbidden = false){
         $where['a.site_id'] = $site_id;
+        $where['a.is_default'] = 1;
         if($forbidden){
             $where['a.forbidden'] = 0;
         }
-    	$result = $this->alias('a')->field('a.id, a.name, a.forbidden, a.sort, a.url, b.savepath, b.savename')
+    	$admin_result = $this->alias('a')->field('a.id, a.name, a.forbidden, a.sort, a.url, b.savepath, b.savename')
                      ->join('left join picture as b on a.icon = b.id')
 					 ->where($where)
 					 ->order('sort')
 					 ->select();
+                     $where['a.is_default'] = 0;
+        $home_result = $this->alias('a')->field('a.id, a.name, a.forbidden, a.sort, a.url, b.savepath, b.savename')
+                     ->join('left join home_picture as b on a.icon = b.id')
+                     ->where($where)
+                     ->order('sort')
+                     ->select();
+        $result = merge_sort($admin_result,$home_result);
 		if(!$result){
 			return false;
 		}
@@ -69,12 +77,13 @@ class UserColumnModel extends Model{
 
         /*新建空白html 并生成对应用户的nav*/
         foreach ($nav as $key => $value) {
-            $data['site_id'] = $site_id;
-            $data['name']    = $value['name'];
-            $data['sort']    = $key + 1;
-            $data['url']     = $value['url'];
-            $data['icon']    = $value['icon'];
-
+            $data['site_id']    = $site_id;
+            $data['name']       = $value['name'];
+            $data['sort']       = $key + 1;
+            $data['url']        = $value['url'];
+            $data['icon']       = $value['icon'];
+            $data['is_static']  = 1;
+            $data['is_default'] = 1;
             $datalist[] = $data;
         }
 
@@ -87,12 +96,7 @@ class UserColumnModel extends Model{
      * @return bool 成功与否
      * @update harrry 2015-12-3
      */
-    public function add_column($pic_id = null){
-        $site_id = session("site_id");
-        if(empty($site_id)){
-            $this->error = '没有网站';
-            return false;
-        }
+    public function add_column($site_id,$pic_id = null){
         //添加栏目信息
         $max = M()->table("user_column")
             ->where(array('site_id' => $site_id ))
@@ -103,9 +107,8 @@ class UserColumnModel extends Model{
         $data['sort'] = (int)$max + 1;
         $data['url'] = I("post.link");
         $data['html'] = $this->init_html_json();
-        if($pic_id > 0){
-            $data['icon'] = $pic_id;
-        }
+        $data['icon'] = $pic_id;
+        
         if( $this->create($data) && ($column_id = $this->add()) ){
             $data['column_id'] = $column_id;
         }else{
@@ -115,12 +118,15 @@ class UserColumnModel extends Model{
         return $data;
     }
 
-    public function edit_column($pic_id = null){
+    public function edit_column($site_id,$pic_id = null,$is_default = 0){
         $data = I('post.');
         if($pic_id > 0){
         	$data['icon'] = $pic_id;
+            $data['is_default'] = $is_default;
         }
-        if ( $this->create($data) && $this->where(array('site_id' => $site_id))->save() ){
+        $id =  $data['id'];
+        unset($data['id']);
+        if ( $this->create($data) && $this->where(array('site_id' => $site_id, 'id' => $id))->save() !== false ){
         	// echo $this->getLastSql();
         	return $data;
         }
@@ -156,19 +162,19 @@ class UserColumnModel extends Model{
         return $result['html'];
     }
 
-    public function get_nav_list($site_id){
-        $nav_list = $this->alias('a')
-            ->field('a.id , a.name, a.sort, a.forbidden, a.url, savepath, savename')
-            ->join('left join picture as b on a.icon = b.id')
-            ->where(array('a.site_id' => $site_id , 'a.forbidden' => 0))
-            ->order('sort')
-            ->select();
-        $root = C('UPLOAD_ROOT');
-        foreach ($nav_list as $key => $value) {
-            $nav_list[$key]['icon_url'] = $root.$value['savepath'].$value['savename'];
-        }
-        return $nav_list;
-    }
+    // public function get_nav_list($site_id){
+    //     $nav_list = $this->alias('a')
+    //         ->field('a.id , a.name, a.sort, a.forbidden, a.url, savepath, savename')
+    //         ->join('left join picture as b on a.icon = b.id')
+    //         ->where(array('a.site_id' => $site_id , 'a.forbidden' => 0))
+    //         ->order('sort')
+    //         ->select();
+    //     $root = C('UPLOAD_ROOT');
+    //     foreach ($nav_list as $key => $value) {
+    //         $nav_list[$key]['icon_url'] = $root.$value['savepath'].$value['savename'];
+    //     }
+    //     return $nav_list;
+    // }
 
 
     /**
