@@ -34,20 +34,34 @@
     .old_effect_img,.effect_img{
         border-radius: 0.5em;
         margin:0 2px;
-        width: 140px;
+        height: 95px;
     }
-    #into_effect_img .button{
-        position: absolute;
-        margin-left: 123px;
-        margin-top: 5px;
+    #into_effect_img .handle{
+        position: relative;
+        margin: 0px auto;
         color: red;
         cursor: pointer;
         background: gainsboro;
-        width: 14px;
-        text-align: center;
-        line-height: 14px;
+        width: 94%;
+        padding-left: 4%;
+        line-height: 25px;
+        top: 100%;
         border-radius: 3px;
-        display: none;
+        /*display: none;*/
+    }
+    .effect_img_div{
+        float: left;
+        height: 125px;
+        overflow: hidden;
+    }
+    .delete{
+        float: right;
+        margin-right: 5%;
+        font-size: 10px;
+    }
+    .effect_text{
+        padding-left: 3px;
+        width: 60%;
     }
 </style>
 </block>
@@ -93,7 +107,7 @@
             </div>
         </div>
 
-        <div class="form-item effect_img_div" style="width:100%;height:100px;">
+        <div class="form-item effect_img_div" style="width:100%;">
             <div style="width:200px;height:100px;float:left;overflow:hidden;">
                 <form>
                     <input id="file_upload" name="file_upload" type="file" multiple="true">
@@ -101,12 +115,21 @@
                 <!--<a href="javascript:;" class="file">选择添加效果图<input type="file" multiple="true" name="upfile_effect" id="upload_effect"></a>-->
                 <!--<a href="javascript:;" class="file" id="readAsDataURL" onclick="showDataByURL();">预览效果图</a>    -->
             </div>
-            <div style="display: inline-block;" id="into_effect_img">
+            <div id="into_effect_img">
                 <if condition="$effect_img != '' ">
                     <foreach name="effect_img" item="vo">
-                        <div class="effect_img_div" style="display: inline-block;">
-                            <div class="button">x</div>
-                            <img theme="{$vo.id}" class="old_effect_img" src="__ROOT__/Uploads/{$vo.savepath}/{$vo.savename}">
+                        <div theme="{$vo.id}" class="effect_img_div">
+                            <div class="handle">
+                                <empty name="vo.name">
+                                    <span class="effect_name" style="color: red;">效果图无效</span>
+                                <else />
+                                    <span class="effect_name" style="color: green;">{$vo.name}</span>
+                                </empty>
+                                <span class="delete">删除</span>
+                            </div>
+                            <div class="effect_img_show">
+                                <img class="old_effect_img" src="__ROOT__/Uploads/{$vo.savepath}/{$vo.savename}">
+                            </div>
                         </div>
                     </foreach>
                 </if>
@@ -160,7 +183,6 @@
     }
 
     //添加效果图
-    <?php $timestamp = time();?>
     $(function() {
         $id = $("#seat-id").attr("data");
         if(!$id){
@@ -171,65 +193,66 @@
         if(num == 3){
             res=true;
         }
-        var img_num;//允许上传图片数
-        if(num==0||num==3){
-            img_num = 3;
-        }else{
-            img_num = 3-num;
-        }
         $('#file_upload').uploadifive({
             'multi'    : false,
             'auto'             : true,
             'checkScript'      : '__PUBLIC__/Static/uploadifive/check-exists.php',
-            'formData'         : {
-                'timestamp' : '<?php echo $timestamp;?>',
-                'token'     : '<?php echo md5("unique_salt" . $timestamp);?>'
-            },
             'buttonText'       : "效果图("+num+"/3张)",
             'queueID'          : 'into_effect_img',
-            'queueSizeLimit'   : img_num,
             'uploadScript'     : '__APP__/Admin/Reception/upload/id/'+$id+'/old_img/'+res,
             'onUploadComplete' : function(file, data) {
                 $(".uploadifive-queue-item").remove();
                 var res_data = JSON.parse(data);
                 if(res_data.theme_id=="no"){
                     alert("已存在");
-                    window.updateAlert("已存在" ,'alert-error');
                 }else if(res_data=='false'){
                     aletr("上传失败");
-                    window.updateAlert("上传失败" ,'alert-error');
-//                    var that = document.getElementById("into_effect_img");
-//                    $(".uploadifive-queue-item").remove();
-//                    var res_data = JSON.parse(data);
-//                    var urlData = '__ROOT__/Uploads/'+res_data.Filedata.savepath + res_data.Filedata.savename;
-//                    that.innerHTML += "<div class='effect_img_div' style='display: inline-block;'>" +
-//                            "<div class='button' style='display: none;'>x</div>" +
-//                            "<img theme="+res_data.theme_id+" class='effect_img' src='" + urlData + "'/></div>";
-//                    if(res){
-//                        $("#into_effect_img").find(".effect_img_div").eq(0).remove();
-//                    }else{
-//                        num++;
-//                    }
-//                    if(num==3){
-
-//                    }
                 }else{
                     window.location.reload();
                 }
             }
         });
+
+
     });
 
     $(document).on("mouseover",".effect_img_div",function(){
-        $(this).children(".button").show();
+//        $(this).children(".handle").show();
+        $(this).children(".handle").css("top","76%");
     })
     $(document).on("mouseout",".effect_img_div",function(){
-        $(this).children(".button").hide();
+//        $(this).children(".handle").hide();
+        $(this).children(".handle").css("top","100%");
     })
 
-    $(document).on("click",".button",function(){
+    $(".effect_name").dblclick(function(){
+        $(this).html("<input class='effect_text' name='effect_name' type='text'/>");
+    })
+    $(document).on("focusout",'.effect_text',function(){
+        var name = $.trim($(this).val());
+        if(name==""){
+            return;
+        }
         var that = $(this);
-        var theme_id = that.next().attr("theme");
+        var theme_id = that.parents(".effect_img_div").attr("theme");
+        $.post(
+            '__CONTROLLER__/effectName',
+            {
+                data:name,
+                id:theme_id,
+            },
+            function(data){
+                if(data == "ok"){
+                    that.parents(".effect_name").html(name);
+                }else{
+                    that.parents(".effect_name").html("效果图无效");
+                }
+            }
+        )
+    })
+    $(document).on("click",".delete",function(){
+        var that = $(this).parents(".effect_img_div");
+        var theme_id = that.attr("theme");
         $.post("__CONTROLLER__ /delete_theme",{theme_id:theme_id},function(data){
             if(data=="ok"){
                 window.location.reload();

@@ -119,7 +119,7 @@
     <h2><?php echo ($modular); ?></h2><?php echo session("flash_error"); echo session("flash_success");?>
 </div>
 
-<form onsubmit="return checkInput();" action="<?php echo U();?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form onsubmit="return checkInput();" action="<?php echo U('',array('savepath'=>'column'));?>" method="post" class="form-horizontal" enctype="multipart/form-data">
     <div class="form-item">
         <label class="item-label">请输入栏目名称</label>
         <div class="controls">
@@ -268,7 +268,7 @@
         $("#into_img").show();
     }
     //导航高亮
-    highlight_subnav('<?php echo U('Reception/column');?>');
+    highlight_subnav('<?php echo U("Reception/column");?>');
 
     setTimeout(function(){
         $(".alert").remove();

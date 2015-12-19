@@ -108,7 +108,10 @@
 						</div>
 						<div class="del" val="<?php echo ($vo["id"]); ?>"><img src="/microweb/Public/Admin/images/delete.png"></div>
 					</div>
-					<div class="pic_img_name"><?php echo ($vo["name"]); ?>
+					<div class="pic_img_name">
+						<?php if(empty($vo["name"])): ?>名字为空，背景无效
+						<?php else: ?>
+							<?php echo ($vo["name"]); endif; ?>
 						<input type="hidden" class="id" value="<?php echo ($vo["id"]); ?>">
 						</div>
 					<div class="pic_time">
@@ -275,7 +278,7 @@
 		url = $("#delete").attr("value");
 		$.post(url,{id:set_id},function(data){
 			// console.log(data)
-			if (data){
+			if (data!=false){
 				window.location.reload();
 			}else{
 				alert("删除失败");
@@ -291,20 +294,16 @@
  		
 	$('#file_upload').uploadify({
 		'swf'      : '/microweb/Public/Static/uploadify/uploadify.swf',
-        'uploader' : '/microweb/index.php/Admin/Reception/uploadPictures',
+        'uploader' : '/microweb/index.php/Admin/Reception/uploadBackground/savepath/background',
         'buttonText' : '请选择文件',
 		'fileTypeExts' :    '*.jpg; *.png; *.JPG ; *.PNG',
         'onUploadSuccess' : function(file, data, response) {
-			console.log(data);
-			return;
-        	if (data == 1) {
-				window.location.reload();
-        		alert("图片信息重复");
+        	if (data == false || data == 'no') {
+        		alert("上传失败或已存在！");
         	}
 			setTimeout(function(){
 	        	window.location.reload();
 	        },500);
-		// console.log(data);
         }
 	});
 
