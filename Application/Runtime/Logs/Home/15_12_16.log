@@ -1,0 +1,296 @@
+[ 2015-12-16T19:53:59+08:00 ] ::1 /microweb/index.php/home
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000645s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000904s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000483s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000673s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008896s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009019s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000462s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000565s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000640s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000747s ]
+
+[ 2015-12-16T19:54:02+08:00 ] ::1 /microweb/index.php/Home/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000717s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001051s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001228s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000151s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000283s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008889s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009020s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000575s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000678s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000792s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000919s ]
+
+[ 2015-12-16T19:54:02+08:00 ] ::1 /microweb/index.php/Home/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000536s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000674s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000804s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000890s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001042s ]
+
+[ 2015-12-16T19:54:11+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6513353281188756
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000649s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000817s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000956s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000948s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001121s ]
+
+[ 2015-12-16T19:54:11+08:00 ] ::1 /microweb/index.php/Home/Login/verify?0.6513353281188756?0.4857717980630696
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000584s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000826s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000972s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000849s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001005s ]
+
+[ 2015-12-16T19:54:16+08:00 ] ::1 /microweb/index.php/Home/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000784s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000823s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000931s ]
+NOTIC: [8] Undefined index: kk D:\wamp\www\microweb\Application\Home\Controller\LoginController.class.php 第 15 行.
+NOTIC: [8] Use of undefined constant regex - assumed 'regex' D:\wamp\www\microweb\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `user_info` WHERE `account` = 'a123456781' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0032s ]
+SQL: SELECT `id` FROM `site_info` WHERE `user_id` = 1 AND `status` = 0  [ RunTime:0.0003s ]
+
+[ 2015-12-16T19:54:16+08:00 ] ::1 /microweb/index.php/Home/Website/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000788s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000849s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001008s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `site_info` WHERE `user_id` = 1 AND `status` = 0  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000189s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000320s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015193s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015321s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000553s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000664s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000725s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000837s ]
+
+[ 2015-12-16T19:54:17+08:00 ] ::1 /microweb/index.php/Home/Panel/index.html?site_id=63
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000494s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000673s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000796s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0039s ]
+SQL: SELECT a.id,a.name,a.forbidden,a.sort,a.url,b.savepath,b.savename FROM user_column a left join picture as b on a.icon = b.id  WHERE a.site_id = '63' ORDER BY sort  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0031s ]
+SQL: SELECT `theme` FROM `site_info` WHERE `id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0038s ]
+SQL: SELECT `id`,`name`,`intro`,`cname`,`icon` FROM `controller` WHERE `forbidden` = 0 AND `status` = 0 ORDER BY sort  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0044s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM theme as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.name <> ''  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0027s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.forbidden = 0  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000327s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000518s ]
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020920s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021042s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000438s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000546s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000624s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000732s ]
+
+[ 2015-12-16T19:54:18+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/5
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000137s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001054s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000799s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000948s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '5' AND `site_id` = '63' LIMIT 1   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0040s ]
+SQL: SELECT `html` FROM `user_column` WHERE `id` = '5' AND `forbidden` = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0038s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0049s ]
+SQL: SELECT `html` FROM `user_column` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [2] json_decode() expects parameter 1 to be string, array given D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 209 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 211 行.
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000827s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001010s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0035s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0035s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0039s ]
+SQL: SELECT `name` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column a left join picture as b on a.icon = b.id  WHERE a.site_id = '63' AND a.forbidden = 0 ORDER BY sort  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000223s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000450s ]
+NOTIC: [8] Undefined variable: site_name D:\wamp\www\microweb\Application\Runtime\Cache\Home\674709428c2fc9be01a833685b4f026d.php 第 49 行.
+NOTIC: [8] Undefined variable: site_name D:\wamp\www\microweb\Application\Runtime\Cache\Home\674709428c2fc9be01a833685b4f026d.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019179s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019384s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000055s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.037352s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003205s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003732s ]
+
+[ 2015-12-16T19:54:26+08:00 ] ::1 /microweb/index.php/Home/Panel/addColumn
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000472s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000616s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000719s ]
+SQL: SHOW COLUMNS FROM `home_picture` [ RunTime:0.0030s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `home_picture` WHERE `md5` = '25557c8cb94da8dcaa567b2a536ce932' LIMIT 1   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: path D:\wamp\www\microweb\ThinkPHP\Library\Think\Upload.class.php 第 172 行.
+SQL: UPDATE `home_picture` SET `used`=used+1 WHERE `id` = 6 [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0027s ]
+SQL: SELECT MAX(sort) AS tp_max FROM `user_column` WHERE `site_id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `user_column` (`site_id`,`name`,`sort`,`url`,`html`,`icon`) VALUES ('63','ooo','4','pppp','{\"header\":\"\",\"content\":[],\"footer\":\"\"}','6') [ RunTime:0.0021s ]
+NOTIC: [8] Undefined index: savepath D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 391 行.
+NOTIC: [8] Undefined index: savename D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 391 行.
+
+[ 2015-12-16T19:54:27+08:00 ] ::1 /microweb/index.php/Home/Panel/index.html?site_id=63
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001198s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001303s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001559s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0040s ]
+SQL: SELECT a.id,a.name,a.forbidden,a.sort,a.url,b.savepath,b.savename FROM user_column a left join picture as b on a.icon = b.id  WHERE a.site_id = '63' ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0034s ]
+SQL: SELECT `theme` FROM `site_info` WHERE `id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0034s ]
+SQL: SELECT `id`,`name`,`intro`,`cname`,`icon` FROM `controller` WHERE `forbidden` = 0 AND `status` = 0 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0032s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM theme as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.name <> ''  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0036s ]
+SQL: SELECT a.name,a.id,b.savepath,b.savename FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.status = 0 AND a.forbidden = 0  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000204s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000328s ]
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+NOTIC: [8] Undefined index: addr D:\wamp\www\microweb\Application\Runtime\Cache\Home\56e2fba27fee92fedf36b6d27a2e9082.php 第 156 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016386s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016506s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000449s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000550s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000662s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000780s ]
+
+[ 2015-12-16T19:54:28+08:00 ] ::1 /microweb/index.php/Home/Panel/readHtml/column_id/5
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001005s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000775s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000915s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0068s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '5' AND `site_id` = '63' LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0056s ]
+SQL: SELECT `html` FROM `user_column` WHERE `id` = '5' AND `forbidden` = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0052s ]
+SQL: SELECT `nickname`,`head_img` FROM `user_info` WHERE `id` = '1' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0061s ]
+SQL: SELECT `html` FROM `user_column` WHERE `id` = 5 LIMIT 1   [ RunTime:0.0005s ]
+NOTIC: [2] json_decode() expects parameter 1 to be string, array given D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 209 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 211 行.
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001151s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001337s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0039s ]
+SQL: SELECT `site_name`,`theme`,`back` FROM `site_info` WHERE `status` = 0 AND `id` = '63' LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0046s ]
+SQL: SELECT a.id,`savepath`,`savename` FROM background as a INNER JOIN picture as b on a.pic_id = b.id  WHERE a.id = '0' AND a.status = 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0026s ]
+SQL: SELECT `name` FROM `theme` WHERE `status` = 0 AND `id` = '0' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT a.id,a.name,a.sort,a.forbidden,a.url,`savepath`,`savename` FROM user_column a left join picture as b on a.icon = b.id  WHERE a.site_id = '63' AND a.forbidden = 0 ORDER BY sort  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000261s ]
+NOTIC: [8] Undefined variable: site_name D:\wamp\www\microweb\Application\Runtime\Cache\Home\674709428c2fc9be01a833685b4f026d.php 第 49 行.
+NOTIC: [8] Undefined variable: site_name D:\wamp\www\microweb\Application\Runtime\Cache\Home\674709428c2fc9be01a833685b4f026d.php 第 61 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012677s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012802s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000031s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.029149s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000732s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000838s ]
+
+[ 2015-12-16T19:55:02+08:00 ] ::1 /microweb/index.php/Home/Panel/editColumn
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000498s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000766s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000862s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `user_column` WHERE `id` = '8' AND `site_id` = '63' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `home_picture` [ RunTime:0.0030s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `home_picture` WHERE `md5` = '825172f9d6403336b1b51df159c79346' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: path D:\wamp\www\microweb\ThinkPHP\Library\Think\Upload.class.php 第 172 行.
+SQL: UPDATE `home_picture` SET `used`=used+1 WHERE `id` = 13 [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `user_column` [ RunTime:0.0033s ]
+SQL: UPDATE `user_column` SET `name`='ooo',`icon`='13' WHERE `id` = 8 [ RunTime:0.0009s ]
+NOTIC: [8] Undefined index: savepath D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 429 行.
+NOTIC: [8] Undefined index: savename D:\wamp\www\microweb\Application\Home\Controller\PanelController.class.php 第 429 行.
+

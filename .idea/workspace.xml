@@ -25,9 +25,30 @@
       <file leaf-file-name="ReceptionController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/ReceptionController.class.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="-148.09677">
               <caret line="231" column="41" selection-start-line="231" selection-start-column="41" selection-end-line="231" selection-end-column="41" />
               <folding />
+=======
+            <state vertical-scroll-proportion="-12.225806">
+              <caret line="258" column="41" selection-start-line="258" selection-start-column="41" selection-end-line="258" selection-end-column="41" />
+              <folding>
+                <element signature="e#326#539#0#PHP" expanded="false" />
+                <element signature="e#558#767#0#PHP" expanded="false" />
+                <element signature="e#785#1424#0#PHP" expanded="false" />
+                <element signature="e#1447#2638#0#PHP" expanded="false" />
+                <element signature="e#2696#3706#0#PHP" expanded="false" />
+                <element signature="e#3737#5701#0#PHP" expanded="false" />
+                <element signature="e#5719#8370#0#PHP" expanded="false" />
+                <element signature="e#12779#14882#0#PHP" expanded="false" />
+                <element signature="e#14900#15231#0#PHP" expanded="false" />
+                <element signature="e#15250#15608#0#PHP" expanded="false" />
+                <marker date="1450531122673" expanded="true" signature="15720:15772" placeholder="..." />
+                <marker date="1450531122673" expanded="true" signature="15785:15808" placeholder="..." />
+                <marker date="1450531122673" expanded="true" signature="15955:16008" placeholder="..." />
+                <marker date="1450531122673" expanded="true" signature="16021:16044" placeholder="..." />
+              </folding>
+>>>>>>> dev
             </state>
           </provider>
         </entry>
@@ -35,6 +56,7 @@
       <file leaf-file-name="addController.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/Admin/View/Reception/addController.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="1.6617647">
               <caret line="220" column="7" selection-start-line="220" selection-start-column="7" selection-end-line="220" selection-end-column="7" />
               <folding>
@@ -46,6 +68,19 @@
                 <element signature="n#style#0;n#div#0;n#foreach#0;n#if#0;n#div#1;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
                 <element signature="e#9070#9110#0" expanded="false" />
                 <element signature="e#9136#9682#0" expanded="false" />
+=======
+            <state vertical-scroll-proportion="0.6163873">
+              <caret line="243" column="27" selection-start-line="243" selection-start-column="27" selection-end-line="243" selection-end-column="27" />
+              <folding>
+                <element signature="n#style#0;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#empty#0;n#div#0;n#div#0;n#foreach#0;n#if#0;n#div#1;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#empty#0;n#div#0;n#div#0;n#foreach#0;n#if#0;n#div#1;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+                <element signature="e#6164#6720#0" expanded="false" />
+                <element signature="e#7042#7822#0" expanded="false" />
+                <element signature="e#9293#9333#0" expanded="false" />
+                <element signature="e#9359#9905#0" expanded="false" />
+>>>>>>> dev
               </folding>
             </state>
           </provider>
@@ -622,7 +657,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+<<<<<<< HEAD
     <editor active="false" />
+=======
+    <editor active="true" />
+>>>>>>> dev
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26027396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922733" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -631,7 +670,11 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.327787" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327787" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> dev
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39267886" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -972,6 +1015,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5810056">
+          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> dev
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_5.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49720672">
@@ -1031,14 +1084,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/ReceptionController.class.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="-148.09677">
           <caret line="231" column="41" selection-start-line="231" selection-start-column="41" selection-end-line="231" selection-end-column="41" />
           <folding />
+=======
+        <state vertical-scroll-proportion="-12.225806">
+          <caret line="258" column="41" selection-start-line="258" selection-start-column="41" selection-end-line="258" selection-end-column="41" />
+          <folding>
+            <element signature="e#326#539#0#PHP" expanded="false" />
+            <element signature="e#558#767#0#PHP" expanded="false" />
+            <element signature="e#785#1424#0#PHP" expanded="false" />
+            <element signature="e#1447#2638#0#PHP" expanded="false" />
+            <element signature="e#2696#3706#0#PHP" expanded="false" />
+            <element signature="e#3737#5701#0#PHP" expanded="false" />
+            <element signature="e#5719#8370#0#PHP" expanded="false" />
+            <element signature="e#12779#14882#0#PHP" expanded="false" />
+            <element signature="e#14900#15231#0#PHP" expanded="false" />
+            <element signature="e#15250#15608#0#PHP" expanded="false" />
+            <marker date="1450531122673" expanded="true" signature="15720:15772" placeholder="..." />
+            <marker date="1450531122673" expanded="true" signature="15785:15808" placeholder="..." />
+            <marker date="1450531122673" expanded="true" signature="15955:16008" placeholder="..." />
+            <marker date="1450531122673" expanded="true" signature="16021:16044" placeholder="..." />
+          </folding>
+>>>>>>> dev
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/Reception/addController.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="1.6617647">
           <caret line="220" column="7" selection-start-line="220" selection-start-column="7" selection-end-line="220" selection-end-column="7" />
           <folding>
@@ -1050,6 +1125,19 @@
             <element signature="n#style#0;n#div#0;n#foreach#0;n#if#0;n#div#1;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
             <element signature="e#9070#9110#0" expanded="false" />
             <element signature="e#9136#9682#0" expanded="false" />
+=======
+        <state vertical-scroll-proportion="0.6163873">
+          <caret line="243" column="27" selection-start-line="243" selection-start-column="27" selection-end-line="243" selection-end-column="27" />
+          <folding>
+            <element signature="n#style#0;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#empty#0;n#div#0;n#div#0;n#foreach#0;n#if#0;n#div#1;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#empty#0;n#div#0;n#div#0;n#foreach#0;n#if#0;n#div#1;n#div#4;n#form#0;n#block#1;n#!!top" expanded="true" />
+            <element signature="e#6164#6720#0" expanded="false" />
+            <element signature="e#7042#7822#0" expanded="false" />
+            <element signature="e#9293#9333#0" expanded="false" />
+            <element signature="e#9359#9905#0" expanded="false" />
+>>>>>>> dev
           </folding>
         </state>
       </provider>

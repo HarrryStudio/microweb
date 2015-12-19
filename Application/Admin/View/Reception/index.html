@@ -20,7 +20,12 @@
 						</div>
 						<div class="del" val="{$vo.id}"><img src="__IMAGES__/delete.png"></div>
 					</div>
-					<div class="pic_img_name">{$vo.name}
+					<div class="pic_img_name">
+						<empty name = "vo.name">
+							名字为空，背景无效
+						<else />
+							{$vo.name}
+						</empty>
 						<input type="hidden" class="id" value="{$vo.id}">
 						</div>
 					<div class="pic_time">
@@ -79,7 +84,7 @@
 		url = $("#delete").attr("value");
 		$.post(url,{id:set_id},function(data){
 			// console.log(data)
-			if (data){
+			if (data!=false){
 				window.location.reload();
 			}else{
 				alert("删除失败");
@@ -95,19 +100,16 @@
  		
 	$('#file_upload').uploadify({
 		'swf'      : '__ROOT__/Public/Static/uploadify/uploadify.swf',
-        'uploader' : '__ROOT__/index.php/Admin/Reception/uploadPictures',
+        'uploader' : '__ROOT__/index.php/Admin/Reception/uploadBackground/savepath/background',
         'buttonText' : '请选择文件',
-        // 'fileTypeExts' :    '*.jpg; *.png; *.JPG ; *.PNG',
+		'fileTypeExts' :    '*.jpg; *.png; *.JPG ; *.PNG',
         'onUploadSuccess' : function(file, data, response) {
-        	if (data == 1) {
-				window.location.reload();
-        		alert("图片信息重复");
+        	if (data == false || data == 'no') {
+        		alert("上传失败或已存在！");
         	}
 			setTimeout(function(){
 	        	window.location.reload();
 	        },500);
-		// console.log(data);
-
         }
 	});
 
