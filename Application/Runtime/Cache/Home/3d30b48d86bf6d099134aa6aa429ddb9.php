@@ -68,10 +68,9 @@
 		<div class="content">
 			
 	<input id="delete_site_url" type="hidden" value="/microweb/index.php/Home/Website/delete_site">
-	<input id="compile_site_url" type="hidden" value="<?php echo U('Panel/index');?>">
+	<input id="compile_site_url" type="hidden" value="/microweb/index.php/Home/Website/toPanel">
 	<input id="download_site_url" type="hidden" value="/microweb/index.php/Home/Website/download_site">
-	
-	<input id="resource_management_site_url" type="hidden" value="/microweb/index.php/Home/Website/album_list">
+	<input id="resource_management_site_url" type="hidden" value="/microweb/index.php/Home/Website/toResource">
 	<div class="centent-head">
 		网站列表
 	</div>
@@ -129,12 +128,12 @@
 		<div class="add-button">&#10010;</div>
 	</div><?php endif; ?>
 	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	   aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
 	      <div class="modal-content">
 	         <div class="modal-header">
-	            <button type="button" class="close" 
+	            <button type="button" class="close"
 	               data-dismiss="modal" aria-hidden="true">
 	                  &times;
 	            </button>
@@ -155,7 +154,7 @@
 				</form>
 	         </div>
 	         <div class="modal-footer">
-	            <button type="button" class="btn btn-default" 
+	            <button type="button" class="btn btn-default"
 	               data-dismiss="modal">关闭
 	            </button>
 	            <button id="create_new_site" type="button" target_url="/microweb/index.php/Home/Website/add_site" class="btn btn-primary">
@@ -167,12 +166,12 @@
 	</div>
 
 	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog" 
+	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog"
 	   aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
 	      <div class="modal-content">
 	         <div class="modal-header">
-	            <button type="button" class="close" 
+	            <button type="button" class="close"
 	               data-dismiss="modal" aria-hidden="true">
 	                  &times;
 	            </button>
@@ -188,7 +187,7 @@
 				</form>
 	         </div>
 	         <div class="modal-footer">
-	            <button type="button" class="btn btn-default" 
+	            <button type="button" class="btn btn-default"
 	               data-dismiss="modal">取消
 	            </button>
 	            <button type="button" class="btn btn-primary confirm">

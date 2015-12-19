@@ -1,4 +1,4 @@
-<extend name="base"/>
+<extend name="Website/base"/>
 <block name="style">
 	<link rel="stylesheet" type="text/css" href="__CSS__/website/add_article.css">
 	<link rel="stylesheet" type="text/css" href="__STATIC__/ueditor/themes/default/css/ueditor.css">
@@ -25,13 +25,12 @@
 	<input id="article-url" type="hidden" value="__CONTROLLER__/article_list/site_id/{$site_id}">
 	<div class="add-article-panel">
 			<if condition="$is_edit eq 1">
-			<form action="__CONTROLLER__/edit_article" id="article-form">
-				<input id="article-id" name="id" type="hidden" value="{$article_info.id}">
+				<form action="__CONTROLLER__/edit_article" id="article-form">
+					<input id="article-id" name="id" type="hidden" value="{$article_info.id}">
 			<else />
-			<form action="__CONTROLLER__/insert_article" id="article-form">
-				<input id="site-id" name="site_id" type="hidden" value="{$site_id}">
+				<form action="__CONTROLLER__/insert_article" id="article-form">
 			</if>
-			
+
 			<div class="article-form-item">
 				<label for="article-title" class="article-label">标题：</label>
 				<input id="article-title" name="title" type="text" class="article-input form-control" value="{$article_info.title}">
@@ -57,7 +56,7 @@
 				    <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				  	<?php 
+				  	<?php
 				  		//print_r($article_info);
 				  		foreach ($type_list as $key => $value) {
 				  			$class = "";
@@ -71,7 +70,7 @@
 				  	?>
 				  </ul>
 				</div>
-				<?php 
+				<?php
 					if(empty($type_list)){
 				?>
 				<span id="add-type-info">还没有分类,先去<a id="add-type-a" href="__CONTROLLER__/set_classify/site_id/{$site_id}">添加分类</a>吧</span>
@@ -105,7 +104,7 @@
 	</div>
 </block>
 <block name="other">
-	
+
 </block>
 <block name="script">
 	<script type="text/javascript" src="__JS__/website/add_article.js"></script>

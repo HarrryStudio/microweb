@@ -14,17 +14,8 @@ class UserInfoModel extends Model{
         } else if ($login_res['status'] == 1) {
             return "用户不存在";
         }
-        $ids = M('site_info')
-                ->field('id')
-                ->where(array('user_id'=>$login_res['id'],'status'=>0,'forbidden'=>0))
-                ->select();
-        $site_all = array();
-        foreach ($ids as $key => $value) {
-            array_push($site_all, $value['id']);
-        }
         if($login_res['password'] == md5($data['password'])){
             session("user_info",$login_res);
-            session("site_info",$site_all);
             if($data['remember'] == 0){
                 cookie("user_account",$data['account']);
                 cookie("user_password",$data['password']);

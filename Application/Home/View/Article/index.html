@@ -1,4 +1,4 @@
-<extend name="base"/>
+<extend name="Website/base"/>
 <block name="style">
 	<link rel="stylesheet" type="text/css" href="__CSS__/website/article.css">
 </block>
@@ -13,7 +13,7 @@
 <block name="content">
 	<div class="centent-head">文章
 		<div class="set-bar">
-			<div class="set-item classify" url='__CONTROLLER__/set_classify/site_id/{$site_id}'>分类管理</div>
+			<div class="set-item classify" url='__CONTROLLER__/set_classify'>分类管理</div>
 		</div>
 	</div>
 	<input id="site_id" type="hidden" value="{$site_id}">
@@ -114,7 +114,7 @@
 			 			</tr>
 			 		</volist>
 			 	</tbody>
-			 </table> 
+			 </table>
 		</div>
 		<div class="page">
 			{$page}
@@ -124,12 +124,12 @@
 </block>
 <block name="other">
 	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	   aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
 	      <div class="modal-content">
 	         <div class="modal-header">
-	            <button type="button" class="close" 
+	            <button type="button" class="close"
 	               data-dismiss="modal" aria-hidden="true">
 	                  &times;
 	            </button>
@@ -162,7 +162,7 @@
 				</form>
 	         </div>
 	         <div class="modal-footer">
-	            <button type="button" class="btn btn-default" 
+	            <button type="button" class="btn btn-default"
 	               data-dismiss="modal">关闭
 	            </button>
 	            <button id="change-article-type" type="button" target-url="__CONTROLLER__/change_article_type/type_id/" class="btn btn-primary">
@@ -174,12 +174,12 @@
 	</div>
 
 	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog" 
+	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog"
 	   aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
 	      <div class="modal-content">
 	         <div class="modal-header">
-	            <button type="button" class="close" 
+	            <button type="button" class="close"
 	               data-dismiss="modal" aria-hidden="true">
 	                  &times;
 	            </button>
@@ -195,7 +195,7 @@
 				</form>
 	         </div>
 	         <div class="modal-footer">
-	            <button type="button" class="btn btn-default" 
+	            <button type="button" class="btn btn-default"
 	               data-dismiss="modal">取消
 	            </button>
 	            <button type="button" class="btn btn-primary confirm">

@@ -7,6 +7,14 @@
 			return false;
 		}
 	}
+	function is_choose_site(){
+		if(session('site_info')['id']){
+			return true;
+		}else{
+			echo "===============";
+			return false;
+		}
+	}
 	function formatSize($size){
 		if(is_numeric($size)){
 			$size = (int)$size;
@@ -37,59 +45,59 @@
         }
         copy($source, $destination);
     }
-    function xCopy($source, $destination){ 
-        if(!is_dir($source)){ 
+    function xCopy($source, $destination){
+        if(!is_dir($source)){
             return 0;
-        } 
-        if(!is_dir($destination)){ 
+        }
+        if(!is_dir($destination)){
             mkdir($destination,0777);
-        } 
-        $handle=dir($source); 
-        while($entry=$handle->read()) { 
-            if(($entry!=".")&&($entry!="..")){ 
-                if(is_dir($source."/".$entry)){ 
-                    xCopy($source."/".$entry,$destination."/".$entry); 
+        }
+        $handle=dir($source);
+        while($entry=$handle->read()) {
+            if(($entry!=".")&&($entry!="..")){
+                if(is_dir($source."/".$entry)){
+                    xCopy($source."/".$entry,$destination."/".$entry);
                 } else{
-                    copy($source."/".$entry,$destination."/".$entry); 
+                    copy($source."/".$entry,$destination."/".$entry);
                 }
-            } 
-        } 
-        return 1; 
+            }
+        }
+        return 1;
     }
 
-    function deleteAll($directory, $empty = false) { 
-        if(substr($directory,-1) == "/") { 
-            $directory = substr($directory,0,-1); 
-        } 
+    function deleteAll($directory, $empty = false) {
+        if(substr($directory,-1) == "/") {
+            $directory = substr($directory,0,-1);
+        }
 
-        if(!file_exists($directory) || !is_dir($directory)) { 
-            return false; 
-        } elseif(!is_readable($directory)) { 
-            return false; 
-        } else { 
-            $directoryHandle = opendir($directory); 
-            
-            while ($contents = readdir($directoryHandle)) { 
-                if($contents != '.' && $contents != '..') { 
-                    $path = $directory . "/" . $contents; 
-                    
-                    if(is_dir($path)) { 
-                        deleteAll($path); 
-                    } else { 
-                        unlink($path); 
-                    } 
-                } 
-            } 
-            
-            closedir($directoryHandle); 
+        if(!file_exists($directory) || !is_dir($directory)) {
+            return false;
+        } elseif(!is_readable($directory)) {
+            return false;
+        } else {
+            $directoryHandle = opendir($directory);
 
-            if($empty == false) { 
-                if(!rmdir($directory)) { 
-                    return false; 
-                } 
-            } 
-            
-            return true; 
-        } 
-    } 
+            while ($contents = readdir($directoryHandle)) {
+                if($contents != '.' && $contents != '..') {
+                    $path = $directory . "/" . $contents;
+
+                    if(is_dir($path)) {
+                        deleteAll($path);
+                    } else {
+                        unlink($path);
+                    }
+                }
+            }
+
+            closedir($directoryHandle);
+
+            if($empty == false) {
+                if(!rmdir($directory)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
 ?>

@@ -4,28 +4,32 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
 	<title>index</title>
-	<link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Static/bootstrap/css/bootstrap.css">
+	<?php if(is_array($css)): $i = 0; $__LIST__ = $css;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><link rel="stylesheet" type="text/css" href="<?php echo ($vo); ?>"><?php endforeach; endif; else: echo "" ;endif; ?>
+	<?php if(is_array($js)): $i = 0; $__LIST__ = $js;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><script type="text/javascript" src='<?php echo ($vo); ?>'></script><?php endforeach; endif; else: echo "" ;endif; ?>
+	<!-- <link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Static/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Theme/Public/index.css">
 	<?php if(empty($theme )): ?><link rel="stylesheet" type="text/css" id="theme-css" href="/microweb/UserFiles/Public/Theme/theme-default/theme.css">
 		<script type="text/javascript" id="theme-js" src="/microweb/UserFiles/Public/Theme/theme-default/theme.js"></script>
 	<?php else: ?>
 		<link rel="stylesheet" type="text/css" id="theme-css" href="/microweb/UserFiles/Public/Theme/<?php echo ($theme); ?>/theme.css">
-		<script type="text/javascript" id="theme-js" src="/microweb/UserFiles/Public/Theme/<?php echo ($theme); ?>/theme.js"></script><?php endif; ?>
+		<script type="text/javascript" id="theme-js" src="/microweb/UserFiles/Public/Theme/<?php echo ($theme); ?>/theme.js"></script><?php endif; ?> -->
 	<!-- <link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Controller/PicturesShow/PicPhoneShow.css">
 	<link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Controller/article_list/article_list_show_all.css">
 	<link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Controller/image_text/image_text_show_all.css">
 	<link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Controller/article_sort/article_sort_show.css">
 	<link rel="stylesheet" type="text/css" href="/microweb/UserFiles/Public/Controller/nav/nav_all.css"> -->
 
-	<script type="text/javascript" src='/microweb/UserFiles/Public/Static/jquery-2.0.3.min.js'></script>
+	<!-- <script type="text/javascript" src='/microweb/UserFiles/Public/Static/jquery-2.0.3.min.js'></script>
     <script type="text/javascript" src='/microweb/UserFiles/Public/Static/bootstrap/js/bootstrap.js'></script>
-	<script type="text/javascript" src='/microweb/UserFiles/Public/Theme/Public/index.js'></script>
-	<script type="text/javascript" src='/microweb/Public/Home/js/panel/drag.js'></script>
+	<script type="text/javascript" src='/microweb/UserFiles/Public/Theme/Public/index.js'></script> -->
+	<script type="text/javascript" src='/microweb/Public/Home/js/panel/index/drag.js'></script>
 	<!-- <script type="text/javascript" src='/microweb/UserFiles/Public/Controller/Viwepager/viwepagerPhone.js'></script>
 	<script type="text/javascript" src='/microweb/UserFiles/Public/Controller/PicturesShow/PicPhoneShow.js'></script>
     <script type="text/javascript" src='/microweb/UserFiles/Public/Controller/article_list/article_list.js'></script> -->
 </head>
 <body>
+	<script type="text/javascript">window.html_json = <?php echo ($html_json); ?>;</script>
+
 	<div class="side main">
 		<div class="user-bar">
 			<div class="head-icon" style="background-image:url(<?php echo C('UPLOAD_ROOT'); echo ($user_info["head_img"]); ?>)"></div>

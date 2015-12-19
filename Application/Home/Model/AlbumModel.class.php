@@ -5,31 +5,30 @@ use Think\Model;
 /**
 * 相册模型
 */
-class AlbumModel extends Model{	
+class AlbumModel extends Model{
 	protected $_validate = array(
+		array('name','require','请填写相册名',self::MODEL_BOTH),
 		array('name','/^([\x{4e00}-\x{9fa5}A-Za-z0-9_]){1,20}+$/u','相册名由1-20位汉字或字母或数字组成',self::MODEL_BOTH),
 		array('name','checkName','相册名不能重复',0,'callback',self::MODEL_BOTH),
+	);
+	/**
+	 * 自动完成
+	 * @var array
+	 */
+	protected $_auto = array(
+		array('create_time', NOW_TIME, self::MODEL_INSERT),
+		array('update_time', NOW_TIME, self::MODEL_BOTH),
 	);
 
 	/**
 	 * 相册名不能重复
 	 */
-	protected function checkName(){
-		$name = I('name');
-		$site_id = I('site_id');
-		$album_id = I('album_id');
-		if($site_id){
-			$map = array('name'=>$name, 'site_id'=>$site_id);
+	protected function checkName($data){
+			$map = array('name'=>$data['name'], 'site_id'=>$data['site_id']);
 			$res = $this->where($map)->find();
 			// var_dump($res);
 			return empty($res);
-		}elseif($album_id){
-			$site = $this->field('site_id')->where(array('id'=>$album_id))->find();
-			$map = array('name'=>$name, 'site_id'=>$site['site_id']);
-			$res = $this->where($map)->find();
-			return empty($res);
-		}
-		
+
 	}
 	/**
 	 * 得到album的列表
@@ -55,7 +54,7 @@ class AlbumModel extends Model{
 		$Photo = M('photo');
 		$result = $Photo->field('photo.id,savename,savepath,size')
 						// ->join('left join album on photo.album_id = album.id right join picture on photo.pic_id = picture.id')
-						// author zhangbo    
+						// author zhangbo
 						// modify  split  admin  & home   picture table
 						->join('left join album on photo.album_id = album.id right join home_picture on photo.pic_id = home_picture.id')
 						->where($map)
@@ -72,7 +71,7 @@ class AlbumModel extends Model{
 	 * @param  $album_id 相册id
 	 * @return 数据 | false
 	 */
-	public function del_album($album_id){
+	public function del_album($site_id,$album_id){
 		$model = M();
 		$model->startTrans();
 		$map['album_id'] = $album_id;
@@ -85,6 +84,7 @@ class AlbumModel extends Model{
 			return false;
 		}
 		/*将photo表中相册下的数据删除*/
+		$map['site_id'] = $site_id;
 		$result = $model->table('photo')->where($map)->delete();
 		if($result === false){
 			$model->rollback();
@@ -92,7 +92,7 @@ class AlbumModel extends Model{
 			return false;
 		}
 		/*将album表中的一条记录删除*/
-		$result = $model->table('album')->where(array('id'=>$album_id))->delete();
+		$result = $model->table('album')->where(array('id'=>$album_id,'site_id'=>$site_id))->delete();
 		if(!$result){
 			$model->rollback();
 			$this->error = $model->getError();

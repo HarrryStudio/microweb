@@ -4,7 +4,7 @@ use Think\Controller;
 /**
  * 操作面板
  */
-class PanelController extends BaseController {
+class PanelController extends ResourceController  {
 
     public function allowColumn($id){
        // echo session("site_id");
@@ -17,14 +17,11 @@ class PanelController extends BaseController {
     }
 
 
-    public function index($site_id){
-        if(!A("Website")->allow_site($site_id)){
-            return $this->error();
-        }
-        session('site_id',$site_id);
-
+    public function index(){
+        $site_session = session("site_info");
+        $site_id = $site_session['id'];
         $column_info = D('UserColumn')->get_column_info($site_id);
-        $site_info = M()->table('site_info')->field('theme')->where(array('id'=>$site_id))->find();
+        $site_info = M()->table('site_info')->field('theme,back')->where(array('id'=>$site_id))->find();
 
         $controller_list = M('controller')
                             ->field('id,name,intro,cname,icon')
@@ -68,11 +65,6 @@ class PanelController extends BaseController {
         $site_id = session('site_id');
         if(empty($site_id)){
             $this->error("还没创建任何栏目,请在右边栏目中创建");
-            return;
-        }elseif(!$this->allowColumn($column_id)){
-            //echo $id;
-            //echo 'error';
-            $this->error('无权访问网页');
             return;
         }
         $result = M()->table('user_column')
