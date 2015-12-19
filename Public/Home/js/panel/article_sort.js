@@ -67,36 +67,23 @@ function save(){
 		window.parent.alert_info("请先添加文章分类",0);
 		return;
 	}
+
 	var i = 0;
 	var length = $(".type_checkbox:checked").length;
-	var temp = "";
+	var info = [];
 	$(".type_checkbox:checked").each(function() {
 		that  = $(this).parent().parent();
+		info[i] = [];
 		var column_id = that.find('select').val();
 		var column_url = that.find('select').find('option:selected').attr('data');
 		var type_name = that.find('label').html();
-		temp += "<li><a class='article-link' href='"+column_url+".html' data-url='/microWeb/index.php/Home/Panel/readHtml/column_id/"+column_id+"'>"+type_name+"</a></li>";
+		info[i].push(column_id);
+		info[i].push(column_url);
 		i++;
-		if (i != length) {
-			temp += "<hr>";
-		};
-	})
-
-
-	var info = [][];
-	console.log(info);
-	return;
-	$(".type_checkbox:checked").each(function () {
-
-	})
-
-	var sort_ids = $("#type_data").serializeArray();
+	});
 	var save_url = $("#save-url").val();
 	var title = $(".setting input:first").val();
-	// var option = {'column_id':column_id, 'column_url':column_url, 'type_name':type_name};
-	// var option = {'sort_ids':sort_ids, 'title':title};
-	var option = {'list':temp, 'title':title};
-
+	var option = {'info':info, 'title':title};
 	var data = {'name':'ArticleSort', 'theme':null, 'source':'type', 'option':option};
 	$.post(save_url, data, function (data) {
 		console.log(data);

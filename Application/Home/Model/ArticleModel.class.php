@@ -180,11 +180,7 @@ class ArticleModel extends Model{
       $count = $this->where($map)->count();
       $Page = new \Think\Page($count,5);
       $show = $Page->show();
-<<<<<<< HEAD
-      $article_list = $this->join('LEFT JOIN picture on picture.id = article.pic_id')
-=======
-      $this->join('LEFT JOIN home_picture as b on b.id = article.pic_id')
->>>>>>> e272a82675d02ceda4d4235b0da87322c8186fdd
+      $article_list = $this->join('LEFT JOIN home_picture as b on b.id = article.pic_id')
             ->where($map)
             ->field('article.id, article.title, article.content, b.savepath, b.savename')
             ->order('article.is_top desc, article.create_time desc')
