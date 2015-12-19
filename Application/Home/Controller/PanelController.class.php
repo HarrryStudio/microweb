@@ -62,7 +62,7 @@ class PanelController extends ResourceController  {
             $this->error("没有找到用户");
             return;
         }
-        $site_id = session('site_id');
+        $site_id = $this->site_info['id'];
         if(empty($site_id)){
             $this->error("还没创建任何栏目,请在右边栏目中创建");
             return;
@@ -307,7 +307,7 @@ class PanelController extends ResourceController  {
                 return;
             }
         }
-        $site_id = session('site_id');
+        $site_id = $this->site_info['id'];
         if(empty($site_id)){
             $this->show(':( 没有找到网站');
         }elseif( ($widget = $this->load_widget($name,$data)) ) {
@@ -405,7 +405,7 @@ class PanelController extends ResourceController  {
     *gaoyadong
      * @update harrry 2015-12-3
     */
-    public function addColumn(){
+    public function add_column(){
         $return  = array('status' => 0, 'info' => '保存成功', 'data' => '');
 
         $pic_info = $this->upload_column_icon();
@@ -437,17 +437,10 @@ class PanelController extends ResourceController  {
      * 编辑 栏目column
      * @update harrry 2015-12-3
      */
-    public function editColumn(){
+    public function edit_column(){
         $return  = array('status' => 0, 'info' => '保存成功', 'data' => '');
         $column_id = I('post.id');
-        if(!$this->allowColumn($column_id)){
-            $return['info'] = "无权操作此栏目";
-            $this->ajaxReturn($return);
-            return;
-        }
         $pic_info = $this->upload_column_icon();
-
-
         if($pic_info === false){
             $return['info'] = "上传图片失败";
         }else{

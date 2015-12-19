@@ -38,8 +38,8 @@
 						</empty>
 					</a>
 				</div>
-				
-				<if condition="is_login()"> 
+
+				<if condition="is_login()">
 					<a class="login-status logout-butotn" href="{:U('Login/logout')}">退出</a>
 				<else />
 					<a class="login-status login-button"  href="{:U('Login/login')}">登录</a>
@@ -63,16 +63,13 @@
 		<!-- 边栏 -->
 		<div class="side">
 			<div class="side-head">网站资源</div>
-			<div class="side-item"><a href="__CONTROLLER__/album_list/site_id/{$site_id}">相册</a></div>
-			<div class="side-item"><a href="__CONTROLLER__/article_list/site_id/{$site_id}">文章</a></div>
+			<div class="side-item"><a href="{:U('Album/index')}">相册</a></div>
+			<div class="side-item"><a href="{:U('Article/index')}">文章</a></div>
 		</div>
 		<!-- /边栏 -->
 		<!-- 内容区 -->
 		<div class="content">
-			<?php $site_id = (int)session('site_id');
-				  if( $site_id > 0 ){
-				echo '<div class="to-panel"><a href="__MODULE__/Panel/index/site_id/'.$site_id.'">前往编辑页</a></div>';
-			} ?>
+			<div class="to-panel"><a href="__MODULE__/Panel/index/">前往编辑页</a></div>
 			<block name="content"></block>
 		</div>
 		<!-- 内容区 -->
@@ -80,7 +77,7 @@
 	<!-- /中间 -->
 	<!-- 页脚 -->
 	<div class="footer">
-		
+
 	</div>
 	<input id="primary-index" type="hidden" value="{$primary_index}">
 	<input id="senior-index" type="hidden" value="{$senior_index}">
@@ -96,4 +93,3 @@
 <block name='script'></block>
 </body>
 </html>
-

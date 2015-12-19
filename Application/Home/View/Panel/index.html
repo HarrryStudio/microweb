@@ -21,7 +21,7 @@
 			<div class="logo">Logo</div>
 			<ul class="main-nav">
 				<li class="nav-item"><a class="win" href="{:U('Website/index')}" >我的网站</a></li>
-				<li class="nav-item"><a class="win" href="__MODULE__/Website/album_list/site_id/{$site_id}" >资源管理</a></li>
+				<li class="nav-item"><a class="win" href="{:U('Article/index')}" >资源管理</a></li>
 				<li class="nav-item"><a class="win" href="{:U('Help/index')}" >帮助教程</a></li>
 			</ul>
 			<!-- /主导航 -->
@@ -198,6 +198,7 @@
 	<!-- /页脚 -->
 	<input id="contro-root" type="hidden" value="{:C('CONTROLLER_ROOT_PATH')}/" />
 	<input type="hidden" id="add-column-url" value="__CONTROLLER__/add_column">
+	<input type="hidden" id="edit-column-url" value="__CONTROLLER__/edit_column">
 	<input type="hidden" id="forbide-column-url" value="__CONTROLLER__/forbide_column">
 	<input type="hidden" id="del-column-url" value="__CONTROLLER__/del_column">
 	<input type="hidden" id="sort-column-url" value="__CONTROLLER__/sort_column">

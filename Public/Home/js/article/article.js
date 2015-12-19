@@ -1,4 +1,8 @@
 $(function(){
+	/*初始搜索类型*/
+	var serch_type = $('.search-type').find('ul').find('li[data='+(parseInt($('#search-type-id').val()) || -1)+']').text();
+	$('.search-type-name').text(serch_type);
+
 	/*类型管理按钮跳转  */
 	$('.set-item.classify').click(function(){
 		window.location.href = $(this).attr('url');
@@ -33,7 +37,6 @@ $(function(){
 	$('.search-icon').click(function(){
 		var url = $(this).attr('url');
 		var query  = $('.search-form').find('input').serialize();
-		console.log(query);
         query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
         query = query.replace(/^&/g,'');
         if( url.indexOf('?')>0 ){
@@ -41,7 +44,7 @@ $(function(){
         }else{
             url += '?' + query;
         }
-		window.location.href = url; 
+		window.location.href = url;
 	})
 	/*全选效果  */
 	$('#chose-article').change(function(){
@@ -82,7 +85,7 @@ $(function(){
 		})
 	})
 	/*模态框中的类型选择 */
-	$('.type-dropdown li').click(function(){ 
+	$('.type-dropdown li').click(function(){
 		console.log($(this).text());
 		$('#type-name-span').text($(this).text());
 		$('#type-id').val($(this).attr('data'));
@@ -139,7 +142,7 @@ $(function(){
 		var that = this;
 		var status = $(that).attr('data-status');
 		if(status == -1){
-			
+
 		}
 		$.post($('#status-article-url').val(),{
 				status:status,

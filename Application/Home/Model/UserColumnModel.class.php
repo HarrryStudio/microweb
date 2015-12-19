@@ -120,7 +120,7 @@ class UserColumnModel extends Model{
         if($pic_id > 0){
         	$data['icon'] = $pic_id;
         }
-        if ( $this->create($data) && $this->save() ){
+        if ( $this->create($data) && $this->where(array('site_id' => $site_id))->save() ){
         	// echo $this->getLastSql();
         	return $data;
         }

@@ -13,7 +13,7 @@ class AlbumController extends ResourceController {
         $session_site = session("site_info");
         $site_id = $session_site['id'];
         $Album = D('Album');
-        $album_list = $Album->get_album_list($id);
+        $album_list = $Album->get_album_list($site_id);
         $this->assign("site_id",$id);
         $this->assign("album_list",$album_list);
         $this->init_head("图册");
@@ -194,16 +194,15 @@ class AlbumController extends ResourceController {
             $this->ajaxReturn($return);
             return;
         }
-        $pics = "";
+        $pics = [];
         foreach($result as $key => $value){
-            $pics .= $value['pic_id'].",";
+            $pics[] = $value['pic_id'];
         }
-        $pics = substr($pics, -1);
-        $result = $m->table('picture')->where('id in ('.$pics.') ')->setDec('used');
+        $result = $m->table('home_picture')->where(array('id' => array('in',$pics)))->setDec('used');
         if($result !== false){
             $result = $m->table('photo')->where($where)->delete();
             if($result !== false){
-                $model->commit();
+                $m->commit();
                 D('Picture')->removeFile();  // 删除废物
                 $return['status'] = 1;
             }else{

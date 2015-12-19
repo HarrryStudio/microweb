@@ -1,15 +1,8 @@
-<extend name="base"/>
+<extend name="Website/base"/>
 <block name="style">
-	<link rel="stylesheet" type="text/css" href="__CSS__/website/resource.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/album/album.css">
 </block>
 <block name='senior-nav'></block>
-<block name="side">
-	<div class="side">
-		<div class="side-head">网站资源</div>
-		<div class="side-item"><a href="__CONTROLLER__/index">相册</a></div>
-		<div class="side-item"><a href="U(“Article/index”)">文章</a></div>
-	</div>
-</block>
 <block name="content">
 	<div class="centent-head">图册</div>
 	<input id="site_id" type="hidden" value="{$site_id}">
@@ -85,5 +78,5 @@
     </div>
 </block>
 <block name="script">
-	<script type="text/javascript" src="__JS__/website/resource.js"></script>
+	<script type="text/javascript" src="__JS__/album/album.js"></script>
 </block>

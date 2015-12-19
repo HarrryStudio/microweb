@@ -5,7 +5,6 @@ $(function(){
 	$('#create-new-type').click(function(){
 		$.post($(this).attr('target-url'),
 			{
-				site_id:$('#site_id').val(),
 				name:$('#type_name').val()
 			},
 			function(data){
@@ -82,7 +81,7 @@ $(function(){
 		$('#edit-type-name').blur(function(){  // 值改变时提交
 			var val = $(this).val();
 			var id = $(this).parent().parent().attr('data-id');
-			$.post($('#add-type-url').val(),{name:val,type_id:id},function(data){
+			$.post($('#add-type-url').val(),{name:val,id:id},function(data){
 				if(data.status == 1){
 					item.html(val);
 				}else{

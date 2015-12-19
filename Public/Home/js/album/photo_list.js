@@ -16,7 +16,7 @@ $(function() {
 
 	/*显示上传窗口*/
 	$('#update-photo-button').click(function(){
-		
+
 		$('.upload-photo-body').show();
 		$(window).resize();
 		$('.upload-photo-body').animate({opacity:1},300);
@@ -56,7 +56,7 @@ $(function() {
 		})
 		$('#upload-file-form').find('input:last-child').click();
 	});
-	
+
 
 	/*开始上传(异步)*/
 	$('.start-update').click(function(){
@@ -68,14 +68,14 @@ $(function() {
 			type: 'post',
 			data: formData,
 			cache: false,
-			/** 
-	         * 必须false才会避开jQuery对 formdata 的默认处理 
-	         * XMLHttpRequest会对 formdata 进行正确的处理 
-	         */  
+			/**
+	         * 必须false才会避开jQuery对 formdata 的默认处理
+	         * XMLHttpRequest会对 formdata 进行正确的处理
+	         */
 			processData:false,
-			/** 
-	         *必须false才会自动加上正确的Content-Type 
-	         */ 
+			/**
+	         *必须false才会自动加上正确的Content-Type
+	         */
 			contentType:false,
 			xhr: function() {  // custom xhr
             	myXhr = $.ajaxSettings.xhr();
@@ -90,7 +90,7 @@ $(function() {
 				if(data.status == 1){
 					alert_info(data.info,1);
 					setTimeout(function(){
-					    //window.location.reload();
+					    window.location.reload();
 					},2000);
 				}else{
 					alert_info(data.info,0);
@@ -122,15 +122,15 @@ function progressHandlingFunction(e){
 function addUploadFile(fileList){
 	if(fileList){
 		for(var i = 0; i < fileList.length; i ++){
-			if(!/image\/\w+/.test(fileList[i].type)){  
-			    continue;  
+			if(!/image\/\w+/.test(fileList[i].type)){
+			    continue;
 				}
 				//读取文件
 			var reader = new FileReader();
 			reader.onloadend = function (e) {
                 var urlData = e.target.result;
                 $(".update-photo-list").prepend("<div class='update-photo-item'><img src='" + urlData + "' /></div>");
-            }; 
+            };
 			reader.readAsDataURL(fileList[i]);
 		}
 	}

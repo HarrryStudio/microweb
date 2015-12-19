@@ -5,7 +5,7 @@ use Think\Controller;
  * 资源
  */
 class ResourceController extends BaseController {
-    private $site_info = null;
+    protected $site_info = null;
     final public function _initialize(){
         parent::_initialize();
         if(!is_choose_site()){
