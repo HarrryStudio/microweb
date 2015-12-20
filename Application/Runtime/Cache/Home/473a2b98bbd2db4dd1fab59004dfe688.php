@@ -21,7 +21,7 @@
 			<div class="logo">Logo</div>
 			<ul class="main-nav">
 				<li class="nav-item"><a class="win" href="<?php echo U('Website/index');?>" >我的网站</a></li>
-				<li class="nav-item"><a class="win" href="/microweb/index.php/Home/Website/album_list/site_id/<?php echo ($site_id); ?>" >资源管理</a></li>
+				<li class="nav-item"><a class="win" href="<?php echo U('Article/index');?>" >资源管理</a></li>
 				<li class="nav-item"><a class="win" href="<?php echo U('Help/index');?>" >帮助教程</a></li>
 			</ul>
 			<!-- /主导航 -->
@@ -181,6 +181,7 @@
 	<!-- /页脚 -->
 	<input id="contro-root" type="hidden" value="<?php echo C('CONTROLLER_ROOT_PATH');?>/" />
 	<input type="hidden" id="add-column-url" value="/microweb/index.php/Home/Panel/add_column">
+	<input type="hidden" id="edit-column-url" value="/microweb/index.php/Home/Panel/edit_column">
 	<input type="hidden" id="forbide-column-url" value="/microweb/index.php/Home/Panel/forbide_column">
 	<input type="hidden" id="del-column-url" value="/microweb/index.php/Home/Panel/del_column">
 	<input type="hidden" id="sort-column-url" value="/microweb/index.php/Home/Panel/sort_column">

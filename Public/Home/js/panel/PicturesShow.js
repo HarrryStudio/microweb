@@ -29,31 +29,31 @@ $(function(){
     })
 })
 
-var dynamicLoading = {
-    css: function(path){
-        if(!path || path.length === 0){
-            throw new Error('argument "path" is required !');
-        }
-        var p_document = window.parent.panelFrame.document;
-        var head = p_document.getElementsByTagName('head')[0];
-        var link = p_document.createElement('link');
-        link.href = path;
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        head.appendChild(link);
-    },
-    js: function(path){
-        if(!path || path.length === 0){
-            throw new Error('argument "path" is required !');
-        }
-        var p_document = window.parent.panelFrame.document;
-        var head = p_document.getElementsByTagName('head')[0];
-        var script = p_document.createElement('script');
-        script.src = path;
-        script.type = 'text/javascript';
-        head.appendChild(script);
-    }
-}
+//var dynamicLoading = {
+//    css: function(path){
+//        if(!path || path.length === 0){
+//            throw new Error('argument "path" is required !');
+//        }
+//        var p_document = window.parent.panelFrame.document;
+//        var head = p_document.getElementsByTagName('head')[0];
+//        var link = p_document.createElement('link');
+//        link.href = path;
+//        link.rel = 'stylesheet';
+//        link.type = 'text/css';
+//        head.appendChild(link);
+//    },
+//    js: function(path){
+//        if(!path || path.length === 0){
+//            throw new Error('argument "path" is required !');
+//        }
+//        var p_document = window.parent.panelFrame.document;
+//        var head = p_document.getElementsByTagName('head')[0];
+//        var script = p_document.createElement('script');
+//        script.src = path;
+//        script.type = 'text/javascript';
+//        head.appendChild(script);
+//    }
+//}
 
 function save(){
     $title = $(".setTitle").val();
@@ -73,63 +73,63 @@ function save(){
         //option:{type:$type}
         option:{type:$type,title:$title}
     }
-
-    var save_url = $("#save_widget").val();
-    $.post(save_url,json_data,function(data){
-        //console.log(data);
-        console.log(data);
-        if(data.status == 1){
-            html = data['data']['html'];
-            $status = $("#status").val();
-            if($status == 1){
-                var elem = window.parent.getOperationElem();
-                $(elem).hide().before(html).remove();
-            }else{
-                var pro = window.parent.getPro();
-                $(pro).before(html);
-            }
-        }else{
-            alert("失败");
-        }
-        window.parent.$.layer.close();
-
-
-//        var html="";
-//        var link = "/microweb/UserFiles/Public/Controller/PicturesShow/PicPhoneShow.css";
-//        var  loadCss ="<link rel = 'stylesheet' href = " + link + " />";
-//        $(parent.document.getElementById('panel-frame').contentDocument.head).append(loadCss);
-////        html += "<div class='controller-title'>"+$title+"</div>";
-//        html +="<div style='width: 100%;display: inline-block;min-height: 240px;overflow: hidden;' class='controller' data-id='"+$("#controller-id").val()+"'>";
-//
-//        if($type == 3){
-//            html +="<div class='picShowList'>";
-//            for(i = 0; i < $pic.length; i++){
-//                html +="<img src='/microweb/Uploads/"+$pic[i]['savepath']+$pic[i]['savename']+"'>";
+    window.parent.save(json_data,$("#status").val());
+//    var save_url = $("#save_widget").val();
+//    $.post(save_url,json_data,function(data){
+//        //console.log(data);
+//        console.log(data);
+//        if(data.status == 1){
+//            html = data['data']['html'];
+//            $status = $("#status").val();
+//            if($status == 1){
+//                var elem = window.parent.getOperationElem();
+//                $(elem).hide().before(html).remove();
+//            }else{
+//                var pro = window.parent.getPro();
+//                $(pro).before(html);
 //            }
-//        }else if($type == 2){
-//            html +="<div class='showPic showRight'><img src='/microweb/Uploads/"+$pic[0]['savepath']+$pic[0]['savename']+"'></div>";
-//            html +="<div class='NavRight'>";
-//            for(i = 0; i < $pic.length; i++){
-//                html +="<img src='/microweb/Uploads/"+$pic[i]['savepath']+$pic[i]['savename']+"'>";
-//            }
-//        }else if($type == 1){
-//            html +="<div class='showPic showDown'><img src='/microweb/Uploads/"+$pic[0]['savepath']+$pic[0]['savename']+"'></div>";
-//            html +="<div class='NavDown'>";
-//            for(i = 0; i < $pic.length; i++){
-//                html +="<img src='/microweb/Uploads/"+$pic[i]['savepath']+$pic[i]['savename']+"'>";
-//            }
-//        }
-//        html +="</div></div>";
-//
-//        var pro = window.parent.getPro();
-//        $status = $("#status").val();
-//        if($status == 1){
-//            $elem = window.parent.getOperationElem();
-//            $($elem).hide().before(html).remove();
 //        }else{
-//            $(pro).before(html);
+//            alert("失败");
 //        }
 //        window.parent.$.layer.close();
-    })
+//
+//
+////        var html="";
+////        var link = "/microweb/UserFiles/Public/Controller/PicturesShow/PicPhoneShow.css";
+////        var  loadCss ="<link rel = 'stylesheet' href = " + link + " />";
+////        $(parent.document.getElementById('panel-frame').contentDocument.head).append(loadCss);
+//////        html += "<div class='controller-title'>"+$title+"</div>";
+////        html +="<div style='width: 100%;display: inline-block;min-height: 240px;overflow: hidden;' class='controller' data-id='"+$("#controller-id").val()+"'>";
+////
+////        if($type == 3){
+////            html +="<div class='picShowList'>";
+////            for(i = 0; i < $pic.length; i++){
+////                html +="<img src='/microweb/Uploads/"+$pic[i]['savepath']+$pic[i]['savename']+"'>";
+////            }
+////        }else if($type == 2){
+////            html +="<div class='showPic showRight'><img src='/microweb/Uploads/"+$pic[0]['savepath']+$pic[0]['savename']+"'></div>";
+////            html +="<div class='NavRight'>";
+////            for(i = 0; i < $pic.length; i++){
+////                html +="<img src='/microweb/Uploads/"+$pic[i]['savepath']+$pic[i]['savename']+"'>";
+////            }
+////        }else if($type == 1){
+////            html +="<div class='showPic showDown'><img src='/microweb/Uploads/"+$pic[0]['savepath']+$pic[0]['savename']+"'></div>";
+////            html +="<div class='NavDown'>";
+////            for(i = 0; i < $pic.length; i++){
+////                html +="<img src='/microweb/Uploads/"+$pic[i]['savepath']+$pic[i]['savename']+"'>";
+////            }
+////        }
+////        html +="</div></div>";
+////
+////        var pro = window.parent.getPro();
+////        $status = $("#status").val();
+////        if($status == 1){
+////            $elem = window.parent.getOperationElem();
+////            $($elem).hide().before(html).remove();
+////        }else{
+////            $(pro).before(html);
+////        }
+////        window.parent.$.layer.close();
+//    })
 
 }

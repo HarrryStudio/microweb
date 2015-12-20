@@ -16,8 +16,7 @@ class BannerWidget extends Widget
         $this->name = "Banner";
     }
 
-    public function controller($is_edit){
-        $is_edit = I("get.is_edit");
+    public function controller($site_id,$data){
         $album_id = I('album_id');
         if(!empty($album_id)){
             $photo = D("Picture");
@@ -25,12 +24,15 @@ class BannerWidget extends Widget
             $this->ajaxReturn($pic);
         }else{
             $album = D('Album');
-            $album_list = $album -> get_album_list(session('site_id'));
+            $album_list = $album -> get_album_list(session('site_info')['id']);
             $this -> assign('album_list',$album_list);
             $photo = D("Picture");
             $pic = $photo -> getPicture($album_list[0]['id']);
             $this -> assign('album_pic',$pic);
-            $this->assign("status", $is_edit);
+            if(!empty($data)){
+                $this->assign("now_theme",$data['theme']);
+                $this->assign("status",true);
+            }
             $this->display("Panel/banner");
         }
     }
@@ -43,9 +45,9 @@ class BannerWidget extends Widget
         return $theme;
     }
 
-    public function index(){
+    public function index($site_id,$dynamic = false){
         $this -> assign("controllerName",$this->name);
         $this -> assign("url",$this->resource);
-        $this -> insert_content();
+        $this->insert_content($dynamic);
     }
 }

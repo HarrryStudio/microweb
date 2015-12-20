@@ -81,26 +81,26 @@ function save(){
         resource:popupCon,
         option:{icon:$url,type:popupType,title:$setTitle}
     };
-
-    var save_url = $("#save_widget").val();
-    $.post(save_url,json_data,function(data){
-        //console.log(data);
-        console.log(data);
-        if(data.status == 1){
-            html = data['data']['html'];
-            $status = $("#status").val();
-            if($status == 1){
-                var elem = window.parent.getOperationElem();
-                $(elem).hide().before(html).remove();
-            }else{
-                var pro = window.parent.getPro();
-                $(pro).before(html);
-            }
-        }else{
-            alert("失败");
-        }
-        window.parent.$.layer.close();
-    })
+    window.parent.save(json_data,$("#status").val());
+    //var save_url = $("#save_widget").val();
+    //$.post(save_url,json_data,function(data){
+    //    //console.log(data);
+    //    console.log(data);
+    //    if(data.status == 1){
+    //        html = data['data']['html'];
+    //        $status = $("#status").val();
+    //        if($status == 1){
+    //            var elem = window.parent.getOperationElem();
+    //            $(elem).hide().before(html).remove();
+    //        }else{
+    //            var pro = window.parent.getPro();
+    //            $(pro).before(html);
+    //        }
+    //    }else{
+    //        alert("失败");
+    //    }
+    //    window.parent.$.layer.close();
+    //})
 
     //var html="";
     //html +="<head></head>";

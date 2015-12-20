@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="/microweb/Public/Controller/nav/Css/magic.css">
+	<link rel="stylesheet" type="text/css" href="/microweb/Public/Home/css/panel/magic.css">
 	<script type="text/javascript" src='/microweb/Public/Static/jquery-2.0.3.min.js'></script>
 	<script type="text/javascript">
 		var APP = '/microweb';
@@ -30,11 +30,13 @@
 		<div class="pattern" va="sixth">
 			<div class=""><img src="/microweb/Public/Controller/nav/Images/nav-6.jpg" /></div>
 		</div>
+		<!-- <?php if(is_array($theme_list)): $i = 0; $__LIST__ = $theme_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="pattern" va="$vo.name">
+				<div class=""><img src="$vo.pic_path" /></div>
+			</div><?php endforeach; endif; else: echo "" ;endif; ?> -->
 	</div>
 	<input type="hidden" id="url" value="<?php echo U('column_title');?>">
 	<input type="hidden" id="web_info" value="<?php echo session('site_id');?>">
 	<input type="hidden" id="controller-id" value="<?php echo ($controllerId); ?>" />
 	<input type="hidden" id="status" value="<?php echo ($status); ?>">
-	<input type="hidden" id="save-url" value="<?php echo U('Panel/save_widget');?>">
 </body>
 </html>
