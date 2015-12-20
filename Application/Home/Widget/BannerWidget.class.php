@@ -17,24 +17,22 @@ class BannerWidget extends Widget
     }
 
     public function controller($site_id,$data){
-        $album_id = I('album_id');
-        if(!empty($album_id)){
-            $photo = D("Picture");
-            $pic = $photo -> getPicture($album_id);
-            $this->ajaxReturn($pic);
+        $album = D('Album');
+        $album_list = $album -> get_album_list(session('site_info')['id']);
+        $this -> assign('album_list',$album_list);
+        $photo = D("Picture");
+        if(!empty($data)){
+            $pic = $photo -> getPicture($data["option"]['albumId']);
+            $this->assign("status",true);
+            $this->assign("primary_album",$data["option"]['albumId']);
+            $this->assign("primary_pic",$data["option"]['img_id']);
         }else{
-            $album = D('Album');
-            $album_list = $album -> get_album_list(session('site_info')['id']);
-            $this -> assign('album_list',$album_list);
-            $photo = D("Picture");
             $pic = $photo -> getPicture($album_list[0]['id']);
-            $this -> assign('album_pic',$pic);
-            if(!empty($data)){
-                $this->assign("now_theme",$data['theme']);
-                $this->assign("status",true);
-            }
-            $this->display("Panel/banner");
+            $this->assign("primary_album",$album_list[0]['id']);
+            $this->assign("primary_pic",$pic[0]['id']);
         }
+        $this -> assign('album_pic',$pic);
+        $this->display("Panel/banner");
     }
 
     public function get_theme_list(){

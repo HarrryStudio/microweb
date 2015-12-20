@@ -218,4 +218,16 @@ class AlbumController extends ResourceController {
         $this->ajaxReturn($return);
     }
 
+    /**
+     *  @param $album_id(相册id)
+     * @return $pic(图片信息)
+     */
+    public function get_album_photo(){
+        $album_id = I("post.album_id");
+        if(!empty($album_id)){
+            $photo = D("Picture");
+            $pic = $photo -> getPicture($album_id);
+            $this->ajaxReturn($pic);
+        }
+    }
 }

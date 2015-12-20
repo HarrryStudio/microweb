@@ -25,7 +25,7 @@ class WebsiteController extends BaseController {
         $user_info = I('session.user_info');
         $site_info = M('site_info')
                         ->field('id,site_name,url,theme,back')
-                        ->where(array('user_id'=>$user_info['id'],'status'=>0,'forbidden'=>0))
+                        ->where(array('id' => $site_id,'user_id'=>$user_info['id'],'status'=>0,'forbidden'=>0))
                         ->find();
         if(!empty($site_info)){
             session('site_info',$site_info);
@@ -40,7 +40,7 @@ class WebsiteController extends BaseController {
                 $this->redirect('Website/Index');
             }
         }
-        $this->redirect('Article/Index');
+        //$this->redirect('Article/Index');
     }
 
     public function toPanel($site_id = null){

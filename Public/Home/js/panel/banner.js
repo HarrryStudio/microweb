@@ -2,21 +2,9 @@ var $url;//当前选中图片的地址
 var $albumId;//当前相册id
 var $img_id; //当前选中图片的id
 $(function(){
-    var old_json_data = $(".controller").attr("old_json_data");
-    if(old_json_data!=null){
-
-    }else{
-        primary(0);
-    }
-
-    //预选一个默认横幅
-    function primary(index){
-        $url = $(".pic_show").find("img").eq(index).attr("src");        //默认图片的地址
-        $albumId = $(".album").eq(index).attr("albumId");
-        $img_id = $(".pic_show").find("img").eq(index).attr("img_id");
-        $(".chooseAlbum").find(".album").eq(index).css("color",'green');
-        $(".pic_show").find(".pattern").eq(index).find("div").addClass('hr');
-    }
+    $url = $(".hr").find("img").attr("src");
+    $albumId = $("#primary_album").val();
+    $img_id = $("#primary_pic").val();
 
     //为图片添加事件
     $(document).on('click','.pattern',function(){
@@ -28,10 +16,10 @@ $(function(){
 
     //为相册添加事件
     $(".album").click(function(){
-        $albumId = $(this).attr("albumId");
+        $albumId = $(this).attr("albumid");
         $(".chooseAlbum").find(".album").css("color","#000");
         $(this).css("color",'green');
-        $.post("banner",{album_id:$albumId},function(data){
+        $.post($("#post_pic").val(),{album_id:$albumId},function(data){
             if(data == "false"){
 //                alert("该相册无图片");
                 window.parent.alert_info("该相册无图片",-1);
@@ -39,9 +27,10 @@ $(function(){
             }else{
                 $(".pic_show").empty();
                 $url = "/microWeb/Uploads/"+data[0]['savepath']+data[0]['savename'];
-                $(".pic_show").append("<div class='pattern'><div class='hr'><img src='/microWeb/Uploads/"+data[0]['savepath']+data[0]['savename']+"'></div></div>");
+                $img_id = data[0]['id'];
+                $(".pic_show").append("<div class='pattern'><div class='hr'><img img_id='"+data[0]['id']+"' src='/microWeb/Uploads/"+data[0]['savepath']+data[0]['savename']+"'></div></div>");
                 for(i = 1; i < data.length; i++){
-                    $(".pic_show").append("<div class='pattern'><div class=''><img src='/microWeb/Uploads/"+data[i]['savepath']+data[i]['savename']+"'></div></div>");
+                    $(".pic_show").append("<div class='pattern'><div class=''><img img_id='"+data[i]['id']+"' src='/microWeb/Uploads/"+data[i]['savepath']+data[i]['savename']+"'></div></div>");
                 }
             }
         })

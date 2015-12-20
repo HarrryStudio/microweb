@@ -10,4 +10,6 @@ $(function(){
 function save(){
 	var theme = $(".hr").parent().attr('va');
 	window.parent.save({name:"Magic",resource:"",theme: theme, option:""},$("#status").val());
+
 }
+
