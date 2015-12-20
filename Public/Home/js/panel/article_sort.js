@@ -24,74 +24,26 @@ $(function(){
 	})
 })
 
-var dynamicLoading = {
-    css: function(path){
-		if(!path || path.length === 0){
-			throw new Error('argument "path" is required !');
-		}
-		var p_document = window.parent.panelFrame.document;
-		var head = p_document.getElementsByTagName('head')[0];
-        var link = p_document.createElement('link');
-        link.href = path;
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        head.appendChild(link);
-    },
-    js: function(path){
-		if(!path || path.length === 0){
-			throw new Error('argument "path" is required !');
-		}
-		var p_document = window.parent.panelFrame.document;
-		var head = p_document.getElementsByTagName('head')[0];
-        var script = p_document.createElement('script');
-        script.src = path;
-        script.type = 'text/javascript';
-        head.appendChild(script);
-    }
-}
-function serialize_to_obj(str){
-	str = str.replace(/=/g,':');
-	str = str.replace(/&/g,',');
-	str = '{'+str+'}';
-	console.log(JSON.parse(str));
-
-	return;
-}
-/*function zidingyi () {
-	$('form [name]').each(function () {
-		console.log(this);
-	});
-}*/
 function save(){
 	if ($(".type_checkbox").length == 0) {
 		window.parent.alert_info("请先添加文章分类",0);
 		return;
 	}
-
 	var i = 0;
 	var length = $(".type_checkbox:checked").length;
 	var info = [];
 	$(".type_checkbox:checked").each(function() {
 		that  = $(this).parent().parent();
-		info[i] = [];
+		var sort_id = $(this).val();
 		var column_id = that.find('select').val();
 		var column_url = that.find('select').find('option:selected').attr('data');
 		var type_name = that.find('label').html();
-		info[i].push(column_id);
-		info[i].push(column_url);
+		info.push({sort_id:sort_id,column_id:column_id,column_url:column_url});
 		i++;
 	});
 	var save_url = $("#save-url").val();
 	var title = $(".setting input:first").val();
-	var option = {'info':info, 'title':title};
-	var data = {'name':'ArticleSort', 'theme':null, 'source':'type', 'option':option};
-	$.post(save_url, data, function (data) {
-		console.log(data);
-		html = data['data']['html'];
-		var pro = window.parent.getPro();
-		$(pro).before(html);
-		window.parent.$.layer.close();
-	})
+	var option = {info:info, title:title};
+	var data = {name:"ArticleSort", theme:"", source:"type", option:option};
+	window.parent.save(data,$("#status").val());
 }
-
-

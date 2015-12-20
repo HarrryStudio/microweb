@@ -186,14 +186,29 @@ class ArticleModel extends Model{
             ->order('article.is_top desc, article.create_time desc')
             ->limit($Page->firstRow.','.$Page->listRows)
             ->select();
-      foreach ($article_list as $key => $value) {
-          $article_list['content'] = htmlspecialchars_decode($article_list['content']);
+
+/*      $article_default_img_path = C('ARTICLE_DEFAULT_IMG_PATH');
+      $article_default_img_name = C('ARTICLE_DEFAULT_IMG_NAME');*/
+      foreach ($list as $key => $value) {
+          $article_list['key']['content'] = htmlspecialchars_decode($article_list['content']);
+/*          if (empty($value['savename'])) {
+            $article_list['key']['savepath'] = $article_default_img_path;
+            $article_list['key']['savepath'] = $article_default_img_name;
+          }*/
       }
       $p = I('get.p');
-      $data['article_list'] = $article_list;
+      $list['article_list'] = $article_list;
       if (!empty($p)) {
-        $data['page'] = $show;
+        $list['page'] = $show;
       }
-      return $data;
+      return $list;
+    }
+    public function get_article($map)
+    {
+      $article = $this->join('left join home_picture as b on b.id = article.pic_id')
+        ->where($map)
+        ->field('article.id, article.title, article.content, b.savepath, b.savename')
+        ->find();
+      return $article;
     }
 }

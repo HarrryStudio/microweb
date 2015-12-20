@@ -16,40 +16,33 @@ class ArticleListWidget extends Widget
     $this->name = 'ArticleList';
   }
 
-  public function controller($is_edit)
+  public function controller($site_id, $data)
   {
-/*    if(!empty($is_edit)){
-        $this->assign("status",1);
-    }*/
-    
-    $Type = M('type');
-    $map['site_id'] = session('site_id');
+    if (!empty($data)) {
+      $this->assign('status',true);
+      $this->assign('now_theme', $data['theme']);
+    }
+    $Type = M('article_type');
+    $map['site_id'] = $site_id;
     $type_list = $Type->field('id, name')->where($map)->select();
-    
-    $Column = M('user_column');
-    $column_list = $Column->where($map)->select();
-    
+    $column_list = M('user_column')->where($map)->select();
     $this->assign("column_list", $column_list);
-    $this->assign('controller_id', I('id'));
     $this->assign('type_list', $type_list);
     $this->assign('theme_list', $this->get_theme_list());
-    $this->assign('is_edit', $is_edit);
-    //$this->assign('option', $option);
     $this->display('panel/article_list');
   }
 
-  public function index()
+  public function index($site_id,$dynamic = false)
   {
-    if (I('post.type')[0] == 0) {
-
-    } else {
+    if (!I('post.type')[0] == 0) {
         $map['article.type_id'] = array(in, I('post.type'));
     }
+    $map['site_id'] = $site_id;
     $article_info = D('article')->article_widget_list($map);
     $this->assign("article_info", $article_info);
     $this->assign('cname', $this->name);
     $this->assign('option', $this->option);
-    $this->insert_content(); 
+    $this->insert_content($dynamic); 
   }
 
   public function get_theme_list()

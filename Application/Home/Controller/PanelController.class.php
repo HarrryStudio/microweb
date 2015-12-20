@@ -332,7 +332,7 @@ class PanelController extends ResourceController  {
     public function save_widget(){
         $return = array('status' => 0, 'data' => "", 'info' => "");
         $data = I('post.');
-        $site_id = session('site_id');
+        $site_id = session('site_info.id');
         if(empty($site_id)){
             $result['info'] = "没有找到网站";
         }else{
