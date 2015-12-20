@@ -48,7 +48,7 @@ function add_controller(cname,data){
 	if(is_edit == 1){
 		var form = $('#iframe-form');
 		form.attr('action',$('#control-widget-url').val()+cname);
-		form.find('input[name="data"]').val(data);
+		form.find('input[name="data"]').val(JSON.stringify(data));
 		form.submit();
 	}
 }

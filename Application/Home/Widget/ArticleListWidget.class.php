@@ -19,7 +19,7 @@ class ArticleListWidget extends Widget
   public function controller($site_id, $data)
   {
     if (!empty($data)) {
-      $this->assign('status',true);
+      $this->assign('status',1);
       $this->assign('now_theme', $data['theme']);
     }
     $Type = M('article_type');

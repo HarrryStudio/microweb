@@ -24,7 +24,7 @@ function newColumn(column_info){
 					+'</td>';
 
 	$('.column-table').find('tbody').append(tr);
-	var style = ""
+	var style = "";
 	$(tr).attr("data-name",column_info.name);
 	$(tr).attr("data-link",column_info.url);
 	if(column_info.icon_url != null){
@@ -93,11 +93,15 @@ function addColumnEvent(){
 			buttonCancel:true,
 			buttonSureText:"保存",
 			buttonCancelText:"取消",
+			alwaysClose     : false,
 			//sure:newColumn,
 			sure:function(){
-				var form = $(".column-form").find('form')[0];
-				var formData = new FormData(form); // 获得form内容
-
+				var form = $(".column-form").find('form');
+				if(form.find('#add_column_icon')[0].files.length == 0){
+					alert("请上传图标");
+					return;
+				}
+				var formData = new FormData(form[0]); // 获得form内容
 				$.ajax({
 					url : $("#add-column-url").val(),
 					type: 'post',
@@ -112,6 +116,7 @@ function addColumnEvent(){
 						}else{
 							alert_info(data_info,0);
 						}
+						$('.layer').fadeOut(20).remove();
 					}
 				})
 			}

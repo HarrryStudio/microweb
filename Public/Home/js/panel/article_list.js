@@ -19,11 +19,10 @@ $(function(){
 			$("#type_all")[0].checked = false;
 			flag = false;
 		}
-	})
+	});
 });
 
 function save() {
-	var is_edit = $("#is_edit").val();
 	var save_url = $("#save-url").val();
 	var theme = $(".hr").parent().attr('data-theme');
 	var title = $("#title").val();

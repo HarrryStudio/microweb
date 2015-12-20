@@ -11,7 +11,7 @@ use Think\Upload;
 class PictureModel extends Model{
 
     protected $trueTableName='home_picture';
-    
+
     /**
      * 自动完成
      * @var array
@@ -166,7 +166,7 @@ class PictureModel extends Model{
     public function deleteFile($id){
 
         $this->where(array('id'=>$id))->setDec('used');
-        
+
 //        $info = $this->where(array('id'=>$id))->find();
 //        if(empty($info)){
 //            return false;
