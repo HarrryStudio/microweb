@@ -1,4 +1,18 @@
 $(function(){
+    var icon;
+    var old_icon = $("#icon").val();
+    if(old_icon){
+        for(i=0;i<$("input[name$='noticeLogo']").length;i++){
+            icon = $(".noticeContent").find("img").eq(i).attr("src");
+            if(icon == old_icon){
+                $("input[name$='noticeLogo']").eq(i).attr("checked",true);
+                break;
+            }
+        }
+    }else{
+        $("input[name$='noticeLogo']").eq(0).attr("checked",true);
+    }
+
     $isSave = false;        //标识是否为修改
     //添加
     $(".addBtn").click(function(){

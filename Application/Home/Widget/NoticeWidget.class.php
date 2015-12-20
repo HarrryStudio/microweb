@@ -16,9 +16,16 @@ class NoticeWidget extends Widget
         $this->name = "Notice";
     }
 
-    public function controller($is_edit){
-        $is_edit = I("get.is_edit");
-        $this->assign("status", $is_edit);
+    public function controller($site_id,$data){
+        if(!empty($data)){
+            $this->assign("status",true);
+            $this->assign("popup",$data['resource']);
+            $this->assign("title",$data['option']['title']);
+            $this->assign("type",$data['option']['type']);
+            $this->assign("icon",$data['option']['icon']);
+        }else{
+            $this->assign("title",'¹ö¶¯¹«¸æ');
+        }
         $this->display("Panel/notice");
     }
 
@@ -30,12 +37,12 @@ class NoticeWidget extends Widget
         return $theme;
     }
 
-    public function index(){
+    public function index($site_id,$dynamic = false){
         $this -> assign("controllerName",$this->name);
         $this -> assign("popupCon",$this->resource);
         $this -> assign("title",$this->option['title']);
         $this -> assign("url",$this->option['icon']);
         $this -> assign("NoticeType",$this->option['type']);
-        $this -> insert_content();
+        $this->insert_content($dynamic);
     }
 }

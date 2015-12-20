@@ -15,12 +15,12 @@
     <div class="noticeTitle">
         <span><label for="noticeSetTitle">模块标题:</span>
         <span>
-            <input type="text" id="noticeSetTitle" class="setNoticeTitle" value="滚动公告"/>
+            <input type="text" id="noticeSetTitle" class="setNoticeTitle" value="<?php echo ($title); ?>"/>
         </span>
     </div>
     <div class="noticeContent">
         <span>公告图标:</span>
-        <span><input type="radio" id="noticeRadio1" checked="checked" name="noticeLogo"></span>
+        <span><input type="radio" id="noticeRadio1" name="noticeLogo"></span>
         <span><label for="noticeRadio1"><img src="/microweb/UserFiles/Public/Controller/notice/Images/noticeIco1.gif"></label></span>
         <span><input type="radio" id="noticeRadio2" name="noticeLogo"></span>
         <span><label for="noticeRadio2"><img src="/microweb/UserFiles/Public/Controller/notice/Images/noticeIco2.gif"></label></span>
@@ -30,8 +30,11 @@
     </div>
     <div class="setNoticeType">
         <span>滚动样式:</span>
-        <span><input type="radio" id="noticeRadio5" checked="checked" value="row" name="noticeType"><label for="noticeRadio5">横向</label></span>
-        <span><input type="radio" id="noticeRadio6" value="cell" name="noticeType"><label for="noticeRadio6">竖直</label></span>
+        <?php if($type != row): ?><span><input type="radio" id="noticeRadio5" checked="checked" value="row" name="noticeType"><label for="noticeRadio5">横向</label></span>
+            <span><input type="radio" id="noticeRadio6" value="cell" name="noticeType"><label for="noticeRadio6">竖直</label></span>
+        <?php else: ?>
+            <span><input type="radio" id="noticeRadio7" value="row" name="noticeType"><label for="noticeRadio7">横向</label></span>
+            <span><input type="radio" id="noticeRadio8" checked="checked" value="cell" name="noticeType"><label for="noticeRadio8">竖直</label></span><?php endif; ?>
     </div>
     <div class="noticeList">
         <span>公告列表:</span>
@@ -48,7 +51,8 @@
             </tbody>
         </table>
         <div class="showContentList">
-
+            <?php if(is_array($popup)): foreach($popup as $key=>$vo): ?><div class='showContent'><div><?php echo ($vo["con"]); ?></div><div>无</div>
+                <div><span class='deletePopup'>删除</span><span class='savePopup'>编辑</span></div></div><?php endforeach; endif; ?>
         </div>
     </div>
     <div class="popup">
@@ -73,6 +77,7 @@
     <input type="hidden" id="controller-id" value="<?php echo ($controllerId); ?>" />
     <input type="hidden" id="status" value="<?php echo ($status); ?>">
     <input type="hidden" id="save_widget" value="<?php echo U('Panel/save_widget');?>">
+    <input type="hidden" id="icon" value="<?php echo ($icon); ?>">
     <!--<div id="top-alert-back">-->
         <!--<div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">-->
             <!--<button type="button" class="close_hint"><span aria-hidden="true">×</span></button>-->
