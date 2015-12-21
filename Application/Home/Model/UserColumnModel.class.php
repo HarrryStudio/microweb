@@ -208,4 +208,10 @@ class UserColumnModel extends Model{
         }
         return true;
     }
+
+    public function get_user_column($map)
+    {
+        $user_column = $this->where($map)->select();
+        return $user_column;
+    }
 }

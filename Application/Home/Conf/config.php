@@ -53,7 +53,7 @@ return array(
 	'THEME_PUBLIC_ROOT'      => '/Public/Home/Theme/',
 
 
-	'ARTICLE_DEFAULT_IMG_PATH' => '/Public/Home/images/article/',
+	'ARTICLE_DEFAULT_IMG_PATH' => __ROOT__.'/Public/Home/images/article/',
 	'ARTICLE_DEFAULT_IMG_NAME' => 'default.jpg',
 
 

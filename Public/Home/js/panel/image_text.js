@@ -3,14 +3,12 @@ $(function () {
 	$(".pattern").on("click",function(){
 		$(".pattern").find("div").removeClass("hr");
 		$(this).find("div").addClass("hr");
-		var index = $(this).index();
 	})
 	//选择图片
 	$(".pattern2").on("click",function(){
 		$(".pattern2").find("div").removeClass("hr");
 		$(this).find("div").addClass("hr");
 	})
-
 	$(":radio").eq(0).attr('checked', true);
 	var url = $(".article_info a").attr('url');
 	$(document).on("click",".page a", function () {
@@ -28,4 +26,26 @@ $(function () {
 			$(".page")[0].innerHTML = data.page;
 		});
 	})
-})
+
+});
+
+function save () {
+	if ($(".article_item input").length == 0) {
+		window.parent.alert_info("请先添加文章",0);
+		return;
+	};
+/*	var article_title = $("input:radio:checked").next('label').html();
+	var article_content = $('input:radio:checked').siblings('input').val();
+	var img_src = $('input:radio:checked').siblings('.img_src').val();*/
+
+	var save_url = $('#save-url').val();
+	var title = $(".setting input:first").val();
+	var article_id = $('input:radio:checked').val();
+	var theme = $(($('.hr')[0])).parent().attr('data-style');
+	var index = $('.pattern').index($(($('.hr')[0])).parent())+1;
+	var option = {article_id:article_id, index:index, title: title, theme:theme};
+	var data = {name:"ImageText", theme:theme, source:"article", option:option};
+	window.parent.save(data,$("#status").val());
+}
+
+

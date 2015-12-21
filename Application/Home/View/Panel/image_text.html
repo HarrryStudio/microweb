@@ -9,7 +9,6 @@
 
 <body>
 	<div id="image_text">
-		{$data|dump}
 		<ul class="setting">
 			<li>
 				<div>
@@ -49,23 +48,26 @@
 		<div class="article_list">
 			<p>选择文章</p>
 			<ul>
-				<volist name="data['article_list']" id="vo">
+				<volist name="list['article_list']" id="vo">
 					<li class="article_item">
 						<input id="article_{$vo.id}" type="radio" name="article_id" value="{$vo.id}">
 						<label for="article_{$vo.id}">{$vo.title}</label>
 						<img src="__IMAGES__/panel/viwepagerAdd2.png">
 						<input type="hidden" name="" value="{$vo.content}">
+						
 						<input class="img_src" type="hidden" name="" value="__UPLOADS__/{$vo.savepath}{$vo.savename}">
 					</li>
 				</volist>
 			</ul>
 		</div>
 		<div class="page" onclick="return false">
-			{$data['page']}
+			{$list['page']}
 		</div>
 	</div>
 	<input id="target_url" type="hidden" name="" value="{:U('Panel/article_info')}">
 	<input id="controller-id" type="hidden" name="" value="{$controller_id}">
-	<input id="status" type="hidden" name="" value="{$status}">
+	<input type="hidden" id="controller-id" value="{$controller_id}" />
+	<input type="hidden" id="status" value="{$status}">
+	<input type="hidden" id="save-url" value="{:U('Panel/save_widget')}">
 </body>
 </html>

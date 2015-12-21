@@ -65,4 +65,12 @@ class ArticleTypeModel extends Model{
         return true;
     }
 
+    public function get_type_list($map)
+    {
+        $map['site_id'] = session('site_info.id');
+        $type_list = $this->where($map)->select();
+
+        return $type_list;
+    }
+
 }

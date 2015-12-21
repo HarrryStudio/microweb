@@ -1,0 +1,10 @@
+<div class='article_container controller' data-name="{$cname}">
+	<div class='controller-title'>{$option['title']}</div>
+	<div class='article_sort'>
+		<ul class = 'article_sort_list'>
+			<volist name="option['info']" id="vo">
+				<li><a class="article-link" href="{:U('Panel/readHtml',array('column_id'=>$vo[column_id]))}">{$vo['name']}</a></li>
+			</volist>
+		</ul>
+	</div>
+</div>

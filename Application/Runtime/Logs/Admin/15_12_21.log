@@ -1,0 +1,1786 @@
+[ 2015-12-21T13:22:13+08:00 ] ::1 /microweb/index.php/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000486s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000661s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000785s ]
+
+[ 2015-12-21T13:22:13+08:00 ] ::1 /microweb/index.php/Admin/Public/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000559s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000638s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000757s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000095s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000215s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008028s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008224s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000741s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000928s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000724s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000840s ]
+
+[ 2015-12-21T13:22:13+08:00 ] ::1 /microweb/index.php/Admin/Public/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000882s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000592s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000720s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001281s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001792s ]
+
+[ 2015-12-21T13:22:26+08:00 ] ::1 /microweb/index.php/Admin/Public/do_login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000653s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000894s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001024s ]
+SQL: SHOW COLUMNS FROM `admin_info` [ RunTime:0.0069s ]
+SQL: SELECT * FROM `admin_info` WHERE `account` = 'admin' LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000781s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000886s ]
+
+[ 2015-12-21T13:22:26+08:00 ] ::1 /microweb/index.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000487s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000632s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000746s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0051s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '01' AND `status` = 0  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: arr D:\wamp\www\microweb\Application\Admin\Controller\BaseController.class.php 第 64 行.
+SQL: SHOW COLUMNS FROM `admin_info` [ RunTime:0.0033s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `admin_info` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0038s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `user_info` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0033s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `site_info` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `article` [ RunTime:0.0054s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `article` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0034s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000223s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000484s ]
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 234 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018123s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018274s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000741s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000886s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000567s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000677s ]
+
+[ 2015-12-21T13:22:28+08:00 ] ::1 /microweb/index.php/Admin/Reception/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000649s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000857s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001005s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0049s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0039s ]
+SQL: SELECT b.id,b.name,p.savename,p.savepath,p.update_time FROM background b left join picture p on b.pic_id=p.id WHERE ( b.status=0 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000207s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000323s ]
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\2133f1cae3f1e0fab391da3306ad135d.php 第 132 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021615s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021746s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000543s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000662s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000655s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000761s ]
+
+[ 2015-12-21T13:22:29+08:00 ] ::1 /microweb/index.php/Admin/Reception/widget
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000488s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000690s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000801s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+SQL: SELECT * FROM `controller` WHERE ( status=0 and id like '%%' or status=0 and name like '%%' ) ORDER BY sort asc LIMIT 0,10   [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000207s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000321s ]
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 167 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026909s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027032s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000411s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000515s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000776s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000892s ]
+
+[ 2015-12-21T13:22:33+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000539s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000748s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000887s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0068s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0036s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0047s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000254s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000368s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021495s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021640s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000418s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000519s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000624s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000730s ]
+
+[ 2015-12-21T13:22:36+08:00 ] ::1 /microweb/index.php/Admin/Reception/widget
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000610s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000803s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000943s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0051s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0043s ]
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+SQL: SELECT * FROM `controller` WHERE ( status=0 and id like '%%' or status=0 and name like '%%' ) ORDER BY sort asc LIMIT 0,10   [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000249s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000388s ]
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 167 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030578s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030700s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000688s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000794s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000816s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000922s ]
+
+[ 2015-12-21T13:22:39+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000814s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000712s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000852s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0066s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0036s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0049s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000282s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000398s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020996s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021116s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000487s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000588s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000668s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000771s ]
+
+[ 2015-12-21T13:22:43+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/20/old_img/false
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001386s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000713s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000851s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0045s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0049s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = '9f96be0372346f7c19ab359d39152f24' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: path D:\wamp\www\microweb\ThinkPHP\Library\Think\Upload.class.php 第 172 行.
+SQL: UPDATE `picture` SET `used`=used+1 WHERE `id` = 16 [ RunTime:0.0054s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 20 AND `status` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: INSERT INTO `theme` (`pic_id`,`controller_id`,`update_time`,`create_time`) VALUES ('16','20','1450675363','1450675363') [ RunTime:0.0021s ]
+
+[ 2015-12-21T13:22:44+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000551s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001316s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001553s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0048s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0045s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000286s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000403s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022591s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022719s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000726s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000829s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000791s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000896s ]
+
+[ 2015-12-21T13:22:46+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/20/old_img/false
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000139s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001435s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000593s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000719s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = 'a1d0292daa1e88270dcebf48697cdd6c' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: path D:\wamp\www\microweb\ThinkPHP\Library\Think\Upload.class.php 第 172 行.
+SQL: UPDATE `picture` SET `used`=used+1 WHERE `id` = 17 [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 20 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `theme` (`pic_id`,`controller_id`,`update_time`,`create_time`) VALUES ('17','20','1450675366','1450675366') [ RunTime:0.0006s ]
+
+[ 2015-12-21T13:22:47+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000561s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000960s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001080s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0052s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0041s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000272s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000394s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023582s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023715s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000716s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000824s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000954s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001078s ]
+
+[ 2015-12-21T13:22:49+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/20/old_img/false
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000828s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000773s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000895s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0036s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = '2eaba8524d849632d7938094698baa70' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: path D:\wamp\www\microweb\ThinkPHP\Library\Think\Upload.class.php 第 172 行.
+SQL: UPDATE `picture` SET `used`=used+1 WHERE `id` = 18 [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 20 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `theme` (`pic_id`,`controller_id`,`update_time`,`create_time`) VALUES ('18','20','1450675369','1450675369') [ RunTime:0.0008s ]
+
+[ 2015-12-21T13:22:50+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000588s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001316s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001592s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0044s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000276s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000398s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022820s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022975s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000938s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001066s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000850s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000961s ]
+
+[ 2015-12-21T13:22:51+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001096s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001461s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001740s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0085s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0054s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0048s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000374s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000548s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027887s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028020s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000473s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000579s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000668s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000772s ]
+
+[ 2015-12-21T13:22:51+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000048s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000991s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001179s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001386s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0045s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000304s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000467s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023246s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023405s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000594s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000699s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000719s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000828s ]
+
+[ 2015-12-21T13:22:52+08:00 ] ::1 /microweb/index.php/Admin/Reception/widget
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000557s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000767s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000878s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0065s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+SQL: SELECT * FROM `controller` WHERE ( status=0 and id like '%%' or status=0 and name like '%%' ) ORDER BY sort asc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000211s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000326s ]
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 167 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026765s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026909s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001240s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001394s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000977s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001184s ]
+
+[ 2015-12-21T13:22:53+08:00 ] ::1 /microweb/index.php/Admin/Reception/widget
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001931s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002194s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002758s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0047s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0047s ]
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+SQL: SELECT * FROM `controller` WHERE ( status=0 and id like '%%' or status=0 and name like '%%' ) ORDER BY sort asc LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000303s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000486s ]
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 167 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035332s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035466s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000750s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000858s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000894s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001005s ]
+
+[ 2015-12-21T13:22:55+08:00 ] ::1 /microweb/index.php/Admin/Reception/widget
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000861s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001092s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001282s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0054s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+SQL: SELECT * FROM `controller` WHERE ( status=0 and id like '%%' or status=0 and name like '%%' ) ORDER BY sort asc LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000223s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000356s ]
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 167 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029229s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029394s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000574s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000686s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000794s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000941s ]
+
+[ 2015-12-21T13:33:55+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000036s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000603s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000765s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000919s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0068s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0038s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000264s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000390s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021970s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022132s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000602s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000771s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001263s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001528s ]
+
+[ 2015-12-21T13:34:01+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000634s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000931s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001095s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0046s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000281s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000403s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021635s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021753s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000337s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000435s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000527s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000629s ]
+
+[ 2015-12-21T13:34:03+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000865s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000899s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001100s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0064s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0056s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000266s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000387s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022168s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022284s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000516s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000526s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000632s ]
+
+[ 2015-12-21T13:34:04+08:00 ] ::1 /microweb/index.php/Admin/Reception%20/delete_theme
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000621s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000686s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000802s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0065s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0033s ]
+SQL: UPDATE `theme` SET `status`='1' WHERE ( id=23 ) [ RunTime:0.0010s ]
+
+[ 2015-12-21T13:34:04+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000550s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000806s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000998s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000260s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000375s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021412s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021526s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000471s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000634s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000737s ]
+
+[ 2015-12-21T13:34:06+08:00 ] ::1 /microweb/index.php/Admin/Reception%20/delete_theme
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000608s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000692s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000815s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0042s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0039s ]
+SQL: UPDATE `theme` SET `status`='1' WHERE ( id=24 ) [ RunTime:0.0011s ]
+
+[ 2015-12-21T13:34:06+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000542s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000621s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000756s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0038s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000259s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000398s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022801s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022916s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000489s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000594s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000643s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000747s ]
+
+[ 2015-12-21T13:34:07+08:00 ] ::1 /microweb/index.php/Admin/Reception%20/delete_theme
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000619s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000795s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000937s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0039s ]
+SQL: UPDATE `theme` SET `status`='1' WHERE ( id=22 ) [ RunTime:0.0009s ]
+
+[ 2015-12-21T13:34:07+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000550s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000614s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000724s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0036s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000259s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000376s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021810s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021926s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000629s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000815s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000622s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000732s ]
+
+[ 2015-12-21T13:34:52+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/17/old_img/false
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000476s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000629s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0071s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0034s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = '635486e75db974f256c61999ad938905' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `picture` (`size`,`md5`,`savename`,`savepath`,`create_time`,`update_time`,`used`) VALUES ('29280','635486e75db974f256c61999ad938905','56778f7cb51c4.jpg','background2015-12-21/','1450676092','1450676092','1') [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 17 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `theme` SET `pic_id`='55',`update_time`='1450676092',`status`='0' WHERE ( id=22 ) [ RunTime:0.0008s ]
+
+[ 2015-12-21T13:34:52+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000648s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000919s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001044s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0036s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0032s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000259s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000379s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023302s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023425s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000918s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001027s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001035s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001143s ]
+
+[ 2015-12-21T13:34:59+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/17/old_img/false
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001153s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000940s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001069s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0061s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0038s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = 'f0068a5320737df4a1fb8eb36627d77f' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `picture` (`size`,`md5`,`savename`,`savepath`,`create_time`,`update_time`,`used`) VALUES ('31155','f0068a5320737df4a1fb8eb36627d77f','56778f834325b.jpg','background2015-12-21/','1450676099','1450676099','1') [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 17 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `theme` SET `pic_id`='56',`update_time`='1450676099',`status`='0' WHERE ( id=23 ) [ RunTime:0.0007s ]
+
+[ 2015-12-21T13:34:59+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001520s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001072s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001210s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0035s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000332s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000459s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024138s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024259s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000889s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000992s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000990s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001123s ]
+
+[ 2015-12-21T13:35:02+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/17/old_img/false
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000468s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001033s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001228s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0065s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = 'bd3a7d113e4b43a809354f0ddb279373' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `picture` (`size`,`md5`,`savename`,`savepath`,`create_time`,`update_time`,`used`) VALUES ('24434','bd3a7d113e4b43a809354f0ddb279373','56778f8692fe2.jpg','background2015-12-21/','1450676102','1450676102','1') [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 17 AND `status` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `theme` SET `pic_id`='57',`update_time`='1450676102',`status`='0' WHERE ( id=24 ) [ RunTime:0.0006s ]
+
+[ 2015-12-21T13:35:02+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000533s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000721s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000843s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0036s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0057s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000286s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000404s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021404s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021516s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000617s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000726s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000831s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000943s ]
+
+[ 2015-12-21T13:35:04+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001034s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001683s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001890s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0079s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0042s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000259s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000377s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022722s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022845s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000790s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000892s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001141s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001252s ]
+
+[ 2015-12-21T13:35:22+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000605s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000689s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000792s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0066s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0042s ]
+SQL: UPDATE `theme` SET `name`='down',`update_time`='1450676122' WHERE ( id=24 ) [ RunTime:0.0009s ]
+
+[ 2015-12-21T13:35:33+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001091s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001314s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001529s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0045s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0039s ]
+SQL: UPDATE `theme` SET `name`='right',`update_time`='1450676133' WHERE ( id=23 ) [ RunTime:0.0008s ]
+
+[ 2015-12-21T13:35:47+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001035s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001221s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001420s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0040s ]
+SQL: UPDATE `theme` SET `name`='down',`update_time`='1450676147' WHERE ( id=22 ) [ RunTime:0.0010s ]
+
+[ 2015-12-21T13:36:18+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000923s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000793s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000915s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0063s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: UPDATE `theme` SET `name`='select_down',`update_time`='1450676178' WHERE ( id=22 ) [ RunTime:0.0009s ]
+
+[ 2015-12-21T13:36:37+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001200s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001402s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001591s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0042s ]
+SQL: UPDATE `theme` SET `name`='select_right',`update_time`='1450676197' WHERE ( id=23 ) [ RunTime:0.0010s ]
+
+[ 2015-12-21T13:36:43+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000854s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001068s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001240s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0065s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0040s ]
+SQL: UPDATE `theme` SET `name`='down',`update_time`='1450676203' WHERE ( id=24 ) [ RunTime:0.0008s ]
+
+[ 2015-12-21T13:36:49+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000689s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000837s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000989s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0068s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0044s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000269s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000391s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021536s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021657s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000404s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000508s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000602s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000714s ]
+
+[ 2015-12-21T13:36:50+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000587s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000802s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000913s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0049s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0042s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000285s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000402s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023085s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023207s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000587s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000691s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000710s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000820s ]
+
+[ 2015-12-21T13:36:50+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000948s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001318s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001545s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0091s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0055s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=17 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0041s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=17 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000285s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000416s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022721s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022840s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000536s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000640s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000716s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000822s ]
+
+[ 2015-12-21T17:11:54+08:00 ] ::1 /microweb/index.php/admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000588s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001268s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001430s ]
+
+[ 2015-12-21T17:11:54+08:00 ] ::1 /microweb/index.php/Admin/Public/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000489s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000698s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000812s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000109s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000246s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008519s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008645s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000531s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000635s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000728s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000832s ]
+
+[ 2015-12-21T17:11:54+08:00 ] ::1 /microweb/index.php/Admin/Public/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000802s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001241s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001463s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001939s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002890s ]
+
+[ 2015-12-21T17:12:08+08:00 ] ::1 /microweb/index.php/Admin/Public/do_login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000613s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000876s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000992s ]
+SQL: SHOW COLUMNS FROM `admin_info` [ RunTime:0.0068s ]
+SQL: SELECT * FROM `admin_info` WHERE `account` = 'admin' LIMIT 1   [ RunTime:0.0004s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000925s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001025s ]
+
+[ 2015-12-21T17:12:08+08:00 ] ::1 /microweb/index.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000552s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000810s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000935s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0057s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '01' AND `status` = 0  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: arr D:\wamp\www\microweb\Application\Admin\Controller\BaseController.class.php 第 64 行.
+SQL: SHOW COLUMNS FROM `admin_info` [ RunTime:0.0036s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `admin_info` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `user_info` [ RunTime:0.0051s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `user_info` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `site_info` [ RunTime:0.0036s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `site_info` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `article` [ RunTime:0.0041s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `article` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0038s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000216s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000330s ]
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b595b808c2ebeeeb0478ffc30bb4e87a.php 第 234 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019902s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020019s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000607s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000708s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000735s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000840s ]
+
+[ 2015-12-21T17:12:09+08:00 ] ::1 /microweb/index.php/Admin/Reception/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000562s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000785s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000901s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0052s ]
+SQL: SHOW COLUMNS FROM `background` [ RunTime:0.0038s ]
+SQL: SELECT b.id,b.name,p.savename,p.savepath,p.update_time FROM background b left join picture p on b.pic_id=p.id WHERE ( b.status=0 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000215s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000337s ]
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\2133f1cae3f1e0fab391da3306ad135d.php 第 132 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021634s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021790s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001058s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001202s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000869s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000973s ]
+
+[ 2015-12-21T17:12:11+08:00 ] ::1 /microweb/index.php/Admin/Reception/widget
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000619s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000912s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001072s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0044s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0058s ]
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+NOTIC: [8] Undefined index: nickname D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 236 行.
+SQL: SELECT * FROM `controller` WHERE ( status=0 and id like '%%' or status=0 and name like '%%' ) ORDER BY sort asc LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `controller` WHERE ( status=0 ) LIMIT 1   [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000231s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000353s ]
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Undefined index: uid D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 134 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\b4591528eeed5d85edf516be29d5135d.php 第 167 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033526s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033725s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000709s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000817s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000784s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000890s ]
+
+[ 2015-12-21T17:12:18+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000631s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001258s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001681s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000266s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000395s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022484s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022602s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000540s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000645s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000702s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000809s ]
+
+[ 2015-12-21T17:13:15+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/20/old_img/true
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000746s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000766s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000903s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0033s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = '635486e75db974f256c61999ad938905' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: path D:\wamp\www\microweb\ThinkPHP\Library\Think\Upload.class.php 第 172 行.
+SQL: UPDATE `picture` SET `used`=used+1 WHERE `id` = 55 [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `theme` WHERE ( status=0 and controller_id=20 and pic_id=55 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 20 ORDER BY update_time asc  [ RunTime:0.0002s ]
+SQL: UPDATE `theme` SET `update_time`='1450689195',`pic_id`='55' WHERE `id` = 26 [ RunTime:0.0006s ]
+
+[ 2015-12-21T17:13:15+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001080s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000802s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000930s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0036s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000260s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000392s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022479s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022597s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000508s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000652s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000693s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000811s ]
+
+[ 2015-12-21T17:13:19+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/20/old_img/true
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000469s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000932s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001138s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = 'f0068a5320737df4a1fb8eb36627d77f' LIMIT 1   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: path D:\wamp\www\microweb\ThinkPHP\Library\Think\Upload.class.php 第 172 行.
+SQL: UPDATE `picture` SET `used`=used+1 WHERE `id` = 56 [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `theme` WHERE ( status=0 and controller_id=20 and pic_id=56 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 20 ORDER BY update_time asc  [ RunTime:0.0004s ]
+SQL: UPDATE `theme` SET `update_time`='1450689199',`pic_id`='56' WHERE `id` = 27 [ RunTime:0.0007s ]
+
+[ 2015-12-21T17:13:20+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000780s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000929s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001057s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0049s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0037s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0042s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000293s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000421s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024534s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024679s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000552s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000691s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000729s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000837s ]
+
+[ 2015-12-21T17:13:26+08:00 ] ::1 /microweb/index.php/Admin/Reception/upload/id/20/old_img/true
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000493s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001147s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001375s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0066s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0041s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `picture` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`savename`,`savepath`,`md5`,`size`,`status`,`create_time`,`update_time`,`used` FROM `picture` WHERE `md5` = '159edbcd3a010b84421d4c9c722d4ca5' LIMIT 1   [ RunTime:0.0005s ]
+SQL: INSERT INTO `picture` (`size`,`md5`,`savename`,`savepath`,`create_time`,`update_time`,`used`) VALUES ('18077','159edbcd3a010b84421d4c9c722d4ca5','5677c2b6cc966.png','background2015-12-21/','1450689206','1450689206','1') [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `theme` WHERE ( status=0 and controller_id=20 and pic_id=58 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `theme` WHERE `controller_id` = 20 ORDER BY update_time asc  [ RunTime:0.0002s ]
+SQL: UPDATE `theme` SET `update_time`='1450689206',`pic_id`='58' WHERE `id` = 28 [ RunTime:0.0006s ]
+
+[ 2015-12-21T17:13:26+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001625s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000955s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001085s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0049s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0047s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000288s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000429s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023947s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024110s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000746s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000859s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000849s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000959s ]
+
+[ 2015-12-21T17:13:28+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001032s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001330s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001539s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0063s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0036s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000256s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000392s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022489s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022610s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000604s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000716s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000776s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000880s ]
+
+[ 2015-12-21T17:14:03+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001150s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001127s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0067s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0035s ]
+SQL: UPDATE `theme` SET `name`='tile',`update_time`='1450689243' WHERE ( id=28 ) [ RunTime:0.0008s ]
+
+[ 2015-12-21T17:14:14+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000868s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001290s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001446s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0065s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0038s ]
+SQL: UPDATE `theme` SET `name`='select_right',`update_time`='1450689254' WHERE ( id=27 ) [ RunTime:0.0010s ]
+
+[ 2015-12-21T17:14:29+08:00 ] ::1 /microweb/index.php/Admin/Reception/effectName
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000923s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001893s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002071s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0066s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: UPDATE `theme` SET `name`='select_down',`update_time`='1450689269' WHERE ( id=26 ) [ RunTime:0.0009s ]
+
+[ 2015-12-21T17:14:31+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001118s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000902s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001022s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0064s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0031s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000272s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000518s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030171s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030295s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000730s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000840s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000820s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000928s ]
+
+[ 2015-12-21T17:19:43+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000614s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000994s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001203s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0037s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000334s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000519s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033009s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033127s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000485s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000593s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000685s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000796s ]
+
+[ 2015-12-21T17:46:47+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000514s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000781s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000896s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0069s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0036s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000255s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000392s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023024s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023148s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001151s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001406s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000942s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001061s ]
+
+[ 2015-12-21T17:46:55+08:00 ] ::1 /microweb/index.php/Admin/Reception/addController/seat/20
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000629s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000810s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000963s ]
+NOTIC: [2048] Declaration of Admin\Controller\ReceptionController::theme() should be compatible with Think\Controller::theme($theme) D:\wamp\www\microweb\Application\Admin\Controller\ReceptionController.class.php 第 8 行.
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `node_info` WHERE `status` = 0 AND `depth` = 1 ORDER BY sort  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `node_info` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `node_info` WHERE `depth` > 1 AND LEFT(id,2) = '04' AND `status` = 0  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `controller` [ RunTime:0.0035s ]
+SQL: SELECT `id`,`name`,`intro`,`url`,`icon` FROM `controller` WHERE ( id=20 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `theme` [ RunTime:0.0043s ]
+SQL: SELECT theme.name,theme.id,picture.savename,picture.savepath FROM `theme` INNER JOIN picture ON theme.pic_id = picture.id  WHERE ( theme.status=0 and theme.controller_id=20 ) ORDER BY theme.update_time desc  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000274s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000410s ]
+NOTIC: [8] Undefined variable: er D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 162 行.
+NOTIC: [8] Use of undefined constant ONETHINK_VERSION - assumed 'ONETHINK_VERSION' D:\wamp\www\microweb\Application\Runtime\Cache\Admin\8cc188f425be83c014b4bcd4e3954ea0.php 第 231 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026063s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026190s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000352s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000458s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000544s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000650s ]
+

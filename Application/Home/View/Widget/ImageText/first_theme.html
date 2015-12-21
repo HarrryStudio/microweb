@@ -1,27 +1,23 @@
-<if condition="$index eq 1">
-<div class='image_text_container2 controller' data-name='{$cname}'>
-<elseif condition="$index eq 2"/>
-<div class='image_text_container3 controller' data-name='{$cname}'>
-<elseif condition="$index eq 3"/>
-<div class='image_text_container4 controller' data-name='{$cname}'>
-<else/>	
-<div class='image_text_container controller' data-name='{$cname}'>
-</if>
-	<div class='controller-title '>{$['title']}</div>
+<div class="image_text_container{$option['index']} controller" data-name='{$cname}'>
+	<div class='controller-title '>{$option['title']}</div>
 		<div>
 		<div class='image_text_img'>
 			<if condition="$index eq 2">
-				<h4>+article_title+"</h4>
+				<h4>{$title['title']}</h4>
 			</if>
-				<img src=" +img_src+">
+			<if condition="empty($article['savename'])">
+				<img src="__PUBLIC__/Home/Widget/ImageText/images/{$option['index']}.jpg">
+			<else/>
+				<img src="__Uploads__/{$article['savepath']}{$article['savename']}">
+			</if>
 		</div>
 		<if condition="$index eq 2">
 			<div class='image_text_title'>
-				<h4>+article_title+"</h4>
+				<h4>{$article['title']}</h4>
 			</div>				
 		</if>
 		<br/>
-		{$article_content}
+		{$article['content']}
 		<div class='clear_float'></div>
 	</div>
 	</div>
