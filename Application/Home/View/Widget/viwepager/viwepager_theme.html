@@ -7,25 +7,25 @@
             </div>
             <volist name="pic_list" id="vo" offset="1" length='9'>
                 <div class='item'>
-                    <img style='width: 100%;height:210px;' src='__UPLOADS__/{$vo["savepath"]}/{$vo["savename"]}'>
+                    <img style='width: 100%;height:210px;' src='__UPLOADS__/{$vo["savepath"]}{$vo["savename"]}'>
                 </div>
             </volist>
         </div>
-    <if condition="$type eq 1">
+    <if condition="$type eq 'select_down'">
         <a class='left carousel-control' href='#carousel-example-generic' data-slide='prev'>
             <span class='glyphicon glyphicon-chevron-left'></span>
         </a>
         <a class='right carousel-control' href='#carousel-example-generic' data-slide='next'>
             <span class='glyphicon glyphicon-chevron-right'></span>
         </a>
-    <elseif condition="$type eq 2" />
+    <elseif condition="$type eq 'select_right'" />
         <ol class='carousel-indicators'>
             <li data-target='#carousel-example-generic' data-slide-to='0' class='active'>{$pic_num}</li>
         <volist name="pic_list" id="vo" offset="1" length='9'>
             <li data-target='#carousel-example-generic' data-slide-to="{$key}"></li>
         </volist>
         </ol>
-    <elseif condition="$type eq 3" />
+    <elseif condition="$type eq 'down'" />
         <a style='margin-left:49%' class='getdown' id='down'>
             <span style='cursor: pointer;' class='glyphicon glyphicon-chevron-down'></span>
         </a>

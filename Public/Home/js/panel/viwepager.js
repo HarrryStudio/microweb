@@ -1,17 +1,10 @@
-var type = 1;      //选中的轮播样式
-var album_id = $(".albumList").find("tr").eq(0).attr("date");      //选中对象的id(图册)
+var album_id=$(".pitch_album").attr("data");      //选中对象的id(图册)
 $(function(){
-//    $("img").css('border','solid 2px #666');
-//    $lickStatus = true;         //表示当前是点击状态
     url1 = "/microweb/Public/Home/images/panel/viwepagerAdd1.png";   //选中时图片
     url2 = "/microweb/Public/Home/images/panel/viwepagerAdd2.png";   //非选中时图片
-    $(".albumList").find("tr").eq(0).css("background","#D3D1CB");
-    $(".albumList").find("img").eq(0).attr("src",url1);
-    $(".img>img").eq(0).css('border','solid 2px #0f0');
-    $(".img>img").click(function(){
-        $(this).css('border','solid 2px #0f0');
-        $(this).parents(".img").find("img").not(this).css('border','solid 2px #666');
-        type = $(this).attr('type');
+    $(document).on("click",".pitch_on_no",function(){
+        $(".pitch_on").toggleClass("pitch_on pitch_on_no");
+        $(this).toggleClass("pitch_on pitch_on_no");
     })
     $(".albumListContent tr").mouseover(function(){
         if($(this).attr("date") != album_id){
@@ -25,9 +18,11 @@ $(function(){
     })
     $(".albumListContent tr").click(function(){
         $(this).siblings("tr").css("background","");
+        $(this).siblings("tr").removeClass("pitch_album");
         $(this).css("background","#D3D1CB");
         $(this).siblings("tr").find("img").attr("src",url2);
         $(this).find("img").attr("src",url1);
+        $(this).addClass("pitch_album");
         album_id = $(this).attr("date");
     })
 })
@@ -64,14 +59,14 @@ function save(){
     //    window.parent.alert_info("标题不能为空",-1);
     //    return;
     //}
-
+    var type = $(".pitch_on").attr("type");      //选中的轮播样式
     if(album_id == undefined){
         window.parent.alert_info("请选择相册",-1);
         return;
     }
     var json_data = {
         name:"ViwePager",
-        theme:"viwepager",
+        theme:"Viwepager",
         resource:album_id,
         option:{type:type}
         //option:{title:title,type:type}

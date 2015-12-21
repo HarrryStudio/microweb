@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ÑîÑÇ¶«
+ * User: æ¨äºšä¸œ
  * Date: 2015/12/10
  * Time: 18:15
  */
@@ -24,7 +24,7 @@ class NoticeWidget extends Widget
             $this->assign("type",$data['option']['type']);
             $this->assign("icon",$data['option']['icon']);
         }else{
-            $this->assign("title",'¹ö¶¯¹«¸æ');
+            $this->assign("title",'æ»šåŠ¨å…¬å‘Š');
         }
         $this->display("Panel/notice");
     }

@@ -28,9 +28,20 @@
                 </div>
 
                 <div class="img">
-                    <img type="1" src="__IMAGES__/panel/such1.jpg">
-                    <img type="2" src="__IMAGES__/panel/such2.jpg">
-                    <img type="3" src="__IMAGES__/panel/such4.jpg">
+                    <!--<img type="1" src="__IMAGES__/panel/such1.jpg">-->
+                    <!--<img type="2" src="__IMAGES__/panel/such2.jpg">-->
+                    <!--<img type="3" src="__IMAGES__/panel/such4.jpg">-->
+                    <empty name="theme">
+
+                    <else/>
+                        <foreach name="theme" item="vo">
+                            <if condition="$vo.name eq $primary_type">
+                                <img class="pitch_on" type="{$vo.name}" src="__UPLOADS__/{$vo.savepath}{$vo.savename}">
+                            <else/>
+                                <img class="pitch_on_no" type="{$vo.name}" src="__UPLOADS__/{$vo.savepath}{$vo.savename}">
+                            </if>
+                        </foreach>
+                    </empty>
                 </div>
             </div>
             <div style="clear: both"></div>
@@ -44,14 +55,25 @@
                     <else />
                         <table class="albumListContent">
                             <foreach name="album_list" item="vo">
-                                <tr date="{$vo.id}">
-                                    <td class="ablumName">
-                                        {$vo.name}
-                                    </td>
-                                    <td class="identification">
-                                        <img src="__IMAGES__/panel/viwepagerAdd2.png">
-                                    </td>
-                                </tr>
+                                <if condition="$vo.id eq $primary_album">
+                                    <tr class="pitch_album" style="background: #D3D1CB;" date="{$vo.id}">
+                                        <td class="ablumName">
+                                            {$vo.name}
+                                        </td>
+                                        <td class="identification">
+                                            <img src="__IMAGES__/panel/viwepagerAdd1.png">
+                                        </td>
+                                    </tr>
+                                <else/>
+                                    <tr date="{$vo.id}">
+                                        <td class="ablumName">
+                                            {$vo.name}
+                                        </td>
+                                        <td class="identification">
+                                            <img src="__IMAGES__/panel/viwepagerAdd2.png">
+                                        </td>
+                                    </tr>
+                                </if>
                             </foreach>
                         </table>
                     </empty>

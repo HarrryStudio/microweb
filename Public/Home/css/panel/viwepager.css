@@ -36,6 +36,15 @@
     width: 20%;
     height: 80px;
 }
+/*样式选中*/
+.pitch_on{
+    border: 2px solid rgb(0, 255, 0);
+}
+/*样式未选中*/
+.pitch_on_no{
+    border: 2px solid rgb(102, 102, 102);
+}
+
 .type_title{
     float: left;
 }

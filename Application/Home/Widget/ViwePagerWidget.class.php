@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ÑîÑÇ¶«
+ * User: æ¨äºšä¸œ
  * Date: 2015/12/10
  * Time: 18:16
  */
@@ -16,13 +16,26 @@ class ViwePagerWidget extends Widget
         $this->name = "ViwePager";
     }
 
-    public function controller($is_edit){
-        $is_edit = I("get.is_edit");
+    public function controller($site_id,$data){
         $album = D('Album');
-        $album_list = $album -> get_album_list(session('site_id'));
+        $album_list = $album -> get_album_list(session('site_info')['id']);
         $this -> assign('album_list',$album_list);
-        $this->assign("status", $is_edit);
-        $this->display("Panel/viwePager");
+        $theme = M("controller")
+            -> field("picture.savepath,picture.savename,theme.name")
+            -> join("theme ON controller.id=theme.controller_id")
+            -> join("picture ON picture.id=theme.pic_id")
+            -> where("theme.status=0 and controller.cname='ViwePager'")
+            -> select();
+        $this -> assign('theme',$theme);
+        if(!empty($data)){
+            $this->assign("status",true);
+            $this->assign("primary_album",$data["resource"]);
+            $this->assign("primary_type",$data["option"]['type']);
+        }else{
+            $this->assign("primary_album",$album_list[0]['id']);
+            $this->assign("primary_type",$theme[0]['name']);
+        }
+        $this->display("Panel/ViwePager");
     }
 
     public function get_theme_list(){
@@ -33,7 +46,7 @@ class ViwePagerWidget extends Widget
         return $theme;
     }
 
-    public function index(){
+    public function index($site_id,$dynamic = false){
         $photo = D("Picture");
         $pic = $photo -> getPicture($this->resource);
         $this -> assign("frist_img",$pic[0]["savepath"].$pic[0]["savename"]);
@@ -43,7 +56,7 @@ class ViwePagerWidget extends Widget
 //        $this -> assign("type",$json_data["option"]["type"]);
         $this -> assign("type",$this->option["type"]);
         $this -> assign("controllerName",$this->name);
-        $this->insert_content();
+        $this->insert_content($dynamic);
     }
 }
 ?>

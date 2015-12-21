@@ -77,6 +77,7 @@ var dynamicLoading = {
 		}
 		var p_document =panelFrame.document;
 		var head = p_document.getElementsByTagName('head')[0];
+		var heads = head.children;
 		for(var i = 0; i < heads.length; i ++ ){
 			if(heads[i].src == path){
 				return ;

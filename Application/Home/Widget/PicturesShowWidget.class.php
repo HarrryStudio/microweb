@@ -16,12 +16,27 @@ class PicturesShowWidget extends Widget
         $this->name = "PicturesShow";
     }
 
-    public function controller($is_edit){
-        $is_edit = I("get.is_edit");
+    public function controller($site_id,$data){
         $album = D('Album');
-        $album_list = $album -> get_album_list(session('site_id'));
+        $album_list = $album -> get_album_list(session('site_info')['id']);
         $this -> assign('album_list',$album_list);
-        $this->assign("status", $is_edit);//±à¼­(1)ORÌí¼Ó(0)
+        $theme = M("controller")
+            -> field("picture.savepath,picture.savename,theme.name")
+            -> join("theme ON controller.id=theme.controller_id")
+            -> join("picture ON picture.id=theme.pic_id")
+            -> where("theme.status=0 and controller.cname='PicturesShow'")
+            -> select();
+        $this -> assign('theme',$theme);
+        if(!empty($data)){
+            $this->assign("status",true);
+            $this->assign("title",$data['option']['title']);
+            $this->assign("primary_album",$data["resource"]);
+            $this->assign("primary_type",$data["option"]['type']);
+        }else{
+            $this->assign("title",'å›¾ç‰‡å±•ç¤º');
+            $this->assign("primary_album",$album_list[0]['id']);
+            $this->assign("primary_type",$theme[0]['name']);
+        }
         $this->display("Panel/picturesShow");
     }
 
@@ -33,7 +48,7 @@ class PicturesShowWidget extends Widget
         return $theme;
     }
 
-    public function index(){
+    public function index($site_id,$dynamic = false){
         $photo = D("Picture");
         $pic = $photo -> getPicture($this->resource);
         $this -> assign("frist_img",$pic[0]["savepath"].$pic[0]["savename"]);
@@ -41,7 +56,7 @@ class PicturesShowWidget extends Widget
         $this -> assign("type",$this->option["type"]);
         $this -> assign("title",$this->option["title"]);
         $this -> assign("controllerName",$this->name);
-        $this -> insert_content();
+        $this->insert_content($dynamic);
     }
 
 }
