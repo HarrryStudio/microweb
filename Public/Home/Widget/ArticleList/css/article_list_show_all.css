@@ -1,7 +1,3 @@
-*{
-	margin: 0;
-	padding: 0;
-}
 .article_list_container{
 	background-image: url("/microWeb/Public/Home/Images/article/background.jpg");
 	width:100%;
@@ -23,7 +19,7 @@
 	width: 3px;
 	margin-top: 0.25rem;
 	height: 1.5rem;
-	background-color: #F3E7BA; 
+	background-color: #F3E7BA;
 }
 .article_list>li:hover{
 	/*background-color: #98B7C4;*/
@@ -84,7 +80,7 @@
 /*     max-height: 300px;
 overflow: auto; */
     width: 100%;
-} 
+}
 .article_list_container2 .article_info{
     background-color: #573341;
 }
@@ -264,7 +260,7 @@ overflow: auto; */
 	width: 3px;
 	margin-top: 0.25rem;
 	height: 1.5rem;
-	background-color: #F3E7BA; 
+	background-color: #F3E7BA;
 }
 .article_list3>li{
 	width: 100%;
@@ -299,7 +295,7 @@ overflow: auto; */
 
 
 .article_list_container0{
-	
+
 }
 .article_list_container0 .controller-title {
 

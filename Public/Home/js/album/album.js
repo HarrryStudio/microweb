@@ -22,16 +22,15 @@ $(function(){
 	 * 否则弹出提示信息
 	 */
 	$("#create_new_album").click(function() {
-		var site_id = $("#site_id").val();
 		var name = $.trim($("#site_name").val());
 		var url = $("#create_album_url").val();
-		$.post(url, {site_id: site_id,name: name}, function(data) {
-			if (data.code == 0) {
-				alert_info("创建成功",1);
+		$.post(url, {name: name}, function(data) {
+			if (data.status == 1) {
+				alert_info(data.info,1);
 				window.location.reload();
 			}
 			else {
-				alert_info(data.message,0);
+				alert_info(data.info,0);
 				$("#site_name").focus();
 			}
 		});
@@ -79,13 +78,13 @@ $(function(){
 		}else{
 			label.show().animate({"opacity":1},300);
 		}
-		
+
 	})
 	/*键盘回车 提交相册名*/
 	$(window).on('keypress',function(event){
 		// console.log(event.keyCode);
 		if(event.keyCode == 13){
-			$('.album-name-input').blur();
+			$('.album-name-input:focus').blur();
 		}
 	})
 	/*删除相册*/

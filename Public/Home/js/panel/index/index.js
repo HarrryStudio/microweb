@@ -144,7 +144,9 @@ $(function(){
 	})
 })
 function confirm_load(url,win,fun){
-	//alert(url);
+	if(!fun){
+		fun = function(){};
+	}
 	if($('.save-all').attr('change-flag') == 'false'){
 		window.onbeforeunload = function(){};
 		if(win){

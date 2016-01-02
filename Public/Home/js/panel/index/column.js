@@ -47,27 +47,22 @@ function newColumn(column_info){
 						+'<span class="nav-name">'+ column_info.name +'</span></a>'
 					+'</div>';
 	iframe.find('.nav-bar').append(nav_item);
-
-	//console.log(iframe[0]);
-
-	$.layer.close();
 }
 /**
- * 编辑新栏目
+ * 更新栏目
  */
 function editColumn(tr,column_info){
 	/*<--do:html-->*/
 	tr.attr("data-name",column_info.name);
 	tr.attr("data-link",column_info.url);
 	tr.find('.rel-name').text(column_info.name);
-	var nav = getPanelFrame().find(".nav-item[data-column=" + column_info.id + "]");
+	/*<--do:panel-->*/
+	var nav = getPanelFrame().find(".nav-item[data-column=" + tr.attr('index') + "]");
 	nav.find('.nav-name').text(column_info.name).attr('href',column_info.url);
-	if(column_info.icon_url != ""){
+	if(column_info.icon_url != "" && column_info.icon_url != undefined){
 		tr.attr("data-icon",column_info.icon_url);
 		nav.find('.nav-icon').css({"background-image":"url("+column_info.icon_url+")"});
 	}
-	/*<--do:panel-->*/
-	$.layer.close();
 }
 /**
  * 为栏目添加事件
@@ -94,7 +89,6 @@ function addColumnEvent(){
 			buttonSureText:"保存",
 			buttonCancelText:"取消",
 			alwaysClose     : false,
-			//sure:newColumn,
 			sure:function(){
 				var form = $(".column-form").find('form');
 				if(form.find('#add_column_icon')[0].files.length == 0){
@@ -116,7 +110,7 @@ function addColumnEvent(){
 						}else{
 							alert_info(data_info,0);
 						}
-						$('.layer').fadeOut(20).remove();
+						$.layer.close();
 					}
 				})
 			}
@@ -182,6 +176,7 @@ function addColumnEvent(){
 						}else{
 							alert_info(data_info,0);
 						}
+						$.layer.close();
 					}
 				})
 			}

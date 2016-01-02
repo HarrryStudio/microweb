@@ -94,6 +94,7 @@ class Widget extends Controller{
         $theme = $theme ? $theme : $this->theme;
         $theme = $this->filter_theme_link($theme);
         $root = C('WIDGET_PUBLIC_PATH');
+        $data = [];
         if(file_exists(".".$root."public.js")){
             $data["js"][] = __ROOT__.$root."public.js";
         }
@@ -136,10 +137,6 @@ class Widget extends Controller{
         }
         foreach( $data['js'] as $value ){
             echo 'dynamicLoading.js("'.$value.'");';
-        }
-
-        foreach ($data['js'] as $value) {
-            echo 'dynamicLoading.js("'.__ROOT__.$value.'");';
         }
         echo "</script>";
 

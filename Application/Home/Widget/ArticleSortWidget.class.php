@@ -38,13 +38,13 @@ class ArticleSortWidget extends Widget
     $info = $this->option['info'];
     $sort_ids;
     foreach ($info as $item_key => $item) {
-      $sort_ids[] = $item['sort_id'];
+      $sort_ids[] = $item['id'];
     }
     $map['id'] = array('in', $sort_ids);
     $type_list = $Type->get_type_list($map);
     foreach ($type_list as $item_key => $item) {
       foreach ($info as $key => $value) {
-        if ($item['id'] == $value['sort_id']) {
+        if ($item['id'] == $value['id']) {
           $type_list[$item_key]['column_url'] = $value['column_url'];
           $type_list[$item_key]['column_id'] = $value['column_id'];
         }

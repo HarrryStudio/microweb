@@ -25,19 +25,17 @@ class AlbumController extends ResourceController {
      * @return $ajax 0（成功）| 1（失败）message   提示信息
      */
     public function create_album(){
+        $return  = array('status' => 1, 'info' => '添加成功', 'data' => '');
         $data['site_id'] = $this->site_info['id'];
         $data['name'] = I('name');
         $Album = D('Album');
-        if ($Album->create($data)) {
-            if ($Album->add() != 0) {
-                $ajax['code'] = 0;
-                $ajax['message'] = $Album->getError();
-            }
-        }else {
-            $ajax['code'] = 1;
-            $ajax['message'] = $Album->getError();
+        if ($Album->create($data) && $Album->add()) {
+
+        }else{
+            $return['info'] = $Album->getError();
+            $return['status'] = 0;
         }
-        $this->ajaxReturn($ajax);
+        $this->ajaxReturn($return);
     }
 
     /**

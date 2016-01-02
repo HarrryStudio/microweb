@@ -9,7 +9,7 @@ class AlbumModel extends Model{
 	protected $_validate = array(
 		array('name','require','请填写相册名',self::MODEL_BOTH),
 		array('name','/^([\x{4e00}-\x{9fa5}A-Za-z0-9_]){1,20}+$/u','相册名由1-20位汉字或字母或数字组成',self::MODEL_BOTH),
-		array('name','checkName','相册名不能重复',0,'callback',self::MODEL_BOTH),
+		array('id,site_id,name','checkName','此相册名以存在',self::MUST_VALIDATE,'callback',self::MODEL_BOTH),
 	);
 	/**
 	 * 自动完成
@@ -24,11 +24,13 @@ class AlbumModel extends Model{
 	 * 相册名不能重复
 	 */
 	protected function checkName($data){
-			$map = array('name'=>$data['name'], 'site_id'=>$data['site_id']);
-			$res = $this->where($map)->find();
-			// var_dump($res);
-			return empty($res);
-
+		if(empty($data['id'])){
+			unset($data['id']);
+		}else{
+			$data['id'] = array('neq',$data['id']);
+		}
+		$res = $this->where($data)->find();
+		return empty($res);
 	}
 	/**
 	 * 得到album的列表

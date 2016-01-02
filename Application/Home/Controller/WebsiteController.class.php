@@ -35,19 +35,23 @@ class WebsiteController extends BaseController {
     }
 
     public function toResource($site_id = null){
-        if(!empty($site_id)){
-            if(!$this->choose_site($site_id)){
-                $this->redirect('Website/Index');
-            }
+        if(empty($site_id)){
+            $site_info = session("site_info");
+            $site_id = $site_info['id'];
         }
-        //$this->redirect('Article/Index');
+        if(!$this->choose_site($site_id)){
+            $this->redirect('Website/Index');
+        }
+        $this->redirect('Article/Index');
     }
 
     public function toPanel($site_id = null){
-        if(!empty($site_id)){
-            if(!$this->choose_site($site_id)){
-                $this->redirect('Website/Index');
-            }
+        if(empty($site_id)){
+            $site_info = session("site_info");
+            $site_id = $site_info['id'];
+        }
+        if(!$this->choose_site($site_id)){
+            $this->redirect('Website/Index');
         }
         $this->redirect('Panel/Index');
     }
@@ -104,13 +108,9 @@ class WebsiteController extends BaseController {
      *
      */
     public function delete_site(){
-        if(!$this->allow_site(I('post.id'))){
-            $ajax['code'] = 1;
-            $this->ajaxReturn($ajax);
-            return;
-        }
     	$SiteInfo = M("SiteInfo");
     	$map['id'] = I('post.id');
+        $map['user_id'] = session('user_info')['id'];
     	$data['status'] = 1;
     	$result = $SiteInfo->where($map)->save($data);
     	if ($result) {
