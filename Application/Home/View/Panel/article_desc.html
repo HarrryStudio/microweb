@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/panel/article_desc.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="__JS__/panel/article_desc.js"></script>
+</head>
+<body>
+    <form>
+        <label><input name="show_author" type="checkbox" value="1"/>作者</label>
+        <label><input name="show_time" type="checkbox" value="1"/>日期</label>
+        <label><input name="show_type" type="checkbox" value="1"/>分类</label>
+        <label><input name="show_source" type="checkbox" value="1"/>来源</label>
+        <label><input name="show_url" type="checkbox" value="1"/>网站</label>
+    </form>
+	<input id="status" type="hidden" name="" value="1">
+    <input id="desc-name" type="hidden" name="" value="ArticleDesc">
+    <input id="resource-id" type="hidden" name="" value="{$resource_id}">
+</body>
+</html>

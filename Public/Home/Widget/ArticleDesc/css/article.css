@@ -1,0 +1,11 @@
+.article_detail{
+	padding: 0 2%;
+
+}
+.article_content{
+	padding: 0 2%;
+	font-size: 0.8rem;
+}
+.article_content p{
+	text-indent: 2rem;
+}

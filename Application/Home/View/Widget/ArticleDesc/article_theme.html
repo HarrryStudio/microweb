@@ -1,0 +1,14 @@
+<div class="controller" data-name="ArticleDesc">
+<span id="back" class="glyphicon glyphicon-chevron-left" onclick="fun()"></span>
+<div class="background_img">
+	<img src="{$article_info['img_url']}" alt="{$article_info['savename']}">
+</div>
+<h4 style="text-align: center">{$article_info['title']}</h4>
+<div class="article_detail" style="text-indent: 2rem">
+	作者：<span>{$article_info['author']}</span>
+	创建时间：<span>{$article_info['create_time']|date="y-m-d",###}</span>
+</div>
+<div class="article_content">
+	{$article_info['content']|htmlspecialchars_decode}
+</div>
+</div>
