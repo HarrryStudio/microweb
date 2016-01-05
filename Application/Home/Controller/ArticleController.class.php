@@ -114,11 +114,7 @@ class ArticleController extends ResourceController {
         $site_id = $this->site_info['id'];
         $article_id = I('get.article_id');
         if(!empty($article_id)){
-            $article_info = M()->table('article as a')
-                               ->field('a.*,b.savepath,b.savename')
-                               ->join('left join home_picture as b on a.pic_id = b.id')
-                               ->where(array('a.status' => array('gt',-1),'a.id'=>$article_id))
-                               ->find();
+            $article_info = D('article')->get_article_info($site_id,$article_id);
             $this->assign('article_info',$article_info);
             $this->assign('is_edit',1);
         }

@@ -44,7 +44,6 @@ return array(
 	"MAX_SITE_NUM" => 3,
 
 	'TEMP_DIR'   => './Temp/',
-	'USER_FILE_DIR' =>'./UserFiles', //用户文件存放位置
 
 	'WIDGET_TEMPLATE_SUFFIX' => "_theme.html",
 	'WIDGET_TEMPLATE_ROOT'   => APP_PATH."Home/View/Widget/",

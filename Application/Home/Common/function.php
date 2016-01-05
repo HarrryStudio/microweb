@@ -31,6 +31,9 @@
 		}
 		return '未知';
 	}
+	/**
+	* 复制一个不存在的深层路径
+	**/
 	function hCopy($source, $destination){
         $array = explode('/', $destination);
         $i = 1;
@@ -44,18 +47,32 @@
         }
         copy($source, $destination);
     }
+	/**
+	* 复制文件夹(递归)到目标文件夹
+	**/
     function xCopy($source, $destination){
+		if(substr($source,-1) == "/"){
+			$source = substr($source,0,-1);
+		}
+		if(substr($destination,-1) == "/"){
+			$destination = substr($destination,0,-1);
+		}
+
         if(!is_dir($source)){
             return 0;
         }
         if(!is_dir($destination)){
             mkdir($destination,0777);
         }
+		$destination = $destination."/".basename($source);
+		if(!is_dir($destination)){
+            mkdir($destination,0777);
+        }
         $handle=dir($source);
         while($entry=$handle->read()) {
             if(($entry!=".")&&($entry!="..")){
                 if(is_dir($source."/".$entry)){
-                    xCopy($source."/".$entry,$destination."/".$entry);
+                    xCopy($source."/".$entry,$destination);
                 } else{
                     copy($source."/".$entry,$destination."/".$entry);
                 }
@@ -63,7 +80,10 @@
         }
         return 1;
     }
-
+	/**
+	* 删除文件夹下的所有文件
+	* @param $empty true 只清空文件夹  false 清空后删除
+	**/
     function deleteAll($directory, $empty = false) {
         if(substr($directory,-1) == "/") {
             $directory = substr($directory,0,-1);
@@ -100,6 +120,9 @@
         }
     }
 
+	/**
+	* 合并两个排好序的数组
+	**/
     function merge_sort($arr1,$arr2){
         $arr3 = [];
         $len1 = count($arr1);

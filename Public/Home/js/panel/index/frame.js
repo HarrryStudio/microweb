@@ -98,6 +98,7 @@ function save(data,status){
 		if(data.status == 1){
 			var html = panelFrame.$(data['data']['html']);
 			var json = data['data']['json'];
+			console.log(json);
 			var widget = panelFrame.$(html[1]);
 			if(status == 1){
 				var elem = getOperationElem();

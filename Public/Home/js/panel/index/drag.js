@@ -55,9 +55,10 @@ function initController(elem,cname){
 		operation.setAttribute('data-target','0');
 		operation.setAttribute('data-controller','0');
 		operation.setAttribute('data-name',cname);
-		operation.innerHTML = "<div class='oparetion-item edit-controller'>编辑控件</div>"
-							// +"<div class='oparetion-item style-controller'>编辑样式</div>"
-							+"<div class='oparetion-item del-controller'>&#10006;</div>";
+		operation.innerHTML = "<div class='oparetion-item edit-controller'>编辑控件</div>";
+		if(!isDesc){
+			operation.innerHTML +="<div class='oparetion-item del-controller'>&#10006;</div>";
+		}
 		operation_all.appendChild(left_border);
 		operation_all.appendChild(right_border);
 		operation_all.appendChild(top_border);
@@ -98,13 +99,23 @@ function initController(elem,cname){
 }
 
 function init_json(){
-	console.log(html_json);
-    var json = html_json.content;
-    var index = 0;
-    $(".controller").each(function(){
-        $(this).data('json',json[index]);
-        index ++;
-    });
+	if(typeof html_json == "undefined"){
+		html_json = {};
+	}
+	var json;
+	if(isDesc){
+		json = html_json;
+		$(".controller").data("json",json);
+	}else{
+		json = html_json.content;
+		if(typeof json != "undefined"){
+			var index = 0;
+		    $(".controller").each(function(){
+		        $(this).data('json',json[index]);
+		        index ++;
+		    });
+		}
+	}
 }
 
 $(function(){
@@ -124,7 +135,11 @@ $(function(){
 
 	//*显示暂占位符*//
 	$(document).on('dragover',".controller",function(event){
-		dragover(event);
+		if(isDesc){
+			window.parent.alert_info("本页不支持添加控件",2);
+		}else{
+			dragover(event);
+		}
 	});
 	//*编辑控件*//
 	$(document).on('click',".oparetion-item.edit-controller",function(){
@@ -151,11 +166,8 @@ $(function(){
 	})
 
 	$(document).on('click',".article-link",function(){
-		var href = $(this).attr('data-url');
-		window.parent.confirm_load(href,true,function(){
-			//console.log($('.save-all').attr('data-type'));
-			window.parent.$('.save-all').attr('data-type','writeArticle');
-		});
+		var href = window.parent.$('#readDesc-url').val() + "?type=article&id=" + $(this).parent().attr('data-id');
+		window.parent.confirm_load(href,true);
 		return false;
 	})
 

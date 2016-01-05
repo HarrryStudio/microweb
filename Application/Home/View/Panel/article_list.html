@@ -12,12 +12,6 @@
 			<li>
 				<div>
 					<label>模块标题:&nbsp;</label><input id="title" type="text" name="title" value="文章列表">
-					<label for="">请选择栏目:</label>
-					<select name="column_list" id="column">
-						<volist name="column_list" id="vo">
-							<option value="{$vo.id}" data="{$vo.url}" class="column_item">{$vo.name}</option>
-						</volist>
-					</select>
 				</div>
 			</li>
 			<li>
@@ -78,7 +72,7 @@
 	<div class="article_info">
 		<ul>
 			<volist name="article_info" id="vo">
-				<li><a href="<?php $ii = $vo['id']; echo U('Panel/article_info?article_id='.$ii);?>">{$vo.title}</a></li>		
+				<li><a href="<?php $ii = $vo['id']; echo U('Panel/article_info?article_id='.$ii);?>">{$vo.title}</a></li>
 			</volist>
 		</ul>
 	</div>

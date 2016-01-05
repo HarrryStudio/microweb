@@ -196,19 +196,23 @@ function confirm_load(url,win,fun){
 function saveAll(fun){
 	var $fn = panelFrame.$;
 	var that =  $('.save-all');
-	var data = {back:$(that).attr('data-back'),theme:$(that).attr('data-theme')};
-	var content = {header:"",content: new Array(), footer:""};
-	$fn('.controller').each(function(){
-		content.content.push($fn(this).data("json"));
-	});
 	var url = "";
+	var data = {back:$(that).attr('data-back'),theme:$(that).attr('data-theme')};
 	if($(that).attr("data-type") == "writeHtml"){
+		var content = {header:"",content: new Array(), footer:""};
+		$fn('.controller').each(function(){
+			content.content.push($fn(this).data("json"));
+		});
 		data['content'] = content;
 		console.log(data);
 		url = $('#writeHtml-url').val() + $('#writeHtml-url').attr('now-column');
 	}
 	else{
-		url = $('#writeArticle-url').val();
+		url = $('#writeDesc-url').val();
+		data['type'] = panelFrame.desc_type;
+		data['content'] = $fn('.controller').data("json");
+		delete data['content']['resource'];
+		delete data['content']['name'];
 	}
 	$.post(url,data,function(data){
 		fun(data);

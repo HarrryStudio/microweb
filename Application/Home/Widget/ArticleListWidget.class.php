@@ -25,8 +25,6 @@ class ArticleListWidget extends Widget
     $Type = M('article_type');
     $map['site_id'] = $site_id;
     $type_list = $Type->field('id, name')->where($map)->select();
-    $column_list = M('user_column')->where($map)->select();
-    $this->assign("column_list", $column_list);
     $this->assign('type_list', $type_list);
     $this->assign('theme_list', $this->get_theme_list());
     $this->display('panel/article_list');
@@ -42,7 +40,7 @@ class ArticleListWidget extends Widget
     $this->assign("article_info", $article_info);
     $this->assign('cname', $this->name);
     $this->assign('option', $this->option);
-    $this->insert_content($dynamic); 
+    $this->insert_content($dynamic);
   }
 
   public function get_theme_list()

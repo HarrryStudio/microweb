@@ -79,8 +79,8 @@
 				<div class="add-picture-button">上传图片</div>
 				<div class="show-picture">
 					<?php
-						if(!empty($article_info['savepath'])){
-							echo "<img src = '".C('UPLOAD_ROOT').$article_info['savepath'].$article_info['savename']."'/>";
+						if(!empty($article_info['img_url'])){
+							echo '<img src = "'.$article_info['img_url'].'"/>';
 						}
 					?>
 				</div>

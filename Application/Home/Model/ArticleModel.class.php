@@ -18,6 +18,43 @@ class ArticleModel extends Model{
     );
 
     /**
+     * 一篇文章的具体信息
+     * @param $site_id 网站id
+     * @param $article_id  文章id
+     */
+    public function get_article_info($site_id,$article_id){
+        $article_info = $this->alias('a')
+                           ->field('a.*,b.savepath,b.savename')
+                           ->join('left join home_picture as b on a.pic_id = b.id')
+                           ->where(array('a.status' => array('gt',-1),'a.id'=>$article_id,'a.site_id' => $site_id))
+                           ->find();
+        if(!empty($article_info['savename'])){
+            $article_info['img_url'] = C('UPLOAD_ROOT').$article_info['savepath'].$article_info['savename'];
+        }
+        return $article_info;
+    }
+
+    /**
+     * 网站下所有文章的具体信息
+     * @param $site_id 网站id
+     */
+    public function get_all_info($site_id){
+        $article_info = $this->alias('a')
+                           ->field('a.*,b.savepath,b.savename')
+                           ->join('left join home_picture as b on a.pic_id = b.id')
+                           ->where(array('a.status' => array('gt',-1),'a.site_id' => $site_id))
+                           ->select();
+                           //echo $this->getLastSql();
+        $upload_path = C('UPLOAD_ROOT');
+        foreach($article_info as $key => $value){
+            if(!empty($article_info[$key]['savename'])){
+                $article_info[$key]['img_url'] = $upload_path.$article_info[$key]['savepath'].$article_info[$key]['savename'];
+            }
+        }
+        return $article_info;
+    }
+
+    /**
      *得到文章列表
      *@return  array('result'=>数据,'page'=>分页信息)
      */

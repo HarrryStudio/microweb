@@ -6,13 +6,13 @@ use Think\Controller;
  */
 class PanelController extends ResourceController  {
 
+    /**
+    * 用户是否能操作栏目
+    **/
     public function allowColumn($id){
-       // echo session("site_id");
-        //echo "ggg".$id;
         $result = M()->table('user_column')
                       ->where(array('id'=>$id,'site_id'=>$this->site_info['id']))
                       ->find();
-               // var_dump($result);
         return !empty($result);
     }
 
@@ -57,7 +57,7 @@ class PanelController extends ResourceController  {
     public function readHtml(){
         $column_id = I('column_id');
         //echo "fff".$id;
-        $user_id = session('user_info')['id'];
+        $user_id = session('user_info.id');
         if(empty($user_id)){
             $this->error("没有找到用户");
             return;
@@ -102,6 +102,58 @@ class PanelController extends ResourceController  {
     }
 
     /**
+    * 显示详情页
+    **/
+    public function readDesc($id,$type){
+        $resource_id = I('id');
+        $resource_type= I('type');
+        $user_id = session('user_info.id');
+        if(empty($user_id)){
+            $this->error("没有找到用户");
+            return;
+        }
+        $site_id = $this->site_info['id'];
+        if(empty($site_id)){
+            $this->error("还没创建任何栏目,请在右边栏目中创建");
+            return;
+        }
+        //网站 用户数据
+        $user_info = M()->table('user_info')->field('nickname,head_img')->find($user_id);
+        $site_common = $this->get_site_common($site_id);
+        $theme_templet = $site_common['theme_templet'];
+        unset($site_common['theme_templet']);
+        //实例化widget
+        $json = json_decode($site_common['site_info']['json'],true);
+        unset($site_common['site_info']['json']);
+        $json[$resource_type]['resource'] =  $resource_id;
+        $widget = $this->load_widget(ucwords(strtolower($resource_type)).'Desc',$json[$resource_type]);
+        if(!$widget){
+            $this->error("还没找到控件");
+            return;
+        }
+        //得到widget数据
+        $widget_common['links'] = $widget->load_template_link();
+        ob_start();
+        ob_implicit_flush(0);
+        $widget->index($site_id);
+        $content = ob_get_clean();
+        \Think\Hook::listen('view_filter',$content);
+        $widget_common['content'] = $content;
+        //组合links
+        $links = array_merge_recursive($site_common['theme_links'],$widget_common['links']) ;
+
+        $this->assign('html_json',json_encode($widget->get_json()));
+        $this->assign($site_common);
+        $this->assign('user_info',$user_info);
+        $this->assign('now_column',$column_id);
+        $this->assign('content' ,$widget_common['content']);
+        $this->assign($links);
+        $this->assign('isDesc',"true");
+        $this->assign('desc_type',$resource_type);
+        $this->display( $theme_templet );
+    }
+
+    /**
      * 找到主题的模板
      * @param $theme_name 主题名
      * @return string   模板地址
@@ -127,6 +179,9 @@ class PanelController extends ResourceController  {
         $root_path = C('THEME_PUBLIC_ROOT');
         $static_path = $root_path."Static/";
         $public_path = $root_path."Public/";
+        if(empty($theme_name)){
+            $theme_name = "default";
+        }
         $theme_path = $root_path.$theme_name."/";
         $data = array('js' => [] , 'css' => []);
         if(is_dir(".".$static_path)){
@@ -155,7 +210,7 @@ class PanelController extends ResourceController  {
                 closedir($dh);
             }
         }
-        if(is_dir(".".$theme_path)){
+        if(!is_dir(".".$theme_path)){
             $theme_path = $root_path."default/";
         }
         if(is_dir(".".$theme_path)){
@@ -184,7 +239,7 @@ class PanelController extends ResourceController  {
 
         $site_info = M()
             ->table('site_info')
-            ->field('site_name,theme,back')
+            ->field('site_name,theme,back,json')
             ->where(array('status' => 0, 'id' => $site_id))
             ->find();
         $back = M()
@@ -201,6 +256,9 @@ class PanelController extends ResourceController  {
             ->field('name')
             ->where(array('status' => 0, 'id' => $site_info['theme']))
             ->find();
+
+        $site_info['theme'] = $theme['name'];
+
         $theme_links = $this->load_theme_link($theme['name']);
 
         $theme_templet= $this->load_theme_templet($theme['name']);
@@ -279,15 +337,45 @@ class PanelController extends ResourceController  {
         $this->ajaxReturn($return);
     }
 
-    public function writeArticle(){
+    /**
+    * 保存相详情页
+    **/
+    public function writeDesc(){
         $return  = array('status' => 0, 'info' => '保存成功', 'data' => '');
-        $result = M()->table('site_info')
-                     ->where(array('id'=>session('site_id')))
-                     ->save(array('theme'=>I('theme'),'back'=>I('back')));
-        if($result === false){
+        $theme = I('theme');
+        $back = I('back');
+        $type = I('type');
+        $content = I('content');
+        if(empty($type) || empty($content)){
+            $return['info'] = '信息不完整';
+            $this->ajaxReturn($return);
+            return;
+        }
+        if(!empty($theme)){
+            $update_data['theme'] = $theme;
+        }
+        if(!empty($back)){
+            $update_data['back'] = $back;
+        }
+        $site_id = $this->site_info['id'];
+        $json =  M()->table('site_info')
+                    ->field("json")
+                    ->where(array('id' => $site_id))
+                    ->find();
+        $json_array = json_decode($json,true);
+        $json_array[$type] = $content;
+        $update_data['json'] = json_encode($json_array);
+        if($update_data['json'] === false){
             $return['info'] = 'info保存失败';
         }else{
-            $return['status'] = 1;
+            $result = M()->table('site_info')
+                         ->where(array('id' => $site_id))
+                         ->save($update_data);
+            if($result === false){
+                $return['info'] = 'info保存失败';
+            }else{
+                $return['status'] = 1;
+            }
         }
         $this->ajaxReturn($return);
     }
@@ -295,14 +383,14 @@ class PanelController extends ResourceController  {
 
     /**
      * 编辑控件 移交给具体类实现
-     * @param  String $name    空间名
+     * @param  String $name    控件名
      * @param  String $data    json数据
      */
     public function control_widget($name){
         $data = I("post.data");
         if(!empty($data)){
             $data = json_decode(htmlspecialchars_decode($data),true);
-            if($data == false){
+            if($data === false){
                 $this->show(':( 没有数据');
                 return;
             }
@@ -317,6 +405,9 @@ class PanelController extends ResourceController  {
         }
     }
 
+    /**
+    * 加载 widget 文件
+    **/
     public function load_widget($name,$data){
         $class =  $name . WIDGET_NAME;
         import(MODULE_NAME ."/" . WIDGET_NAME . "/" .$class);
@@ -328,7 +419,9 @@ class PanelController extends ResourceController  {
         }
     }
 
-
+    /**
+    * 保存 widget 的修改
+    **/
     public function save_widget(){
         $return = array('status' => 0, 'data' => "", 'info' => "");
         $data = I('post.');

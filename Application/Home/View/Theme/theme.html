@@ -10,32 +10,22 @@
 	<volist name="js" id="vo">
 		<script type="text/javascript" src='{$vo}'></script>
 	</volist>
-	<!-- <link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Static/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Theme/Public/index.css">
-	<empty name='theme '>
-		<link rel="stylesheet" type="text/css" id="theme-css" href="__USERFILES__/Public/Theme/theme-default/theme.css">
-		<script type="text/javascript" id="theme-js" src="__USERFILES__/Public/Theme/theme-default/theme.js"></script>
-	<else />
-		<link rel="stylesheet" type="text/css" id="theme-css" href="__USERFILES__/Public/Theme/{$theme}/theme.css">
-		<script type="text/javascript" id="theme-js" src="__USERFILES__/Public/Theme/{$theme}/theme.js"></script>
-	</empty> -->
-	<!-- <link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/PicturesShow/PicPhoneShow.css">
-	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/article_list/article_list_show_all.css">
-	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/image_text/image_text_show_all.css">
-	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/article_sort/article_sort_show.css">
-	<link rel="stylesheet" type="text/css" href="__USERFILES__/Public/Controller/nav/nav_all.css"> -->
-
-	<!-- <script type="text/javascript" src='__USERFILES__/Public/Static/jquery-2.0.3.min.js'></script>
-    <script type="text/javascript" src='__USERFILES__/Public/Static/bootstrap/js/bootstrap.js'></script>
-	<script type="text/javascript" src='__USERFILES__/Public/Theme/Public/index.js'></script> -->
+	<if condition="$down">
 	<script type="text/javascript" src='__JS__/panel/index/drag.js'></script>
-	<!-- <script type="text/javascript" src='__USERFILES__/Public/Controller/Viwepager/viwepagerPhone.js'></script>
-	<script type="text/javascript" src='__USERFILES__/Public/Controller/PicturesShow/PicPhoneShow.js'></script>
-    <script type="text/javascript" src='__USERFILES__/Public/Controller/article_list/article_list.js'></script> -->
+	</if>
 </head>
 <body>
-	<script type="text/javascript">window.html_json = {$html_json};</script>
-
+	<if condition="$down">
+	<script type="text/javascript">
+		//window.html_json = {$html_json};
+		window.html_json = <?php echo $html_json ? $html_json : "{}"; ?>;
+		window.isDesc = <?php echo $isDesc ? $isDesc : "false"; ?>;
+		if(isDesc){
+			window.desc_type = "<?php echo $desc_type ? $desc_type : ""; ?>";
+			window.parent.$('.save-all').attr('data-type','writeDesc');
+		}
+	</script>
+	</if>
 	<div class="side main">
 		<div class="user-bar">
 			<div class="head-icon" style="background-image:url({:C('UPLOAD_ROOT')}{$user_info.head_img})"></div>

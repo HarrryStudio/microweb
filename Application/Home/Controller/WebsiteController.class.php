@@ -17,6 +17,9 @@ class WebsiteController extends BaseController {
     	$this->display();
     }
 
+    /**
+     * 进入网站时 检测合法性 并计入session
+     */
     private function choose_site($site_id){
         $site_info = session('site_info');
         if($site_info['id'] == $site_id){
@@ -34,6 +37,9 @@ class WebsiteController extends BaseController {
         return false;
     }
 
+    /**
+     * 跳转到 资源管理
+     */
     public function toResource($site_id = null){
         if(empty($site_id)){
             $site_info = session("site_info");
@@ -45,6 +51,9 @@ class WebsiteController extends BaseController {
         $this->redirect('Article/Index');
     }
 
+    /**
+     * 跳转到 编辑面板
+     */
     public function toPanel($site_id = null){
         if(empty($site_id)){
             $site_info = session("site_info");
@@ -126,22 +135,22 @@ class WebsiteController extends BaseController {
     	$this->ajaxReturn($ajax);
     }
 
-    /*下载文件*/
+    /**
+     * 下载文件
+     */
     public function download_site(){
-        $site_id = I('site_id',session('site_id'));
+        $site_id = I('site_id',session('site_info.id'));
         if(empty($site_id)){
             return $this->error('请选择网站');
         }
         $site_info = M()->table('site_info')
-                        ->field('site_name,url')
-                        ->where(array('id'=>$site_id,'status'=>0))
+                        ->field('site_name,url,json')
+                        ->where(array('id'=>$site_id,'user_id' => session('user_info.id'),'status'=>0))
                         ->find();
         if(empty($site_info)){
             return $this->error('此网站无效');
         }
         $info = M()->table('user_column')
-                   ->field('user_column.*,html.html')
-                   ->join('html on html.id = user_column.html_id')
                    ->where(array('site_id'=>$site_id,'forbidden'=>0))
                    ->order('sort')
                    ->select();
@@ -149,77 +158,118 @@ class WebsiteController extends BaseController {
             return $this->error('没有找到文件');
         }
         $rootpath = C('TEMP_DIR').$site_info['url']."/";
-        if(!mkdir($rootpath)){
-            var_dump($info);
-            echo $rootpath;
-            return;
+        if(is_dir($rootpath)){
+            deleteAll($rootpath,true);
+        }elseif(!mkdir($rootpath)){
             return $this->error('创建根目录失败');
         }
-        $user_info = M()->table('user_info')->field('nickname,head_img')->find(session('user_info')['id']);
-        $nav = M()->table('user_column as a')
-                  ->field('a.id , a.name, a.sort, a.forbidden, a.url, savepath,savename')
-                  ->join('left join picture as b on a.icon = b.id')
-                  ->where(array('site_id'=>$site_id))
-                  ->order('sort')
-                  ->select();
-        $root = C('UPLOAD_ROOT');
-        foreach ($nav as $key => $value) {
-            $nav[$key]['icon_url'] = $root.$value['savepath'].$value['savename'];
+        $public_rootpath = $rootpath."Public/";
+        if(!mkdir($public_rootpath)){
+            return $this->error('创建Public目录失败');
         }
+        /*=================================生成html==============================*/
+        $html_rootpath = $rootpath."html/";
+        if(!mkdir($html_rootpath)){
+            return $this->error('创建html目录失败');
+        }
+        $user_info = M()->table('user_info')->field('nickname,head_img')->find(session('user_info')['id']);
+        $site_common = A('Panel')->get_site_common($site_id);
+        $theme_templet = $site_common['theme_templet'];
+        unset($site_common['theme_templet']);
+        $this->collect_link($site_common['theme_links']);
+        //var_dump($site_common['theme_links']);
+        $this->assign($site_common);
         $this->assign('user_info',$user_info);
-        $this->assign('site_name',$site_info['site_name']);
-        $this->assign('nav_list',$nav);
-        /*生成html*/
+        $this->assign('download',true);
+
+        /*==================生成栏目页===================*/
         foreach ($info as $key => $value) {
+            $widget_common = A('Panel')->resolve_json($site_id,$value['html']);
+            $this->collect_link($widget_common['links']);
+            $links = array_merge_recursive($site_common['theme_links'],$widget_common['links']) ;
+
+            $this->assign($links);
             $this->assign('now_column',$value['id']);
-            $this->assign('content',$value['html']);
-            $html = $this->fetch('Public/theme');
+            $this->assign('content',$widget_common['content']);
+            $html = $this->fetch('Theme/theme');
             $html = $this->replaceHtml($html);
-            $result = file_put_contents($rootpath.$value['url'].'.html',$html);
+            $result = file_put_contents($html_rootpath.$value['url'].'.html',$html);
             if(!$result){
                 ////***删除文件**///
                 deleteAll($rootpath);
                 return $this->error('下载失败:html失败');
             }
         }
-        $article_info = M()->table('article')
-                           ->where(array('site_id'=>$site_id,'status'=>0))
-                           ->select();
-        $article_path = $rootpath.'/article/';
-        if(!mkdir($article_path)){
-            deleteAll($rootpath);
-            return $this->error('创建文章目录失败');
-        }
-        foreach ($article_info as $key => $value) {
-            $this->assign('article_item',$value);
-            $article_html = $this->fetch('Panel/article_info');
-            $article_html = $this->replaceHtml($article_html);
-            $result = file_put_contents($article_path.$value['id'].'.html',$article_html);
-            if(!$result){
-                ////***删除文件**///
+        /*==================生成详情页===================*/
+        $desc = json_decode($site_info['json'],true);
+        foreach($desc as $key => $value){
+            $desc_info = D($key)->get_all_info($site_id);
+            $desc_path = $rootpath.'/'.$key.'/';
+            if(!mkdir($desc_path)){
                 deleteAll($rootpath);
-                return $this->error('下载失败:article失败');
+                return $this->error('创建$key目录失败');
+            }
+            $widget = A('Panel')->load_widget(ucwords(strtolower($key)).'Desc',$value);
+            $widget_link = $widget->load_template_link();
+            $this->collect_link($widget_link,$rootpath);
+            $links = array_merge_recursive($site_common['theme_links'],$widget_link);
+            $this->assign($links);
+            foreach ($desc_info as $desc_key => $desc_resource) {
+                ob_start();
+                ob_implicit_flush(0);
+                $widget->index($site_id,null,$desc_resource);
+                $content = ob_get_clean();
+                \Think\Hook::listen('view_filter',$content);
+                $this->assign('content' ,$content);
+                $html = $this->fetch('Theme/theme');
+                $html = $this->replaceHtml($html);
+                $result = file_put_contents($desc_path.$desc_resource['id'].'.html',$html);
+                if(!$result){
+                    ////***删除文件**///
+                    deleteAll($rootpath);
+                    return $this->error('下载失败:article失败');
+                }
             }
         }
-        /*引入js css*/
-        $js = xCopy(C('USER_FILE_DIR'),$rootpath);
-        /*引入img*/
+
+        /*=================================引入资源文件==============================*/
+        /*=============引入js css=============*/
+        $this->download_theme_link($public_rootpath,$site_common['site_ifno']['theme']);
+        $this->download_widget_link($public_rootpath);
+
+        /*=============引入img=============*/
         $img_path = $rootpath.'Uploads/';
-        $img_info = M()->table('photo as a')
+        $photo_info = M()->table('photo as a')
                        ->field('c.savename,c.savepath')
-                       ->join('album as b on a.album_id = b.id')
-                       ->join('picture as c on a.pic_id = c.id')
-                       ->where(array('b.site_id' => $site_id))
+                       ->join('home_picture as c on a.pic_id = c.id')
+                       ->where(array('a.site_id' => $site_id))
                        ->select();
+
+        $admin_column_info = M()->table('user_column as a')
+                                 ->field('b.savename,b.savepath')
+                                ->join('left join picture as b on a.icon = b.id')
+                                ->where(array('a.site_id' => $site_id, 'a.is_default' => 1))
+                                ->select();
+        $home_column_info = M()->table('user_column as a')
+                                 ->field('b.savename,b.savepath')
+                                ->join('left join home_picture as b on a.icon = b.id')
+                                ->where(array('a.site_id' => $site_id, 'a.is_default' => 0))
+                                ->select();
+        $article_info = M()->table('article as a')
+                            ->field('b.savename,b.savepath')
+                            ->join('left join home_picture as b on a.pic_id = b.id')
+                            ->where(array('a.site_id' => $site_id))
+                            ->select();
+        $img_info = array_merge($photo_info,$admin_column_info,$home_column_info,$article_info);
         $uploads_path = C('PICTURE_UPLOAD')['rootPath'];
         foreach ($img_info as $key => $value) {
             hCopy($uploads_path.$value['savepath'].$value['savename'],$img_path.$value['savepath'].$value['savename']);
         }
-        /*生成zip*/
+        /*========================生成zip==============================*/
         load("@.HZip#class");
         $zip_name = C('TEMP_DIR').$site_info['url'].'.zip';
         $zip = \HZip::zipDir(C('TEMP_DIR').$site_info['url'],$zip_name);
-        /*下载*/
+        /*========================下载==================================*/
         header ( "Cache-Control: max-age=0" );
         header ( "Content-Description: File Transfer" );
         header ( 'Content-disposition: attachment; filename=' . basename ( $zip_name ) ); // 文件名
@@ -230,10 +280,57 @@ class WebsiteController extends BaseController {
         unlink($zip_name);
         deleteAll($rootpath);
     }
+
+    /**
+     * 转换link字符串
+     * @param links array link数组array("js" => array(),"css" => array)
+     * @param rootpath 用户根目录
+     */
+    function collect_link(&$links,$rootpath){
+        $change = "../Public";
+        if(is_array($links['js'])){
+            foreach ($links['js'] as $key => $value) {
+                $links['js'][$key] = str_replace(__ROOT__."/Public/Home",$change,$links['js'][$key]);
+            }
+        }
+        if(is_array($links['css'])){
+            foreach ($links['css'] as $key => $value) {
+                $links['css'][$key] = str_replace(__ROOT__."/Public/Home",$change,$links['css'][$key]);
+            }
+        }
+    }
+
+    /**
+     * 复制 模板所需文件 到用户目录
+     */
+    function download_theme_link($public_rootpath,$theme){
+        $themepath = ".".C('THEME_PUBLIC_ROOT');
+        $publicpath = $public_rootpath."Theme/";
+        if(!mkdir($publicpath)){
+            return false;
+        }
+        xCopy($themepath."Static",$publicpath);
+        xCopy($themepath."Public",$publicpath);
+        if(empty($theme)){
+            $theme = "default";
+        }
+        $theme = $themepath.$theme;
+        xCopy($theme,$publicpath);
+    }
+
+    /**
+     * 复制 widget所需文件 到用户目录
+     */
+    function download_widget_link($public_rootpath){
+        $widgetpath = ".".C('WIDGET_PUBLIC_PATH');
+        xCopy($widgetpath,$public_rootpath);
+    }
+
+    /**
+     * 转换所用图片路径
+     */
     function replaceHtml($html){
-        $user_files = C('TMPL_PARSE_STRING')['__USERFILES__'];
         $uploads = C('TMPL_PARSE_STRING')['__UPLOADS__'];
-        $html =  str_replace($user_files,'.',$html);
-        return  str_replace($uploads,'./Uploads',$html);
+        return  str_replace($uploads,'../Uploads',$html);
     }
 }
