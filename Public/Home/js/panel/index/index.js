@@ -55,7 +55,7 @@ $(function(){
 		footToUp();
 	})
 
-	$('<div class="footer-nav-bu"></div>tton.back-img').on('click',function(){
+	$('.footer-nav-button.back-img').on('click',function(){
 		$('.footer-bar').animate({"top" : '-200px'},250);
 		footToUp();
 	})
@@ -105,7 +105,13 @@ $(function(){
 	//切换主题
 	$('.theme-item').on('click',function(){
 		$('.theme-item.active').removeClass('active');
-		getPanelFrame().find('#theme-css').attr('href',$(this).attr('addr') + "/theme.css");
+		getPanelFrame().find('link.theme-link').attr('href',$(this).attr('addr') + "/theme.css");
+		var js = getPanelFrame().find('script.theme-link');
+		if ( js.length <= 0){
+			getPanelFrame().find('head').append('<script type="text/javascript" class="theme-link">');
+			js = getPanelFrame().find('script.theme-link');
+		}
+		js.attr('href',$(this).attr('addr') + "/theme.js");
 		$('.save-all').attr('data-theme',$(this).attr('data-id'));
 		$('.save-all').attr('change-flag',"true");
 		$(this).addClass('active');

@@ -5,19 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
 	<title>index</title>
 	<volist name="css" id="vo">
-		<link rel="stylesheet" type="text/css" href="{$vo}">
+		<link rel="stylesheet" <?php if(preg_match('/Theme.*theme/',$vo)) echo "class='theme-link'";?> type="text/css" href="{$vo}">
 	</volist>
 	<volist name="js" id="vo">
 		<script type="text/javascript" src='{$vo}'></script>
 	</volist>
-	<if condition="$down">
+	<empty name="download">
 	<script type="text/javascript" src='__JS__/panel/index/drag.js'></script>
-	</if>
+	</empty>
 </head>
 <body>
-	<if condition="$down">
+	<empty name="download">
 	<script type="text/javascript">
-		//window.html_json = {$html_json};
 		window.html_json = <?php echo $html_json ? $html_json : "{}"; ?>;
 		window.isDesc = <?php echo $isDesc ? $isDesc : "false"; ?>;
 		if(isDesc){
@@ -25,7 +24,7 @@
 			window.parent.$('.save-all').attr('data-type','writeDesc');
 		}
 	</script>
-	</if>
+	</empty>
 	<div class="side main">
 		<div class="user-bar">
 			<div class="head-icon" style="background-image:url({:C('UPLOAD_ROOT')}{$user_info.head_img})"></div>

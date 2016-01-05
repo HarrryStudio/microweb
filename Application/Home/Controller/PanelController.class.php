@@ -30,13 +30,13 @@ class PanelController extends ResourceController  {
                             ->select();
         $theme_list = M()->table('theme as a')
                          ->field('a.name,a.id,b.savepath,b.savename')
-                         ->join('picture as b on a.pic_id = b.id')
+                         ->join('left join picture as b on a.pic_id = b.id')
                          ->where(array('a.status'=> 0,'a.name'=>array('neq',"")))
                          ->select();
                          // echo M()->getLastSql();
         $back_list = M()->table('background as a')
                          ->field('a.name,a.id,b.savepath,b.savename')
-                         ->join('picture as b on a.pic_id = b.id')
+                         ->join('left join picture as b on a.pic_id = b.id')
                          ->where(array('a.status'=> 0,'a.forbidden'=> 0))
                          ->select();
         $this->assign('nowColumn',$column_info[0]);

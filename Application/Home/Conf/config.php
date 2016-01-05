@@ -6,12 +6,7 @@ return array(
 							 	'__CSS__'    => __ROOT__.'/Public/Home/css',
 							 	'__IMAGES__' => __ROOT__.'/Public/Home/images',
 							 	'__STATIC__' => __ROOT__.'/Public/Static',
-							 	'__THEME__'  => __ROOT__.'/UserFiles/Public/Theme',
-							 	'__USER__'	 => __ROOT__.'/UserFile',
-							 	'__P_CSS__'  => __ROOT__.'/Public/Controller',
-							 	'__P_JS__'   => __ROOT__.'/Public/Controller',
-							 	'__P_IMAGES__'   => __ROOT__.'/Public/Controller',
-							 	'__USERFILES__' =>__ROOT__.'/UserFiles',
+							 	'__THEME__'  => __ROOT__.'/Public/Home/Theme',
 							 	'__UPLOADS__' =>__ROOT__.'/Uploads',
 						     ),
 	/* 图片上传相关配置 */

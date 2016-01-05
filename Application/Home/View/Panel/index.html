@@ -165,11 +165,11 @@
 				<div class="footer-item theme-list-bar">
 					<div class="list-arrow left-arrow"></div>
 					<div class="theme-list">
-						<div class="theme-item default" data-id='0'>
+						<div class="theme-item default" data-id='0' addr="__THEME__/default">>
 
 						</div>
 						<volist name='theme_list' id='vo'>
-							<div class="theme-item change-flag" data-id='{$vo.id}' addr="__THEME__/{$vo.addr}"><img src="__UPLOADS__/{$vo.savepath}{$vo.savename}"></div>
+							<div class="theme-item change-flag" data-id='{$vo.id}' addr="__THEME__/{$vo.name}"><img src="__UPLOADS__/{$vo.savepath}{$vo.savename}"></div>
 						</volist>
 					</div>
 					<div class="list-arrow right-arrow"></div>
