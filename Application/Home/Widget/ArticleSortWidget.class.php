@@ -29,7 +29,7 @@ class ArticleSortWidget extends Widget
     $this->assign('type_list',$type_list);
     $this->assign('column_list',$column_list);
     $this->assign('controller_id',I('id'));
-    $this->display('panel/article_sort');
+    $this->display('Panel/article_sort');
   }
 
   public function index($site_id,$dynamic = false)

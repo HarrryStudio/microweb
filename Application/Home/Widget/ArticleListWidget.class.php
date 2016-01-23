@@ -27,7 +27,7 @@ class ArticleListWidget extends Widget
     $type_list = $Type->field('id, name')->where($map)->select();
     $this->assign('type_list', $type_list);
     $this->assign('theme_list', $this->get_theme_list());
-    $this->display('panel/article_list');
+    $this->display('Panel/article_list');
   }
 
   public function index($site_id,$dynamic = false)

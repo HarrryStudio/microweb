@@ -3,11 +3,11 @@ namespace Home\Widget;
 use Home\Widget;
 
 /**
-* 
+*
 */
 class ImageTextWidget extends Widget
 {
-	
+
 	function __construct($theme,$resource,$option)
 	{
 		parent::__construct($theme,$resource,$option);
@@ -15,7 +15,7 @@ class ImageTextWidget extends Widget
 	}
 
 	public function controller($site_id,$data)
-	{	
+	{
 		if (!empty($data)) {
 			$this->assign('status', true);
 			$this->assign('now_theme', $data['theme']);
@@ -29,7 +29,7 @@ class ImageTextWidget extends Widget
 		$this->assign('theme_list', $theme_list);
 		$this->assign('theme', $this->theme);
         $this->assign('controller_id',I('id'));
-		$this->display('panel/'.'image_text');
+		$this->display('Panel/'.'image_text');
 	}
 
 	public function index($site_id,$dynamic = false)
