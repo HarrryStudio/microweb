@@ -60,9 +60,9 @@ class WebsiteController extends BaseController {
             $site_id = $site_info['id'];
         }
         if(!$this->choose_site($site_id)){
-            $this->redirect('Website/Index');
+            $this->redirect('Website/index');
         }
-        $this->redirect('Panel/Index');
+        $this->redirect('Panel/index');
     }
 
     /**
