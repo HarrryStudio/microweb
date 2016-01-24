@@ -30,7 +30,7 @@ class ProductionModel extends Model
 	* @param $production_id 产品id
 	*
 	*/
-	public function update_production($production_id='')
+	public function update_production($production_id)
 	{
 		# code...
 	}
@@ -50,7 +50,7 @@ class ProductionModel extends Model
 	* @param $production_id 产品id
 	*
 	*/
-	public function get_production_info($production_id='')
+	public function get_production_info($production_id)
 	{
 		# code...
 	}
@@ -60,7 +60,7 @@ class ProductionModel extends Model
 	*
 	*
 	*/
-	public function sort_production($production_id='',)
+	public function sort_production($production_id)
 	{
 		# code...
 	}
