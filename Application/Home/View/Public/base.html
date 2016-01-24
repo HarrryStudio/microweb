@@ -42,12 +42,12 @@
 						</empty>
 					</a>
 				</div>
-				<if condition="is_login()"> 
+				<if condition="is_login()">
 					<a onclick="return confirm('确定要退出?')" class="login-status logout-butotn" href="{:U('Login/logout')}">退出</a>
 				<else />
 					<a class="login-status login-button"  href="{:U('Login/login')}">登录</a>
 				</if>
-				
+
 			</div>
 			<!-- /登录状态信息 -->
 		</div>
@@ -69,6 +69,7 @@
 				<div class="side-head">网站资源</div>
 				<div class="side-item"><a href="">相册</a></div>
 				<div class="side-item"><a href="">文章</a></div>
+				<div class="side-item"><a href="">产品</a></div>
 			</div>
 		</block>
 		<!-- /边栏 -->
@@ -81,7 +82,7 @@
 	<!-- /中间 -->
 	<!-- 页脚 -->
 	<div class="footer">
-		
+
 	</div>
 	<input id="primary-index" type="hidden" value="{$primary_index}">
 	<input id="senior-index" type="hidden" value="{$senior_index}">
