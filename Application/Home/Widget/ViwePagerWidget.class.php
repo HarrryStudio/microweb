@@ -35,7 +35,7 @@ class ViwePagerWidget extends Widget
             $this->assign("primary_album",$album_list[0]['id']);
             $this->assign("primary_type",$theme[0]['name']);
         }
-        $this->display("Panel/ViwePager");
+        $this->display("Panel/viwe_pager");
     }
 
     public function get_theme_list(){
