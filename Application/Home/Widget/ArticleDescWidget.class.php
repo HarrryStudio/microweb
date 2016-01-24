@@ -25,7 +25,7 @@ class ArticleDescWidget extends Widget
     // }
     // $map['site_id'] = $site_id;
     $this->assign('resource_id', $this->resource);
-    $this->display('panel/article_desc');
+    $this->display('Panel/article_desc');
   }
 
   public function index($site_id,$dynamic = false,$article_info)
