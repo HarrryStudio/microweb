@@ -37,7 +37,7 @@ class PicturesShowWidget extends Widget
             $this->assign("primary_album",$album_list[0]['id']);
             $this->assign("primary_type",$theme[0]['name']);
         }
-        $this->display("Panel/picturesShow");
+        $this->display("Panel/pictures_show");
     }
 
     public function get_theme_list(){
