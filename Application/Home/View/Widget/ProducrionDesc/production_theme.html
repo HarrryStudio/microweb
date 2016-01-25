@@ -1,0 +1,14 @@
+<div class="controller" data-name="productionDesc">
+<span id="back" class="glyphicon glyphicon-chevron-left" onclick="fun()"></span>
+<div class="background_img">
+	<img src="{$production_info['img_url']}" alt="{$production_info['savename']}">
+</div>
+<h4 style="text-align: center">{$production_info['title']}</h4>
+<div class="production_detail" style="text-indent: 2rem">
+	作者：<span>{$production_info['author']}</span>
+	创建时间：<span>{$production_info['create_time']|date="y-m-d",###}</span>
+</div>
+<div class="production_content">
+	{$production_info['content']|htmlspecialchars_decode}
+</div>
+</div>
