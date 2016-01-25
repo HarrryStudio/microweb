@@ -1,0 +1,98 @@
+<extend name="Website/base"/>
+<block name="style">
+	<link rel="stylesheet" type="text/css" href="__CSS__/production/add_production.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/ueditor/themes/default/css/ueditor.css">
+	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+</block>
+<block name='senior-nav'>
+	<div class="site-name-show">{$site_name}</div>
+</block>
+<block name="content">
+	<div class="centent-head">添加产品</div>
+	<input id="production-url" type="hidden" value="__CONTROLLER__/index">
+	<div class="add-production-panel">
+			<if condition="$is_edit eq 1">
+				<form action="__CONTROLLER__/edit_production" id="production-form">
+					<input id="production-id" name="id" type="hidden" value="{$production_info.id}">
+			<else />
+				<form action="__CONTROLLER__/insert_production" id="production-form">
+			</if>
+
+			<div class="production-form-item">
+				<label for="production-title" class="production-label">标题：</label>
+				<input id="production-title" name="name" type="text" class="production-input form-control" value="{$production_info.title}">
+			</div>
+			<div class="production-form-item">
+				<label for="production-source" class="production-label">价格：</label>
+				<input id="production-source" name="price" type="text" class="production-input form-control" value="{$production_info.source}">
+			</div>
+			<div class="production-form-item">
+				<label for="production-url" class="production-label">网址：</label>
+				<input id="production-url" name="url" type="text" class="production-input form-control" value="{$production_info.url}">
+			</div>
+			<div class="production-form-item">
+				<label for="production-type" class="production-label">分类：</label>
+				<input id="production-type" name="type" type="hidden" value="{$production_info.type_id}">
+				<div class="dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				  	<span id="type-name-span">请选择</span>
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				  	<?php
+				  		//print_r($production_info);
+				  		foreach ($type_list as $key => $value) {
+				  			$class = "";
+				  			if((int)$value['id'] == (int)$production_info['type_id']){
+				  				// echo $key;
+				  				// echo (int)$production_info['type_id'];
+				  				$class = " class='checked' ";
+				  			}
+				  			echo "<li ".$class."data='".$value['id']."'><a>".$value['name']."</a></li>";
+				  		}
+				  	?>
+				  </ul>
+				</div>
+				<?php
+					if(empty($type_list)){
+				?>
+				<span id="add-type-info">还没有分类,先去<a id="add-type-a" href="__CONTROLLER__/set_classify/site_id/{$site_id}">添加分类</a>吧</span>
+				<?php
+					}
+				?>
+			</div>
+			<label for="production-desc" class="production-label">详情：</label>
+			<textarea id="editor" name="desc">{$production_info.desc}</textarea>
+			<div class="production-form-item">
+				<label for="production-picture" class="production-label">配图：</label>
+				<input id="production-picture-id" name="pic_id" type="hidden" value="{$production_info.pic_id}">
+				<input id="production-picture" name="production-picture" type="file">
+				<div class="add-picture-button">上传图片</div>
+				<div class="show-picture">
+					<?php
+						if(!empty($production_info['img_url'])){
+							echo '<img src = "'.$production_info['img_url'].'"/>';
+						}
+					?>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="button-bar">
+		<if condition="$is_edit eq 1">
+			<button type="button" class="save" url="__CONTROLLER__/edit_production">保存</button>
+		<else />
+			<button type="button" class="save" url="__CONTROLLER__/insert_production">保存</button>
+		</if>
+		<button type="button" class="cencel" url="__CONTROLLER__/production_list/site_id/{$site_id}">取消</button>
+	</div>
+</block>
+<block name="other">
+
+</block>
+<block name="script">
+	<script type="text/javascript" src="__JS__/production/add_production.js"></script>
+</block>

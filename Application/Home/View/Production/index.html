@@ -1,6 +1,6 @@
 <extend name="Website/base"/>
 <block name="style">
-	<link rel="stylesheet" type="text/css" href="__CSS__/article/article.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/production/production.css">
 </block>
 <block name='senior-nav'></block>
 <block name="content">
@@ -10,14 +10,11 @@
 		</div>
 	</div>
 	<input id="site_id" type="hidden" value="{$site_id}">
-	<!-- <input id="create_album_url" type="hidden" value="__CONTROLLER__/create_album">
-	<input id="edit_album_url" type="hidden" value="__CONTROLLER__/edit_album">
-	<input id="del_album_url" type="hidden" value="__CONTROLLER__/del_album"> -->
-	<input id="top-article-url" type="hidden" value="__CONTROLLER__/top_article">
-	<input id="status-article-url" type="hidden" value="__CONTROLLER__/update_article_status">
-	<div class="article-panel">
+	<input id="top-production-url" type="hidden" value="__CONTROLLER__/top_production">
+	<input id="status-production-url" type="hidden" value="__CONTROLLER__/update_production_status">
+	<div class="production-panel">
 		<div class="function-bar">
-			<div class="function add-article"><a href='__CONTROLLER__/add_article/site_id/{$site_id}'>添加产品</a></div>
+			<div class="function add-production"><a href='__CONTROLLER__/add_production/site_id/{$site_id}'>添加产品</a></div>
 			<div class="function more-do">批量操作</div>
 			<div class="search-bar">
 				<form class="search-form">
@@ -39,10 +36,10 @@
 			</div>
 		</div>
 		<div class="more-do-bar">
-			<div class="do-item status-article" url="__CONTROLLER__/update_article_status/status/0">启用</div>
-			<div class="do-item status-article" url="__CONTROLLER__/update_article_status/status/1">禁用</div>
-			<div class="do-item status-article" url="__CONTROLLER__/update_article_status/status/-1">删除</div>
-			<div class="do-item change-classify" url="__CONTROLLER__/change_article_type/type_id/">修改分类
+			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/0">启用</div>
+			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/1">禁用</div>
+			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/-1">删除</div>
+			<div class="do-item change-classify" url="__CONTROLLER__/change_production_type/type_id/">修改分类
 				<ul>
 					<volist name="type_list" id="vo">
 						<li value="{$vo.id}">{$vo.name}</li>
@@ -54,19 +51,20 @@
 			</div>
 			<div class="do-item cencel-moro-do">退出批量操作</div>
 		</div>
-		<div class="article-bar">
-			<table class="article-table">
+		<div class="production-bar">
+			<table class="production-table">
 				<thead>
-					<th class="table-checkbox"><input type="checkbox" id="chose-article"></th>
+					<th class="table-checkbox"><input type="checkbox" id="chose-production"></th>
 					<th class="table-title">标题</th>
+					<th class="table-price">价格</th>
 					<th class="table-type">类型</th>
 					<th class="table-time">创建时间</th>
 					<th class="table-operation">操作</th>
 				</thead>
 			 	<tbody>
-			 		<volist name='article_list' id='vo' key='k'>
+			 		<volist name='production_list' id='vo' key='k'>
 			 			<tr>
-			 				<td><input type="checkbox" name="ids[]" class="article-item" value="{$vo.id}"></td>
+			 				<td><input type="checkbox" name="ids[]" class="production-item" value="{$vo.id}"></td>
 			 				<td>
 			 				<if condition="$vo['status'] eq 1">
 			 					<span class="art-sta art-for"></span>
@@ -88,19 +86,19 @@
 								    <span class="caret"></span>
 								  </button>
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu{$k}" data-id="{$vo.id}" data-type='{$vo.type_id}'>
-								  		<li class="article-option-edit"><a href="__CONTROLLER__/add_article/article_id/{$vo.id}">编辑</a></li>
-									  	<li class="article-option-del aritcle-status-item" data-status="-1"><a>删除</a></li>
+								  		<li class="production-option-edit"><a href="__CONTROLLER__/add_production/production_id/{$vo.id}">编辑</a></li>
+									  	<li class="production-option-del production-status-item" data-status="-1"><a>删除</a></li>
 									  	<if condition="$vo['status'] eq 1">
-											<li class="article-option-apply aritcle-status-item" data-status="0"><a>启用</a>
+											<li class="production-option-apply production-status-item" data-status="0"><a>启用</a>
 									  	<else />
-									  		<li class="article-option-forbide aritcle-status-item" data-status="1"><a>禁用</a></li>
+									  		<li class="production-option-forbide production-status-item" data-status="1"><a>禁用</a></li>
 										  	<if condition="$vo['is_top'] eq 1">
-										  		<li class="article-option-bottom top-status-item"  data-status="0"><a>取消置顶</a></li>
+										  		<li class="production-option-bottom top-status-item"  data-status="0"><a>取消置顶</a></li>
 										  	<else />
-										  		<li class="article-option-top top-status-item" data-status="1"><a>设为置顶</a></li>
+										  		<li class="production-option-top top-status-item" data-status="1"><a>设为置顶</a></li>
 										  	</if>
 									  	</if>
-									  	<li class="article-option-change"><a>修改分类</a></li>
+									  	<li class="production-option-change"><a>修改分类</a></li>
 									  </ul>
 								</div>
 			 				</td>
@@ -136,7 +134,7 @@
 						<label for="type-id">请选择分类：</label>
 						<input id="way" type="hidden" name="way" value="">
 						<input id="type-id" type="hidden" name="type_id" value="">
-						<input id="article-id" type="hidden" name="article_id"value="">
+						<input id="production-id" type="hidden" name="production_id"value="">
 						<div class="type-dropdown">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						  	<span id="type-name-span">请选择</span>
@@ -158,7 +156,7 @@
 	            <button type="button" class="btn btn-default"
 	               data-dismiss="modal">关闭
 	            </button>
-	            <button id="change-article-type" type="button" target-url="__CONTROLLER__/change_article_type/type_id/" class="btn btn-primary">
+	            <button id="change-production-type" type="button" target-url="__CONTROLLER__/change_production_type/type_id/" class="btn btn-primary">
 	               提交更改
 	            </button>
 	         </div>
