@@ -103,9 +103,9 @@ class ProductionModel extends Model
 	public function get_production_list($site_id)
 	{
 		$map['a.site_id'] = $site_id;
-    	$map['a.status'] = array('neq',-1);
+    	$map['a.status'] = array('neq',1);//不显示已删除产品
 
-    	$type = I('type',-1);
+    	$type = I('type',-1);//默认所有类型
         $name = I('name');
         /*搜索条件*/
         if($type != '' && (int)$type >= 0){
@@ -116,6 +116,19 @@ class ProductionModel extends Model
             $map['a.name'] = array('like','%'.$name.'%');
             $data['name'] = $name;
         }
+        $count = (int)C('ARTICLE_PAGE_CONUT');//默认分页条件
+    	$total = $this->alias('a')->join('left join production_type as b on a.type = b.id')
+    				  ->where($map)
+    				  ->count();
+    	$page = new \Think\Page($total,$count);
+    	$result = $this->alias('a')->field('a.*,b.name as class_name')
+    				->join('left join production_type as b on a.type = b.id')
+    				->where($map)
+    				->order('create_time desc')
+    				->limit($page->firstRow.','.$page->listRows)
+    				->select();
+                    // echo $this->getLastSql();
+    	return array('result'=>$result,'page'=>$page->show(),'search'=>$data);
 	}
 
 	/**

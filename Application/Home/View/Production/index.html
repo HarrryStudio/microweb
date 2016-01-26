@@ -64,39 +64,35 @@
 			 	<tbody>
 			 		<volist name='production_list' id='vo' key='k'>
 			 			<tr>
+			 				<!-- 复选框 -->
 			 				<td><input type="checkbox" name="ids[]" class="production-item" value="{$vo.id}"></td>
-			 				<td>
-			 				<if condition="$vo['status'] eq 1">
-			 					<span class="art-sta art-for"></span>
-			 					<else/>
-			 					<if condition="$vo['is_top'] eq 1">
-			 						<span class="art-sta art-top"></span>
-								<else />
-									<span class="art-sta art-nor"></span>
-								</if>
-			 				</if>
-			 				<span class="art-til">{$vo.title}</span>
-			 				</td>
-			 				<td><?php echo $vo['name']? $vo['name']:"未分类" ?></td>
+			 				<!-- 标题 -->
+			 				<td>{$vo['name']}</td>
+			 				<!-- 价格 -->
+			 				<td>￥{$vo['price']}</td>
+			 				<!-- 类别 -->
+			 				<td><?php echo $vo['type']? $vo['class_name']:"未分类" ?></td>
+			 				<!-- 创建时间 -->
 			 				<td>{$vo.create_time|date='Y-m-d',###}</td>
+			 				<!-- 操作 -->
 			 				<td class="operation-bar">
 			 					<div class="dropdown">
 								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu{$k}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								  	<span>请选择</span>
 								    <span class="caret"></span>
 								  </button>
-								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu{$k}" data-id="{$vo.id}" data-type='{$vo.type_id}'>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu{$k}" data-id="{$vo.id}" data-type='{$vo.type}'>
 								  		<li class="production-option-edit"><a href="__CONTROLLER__/add_production/production_id/{$vo.id}">编辑</a></li>
 									  	<li class="production-option-del production-status-item" data-status="-1"><a>删除</a></li>
 									  	<if condition="$vo['status'] eq 1">
 											<li class="production-option-apply production-status-item" data-status="0"><a>启用</a>
 									  	<else />
 									  		<li class="production-option-forbide production-status-item" data-status="1"><a>禁用</a></li>
-										  	<if condition="$vo['is_top'] eq 1">
+										  	<!-- <if condition="$vo['is_top'] eq 1">
 										  		<li class="production-option-bottom top-status-item"  data-status="0"><a>取消置顶</a></li>
 										  	<else />
 										  		<li class="production-option-top top-status-item" data-status="1"><a>设为置顶</a></li>
-										  	</if>
+										  	</if> -->
 									  	</if>
 									  	<li class="production-option-change"><a>修改分类</a></li>
 									  </ul>

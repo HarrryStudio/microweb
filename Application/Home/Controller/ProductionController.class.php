@@ -14,15 +14,15 @@ class ProductionController extends ResourceController {
         $site_id = $this->site_info['id'];
         $Production = D('Production');
         $result = $Production->get_production_list($site_id);
-        $article_list = $result['result'];
-        $type_list = M('article_type')
+        $production_list = $result['result'];
+        $type_list = M('production_type')
                         ->field('id,name')
                         ->where(array('site_id'=>$site_id))
-                        ->order('sort')
+                        // ->order('sort')
                         ->select();
         $this->assign('type_list', $type_list);
         $this->assign('site_id', $site_id);
-        $this->assign('article_list', $article_list);
+        $this->assign('production_list', $production_list);
         $this->assign('search', $result['search']);
         $this->assign('page', $result['page']);
         $this->assign('now_page', I('p'));
