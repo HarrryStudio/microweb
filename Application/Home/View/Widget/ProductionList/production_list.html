@@ -1,0 +1,16 @@
+<div class='controller production_list_public' data-name="{$cname}">
+    <volist id="vo" name="production_list" key="key">
+        <div class="production-item">
+            <a class="pro-desc" href="production/production_{$vo.id}.html">
+                <div class="pro-img"><img src="{$vo.img}"></div>
+                <div class="pro-info">
+                    <div class="pro-title">{$vo.title}</div>
+                    <div class="pro-price">
+                        <span></span>
+                        <span>{$vo.price}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </volist>
+</div>

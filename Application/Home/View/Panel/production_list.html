@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="__CSS__/panel/production_list.css">
+	<script type="text/javascript" src='__STATIC__/jquery-2.0.3.min.js'></script>
+	<script type="text/javascript" src="__JS__/panel/production_list.js"></script>
+</head>
+<body>
+	<div id="production_list">
+		<ul class="setting">
+			<li>
+				<div>
+					<label>模块标题:&nbsp;</label><input id="title" type="text" name="title" value="产品列表">
+				</div>
+			</li>
+			<li>
+				<br>
+				<div>
+					<span>列表样式:</span>
+					<br>
+					<div id="style_list">
+						<div class="pattern" data-theme="first">
+							<div class="hr"><img src="__IMAGES__/production/production_list1.jpg"></div>
+						</div>
+						<div class="pattern" data-theme="second">
+							<div class=""><img src="__IMAGES__/production/production_list2.jpg"></div>
+						</div>
+						<div class="pattern" data-theme="third">
+							<div class=""><img src="__IMAGES__/production/production_list3.jpg"></div>
+						</div>
+						<div class="clear_both"></div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="">
+					<span>列表条件:</span>
+					<div class="type_list">
+						<div class="production_type">
+							<span class="select_all">
+								<!--<label for="type_all">全选</label>-->
+								<input id="type_all" type="checkbox" name="type[]" value="0">
+							</span>
+							<span>产品分类</span>
+						</div>
+						<form id="type_data">
+							<ul class="production_type_item">
+							<empty name="type_list">
+								请先添加产品和分类
+							<else />
+								<volist name="type_list" id="vo">
+									<li>
+										<input class="type_checkbox" id="sort_{$vo.id}" type="checkbox" name="type[]" value="{$vo.id}">
+										<label for="sort_{$vo.id}">{$vo.name}</label>
+									</li>
+								</volist>
+							</empty>
+							</ul>
+						</form>
+					</div>
+				</div>
+				<div id="top-alert-back">
+					<div id="top-alert" class="alert alert-warning alert-dismissible" role="alert">
+					      <button type="button" class="close"><span aria-hidden="true">×</span></button>
+					      <div class="alert-content"></div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="production_info">
+		<ul>
+			<volist name="production_info" id="vo">
+				<li><a href="<?php $ii = $vo['id']; echo U('Panel/production_info?production_id='.$ii);0?>">{$vo.title}</a></li>
+			</volist>
+		</ul>
+	</div>
+<!-- 	<input id="target_url" type="hidden" name="" value="{:U('Panel/production_type')}">
+<input id="production_url" type="hidden" name="" value="{:U('Panel/production_info')}?production_id=">
+<input id="img_url" type="hidden" name="" value="{:C('UPLOAD_ROOT')}">
+<input id="home_img" type="hidden" name="" value="__IMAGES__">
+<input type='hidden' id="controller-id" value="{$controller_id}"> -->
+	<input id="status" type="hidden" name="" value="{$status}">
+	<input id="save-url" type="hidden" value="{:U('panel/save_widget')}">
+</body>
+</html>
