@@ -30,7 +30,7 @@ class ArticleDescWidget extends Widget
 
   public function index($site_id,$dynamic = false,$article_info)
   {
-    $article_info = $article_info ? $article_info : get_resource_info();
+    $article_info = $article_info ? $article_info : $this->get_resource_info();
     $this->assign("article_info", $article_info);
     $this->assign('option', $this->option);
     $this->insert_content($dynamic);
