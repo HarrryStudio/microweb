@@ -1,6 +1,6 @@
 <?php
 return array(
-	//数据库配置
+	数据库配置
 	'DB_TYPE'               =>  'mysql',     // 数据库类型
 	'DB_HOST'               =>  'localhost', // 服务器地址
 	'DB_NAME'               =>  'microweb',          // 数据库名

@@ -1,5 +1,4 @@
 <extend name="Public/base"/>
-
 <block name="style">
 	<link rel="stylesheet" type="text/css" href="__CSS__/Backstage/reception_index.css" />
 </block>
@@ -26,7 +25,7 @@
 					<empty name="vo.addr">
 						<span style="color: red;">目录为空，主题无效</span>
 					<else/>
-						{$vo.addr}
+						{$vo.name}
 					</empty>
 					<input type="hidden" class="id" value="{$vo.id}">
 					</div>

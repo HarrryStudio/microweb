@@ -11,7 +11,7 @@ class WebsiteController extends BaseController{
 	public function __construct () {
 		parent::__construct();
 		session('flash_error', null);
-		var_dump(session('site_info'));
+		// var_p(session('site_info'));
 	}
 	
 	//团队人员列表信息查询及分页（每页10条）
