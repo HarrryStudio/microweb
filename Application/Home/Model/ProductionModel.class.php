@@ -9,9 +9,14 @@ class ProductionModel extends Model
 {
 	protected $_validate = array(
         array('name','require','产品标题不能为空',self::MODEL_BOTH),
-        array('desc','require','产品详细介绍不能为空',self::MODEL_BOTH),
-        array('price',''),
         array('name','/^([\x{4e00}-\x{9fa5}A-Za-z0-9_]){1,30}+$/u','文章标题由1-20位汉字或字母或数字组成',self::MODEL_BOTH),
+        array('price','require','产品价格不能为空',self::MODEL_BOTH),
+        array('price','/^(\d{1,6})|(\d{1,6}\.\d{1,2})/','产品价格为非负实数(至多6位整数和2位小数)',self::MODEL_BOTH),
+        array('url','require','产品跳转链接不能为空',self::MODEL_BOTH),
+        // array('type','require','产品类型不能为空',self::MODEL_BOTH),
+        array('desc','require','产品详细介绍不能为空',self::MODEL_BOTH),
+
+
     );
 
 	/**
