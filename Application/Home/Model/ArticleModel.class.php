@@ -84,7 +84,7 @@ class ArticleModel extends Model{
     				->order('is_top desc,create_time desc')
     				->limit($page->firstRow.','.$page->listRows)
     				->select();
-                    //echo $this->getLastSql();
+            //echo $this->getLastSql();
     	return array('result'=>$result,'page'=>$page->show(),'search'=>$data);
     }
 

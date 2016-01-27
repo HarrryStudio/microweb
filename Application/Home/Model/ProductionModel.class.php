@@ -13,7 +13,7 @@ class ProductionModel extends Model
         array('price','require','产品价格不能为空',self::MODEL_BOTH),
         array('price','/^(\d{1,6})|(\d{1,6}\.\d{1,2})/','产品价格为非负实数(至多6位整数和2位小数)',self::MODEL_BOTH),
         array('url','require','产品跳转链接不能为空',self::MODEL_BOTH),
-        // array('type','require','产品类型不能为空',self::MODEL_BOTH),
+        array('type','require','产品类型不能为空',self::MODEL_BOTH),
         array('desc','require','产品详细介绍不能为空',self::MODEL_BOTH),
 
 
@@ -63,13 +63,13 @@ class ProductionModel extends Model
         if(empty($data['id'])){ //新增数据
             $id = $this->add($data); //添加行为
             if(!$id){
-                $this->error = '新增文章出错！';
+                $this->error = '新增产品出错！';
                 return false;
             }
         } else { //更新数据
             $status = $this->save($data); //更新基础内容
             if(false === $status){
-                $this->error = '修改文章出错！';
+                $this->error = '修改产品出错！';
                 return false;
             }
         }
@@ -134,11 +134,19 @@ class ProductionModel extends Model
 	/**
 	* 获得产品详细信息
 	* @param $production_id 产品id
-	*
+	* @param $site_id 网站id
 	*/
-	public function get_production_info($production_id)
+	public function get_production_info($site_id,$production_id)
 	{
-		# code...
+	    $article_info = $this->alias('a')
+                           ->field('a.*,b.savepath,b.savename')
+                           ->join('left join home_picture as b on a.pic_id = b.id')
+                           ->where(array('a.status' => array('gt',-1),'a.id'=>$article_id,'a.site_id' => $site_id))
+                           ->find();
+        if(!empty($article_info['savename'])){
+            $article_info['img_url'] = C('UPLOAD_ROOT').$article_info['savepath'].$article_info['savename'];
+        }
+        return $article_info;
 	}
 
 	/**
