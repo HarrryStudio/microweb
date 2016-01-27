@@ -4,10 +4,89 @@
 	th,td{
 		cursor: default;
 	}
+	#info_page{
+		width: 800px;
+		min-height: 200px;
+		max-height: 350px;
+		z-index: 100;
+		background: black;
+		display: none;
+		color: white;
+		/*opacity: 0.8;*/
+		margin-top: 50px;
+		position: fixed;
+		border-radius: 10px;
+		padding-bottom: 10px;
+	}
+	#info_page>h3{
+		text-align: center;
+		font-size: 16px;
+	}
+	#info_page_left{
+		width: 360px;
+		height: auto;
+		float: left;
+		margin-top: 10px;
+	}
+	#info_page_left p{
+		width: 80px;
+		margin-left: 20px;
+		margin-bottom: 8px;
+		float: left;
+	}
+	.production_info{
+		width: 260px;
+		height: 22px;
+		float: right;
+		margin-bottom: 8px;
+	}
+	#production_desc{
+		width: 750px;
+		margin-left: 20px;
+		min-height: 50px;
+		max-height: 125px;
+		float: left;
+	}
+	#show_img{
+		width: 150px;
+		height:150px;
+		float: left;
+		margin-top: 10px;
+		margin-left: 80px;
+	}
+	#show_img img{
+		width: 100%;
+		height: 100%;
+	}
+	#quit{
+		width:80px;
+		height:25px;
+		float:left;
+		margin:10px 80%;
+		border-radius:5px;
+	}
+	.pic img{
+		width: 30px;
+		height: 30px;
+	}
 </style>
 </block>
 
 <block name="body">
+	<div id="info_page">
+		<h3></h3>
+		<div id="info_page_left">
+			<p>所属网站：</p><span class="production_info" id="production_site"></span>
+			<p>产品类别：</p><span class="production_info" id="production_type"></span>
+			<p>产品单价：</p><span class="production_info" id="production_price"></span>
+			<p>链接地址：</p><span class="production_info" id="production_addr"></span>
+			<p>创建时间：</p><span class="production_info" id="production_time"></span>
+			<!-- <p>产品介绍：</p> -->
+		</div>
+		<div id="show_img"><img src=""></div>
+		<div id="production_desc">产品介绍：&emsp;</div>
+		<button id="quit">退出</button>
+    </div>
 	<!-- 标题栏 -->
 	<div class="main-title">
 		<h2>产品信息</h2>
@@ -16,8 +95,8 @@
         <!-- 高级搜索 -->
 		<div class="search-form fr cf">
 			<div class="sleft">
-				<input type="text" name="nickname" class="search-input" value="{:I('nickname')}" placeholder="请输入站名/作者/ID">
-				<a class="sch-btn" href="javascript:;" id="search" url="{:U('index')}"><i class="btn-search"></i></a>
+				<input type="text" name="nickname" class="search-input" value="{:I('nickname')}" placeholder="可输入站名/标题名">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('produce')}"><i class="btn-search"></i></a>
 			</div>
 		</div>
     </div>
@@ -34,8 +113,8 @@
 		<th class="tb_th">单价/元</th>
 		<th class="tb_th">链接地址</th>
 		<th class="tb_th">产品介绍</th>
-		<th class="tb_th">状态操作</th>
 		<th class="tb_th">创建时间</th>
+		<th class="tb_th">状态操作</th>
 		</tr>
     </thead>
     <tbody>
@@ -46,12 +125,12 @@
 			<td>{$vo.site_name} </td>
 			<td>{$vo.name}</td>
 			<td>{$vo.type}</td>
-			<td>{$vo.pic_id}</td>
+			<td class="pic"><eq name="vo['pic_id']" value="0"><img src="__ROOT__/Uploads/Admin/default_Img/default.jpg"><else/><img src="__ROOT__/Uploads/{$vo.savepath}{$vo.savename}"></eq></td>
 			<td>{$vo.price}</td>
 			<td><a href="{$vo.url}"> {$vo.url} </a></td>
-			<td>{$vo.desc}</td>
-			<td>{$vo.status}</td>
+			<td style="cursor:pointer" class="show_info" value={$vo.desc}><?php echo  mb_strimwidth($vo["desc"], 0, 30,"...","utf-8"); ?></td>
 			<td>{$vo.create_time|date="Y-m-d"}</td>
+			<td style="color:red;cursor:pointer" class="del" value={$vo.id} addr="{:U(del_pro)}">{$vo.status}</td>
 		</tr>
 		</volist>
 		<else/>
@@ -63,12 +142,15 @@
     <div class="page">
         {$_page}
     </div>
+
 </block>
 
 <block name="script">
 	<!-- // <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script> -->
 
 	<script type="text/javascript">
+	//导航高亮
+    highlight_subnav('{:U('User/index')}');
 	//搜索功能
 	$("#search").click(function(){
 		var url = $(this).attr('url');
@@ -89,7 +171,41 @@
 			return false;
 		}
 	});
-    //导航高亮
-    highlight_subnav('{:U('User/index')}');
+	$(".show_info").click(function(){
+		$("h3").append($(this).parent().children("td").eq(1).text());	//添加标题
+		$("#production_site").append($(this).parent().children("td").eq(0).text());	//
+		$("#production_type").append($(this).parent().children("td").eq(2).text());	//
+		$("#show_img img").attr("src",$(this).parent().children("td").eq(3).find("img").attr("src"));	//
+		$("#production_price").append($(this).parent().children("td").eq(4).text());	//
+		$("#production_addr").append($(this).parent().children("td").eq(5).text());	//
+		$("#production_time").append($(this).parent().children("td").eq(7).text());	//
+		$("#production_desc").append($(this).parent().children("td").eq(6).attr("value"));	
+		//200px左侧导航栏，500px弹出层
+		var info_page_set = (document.body.clientWidth-$("#info_page").css("width").replace("px",""))/2-200+"px";
+		$("#info_page").css({"display":"block","margin-left":info_page_set,"margin-right":info_page_set});
+	})
+    $("#quit").click(function(){
+    	$("#info_page").css("display","none");
+    	//消除所有内容
+    	$("h3").empty();	
+		$("#production_site").empty();
+		$("#production_type").empty();
+		$("#production_price").empty();	
+		$("#production_addr").empty();	
+		$("#production_time").empty();	
+		$("#production_desc").empty();	
+    })
+
+    $(".del").click(function(){
+    	var index = $(this).parent().index();
+    	$.post($(this).attr("addr"),{pro_id:$(this).attr("value")},function(data){
+    		if (data["rowNum"]!=0) {
+    			location = location;
+    			//$("tbody").find("tr").eq(index).remove();
+    			// $(".page").empty();
+    			// $(".page").append(data["page"]);
+    		};
+    	})
+    })
 	</script>
 </block>
