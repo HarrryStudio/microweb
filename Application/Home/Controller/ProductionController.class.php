@@ -18,7 +18,6 @@ class ProductionController extends ResourceController {
         $type_list = M('production_type')
                         ->field('id,name')
                         ->where(array('site_id'=>$site_id))
-                        // ->order('sort')
                         ->select();
         $this->assign('type_list', $type_list);
         $this->assign('site_id', $site_id);
@@ -45,7 +44,6 @@ class ProductionController extends ResourceController {
         $type_list = M('production_type')
                         ->field('id,name')
                         ->where(array('site_id'=>$site_id))
-                        // ->order('sort')
                         ->select();
         $this->assign('type_list', $type_list);
         $this->assign('site_id', $site_id);
@@ -79,7 +77,7 @@ class ProductionController extends ResourceController {
         $return  = array('status' => 0, 'info' => '添加成功', 'data' => '');
         $production_id = I('post.id');
         if(empty($production_id)){
-            $return['info'] = "请选择文章";
+            $return['info'] = "请选择产品";
             $this->ajaxReturn($return);
             return;
         }
@@ -103,7 +101,7 @@ class ProductionController extends ResourceController {
         $ids = I('ids');
         $status = I('get.status')?I('get.status'):I('post.status',0);
         if(empty($ids)){
-            $return['info'] = "请选择文章";
+            $return['info'] = "请选择产品";
             $this->ajaxReturn($return);
             return;
         }
@@ -118,6 +116,35 @@ class ProductionController extends ResourceController {
     }
 
     /**
+     * 设置文章类型
+     * @return [type] [description]
+     */
+    public function change_production_type()
+    {
+    	$return  = array('status' => 0, 'info' => '修改成功', 'data' => '');
+        $ids = I('ids');
+        $type = I('get.type');
+        if(empty($ids)){
+            $return['info'] = "请选择产品";
+            $this->ajaxReturn($return);
+            return;
+        }
+        if(empty($type)){
+            $return['info'] = "请选择类型";
+            $this->ajaxReturn($return);
+            return;
+        }
+        $Production = D('Production');
+        $result = $Production->change_production_type($this->site_info['id'],$ids,$type);
+        if($result !== false){
+            $return['status'] = 1;
+        }else{
+            $return['info'] = $Production->getError();
+        }
+        $this->ajaxReturn($return);
+    }
+
+    /**
      * 管理产品类型页
      */
     public function set_classify(){
@@ -126,7 +153,6 @@ class ProductionController extends ResourceController {
         $type_list = M('production_type')
                         ->field('id,name')
                         ->select();
-                        // print_r($type_list);
         $this->assign("site_id",$site_id);
         $this->assign("type_list",$type_list);
         $this->display();

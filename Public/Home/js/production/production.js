@@ -45,6 +45,7 @@ $(function(){
             url += '?' + query;
         }
 		window.location.href = url;
+		alert(url);
 	})
 	/*全选效果  */
 	$('#chose-production').change(function(){
@@ -123,20 +124,20 @@ $(function(){
 		)
 	})
 	/*单项置顶*/
-	$('.top-status-item').click(function(){
-		var that = this;
-		$.post($('#top-production-url').val(),{
-				status:$(that).attr('data-status'),
-				id:$(that).parent().attr('data-id')
-			},function(data){
-				if(data.status == 1){
-					window.location.reload();
-				}else{
-					alert_info(data.info,0);
-				}
-			}
-		)
-	})
+	// $('.top-status-item').click(function(){
+	// 	var that = this;
+	// 	$.post($('#top-production-url').val(),{
+	// 			status:$(that).attr('data-status'),
+	// 			id:$(that).parent().attr('data-id')
+	// 		},function(data){
+	// 			if(data.status == 1){
+	// 				window.location.reload();
+	// 			}else{
+	// 				alert_info(data.info,0);
+	// 			}
+	// 		}
+	// 	)
+	// })
 	/*单项 改变文章状态*/
 	$('.production-status-item').click(function(){
 		var that = this;

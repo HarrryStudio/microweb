@@ -15,8 +15,6 @@ class ProductionModel extends Model
         array('url','require','产品跳转链接不能为空',self::MODEL_BOTH),
         array('type','require','产品类型不能为空',self::MODEL_BOTH),
         array('desc','require','产品详细介绍不能为空',self::MODEL_BOTH),
-
-
     );
 
 	/**
@@ -77,15 +75,6 @@ class ProductionModel extends Model
 	}
 
 	/**
-	* 删除产品
-	* @param $production_id 产品id
-	*/
-	public function delete_production($production_id)
-	{
-		# code...
-	}
-
-	/**
 	* 修改产品状态
 	* @param $production_id 产品id
     * @param $status 要得到的状态
@@ -97,10 +86,20 @@ class ProductionModel extends Model
     	$where = array('id' => array('in', $production_id ), 'site_id' => $site_id);
     	$data['update_time'] = NOW_TIME;
     	$data['status'] = $status;
-    	// if($status != 0){
-    	// 	$data['is_top'] = 0;
-    	// }
     	return $this->where($where)->save($data);
+	}
+
+	/**
+     * 设置产品类型
+     * @return [type] [description]
+     */
+	public function change_production_type($site_id,$id,$type)
+	{
+		$id = is_array($id) ? implode(',',$id) : $id;
+        $where = array('id' => array('in', $id ),'site_id' => $site_id);
+        $data['update_time'] = NOW_TIME;
+        $data['type'] = $type;
+        return $this->where($where)->save($data);
 	}
 
 	/**
@@ -135,7 +134,6 @@ class ProductionModel extends Model
     				->order('create_time desc')
     				->limit($page->firstRow.','.$page->listRows)
     				->select();
-                    // echo $this->getLastSql();
     	return array('result'=>$result,'page'=>$page->show(),'search'=>$data);
 	}
 
@@ -159,8 +157,6 @@ class ProductionModel extends Model
 
 	/**
 	* 产品排序
-	*
-	*
 	*/
 	public function sort_production($production_id)
 	{
