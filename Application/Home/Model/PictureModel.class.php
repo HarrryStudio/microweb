@@ -143,7 +143,6 @@ class PictureModel extends Model{
      * 清除数据库中的废物数据和相对文件
      */
     public function removeFile(){
-        //harrry_change ::: update
         $trash = $this->where(array('used'=> array('lt',0) ))->select();
         $file = "";
         $this->startTrans();
@@ -162,7 +161,7 @@ class PictureModel extends Model{
         }
         $this->commit();
     }
-    //harrry_change ::: update
+    
     public function deleteFile($id){
 
         $this->where(array('id'=>$id))->setDec('used');

@@ -17,7 +17,7 @@ var imageUploader = {},
     var flagImg = null, flashContainer;
     imageUploader.init = function (opt, callbacks) {
         switchTab("imageTab");
-        createAlignButton(["remoteFloat", "localFloat"]);
+        createAlignButton(["localFloat"]);
         createFlash(opt, callbacks);
         var srcImg = editor.selection.getRange().getClosedNode();
         if (srcImg) {
@@ -33,11 +33,11 @@ var imageUploader = {},
             }
 
         }
-        addUrlChangeListener();
+        //addUrlChangeListener();
         addOKListener();
-        addScrollListener();
-        addSearchListener();
-        $focus(g("url"));
+        //addScrollListener();
+        //addSearchListener();
+        //$focus(g("url"));
     };
     imageUploader.setPostParams = function(obj,index){
         if(index===undefined){
@@ -582,56 +582,6 @@ var imageUploader = {},
                     toggleFlash(false);
                     maskIframe.style.display = "";
                     dialog.buttons[0].setDisabled(false);
-                }
-                var list = g("imageList");
-                list.style.display = "none";
-                //切换到图片管理时，ajax请求后台图片列表
-                if (id == "imgManager") {
-                    list.style.display = "";
-                    //已经初始化过时不再重复提交请求
-                    if (!list.children.length) {
-                        ajax.request(editor.options.imageManagerUrl, {
-                            timeout:100000,
-                            action:"get",
-                            onsuccess:function (xhr) {
-                                //去除空格
-                                var tmp = utils.trim(xhr.responseText),
-                                    imageUrls = !tmp ? [] : tmp.split("ue_separate_ue"),
-                                    length = imageUrls.length;
-                                g("imageList").innerHTML = !length ? "&nbsp;&nbsp;" + lang.noUploadImage : "";
-                                for (var k = 0, ci; ci = imageUrls[k++];) {
-                                    var img = document.createElement("img");
-
-                                    var div = document.createElement("div");
-                                    div.appendChild(img);
-                                    div.style.display = "none";
-                                    g("imageList").appendChild(div);
-                                    img.onclick = function () {
-                                        changeSelected(this);
-                                    };
-                                    img.onload = function () {
-                                        this.parentNode.style.display = "";
-                                        var w = this.width, h = this.height;
-                                        scale(this, 100, 120, 80);
-                                        this.title = lang.toggleSelect + w + "X" + h;
-                                        this.onload = null;
-                                    };
-                                    img.setAttribute(k < 35 ? "src" : "lazy_src", editor.options.imageManagerPath + ci.replace(/\s+|\s+/ig, ""));
-                                    img.setAttribute("_src", editor.options.imageManagerPath + ci.replace(/\s+|\s+/ig, ""));
-
-                                }
-                            },
-                            onerror:function () {
-                                g("imageList").innerHTML = lang.imageLoadError;
-                            }
-                        });
-                    }
-                }
-                if (id == "imgSearch") {
-                    selectTxt(g("imgSearchTxt"));
-                }
-                if (id == "remote") {
-                    $focus(g("url"));
                 }
             }
         }

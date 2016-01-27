@@ -11,13 +11,13 @@
     <div class="wrapper">
         <div id="imageTab">
             <div id="tabHeads" class="tabhead">
-                <span tabSrc="remote"  class="focus"><var id="lang_tab_remote"></var></span>
-                <span tabSrc="local"><var id="lang_tab_local"></var></span>
-                <span tabSrc="imgManager"><var id="lang_tab_imgManager"></var></span>
-                <span tabSrc="imgSearch"><var id="lang_tab_imgSearch"></var></span>
+                <!-- <span tabSrc="remote"  class="focus"><var id="lang_tab_remote"></var></span> -->
+                <span tabSrc="local" class="focus"><var id="lang_tab_local"></var></span>
+                <!-- <span tabSrc="imgManager"><var id="lang_tab_imgManager"></var></span> -->
+                <!-- <span tabSrc="imgSearch"><var id="lang_tab_imgSearch"></var></span> -->
             </div>
             <div id="tabBodys" class="tabbody">
-                <div id="remote" class="panel">
+                <!-- <div id="remote" class="panel"> 
                     <table cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="label"><label for="url"><var id="lang_input_url"></var></label></td>
@@ -48,10 +48,11 @@
                             <td id="remoteFloat"></td>
                         </tr>
                     </table>
-
+                
                     <div id="preview"></div>
                     <div class="lock"><input id="lock" type="checkbox" checked="checked"></div>
-                </div>
+                </div> -->
+                
                 <div id="local" class="panel">
                     <div id="flashContainer"></div>
                     <div><div id="upload" style="display: none" ></div><div id="duiqi"></div><div id="localFloat"></div></div>
@@ -63,16 +64,18 @@
                         </select>
                     </div>
                 </div>
-                <div id="imgManager" class="panel">
+               
+               <!--  <div id="imgManager" class="panel">
                     <div id="imageList"><var id="lang_imgLoading"></var></div>
                 </div>
+
                 <div id="imgSearch" class="panel">
                     <table style="margin-top: 5px;">
                         <tr>
                             <td width="200"><input id="imgSearchTxt" type="text" /></td>
                             <td width="65">
                                 <select id="imgType">
-                                    <!--具体内容值将由国际化组件动态填充-->
+                                    具体内容值将由国际化组件动态填充
                                     <option value="&s=4&z=0"></option>
                                     <option value="&s=1&z=19"></option>
                                     <option value="&s=2&z=0"></option>
@@ -85,6 +88,7 @@
                     </table>
                     <div id="searchList"></div>
                 </div>
+                 -->
                 <iframe id="maskIframe" src="about:blank" scrolling="no" frameborder="no"></iframe>
             </div>
         </div>
