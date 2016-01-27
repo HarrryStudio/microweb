@@ -15,7 +15,7 @@ class ReceptionModel extends BaseModel{
 	public function theme(){
 		$model = M();
 		$list = $model->table("theme as t left join picture as p on t.pic_id=p.id")
-			->field("t.update_time,t.addr, t.id, p.savepath, p.savename")
+			->field("t.update_time,t.name, t.id, p.savepath, p.savename")
 			->where("t.status=0")->select();
 		return $list;
 	}

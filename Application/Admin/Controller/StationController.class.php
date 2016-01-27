@@ -19,6 +19,37 @@ class StationController extends BaseController{
 		$this->assign("_page", $show);
 		$this->display();
 	}
+
+//产品控制器
+	public function produce()
+	{
+		$this->assign("meta_title","产品信息");
+		$data = D("Station")->produce($_GET['nickname']);
+		$this->assign("list",$data['info']);
+        $this->assign('_page',$data['show']);               // 赋值分页输出
+		$this->display();
+	}
+
+//获取分页
+	public function getpage(){
+		$count = M("production")->where("status=0")->count();// 查询满足要求的总记录数
+        $Page  = new \Think\Page($count,10);            // 实例化分页类 传入总记录数和每页显示的记录数
+        $show  = $Page->show();                     // 分页显示输出
+        return $show;
+	}
+//删除产品信息
+	public function del_pro()
+	{
+		$where["id"] = $_POST["pro_id"];
+		$data["status"] = 1;
+		$res = M("production")->data($data)->where($where)->save();
+		$data["rowNum"] = $res;
+		$data["page"] = $this->getpage();
+		$this->ajaxReturn($data);
+	}
+
+
+
 }
 
 ?>
