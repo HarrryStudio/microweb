@@ -10,8 +10,9 @@ class StationModel extends BaseModel{
 		$table = M("production as p")
 			->join(" left join site_info as s on p.site_id = s.id")
 			->join(" left join home_picture as h on p.pic_id = h.id")
-			->field("s.site_name,p.id,p.name,p.type,p.pic_id,p.desc,p.url,p.price,p.status,p.creat_time,h.savepath,h.savename")
-			->where("p.status=0 and s.site_name like '%".$_GET['nickname']."%' or p.status=0 and p.name like '%".$_GET['nickname']."%'");
+			->join(" left join production_type as pt on p.type = pt.id")
+			->field(" s.site_name,p.id,p.name,p.pic_id,p.desc,p.url,p.price,p.status,p.creat_time,h.savepath,h.savename,pt.name as typename")
+			->where(" p.status=0 and s.site_name like '%".$_GET['nickname']."%' or p.status=0 and p.name like '%".$_GET['nickname']."%'");
 		$data['info'] = $table->page($_GET['p'].',10')->select();
 		for($i=0; $i < count($data['info']); $i++){
 			$data['info'][$i]["status"] = "删除";
