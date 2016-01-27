@@ -23,11 +23,11 @@
 
 			<div class="production-form-item">
 				<label for="production-title" class="production-label">标题：</label>
-				<input id="production-title" name="name" type="text" class="production-input form-control" value="{$production_info.title}">
+				<input id="production-title" name="name" type="text" class="production-input form-control" value="{$production_info.name}">
 			</div>
 			<div class="production-form-item">
 				<label for="production-source" class="production-label">价格：</label>
-				<input id="production-source" name="price" type="text" class="production-input form-control" value="{$production_info.source}">
+				<input id="production-source" name="price" type="text" class="production-input form-control" value="{$production_info.price}">
 			</div>
 			<div class="production-form-item">
 				<label for="production-url" class="production-label">网址：</label>
@@ -35,7 +35,7 @@
 			</div>
 			<div class="production-form-item">
 				<label for="production-type" class="production-label">分类：</label>
-				<input id="production-type" name="type" type="hidden" value="{$production_info.type_id}">
+				<input id="production-type" name="type" type="hidden" value="{$production_info.type}">
 				<div class="dropdown">
 				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				  	<span id="type-name-span">请选择</span>
@@ -46,7 +46,7 @@
 				  		//print_r($production_info);
 				  		foreach ($type_list as $key => $value) {
 				  			$class = "";
-				  			if((int)$value['id'] == (int)$production_info['type_id']){
+				  			if((int)$value['id'] == (int)$production_info['type']){
 				  				// echo $key;
 				  				// echo (int)$production_info['type_id'];
 				  				$class = " class='checked' ";

@@ -60,7 +60,6 @@ class ProductionController extends ResourceController {
         $return  = array('status' => 0, 'info' => '添加成功', 'data' => '');
         $data = I('post.');
         $data['site_id'] = $this->site_info['id'];
-        // $this->ajaxReturn($data);
         $Production = D('Production');
         $result = $Production->add_production($data);
         if($result){
@@ -68,6 +67,52 @@ class ProductionController extends ResourceController {
         }else{
             $return['status'] = 0;
             $return['info'] = $Production->getError();
+        }
+        $this->ajaxReturn($return);
+    }
+
+    /**
+     * 编辑产品
+     * @return [type] [description]
+     */
+    public function edit_production(){
+        $return  = array('status' => 0, 'info' => '添加成功', 'data' => '');
+        $production_id = I('post.id');
+        if(empty($production_id)){
+            $return['info'] = "请选择文章";
+            $this->ajaxReturn($return);
+            return;
+        }
+        $Production = D('Production');
+        $result = $Production->add_production(I('post.'));
+        if($result){
+            $return['status'] = 1;
+        }else{
+            $return['status'] = 0;
+            $return['info'] = $Production->getError();
+        }
+        $this->ajaxReturn($return);
+    }
+
+    /**
+     * 修改产品状态(启用:0 禁用:-1 删除:1)
+     * @return [type] [description]
+     */
+    public function update_production_status(){
+        $return  = array('status' => 0, 'info' => '操作成功', 'data' => '');
+        $ids = I('ids');
+        $status = I('get.status')?I('get.status'):I('post.status',0);
+        if(empty($ids)){
+            $return['info'] = "请选择文章";
+            $this->ajaxReturn($return);
+            return;
+        }
+        $Production = D('Production');
+        $result = $Production->update_production_status($this->site_info['id'],$ids,$status);
+        if($result !== false){
+            $return['status'] = 1;
+        }else{
+            $return['info'] = "操作失败";
         }
         $this->ajaxReturn($return);
     }

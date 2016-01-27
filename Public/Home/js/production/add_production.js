@@ -13,6 +13,7 @@ $(function(){
 	$('button.save').click(function(){
 		var form = $('#production-form')[0];
 		var formData = new FormData(form); // 获得form内容
+		// alert(obj2string(formData));
 		$.ajax({
 			url : $(form).attr('action'),
 			type: 'post',
@@ -26,6 +27,7 @@ $(function(){
 				}else{
 					alert_info(data.info,0);
 					// alert(obj2string(data));
+					// alert(data);
 				}
 			}
 		})

@@ -19,7 +19,7 @@
 			<div class="search-bar">
 				<form class="search-form">
 					<div class="search-type">
-						<input type="hidden" name="type_id" id="search-type-id" value="{$search['type_id']}">
+						<input type="hidden" name="type" id="search-type" value="{$search['type']}">
 						<span class="search-type-name">所有</span>
 						<span class="search-down glyphicon glyphicon-triangle-bottom"></span>
 						<ul>
@@ -37,9 +37,9 @@
 		</div>
 		<div class="more-do-bar">
 			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/0">启用</div>
-			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/1">禁用</div>
-			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/-1">删除</div>
-			<div class="do-item change-classify" url="__CONTROLLER__/change_production_type/type_id/">修改分类
+			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/-1">禁用</div>
+			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/1">删除</div>
+			<div class="do-item change-classify" url="__CONTROLLER__/change_production_type/type/">修改分类
 				<ul>
 					<volist name="type_list" id="vo">
 						<li value="{$vo.id}">{$vo.name}</li>
@@ -83,11 +83,11 @@
 								  </button>
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu{$k}" data-id="{$vo.id}" data-type='{$vo.type}'>
 								  		<li class="production-option-edit"><a href="__CONTROLLER__/add_production/production_id/{$vo.id}">编辑</a></li>
-									  	<li class="production-option-del production-status-item" data-status="-1"><a>删除</a></li>
-									  	<if condition="$vo['status'] eq 1">
+									  	<li class="production-option-del production-status-item" data-status="1"><a>删除</a></li>
+									  	<if condition="$vo['status'] eq -1">
 											<li class="production-option-apply production-status-item" data-status="0"><a>启用</a>
 									  	<else />
-									  		<li class="production-option-forbide production-status-item" data-status="1"><a>禁用</a></li>
+									  		<li class="production-option-forbide production-status-item" data-status="-1"><a>禁用</a></li>
 										  	<!-- <if condition="$vo['is_top'] eq 1">
 										  		<li class="production-option-bottom top-status-item"  data-status="0"><a>取消置顶</a></li>
 										  	<else />
@@ -127,9 +127,9 @@
 	         <div class="modal-body">
 				<form class="change-type-form" action="">
 					<div>
-						<label for="type-id">请选择分类：</label>
+						<label for="type">请选择分类：</label>
 						<input id="way" type="hidden" name="way" value="">
-						<input id="type-id" type="hidden" name="type_id" value="">
+						<input id="type" type="hidden" name="type" value="">
 						<input id="production-id" type="hidden" name="production_id"value="">
 						<div class="type-dropdown">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -152,7 +152,7 @@
 	            <button type="button" class="btn btn-default"
 	               data-dismiss="modal">关闭
 	            </button>
-	            <button id="change-production-type" type="button" target-url="__CONTROLLER__/change_production_type/type_id/" class="btn btn-primary">
+	            <button id="change-production-type" type="button" target-url="__CONTROLLER__/change_production_type/type/" class="btn btn-primary">
 	               提交更改
 	            </button>
 	         </div>
@@ -194,5 +194,5 @@
 	</div>
 </block>
 <block name="script">
-	<script type="text/javascript" src="__JS__/article/article.js"></script>
+	<script type="text/javascript" src="__JS__/production/production.js"></script>
 </block>

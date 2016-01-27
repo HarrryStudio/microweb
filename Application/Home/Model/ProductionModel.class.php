@@ -86,13 +86,21 @@ class ProductionModel extends Model
 	}
 
 	/**
-	* 修改产品信息
+	* 修改产品状态
 	* @param $production_id 产品id
-	*
+    * @param $status 要得到的状态
+    * @return Boolean
 	*/
-	public function update_production($production_id)
+	public function update_production_status($site_id,$production_id,$status)
 	{
-		# code...
+		$production_id = is_array($production_id) ? implode(',',$production_id) : $production_id;
+    	$where = array('id' => array('in', $production_id ), 'site_id' => $site_id);
+    	$data['update_time'] = NOW_TIME;
+    	$data['status'] = $status;
+    	// if($status != 0){
+    	// 	$data['is_top'] = 0;
+    	// }
+    	return $this->where($where)->save($data);
 	}
 
 	/**
@@ -138,15 +146,15 @@ class ProductionModel extends Model
 	*/
 	public function get_production_info($site_id,$production_id)
 	{
-	    $article_info = $this->alias('a')
+	    $production_info = $this->alias('a')
                            ->field('a.*,b.savepath,b.savename')
                            ->join('left join home_picture as b on a.pic_id = b.id')
-                           ->where(array('a.status' => array('gt',-1),'a.id'=>$article_id,'a.site_id' => $site_id))
+                           ->where(array('a.status' => array('NEQ',1),'a.id'=>$production_id,'a.site_id' => $site_id))
                            ->find();
-        if(!empty($article_info['savename'])){
-            $article_info['img_url'] = C('UPLOAD_ROOT').$article_info['savepath'].$article_info['savename'];
+        if(!empty($production_info['savename'])){
+            $production_info['img_url'] = C('UPLOAD_ROOT').$production_info['savepath'].$production_info['savename'];
         }
-        return $article_info;
+        return $production_info;
 	}
 
 	/**
