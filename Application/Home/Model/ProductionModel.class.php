@@ -57,6 +57,9 @@ class ProductionModel extends Model
                     $data['pic_id'] = $value['id'];
                 }
             }
+        }else{
+        	$this->error = '产品配图不能为空！';
+        	return false;
         }
         if(empty($data['id'])){ //新增数据
             $id = $this->add($data); //添加行为

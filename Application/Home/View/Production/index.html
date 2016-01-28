@@ -36,9 +36,9 @@
 			</div>
 		</div>
 		<div class="more-do-bar">
-			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/0">启用</div>
-			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/-1">禁用</div>
-			<div class="do-item status-production" url="__CONTROLLER__/update_production_status/status/1">删除</div>
+			<div class="do-item status-production" id="start" url="__CONTROLLER__/update_production_status/status/0">启用</div>
+			<div class="do-item status-production" id="stop" url="__CONTROLLER__/update_production_status/status/-1">禁用</div>
+			<div class="do-item status-production" id="delete" url="__CONTROLLER__/update_production_status/status/1">删除</div>
 			<div class="do-item change-classify" url="__CONTROLLER__/change_production_type/type/">修改分类
 				<ul>
 					<volist name="type_list" id="vo">
@@ -67,7 +67,13 @@
 			 				<!-- 复选框 -->
 			 				<td><input type="checkbox" name="ids[]" class="production-item" value="{$vo.id}"></td>
 			 				<!-- 标题 -->
-			 				<td>{$vo['name']}</td>
+			 				<td>
+			 				<if condition="$vo['status'] eq -1">
+			 					<span class="pro-sta pro-for"></span>
+			 				<else />
+								<span class="pro-sta pro-nor"></span>
+			 				</if>
+			 				{$vo['name']}</td>
 			 				<!-- 价格 -->
 			 				<td>￥{$vo['price']}</td>
 			 				<!-- 类别 -->
@@ -110,7 +116,7 @@
 
 </block>
 <block name="other">
-	<!-- 模态框（Modal） -->
+	<!-- 修改产品分类模态框（Modal） -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	   aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
@@ -160,36 +166,28 @@
 		</div>
 	</div>
 
-	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="confirm_modal" tabindex="-1" role="dialog"
-	   aria-labelledby="myModalLabel" aria-hidden="true">
-	   <div class="modal-dialog">
-	      <div class="modal-content">
-	         <div class="modal-header">
-	            <button type="button" class="close"
-	               data-dismiss="modal" aria-hidden="true">
-	                  &times;
-	            </button>
-	            <h4 class="modal-title" id="myModalLabel">
-					退出
-	            </h4>
-	         </div>
-	         <div class="modal-body">
-				<form action="">
-					<div>
-						<p>删除后将清除所有相关资源,确认要删除吗？</p>
-					</div>
-				</form>
-	         </div>
-	         <div class="modal-footer">
-	            <button type="button" class="btn btn-default"
-	               data-dismiss="modal">取消
-	            </button>
-	            <button type="button" class="btn btn-primary confirm">
-	               确认
-	            </button>
-	         </div>
-	      </div>
+	<!-- 删除产品模态框（Modal） -->
+	<div class="modal fade" id="delete_tip" tacindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	            	<h4 class="modal-title" id="myModalLabel">
+						确认删除？
+	            	</h4>
+				</div>
+				<div class="modal-body">
+					<form action="">
+						<div>
+							<p>删除后该产品将彻底消失,确认要删除吗？</p>
+						</div>
+					</form>
+	         	</div>
+	         	<div class="modal-footer">
+	            	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	            	<button type="button" class="btn btn-primary confirm">确认</button>
+	         	</div>
+			</div>
 		</div>
 	</div>
 </block>

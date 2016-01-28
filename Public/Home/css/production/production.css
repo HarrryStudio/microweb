@@ -218,16 +218,16 @@ table.production-table tr:nth-child(2n){
 	cursor: pointer;
 }
 
-.art-sta{
+.pro-sta{
 	display: inline-block;
 	width: 20px;
 	font-size: 10px;
 }
-.art-for:before{
+.pro-for:before{
 	content:"[禁]";
 	color:#F92672;
 }
-.art-top:before{
+.pro-top:before{
 	content:"[顶]";
 	color:#FFDA15;
 }

@@ -45,7 +45,6 @@ $(function(){
             url += '?' + query;
         }
 		window.location.href = url;
-		alert(url);
 	})
 	/*全选效果  */
 	$('#chose-production').change(function(){
@@ -59,39 +58,63 @@ $(function(){
 			})
 		}
 	})
-	/*  批量操作中文章状态改变的异步提交  */
+	/*  批量操作中产品状态改变的异步提交  */
 	$('.status-production').click(function(){
-		$.post($(this).attr('url'),$('.production-item').serialize(),function(data){
-			if(data.status == 1){
-				alert_info(data.info,1);
-				setTimeout(function() {
-					window.location.reload();
-				}, 2000);
-			}else{
-				alert_info(data.info,0);
-			}
-		})
+		if ($(this).attr('id') == "delete") {
+			// 弹出产品删除确认模态框
+			$('#delete_tip').modal({
+		    	backdrop:true,
+		   		keyboard:true,
+		    	show:true
+			});
+			$('#delete_tip .btn-primary').click(function() {
+				$("#delete_tip").modal('hide');
+				$.post($('#delete').attr('url'),$('.production-item').serialize(),function(data){
+					if(data.status == 1){
+						alert_info(data.info,1);
+						setTimeout(function() {
+							window.location.reload();
+						}, 2000);
+					}else{
+						alert_info(data.info,0);
+					}
+				})
+			})
+		}else{
+			$.post($(this).attr('url'),$('.production-item').serialize(),function(data){
+				if(data.status == 1){
+					alert_info(data.info,1);
+					setTimeout(function() {
+						window.location.reload();
+					}, 1000);
+				}else{
+					alert_info(data.info,0);
+				}
+			})
+		}
+
 	})
-	/*文章类型改变的异步提交  */
+
+	/*  批量操作中产品类型改变的异步提交  */
 	$('.change-classify li').click(function(){
 		$.post($('.change-classify').attr('url') + $(this).attr('value'),$('.production-item').serialize(),function(data){
 			if(data.status == 1){
 				alert_info(data.info,1);
 				setTimeout(function() {
 					window.location.reload();
-				}, 2000);
+				}, 1000);
 			}else{
 				alert_info(data.info,0);
 			}
 		})
 	})
-	/*模态框中的类型选择 */
+	/*单项 模态框中的类型选择 */
 	$('.type-dropdown li').click(function(){
 		console.log($(this).text());
 		$('#type-name-span').text($(this).text());
 		$('#type').val($(this).attr('data'));
 	})
-	/*修改类型模态框弹出  */
+	/*单项 修改类型模态框弹出  */
 	$('.production-option-change').click(function(){
 		var ul = $(this).parent();
 		$('#myModal').find('#way').val(0);
@@ -103,7 +126,7 @@ $(function(){
 		    show:true
 		});
 	})
-	/*修改类型模态框 确认按钮事件  提交 */
+	/*单项 修改类型模态框 确认按钮事件 提交 */
 	$('#change-production-type').click(function(){
 		var data;
 		var that = this;
@@ -116,13 +139,17 @@ $(function(){
 				ids:$('#myModal').find('#production-id').val()
 			},function(data){
 				if(data.status == 1){
-					window.location.reload();
+					alert_info(data.info,1);
+					setTimeout(function() {
+						window.location.reload();
+					}, 1000);
 				}else{
 					alert_info(data.info,0);
 				}
 			}
 		)
 	})
+
 	/*单项置顶*/
 	// $('.top-status-item').click(function(){
 	// 	var that = this;
@@ -138,23 +165,49 @@ $(function(){
 	// 		}
 	// 	)
 	// })
-	/*单项 改变文章状态*/
+
+	/*单项 改变产品状态*/
 	$('.production-status-item').click(function(){
 		var that = this;
 		var status = $(that).attr('data-status');
 		if(status == 1){
 			// 弹出对话框，确认操作
-		}
-		$.post($('#status-production-url').val(),{
+			$('#delete_tip').modal({
+		    	backdrop:true,
+		   		keyboard:true,
+		    	show:true
+			});
+			$('#delete_tip .btn-primary').click(function() {
+				$("#delete_tip").modal('hide');
+				$.post($('#status-production-url').val(),{
+					status:status,
+					ids:$(that).parent().attr('data-id')
+				},function(data){
+					if(data.status == 1){
+						alert_info(data.info,1);
+						setTimeout(function() {
+							window.location.reload();
+						}, 2000);
+					}else{
+						alert_info(data.info,0);
+					}
+				})
+			})
+		}else{
+			$.post($('#status-production-url').val(),{
 				status:status,
 				ids:$(that).parent().attr('data-id')
 			},function(data){
 				if(data.status == 1){
-					window.location.reload();
+					alert_info(data.info,1);
+					setTimeout(function() {
+						window.location.reload();
+					}, 1000);
 				}else{
 					alert_info(data.info,0);
 				}
-			}
-		)
+			})
+		}
+
 	})
 })
